@@ -4,24 +4,22 @@ Website for the Capability Host Protocol.
 
 ## Status
 
-Placeholder — full site is post-v0.1.
+Live at capabilityhostprotocol.com. Built with Next.js 15 + Tailwind CSS.
 
-## Planned structure
+## Structure
 
-- `/` — landing page: "See what your agents and tools actually did."
-- `/docs` — rendered documentation (from chp-core/docs/)
-- `/spec` — rendered protocol specification
+- `/` — full platform landing page
 - `/quickstart` — 15-minute getting started guide
-- `/conformance` — conformance badge and test runner docs
+- `/docs`, `/spec`, `/conformance` — linked to GitHub (chp-core)
 
 ## Tech
 
-To be decided. Candidates: Astro (static docs), Next.js App Router (dynamic content + Vercel).
+Next.js 15 App Router · React 19 · Tailwind CSS 3 · TypeScript 5 · Deployed on Vercel
 
-## Setup (once decided)
+## Setup
 
 ```bash
-# Install and run dev server
 npm install
-npm run dev
+npm run dev        # localhost:3000
+npm run build      # production build
 ```

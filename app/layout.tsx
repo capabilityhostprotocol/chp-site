@@ -8,10 +8,11 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 export const metadata: Metadata = {
   title: 'Capability Host Protocol',
   description:
-    'See what your agents and tools actually did. CHP is an open protocol for making agent, tool, and system execution visible, replayable, and ready for governance.',
+    'Open protocol for governed agent execution. Local-first SQLite evidence, vector retrieval, cross-host composition. Zero mandatory deps. Apache-2.0.',
   openGraph: {
     title: 'Capability Host Protocol',
-    description: 'See what your agents and tools actually did.',
+    description:
+      'The governed capability platform for production AI agents. Evidence, replay, RAG, safety, compliance — all in one open protocol.',
     url: 'https://capabilityhostprotocol.com',
     siteName: 'Capability Host Protocol',
     type: 'website',
