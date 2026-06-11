@@ -1,7 +1,7 @@
 import { PROTOCOL_AUDIENCES } from '../lib/content';
 
 const PROBLEMS = [
-  'Every agent framework invents its own tool contract.',
+  'Every product and agent framework invents its own tool contract.',
   'Hosts expose powerful actions without portable lifecycle semantics.',
   'Applications need audit trails that survive provider and runtime changes.',
 ];
@@ -15,12 +15,13 @@ export default function EcosystemSection() {
             Why CHP exists
           </p>
           <h2 className="text-3xl font-semibold text-zinc-100 mb-4">
-            Agents need a public protocol boundary for actions.
+            Hosted capability needs a public protocol boundary.
           </h2>
           <p className="text-sm text-zinc-400 leading-relaxed mb-7">
-            CHP separates the systems that expose capabilities from the systems
-            that call them. The protocol makes discovery, invocation, governance,
-            evidence, and replay portable across independent implementations.
+            CHP separates the hosts that expose capabilities from the actors and
+            systems that call them. The protocol makes discovery, invocation,
+            governance, evidence, and replay portable across independent
+            implementations.
           </p>
           <div className="space-y-3">
             {PROBLEMS.map((problem) => (

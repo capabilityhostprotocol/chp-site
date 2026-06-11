@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-field-980: #05070a;
+    --color-field-950: #070a0d;
+    --color-surface-900: #0d1117;
+    --color-surface-850: #111827;
+    --color-surface-800: #161b22;
+    --color-graphite-700: #2d3748;
+    --color-graphite-600: #4b5563;
+    --color-graphite-500: #6b7280;
+    --color-graphite-300: #d1d5db;
+    --color-graphite-100: #f3f4f6;
+    --color-signal-cyan: #28d9f2;
+    --color-protocol-blue: #3b82f6;
+    --color-agent-violet: #8b6cff;
+    --color-governance-amber: #d99a2b;
+    --color-human-warmth: #f5eedc;
+    --color-operational-green: #22c55e;
+    --color-critical-red: #ef4444;
+
+    --color-bg-page: var(--color-field-980);
+    --color-bg-field: var(--color-field-950);
+    --color-bg-surface: var(--color-surface-900);
+    --color-text-primary: var(--color-graphite-100);
+    --color-text-secondary: var(--color-graphite-300);
+    --color-text-muted: var(--color-graphite-500);
+    --color-border-subtle: rgba(209, 213, 219, 0.12);
+    --color-border-strong: rgba(209, 213, 219, 0.24);
+
+    --color-capability-active: var(--color-signal-cyan);
+    --color-capability-dormant: var(--color-graphite-500);
+    --color-host-background: rgba(17, 24, 39, 0.72);
+    --color-host-border: rgba(40, 217, 242, 0.22);
+    --color-human-border: rgba(245, 238, 220, 0.42);
+    --color-agent-border: rgba(139, 108, 255, 0.45);
+    --color-product-border: rgba(59, 130, 246, 0.45);
+    --color-business-border: rgba(217, 154, 43, 0.45);
+    --color-policy-required: var(--color-governance-amber);
+    --color-policy-approved: var(--color-operational-green);
+    --color-policy-blocked: var(--color-critical-red);
+    --color-invocation-path: var(--color-signal-cyan);
+    --color-registry-surface: rgba(59, 130, 246, 0.1);
+    --color-context-surface: rgba(245, 238, 220, 0.07);
+    --color-composition-line: var(--color-agent-violet);
+
+    --shadow-surface: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+    --shadow-glow-signal: 0 0 32px rgba(40, 217, 242, 0.16);
+    --shadow-glow-policy: 0 0 28px rgba(217, 154, 43, 0.14);
+  }
+
+  body {
+    background: var(--color-bg-page);
+    color: var(--color-text-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal-cyan);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}

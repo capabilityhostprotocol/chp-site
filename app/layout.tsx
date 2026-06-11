@@ -8,11 +8,14 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 export const metadata: Metadata = {
   title: 'Capability Host Protocol',
   description:
-    'Open protocol for capability hosts, agents, applications, and infrastructure to discover, invoke, govern, and audit AI capabilities.',
+    'The open protocol for hosted capability: expose, discover, invoke, compose, and govern what people, agents, products, services, processes, and organizations can do.',
+  icons: {
+    icon: '/icon.svg',
+  },
   openGraph: {
     title: 'Capability Host Protocol',
     description:
-      'A shared protocol surface for governed AI capabilities: manifests, invocation safety, lifecycle, permissions, evidence, replay, and conformance.',
+      'Host what the world can do. CHP turns abilities across people, agents, products, services, processes, and organizations into composable, governable capabilities.',
     url: 'https://capabilityhostprotocol.com',
     siteName: 'Capability Host Protocol',
     type: 'website',
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
-      <body className="bg-zinc-950 text-zinc-100 font-sans antialiased">
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>

@@ -79,6 +79,146 @@ export const ADOPTION_PATHS = [
   },
 ];
 
+export const FAILURE_MODES = [
+  {
+    pain: 'Capability contracts change quietly.',
+    cost: 'Callers discover the mismatch during execution, after a person, agent, app, or workflow has already planned around the capability.',
+    chp: 'CHP makes host, protocol, and capability versions explicit before invocation.',
+  },
+  {
+    pain: 'Sensitive capabilities look like ordinary functions.',
+    cost: 'Authorization, caller context, timeout policy, and denials end up scattered across app glue.',
+    chp: 'CHP carries permission requirements and returns denials as structured protocol outcomes.',
+  },
+  {
+    pain: 'Logs are not evidence.',
+    cost: 'After an incident, teams cannot reconstruct the ordered action trail across hosts and runtimes.',
+    chp: 'CHP emits replayable evidence tied to capability ID, version, host, sequence, and correlation ID.',
+  },
+  {
+    pain: 'Hosts disappear or disable actions.',
+    cost: 'Callers infer lifecycle state from transport errors, exceptions, or framework-specific behavior.',
+    chp: 'CHP treats unknown hosts, unavailable capabilities, and lifecycle violations as first-class outcomes.',
+  },
+];
+
+export const ARTIFACT_EXAMPLE = `{
+  "host_id": "service-ops-host",
+  "protocol_version": "0.1",
+  "capabilities": [{
+    "id": "schedule_technician",
+    "version": "1.0.0",
+    "permissions": ["service:dispatch"],
+    "available": true
+  }]
+}`;
+
+export const INVOCATION_EXAMPLE = `{
+  "capability_id": "schedule_technician",
+  "correlation_id": "session-abc",
+  "caller": "agent://planning-assistant",
+  "timeout_ms": 3000,
+  "payload": {
+    "job_id": "job_456",
+    "window": "tomorrow"
+  }
+}`;
+
+export const OUTCOME_EXAMPLE = `{
+  "ok": false,
+  "error": {
+    "code": "permission_denied",
+    "message": "service:dispatch is required"
+  },
+  "evidence": "execution_denied"
+}`;
+
+export const POSITIONING_POINTS = [
+  {
+    label: 'CHP is',
+    items: [
+      'A protocol boundary for capabilities exposed by independent hosts.',
+      'A manifest, invocation, lifecycle, error, permission, and evidence contract.',
+      'A conformance target for hosts, agents, apps, and infrastructure providers.',
+    ],
+  },
+  {
+    label: 'CHP is not',
+    items: [
+      'A model provider, agent framework, workflow engine, or policy vendor.',
+      'A replacement for OpenAPI, MCP, OpenTelemetry, or application authorization.',
+      'A requirement to centralize every tool behind one runtime or cloud service.',
+    ],
+  },
+];
+
+export const ADOPTION_STATUS = [
+  {
+    label: 'Open source',
+    body: 'Apache-2.0 reference implementation, schemas, docs, and examples are public in GitHub.',
+  },
+  {
+    label: 'Early protocol',
+    body: 'The implementation is alpha; the current spec document is v0.1 and the package is v0.7.0.',
+  },
+  {
+    label: 'Conformance-oriented',
+    body: 'The site and repo now make malformed input, lifecycle failures, version mismatch, and authorization denials explicit test concerns.',
+  },
+];
+
+export const HOMEPAGE_FAQS = [
+  {
+    question: 'Why not just use an agent framework tool schema?',
+    answer:
+      'Tool schemas describe callable shapes. CHP describes the host boundary around those calls: manifests, versions, availability, permission checks, structured outcomes, and replayable evidence.',
+  },
+  {
+    question: 'Why not just use OpenAPI?',
+    answer:
+      'OpenAPI is useful for HTTP APIs. CHP focuses on agent capability hosts where discovery, authorization, lifecycle, invocation results, and evidence must be handled consistently across local, remote, and managed runtimes.',
+  },
+  {
+    question: 'Why not just log everything?',
+    answer:
+      'Logs are implementation artifacts. CHP evidence is part of the invocation contract, with stable fields that callers and infrastructure can replay, verify, export, and test.',
+  },
+  {
+    question: 'Who should implement CHP?',
+    answer:
+      'Capability hosts, agent frameworks, products that expose reusable abilities, applications that route sensitive work, and infrastructure providers building validation, policy, observability, or conformance layers.',
+  },
+];
+
+export const FIELD_SERVICE_EXAMPLE = {
+  actor: 'Planning Agent',
+  capability: 'schedule_technician',
+  host: 'ServiceOpsHost',
+  policy: 'manager_approval',
+  context: 'job_context',
+  result: 'Confirmed Appointment',
+  notation:
+    '[Planning Agent] -> {schedule_technician} @ ServiceOpsHost | manager_approval | job_context -> Confirmed Appointment',
+  summary:
+    'A field service company can expose technician scheduling as a hosted capability. An agent can discover it, a manager can govern it, and a workflow can compose it with inventory lookup and customer notification.',
+  capabilities: [
+    {
+      name: 'schedule_technician',
+      description: 'Finds an available qualified technician and reserves a service window.',
+      status: 'invokable' as const,
+      policy: 'approval_required',
+      version: '1.0.0',
+    },
+    {
+      name: 'query_inventory',
+      description: 'Checks required parts by SKU, location, and requested service date.',
+      status: 'discoverable' as const,
+      policy: 'restricted',
+      version: '1.2.0',
+    },
+  ],
+};
+
 export const MINIMAL_EXAMPLE = `from chp_core import LocalCapabilityHost, capability
 
 host = LocalCapabilityHost("my-host")
