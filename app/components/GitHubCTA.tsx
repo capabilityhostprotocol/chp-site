@@ -12,6 +12,12 @@ export default function GitHubCTA() {
         </div>
         <div className="flex flex-wrap gap-3">
           <a
+            href="/map"
+            className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors whitespace-nowrap"
+          >
+            Map a capability
+          </a>
+          <a
             href="/docs"
             className="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2.5 text-sm text-zinc-300 hover:text-zinc-100 hover:border-zinc-500 transition-colors whitespace-nowrap"
           >

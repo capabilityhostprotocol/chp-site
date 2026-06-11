@@ -35,6 +35,12 @@ export default function SiteFooter() {
             Conformance
           </a>
           <a
+            href="/map"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Map
+          </a>
+          <a
             href="/quickstart"
             className="hover:text-zinc-400 transition-colors"
           >

@@ -34,7 +34,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="/quickstart"
+            href="/map"
             className="rounded-md border border-[color:var(--color-border-strong)] px-3 py-1.5 text-zinc-300 hover:border-[color:var(--color-capability-active)] hover:text-zinc-50 transition-colors"
           >
             Map your first capability

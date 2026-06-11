@@ -46,7 +46,7 @@ export default function Hero() {
         </p>
         <div className="flex flex-wrap items-center gap-3 mb-14">
           <a
-            href="/quickstart"
+            href="/map"
             className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
           >
             Map your first capability
