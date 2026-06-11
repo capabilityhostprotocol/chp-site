@@ -14,7 +14,13 @@ const routes = [
 
 const requiredText = {
   '/': ['Host what the world can do.', 'Map your first capability'],
-  '/map': ['Map a real-world ability', 'CHP notation', 'manifest.json'],
+  '/map': [
+    'Map a real-world ability',
+    'Protocol readiness',
+    'CHP notation',
+    'manifest.json',
+    'outcome.json',
+  ],
 };
 
 const failures = [];

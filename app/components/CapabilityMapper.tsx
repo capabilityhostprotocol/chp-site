@@ -23,6 +23,15 @@ type MapperState = {
   availability: 'available' | 'unavailable';
 };
 
+type ReadinessLevel = 'pass' | 'warn' | 'fail';
+
+type ReadinessCheck = {
+  id: string;
+  label: string;
+  level: ReadinessLevel;
+  detail: string;
+};
+
 const INITIAL_STATE: MapperState = {
   actor: 'Planning Agent',
   capability: 'schedule_technician',
@@ -45,6 +54,22 @@ const POLICY_OPTIONS: { value: PolicyState; label: string }[] = [
   { value: 'blocked', label: 'Blocked' },
 ];
 
+const IDENTIFIER_PATTERN = /^[a-z][a-z0-9_.-]{1,63}$/;
+const VERSION_PATTERN = /^\d+\.\d+\.\d+$/;
+const PERMISSION_PATTERN = /^[a-z][a-z0-9_.-]*:[a-z][a-z0-9_.-]*$/;
+
+const LEVEL_LABELS: Record<ReadinessLevel, string> = {
+  pass: 'Pass',
+  warn: 'Protocol outcome',
+  fail: 'Fix required',
+};
+
+const LEVEL_STYLES: Record<ReadinessLevel, string> = {
+  pass: 'border-[color:var(--color-policy-approved)]',
+  warn: 'border-[color:var(--color-policy-required)]',
+  fail: 'border-[color:var(--color-policy-blocked)]',
+};
+
 function normalizeIdentifier(value: string, fallback: string) {
   const normalized = value
     .trim()
@@ -53,6 +78,189 @@ function normalizeIdentifier(value: string, fallback: string) {
     .replace(/^_+|_+$/g, '');
 
   return normalized || fallback;
+}
+
+function hasValue(value: string) {
+  return value.trim().length > 0;
+}
+
+function makeCheck(
+  id: string,
+  label: string,
+  level: ReadinessLevel,
+  detail: string,
+): ReadinessCheck {
+  return { id, label, level, detail };
+}
+
+function buildReadinessChecks(
+  state: MapperState,
+  capabilityId: string,
+  hostId: string,
+): ReadinessCheck[] {
+  const checks: ReadinessCheck[] = [];
+
+  checks.push(
+    makeCheck(
+      'actor',
+      'Actor named',
+      hasValue(state.actor) ? 'pass' : 'fail',
+      hasValue(state.actor)
+        ? 'Caller identity is visible before invocation.'
+        : 'Name the caller before producing an invocation frame.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'capability_id',
+      'Capability identifier',
+      IDENTIFIER_PATTERN.test(capabilityId) ? 'pass' : 'fail',
+      IDENTIFIER_PATTERN.test(capabilityId)
+        ? `Published as ${capabilityId}.`
+        : 'Use a lowercase identifier starting with a letter, up to 64 characters.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'host_id',
+      'Host identity',
+      IDENTIFIER_PATTERN.test(hostId) ? 'pass' : 'fail',
+      IDENTIFIER_PATTERN.test(hostId)
+        ? `Manifest host_id will be ${hostId}.`
+        : 'Use a host name that normalizes to a valid protocol identifier.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'version',
+      'Capability version',
+      VERSION_PATTERN.test(state.version.trim()) ? 'pass' : 'fail',
+      VERSION_PATTERN.test(state.version.trim())
+        ? 'Version compatibility can be checked before invocation.'
+        : 'Use explicit semver, for example 1.0.0.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'permission',
+      'Permission requirement',
+      PERMISSION_PATTERN.test(state.permission.trim()) ? 'pass' : 'fail',
+      PERMISSION_PATTERN.test(state.permission.trim())
+        ? 'Permission is machine-readable and can be enforced.'
+        : 'Use a scoped permission such as service:dispatch.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'context',
+      'Invocation context',
+      hasValue(state.context) ? 'pass' : 'fail',
+      hasValue(state.context)
+        ? 'The payload names the context the capability needs.'
+        : 'Name the input context before producing an invocation frame.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'result',
+      'Concrete result',
+      hasValue(state.result) ? 'pass' : 'fail',
+      hasValue(state.result)
+        ? 'The caller can reason about the expected result.'
+        : 'Name the result the capability should produce.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'description',
+      'Description quality',
+      state.description.trim().length >= 24 ? 'pass' : 'warn',
+      state.description.trim().length >= 24
+        ? 'The manifest explains the capability to independent callers.'
+        : 'Add enough description for a caller to know when to invoke it.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'lifecycle',
+      'Lifecycle state',
+      state.availability === 'available' ? 'pass' : 'warn',
+      state.availability === 'available'
+        ? 'The host can expose this capability as invokable.'
+        : 'Unavailable capabilities should return a structured unavailable outcome.',
+    ),
+  );
+
+  checks.push(
+    makeCheck(
+      'policy',
+      'Policy outcome',
+      state.policyState === 'blocked' || state.policyState === 'approval_required'
+        ? 'warn'
+        : 'pass',
+      state.policyState === 'blocked'
+        ? 'Blocked capabilities should deny before execution and emit evidence.'
+        : state.policyState === 'approval_required'
+          ? 'Approval-required capabilities should pause or deny before execution.'
+        : 'Policy state is explicit before execution.',
+    ),
+  );
+
+  return checks;
+}
+
+function buildOutcome(
+  state: MapperState,
+  capabilityId: string,
+  readinessLabel: string,
+  failedChecks: ReadinessCheck[],
+  warningChecks: ReadinessCheck[],
+) {
+  let code = 'accepted';
+  let ok = true;
+  let message = 'Invocation can be accepted by the host boundary.';
+
+  if (failedChecks.length > 0) {
+    ok = false;
+    code = 'validation_failed';
+    message = 'Manifest or invocation fields need protocol fixes.';
+  } else if (state.availability === 'unavailable') {
+    ok = false;
+    code = 'capability_unavailable';
+    message = `${capabilityId} is declared but unavailable.`;
+  } else if (state.policyState === 'blocked') {
+    ok = false;
+    code = 'policy_denied';
+    message = `${state.policy || 'policy'} blocks execution before invocation.`;
+  } else if (state.policyState === 'approval_required') {
+    ok = false;
+    code = 'approval_required';
+    message = `${state.policy || 'policy'} must approve before execution.`;
+  }
+
+  return JSON.stringify(
+    {
+      ok,
+      code,
+      message,
+      evidence: ok ? 'execution_started' : 'execution_denied',
+      details: {
+        readiness: readinessLabel,
+        failed_checks: failedChecks.map((check) => check.id),
+        warning_checks: warningChecks.map((check) => check.id),
+      },
+    },
+    null,
+    2,
+  );
 }
 
 function Field({
@@ -84,6 +292,18 @@ export default function CapabilityMapper() {
 
   const capabilityId = normalizeIdentifier(state.capability, 'capability_id');
   const hostId = normalizeIdentifier(state.host, 'host_id');
+  const readinessChecks = useMemo(
+    () => buildReadinessChecks(state, capabilityId, hostId),
+    [capabilityId, hostId, state],
+  );
+  const failedChecks = readinessChecks.filter((check) => check.level === 'fail');
+  const warningChecks = readinessChecks.filter((check) => check.level === 'warn');
+  const readinessLabel =
+    failedChecks.length > 0
+      ? 'Needs manifest fixes'
+      : warningChecks.length > 0
+        ? 'Defined protocol outcome'
+        : 'Ready to implement';
 
   const notation = `[${state.actor || 'Actor'}] -> {${capabilityId}} @ ${
     state.host || 'Host'
@@ -134,6 +354,14 @@ export default function CapabilityMapper() {
         2,
       ),
     [capabilityId, state.actor, state.context, state.result],
+  );
+
+  const outcome = buildOutcome(
+    state,
+    capabilityId,
+    readinessLabel,
+    failedChecks,
+    warningChecks,
   );
 
   function update<Key extends keyof MapperState>(key: Key, value: MapperState[Key]) {
@@ -256,6 +484,37 @@ export default function CapabilityMapper() {
             </select>
           </label>
         </div>
+
+        <div className="mt-5 rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)]/75 p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="font-mono text-[11px] uppercase text-zinc-600">
+              Protocol readiness
+            </p>
+            <span className="rounded-full border border-[color:var(--color-border-subtle)] px-2.5 py-1 text-xs text-zinc-300">
+              {readinessLabel}
+            </span>
+          </div>
+          <ul className="mt-4 grid gap-3">
+            {readinessChecks.map((check) => (
+              <li
+                key={check.id}
+                className={`rounded-md border bg-[color:var(--color-surface-900)]/70 p-3 ${LEVEL_STYLES[check.level]}`}
+              >
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-mono text-[11px] uppercase text-zinc-500">
+                    {LEVEL_LABELS[check.level]}
+                  </span>
+                  <span className="text-sm font-medium text-zinc-200">
+                    {check.label}
+                  </span>
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                  {check.detail}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className="grid gap-4">
@@ -312,9 +571,10 @@ export default function CapabilityMapper() {
         />
       </section>
 
-      <section className="grid gap-4 lg:col-span-2 lg:grid-cols-2">
+      <section className="grid gap-4 lg:col-span-2 lg:grid-cols-3">
         <CodePanel code={manifest} label="manifest.json" language="json" />
         <CodePanel code={invocation} label="invoke.json" language="json" />
+        <CodePanel code={outcome} label="outcome.json" language="json" />
       </section>
     </div>
   );
