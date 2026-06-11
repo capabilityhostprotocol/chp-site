@@ -8,11 +8,11 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 export const metadata: Metadata = {
   title: 'Capability Host Protocol',
   description:
-    'Open protocol for governed agent execution. Local-first SQLite evidence, vector retrieval, cross-host composition. Zero mandatory deps. Apache-2.0.',
+    'Open protocol for capability hosts, agents, applications, and infrastructure to discover, invoke, govern, and audit AI capabilities.',
   openGraph: {
     title: 'Capability Host Protocol',
     description:
-      'The governed capability platform for production AI agents. Evidence, replay, RAG, safety, compliance — all in one open protocol.',
+      'A shared protocol surface for governed AI capabilities: manifests, invocation safety, lifecycle, permissions, evidence, replay, and conformance.',
     url: 'https://capabilityhostprotocol.com',
     siteName: 'Capability Host Protocol',
     type: 'website',

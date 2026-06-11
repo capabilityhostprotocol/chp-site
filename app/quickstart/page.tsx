@@ -233,10 +233,13 @@ export default function QuickstartPage() {
         <div className="mt-16 pt-10 border-t border-zinc-800 space-y-2">
           <p className="text-sm font-semibold text-zinc-300 mb-4">Read next</p>
           {[
+            ['Docs', '/docs'],
+            ['Examples', '/examples'],
+            ['Protocol surface', '/protocol'],
+            ['Implementer paths', '/implementers'],
+            ['Conformance model', '/conformance'],
             ['Protocol Spec', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md'],
             ['Onboarding guide', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/onboarding.md'],
-            ['Adopter quickstart', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/adopter-quickstart.md'],
-            ['Conformance suite', 'https://github.com/capabilityhostprotocol/chp-core/tree/main/conformance'],
             ['Why CHP?', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/why-chp.md'],
           ].map(([label, href]) => (
             <a

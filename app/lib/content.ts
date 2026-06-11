@@ -1,3 +1,84 @@
+export const PROTOCOL_AUDIENCES = [
+  {
+    role: 'Capability hosts',
+    headline: 'Expose reliable capability surfaces.',
+    body: 'Publish typed manifests, lifecycle state, version compatibility, permission requirements, and structured invocation outcomes.',
+  },
+  {
+    role: 'Agents and frameworks',
+    headline: 'Call tools through a stable contract.',
+    body: 'Discover available capabilities, request invocations with correlation context, and handle denials or unavailable hosts predictably.',
+  },
+  {
+    role: 'Applications',
+    headline: 'Compose governed workflows.',
+    body: 'Route high-value actions through capability hosts without baking every provider, policy engine, or audit path into the app.',
+  },
+  {
+    role: 'Infrastructure providers',
+    headline: 'Build trust layers around the protocol.',
+    body: 'Validate manifests, enforce permissions, stitch evidence, export telemetry, and run conformance for independent hosts.',
+  },
+];
+
+export const PROTOCOL_GUARANTEES = [
+  {
+    title: 'Manifest-first discovery',
+    body: 'Hosts declare capabilities, products, versions, permissions, and availability before invocation.',
+  },
+  {
+    title: 'Version compatibility',
+    body: 'Protocol and capability versions are explicit so agents can fail closed on incompatible surfaces.',
+  },
+  {
+    title: 'Permissioned invocation',
+    body: 'Invocations carry caller identity, audience context, timeout intent, and entitlement checks.',
+  },
+  {
+    title: 'Lifecycle enforcement',
+    body: 'Unavailable hosts, disabled capabilities, malformed frames, and premature calls are protocol outcomes.',
+  },
+  {
+    title: 'Structured errors',
+    body: 'Denials, validation failures, timeouts, and host errors return machine-readable codes and details.',
+  },
+  {
+    title: 'Evidence and replay',
+    body: 'Every accepted invocation can emit ordered evidence for audit, debugging, telemetry, and compliance.',
+  },
+];
+
+export const ADOPTION_PATHS = [
+  {
+    step: '01',
+    title: 'Implement a host',
+    body: 'Wrap local functions or managed services behind CHP manifests and invocation handlers.',
+    cta: 'Implementer paths',
+    href: '/implementers',
+  },
+  {
+    step: '02',
+    title: 'Call a host',
+    body: 'Use the local or remote client shape to invoke capabilities and replay evidence by correlation ID.',
+    cta: 'Protocol surface',
+    href: '/protocol',
+  },
+  {
+    step: '03',
+    title: 'Validate the surface',
+    body: 'Treat manifests, unknown hosts, unavailable capabilities, and malformed requests as protocol concerns.',
+    cta: 'Read the spec',
+    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md',
+  },
+  {
+    step: '04',
+    title: 'Run conformance',
+    body: 'Use tests and protocol checks to prove independent implementations behave consistently.',
+    cta: 'Conformance model',
+    href: '/conformance',
+  },
+];
+
 export const MINIMAL_EXAMPLE = `from chp_core import LocalCapabilityHost, capability
 
 host = LocalCapabilityHost("my-host")

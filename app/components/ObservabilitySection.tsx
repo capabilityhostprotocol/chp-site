@@ -63,7 +63,9 @@ export default function ObservabilitySection() {
 
       {/* Protocol surface */}
       <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-        <h2 className="text-lg font-semibold text-zinc-100 mb-7">What the protocol defines</h2>
+        <h2 className="text-lg font-semibold text-zinc-100 mb-7">
+          What independent hosts agree on
+        </h2>
         <div className="grid sm:grid-cols-2 gap-y-3 gap-x-8">
           {PROTOCOL_SURFACE.map((item) => (
             <div key={item} className="flex items-center gap-3 text-sm text-zinc-400">
