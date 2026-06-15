@@ -1,3 +1,5 @@
+import Badge from './Badge';
+
 type CapabilityState =
   | 'declared'
   | 'hosted'
@@ -37,6 +39,19 @@ const STATE_LABELS: Record<CapabilityState, string> = {
   verified: 'Verified',
 };
 
+const STATE_TONES: Record<
+  CapabilityState,
+  'neutral' | 'signal' | 'approved' | 'required' | 'blocked'
+> = {
+  declared: 'neutral',
+  hosted: 'signal',
+  discoverable: 'signal',
+  invokable: 'signal',
+  restricted: 'required',
+  blocked: 'blocked',
+  verified: 'approved',
+};
+
 export default function CapabilityUnit({
   name,
   description,
@@ -56,9 +71,7 @@ export default function CapabilityUnit({
     >
       <div className="flex flex-wrap items-center gap-2">
         <span className="font-mono text-sm text-zinc-100">{name}</span>
-        <span className="rounded-full border border-[color:var(--color-border-subtle)] px-2 py-0.5 text-[11px] text-zinc-400">
-          {STATE_LABELS[state]}
-        </span>
+        <Badge tone={STATE_TONES[state]}>{STATE_LABELS[state]}</Badge>
       </div>
       {description && !isCompact && (
         <p className="mt-3 text-xs leading-relaxed text-zinc-500">{description}</p>

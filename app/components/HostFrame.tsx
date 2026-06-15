@@ -1,3 +1,4 @@
+import Badge from './Badge';
 import CapabilityUnit from './CapabilityUnit';
 
 type HostCapability = {
@@ -29,9 +30,9 @@ export default function HostFrame({
         <p className="font-mono text-[11px] uppercase text-zinc-600">{hostType}</p>
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-semibold text-zinc-100">{hostName}</h3>
-          <span className="rounded-full border border-[color:var(--color-policy-approved)] px-2.5 py-1 text-xs text-zinc-300">
+          <Badge tone={health.toLowerCase() === 'available' ? 'approved' : 'blocked'}>
             {health}
-          </span>
+          </Badge>
         </div>
         <p className="mt-3 text-xs leading-relaxed text-zinc-500">{policySummary}</p>
       </div>

@@ -1,3 +1,5 @@
+import Badge from './Badge';
+
 type PolicyState = 'open' | 'restricted' | 'approval_required' | 'audited' | 'blocked';
 
 type PolicyBoundaryProps = {
@@ -22,6 +24,17 @@ const STATE_LABELS: Record<PolicyState, string> = {
   blocked: 'Blocked',
 };
 
+const STATE_TONES: Record<
+  PolicyState,
+  'neutral' | 'signal' | 'approved' | 'required' | 'blocked'
+> = {
+  open: 'approved',
+  restricted: 'required',
+  approval_required: 'required',
+  audited: 'signal',
+  blocked: 'blocked',
+};
+
 export default function PolicyBoundary({
   state,
   label,
@@ -33,9 +46,7 @@ export default function PolicyBoundary({
     >
       <div className="flex flex-wrap items-center gap-2">
         <p className="font-mono text-[11px] uppercase text-zinc-600">Policy boundary</p>
-        <span className="rounded-full border border-[color:var(--color-border-subtle)] px-2 py-0.5 text-[11px] text-zinc-400">
-          {STATE_LABELS[state]}
-        </span>
+        <Badge tone={STATE_TONES[state]}>{STATE_LABELS[state]}</Badge>
       </div>
       <h3 className="mt-3 text-sm font-semibold text-zinc-100">{label}</h3>
       <p className="mt-2 text-xs leading-relaxed text-zinc-500">{description}</p>
