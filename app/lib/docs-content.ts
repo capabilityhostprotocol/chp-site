@@ -55,12 +55,30 @@ export type DocsPage = {
     chpCenters: string;
     guidance: string[];
   };
+  referenceTable?: {
+    title: string;
+    description: string;
+    columns: [string, string, string];
+    rows: {
+      name: string;
+      value: string;
+      detail: string;
+    }[];
+  };
 };
 
 type ConceptInput = Omit<DocsPage, 'slug' | 'group' | 'related'> & {
   slug: string;
   related?: { title: string; href: string }[];
 };
+
+type DocsPageDefaults = Pick<
+  DocsPage,
+  'relationships' | 'visualModel' | 'implementationNotes' | 'commonMistakes' | 'related'
+>;
+
+type ReferencePageInput = Omit<DocsPage, 'group' | keyof DocsPageDefaults> &
+  Partial<DocsPageDefaults>;
 
 const DEFAULT_TRACE = {
   actor: 'Planning Agent',
@@ -132,6 +150,102 @@ function conceptPage(input: ConceptInput): DocsPage {
 
 function docsPage(page: DocsPage): DocsPage {
   return page;
+}
+
+function referencePage(input: ReferencePageInput): DocsPage {
+  return docsPage({
+    ...input,
+    group: 'Reference',
+    relationships: input.relationships ?? [
+      'Reference pages turn protocol concepts into implementation checks.',
+      'Field names, outcome codes, and conformance cases should stay stable across hosts.',
+      'Examples should map every field back to capability, host, policy, context, or evidence.',
+    ],
+    visualModel: input.visualModel ?? [
+      'Read the field or code before implementation.',
+      'Map it into manifest, invocation, outcome, or evidence behavior.',
+      'Add route, conformance, or unit coverage for each failure-sensitive field.',
+    ],
+    implementationNotes: input.implementationNotes ?? [
+      'Prefer explicit protocol fields over framework-specific inference.',
+      'Treat absent required fields as malformed protocol input.',
+      'Keep examples close to the failure cases they are meant to prevent.',
+    ],
+    commonMistakes: input.commonMistakes ?? [
+      'Letting transport status codes carry protocol meaning alone.',
+      'Hiding required protocol state in logs or application glue.',
+      'Testing only successful invocations.',
+    ],
+    related: input.related ?? [
+      { title: 'Invocation', href: '/docs/concepts/invocation' },
+      { title: 'Evidence', href: '/docs/concepts/evidence' },
+      { title: 'Conformance', href: '/docs/concepts/conformance' },
+    ],
+  });
+}
+
+function failureModePage(input: {
+  slug: string;
+  title: string;
+  summary: string;
+  trigger: string;
+  code: string;
+  message: string;
+  evidence: string;
+  exampleCode: string;
+}): DocsPage {
+  return referencePage({
+    slug: `reference/failure-modes/${input.slug}`,
+    title: input.title,
+    summary: input.summary,
+    plain: `This failure mode should return ${input.code}, not an ambiguous framework or transport failure.`,
+    why:
+      'Independent callers need to branch on predictable protocol outcomes when a capability cannot safely execute.',
+    formal:
+      'A failure mode is a first-class protocol outcome with a stable code, message, optional details, and evidence semantics.',
+    example: input.trigger,
+    relationships: [
+      'Failure outcomes are produced during discovery, validation, authorization, lifecycle checks, execution, or timeout handling.',
+      'Evidence should record the decision path when an invocation reaches the host boundary.',
+      'Conformance should include both this failure and the neighboring happy path.',
+    ],
+    visualModel: [
+      'Caller sends or discovers a protocol surface.',
+      'Host or infrastructure detects the failure condition.',
+      `Caller receives ${input.code} with structured details.`,
+    ],
+    implementationNotes: [
+      'Return a stable code that callers can match programmatically.',
+      'Include a human-readable message without depending on it for control flow.',
+      'Attach evidence when the host boundary received and evaluated the request.',
+    ],
+    commonMistakes: [
+      'Throwing a raw exception instead of a protocol outcome.',
+      'Using different codes for the same failure across hosts.',
+      'Omitting evidence for denied or rejected requests that reached policy or lifecycle checks.',
+    ],
+    related: [
+      { title: 'Outcome codes', href: '/docs/reference/outcome-codes' },
+      { title: 'Conformance cases', href: '/docs/reference/conformance-cases' },
+      { title: 'Govern invocation', href: '/docs/guides/govern-invocation' },
+    ],
+    referenceTable: {
+      title: `${input.title} outcome contract`,
+      description:
+        'Use this as the minimum machine-readable shape for tests and independent callers.',
+      columns: ['Field', 'Value', 'Meaning'],
+      rows: [
+        { name: 'trigger', value: 'condition', detail: input.trigger },
+        { name: 'code', value: input.code, detail: input.message },
+        { name: 'evidence', value: input.evidence, detail: 'Evidence type or absence expected for this failure.' },
+      ],
+    },
+    code: {
+      label: `${input.slug}.outcome.json`,
+      language: 'json',
+      code: input.exampleCode,
+    },
+  });
 }
 
 const CONCEPT_PAGES: DocsPage[] = [
@@ -1050,6 +1164,353 @@ const SUPPORTING_PAGES: DocsPage[] = [
   }),
 ];
 
+const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
+  referencePage({
+    slug: 'reference/manifest-fields',
+    title: 'Manifest fields',
+    summary:
+      'Manifest fields declare host identity, protocol compatibility, capability metadata, lifecycle, permission, and policy before invocation.',
+    plain:
+      'A manifest is the first thing a caller should inspect before trusting a hosted capability.',
+    why:
+      'Without a stable manifest shape, independent callers discover incompatibility, unavailable capabilities, or missing permissions too late.',
+    formal:
+      'A CHP manifest is the host-published declaration of protocol version, host identity, capability IDs, capability versions, lifecycle, permissions, and policy state.',
+    example:
+      'ServiceOpsHost declares schedule_technician version 1.0.0 with service:dispatch permission and approval_required policy.',
+    referenceTable: {
+      title: 'Manifest field reference',
+      description:
+        'These fields are the minimum interoperable discovery surface for a host capability.',
+      columns: ['Field', 'Type', 'Protocol meaning'],
+      rows: [
+        { name: 'host_id', value: 'string', detail: 'Stable host identity used in evidence, telemetry, and trust decisions.' },
+        { name: 'protocol_version', value: 'string', detail: 'CHP protocol version the host expects callers to understand.' },
+        { name: 'capabilities[].id', value: 'string', detail: 'Stable capability identifier selected by callers before invocation.' },
+        { name: 'capabilities[].version', value: 'semver string', detail: 'Capability contract version for compatibility checks.' },
+        { name: 'capabilities[].permissions', value: 'string[]', detail: 'Machine-readable entitlements required before execution.' },
+        { name: 'capabilities[].available', value: 'boolean', detail: 'Current invokable availability; false should become a lifecycle outcome.' },
+        { name: 'capabilities[].policy.state', value: 'policy state', detail: 'Governance state such as open, restricted, approval_required, audited, or blocked.' },
+      ],
+    },
+    related: [
+      { title: 'Capability', href: '/docs/concepts/capability' },
+      { title: 'Registry', href: '/docs/concepts/registry' },
+      { title: 'Lifecycle reference', href: '/docs/reference/lifecycle' },
+    ],
+    code: { label: 'manifest.json', language: 'json', code: MANIFEST_FRAGMENT },
+  }),
+  referencePage({
+    slug: 'reference/invocation-envelope',
+    title: 'Invocation envelope fields',
+    summary:
+      'Invocation envelopes carry the fields a host needs to validate caller, capability, payload, timeout, and correlation.',
+    plain:
+      'The invocation envelope is the request wrapper around the capability payload.',
+    why:
+      'A host cannot safely authorize, trace, or replay a capability call if caller identity and correlation are implicit.',
+    formal:
+      'An invocation envelope is a structured request containing capability identity, caller context, correlation ID, timeout intent, and payload.',
+    example:
+      'Planning Agent invokes schedule_technician with session-abc correlation and job_context payload.',
+    referenceTable: {
+      title: 'Invocation envelope field reference',
+      description:
+        'Every invocation should make caller intent and replay context explicit before execution.',
+      columns: ['Field', 'Type', 'Protocol meaning'],
+      rows: [
+        { name: 'capability_id', value: 'string', detail: 'Capability selected from a compatible manifest or registry entry.' },
+        { name: 'caller', value: 'string', detail: 'Caller identity used for policy, audit, and evidence.' },
+        { name: 'correlation_id', value: 'string', detail: 'Stable ID used to connect invocation, evidence, replay, and telemetry.' },
+        { name: 'timeout_ms', value: 'integer', detail: 'Caller timeout intent that the host can enforce predictably.' },
+        { name: 'payload', value: 'object', detail: 'Capability-specific inputs validated against the capability contract.' },
+      ],
+    },
+    related: [
+      { title: 'Invocation', href: '/docs/concepts/invocation' },
+      { title: 'Context', href: '/docs/concepts/context' },
+      { title: 'Outcome codes', href: '/docs/reference/outcome-codes' },
+    ],
+    code: { label: 'invoke.json', language: 'json', code: INVOCATION_FRAGMENT },
+  }),
+  referencePage({
+    slug: 'reference/outcome-codes',
+    title: 'Outcome codes',
+    summary:
+      'Outcome codes let callers distinguish malformed input, version mismatch, unavailability, denial, timeout, and host failure.',
+    plain:
+      'An outcome code is the machine-readable reason the host succeeded, denied, or failed a capability request.',
+    why:
+      'Public protocol callers need stable branches for expected failure, not framework-specific exceptions or generic status text.',
+    formal:
+      'Outcome codes are stable protocol identifiers returned in structured invocation outcomes and conformance cases.',
+    example:
+      'approval_required tells a caller that policy paused or denied schedule_technician before side effects.',
+    referenceTable: {
+      title: 'Outcome code reference',
+      description:
+        'Use stable codes so agents, applications, and infrastructure can branch consistently.',
+      columns: ['Code', 'Class', 'Protocol meaning'],
+      rows: [
+        { name: 'ok', value: 'success', detail: 'Capability executed and returned a result.' },
+        { name: 'malformed_input', value: 'validation', detail: 'Invocation or manifest shape is invalid or missing required fields.' },
+        { name: 'unsupported_protocol_version', value: 'compatibility', detail: 'Host and caller do not share a compatible CHP protocol version.' },
+        { name: 'unknown_host', value: 'discovery', detail: 'Caller addressed a host identity that cannot be resolved or trusted.' },
+        { name: 'unavailable_capability', value: 'lifecycle', detail: 'Capability exists but is not currently invokable.' },
+        { name: 'permission_denied', value: 'authorization', detail: 'Caller lacks the entitlement required by the capability.' },
+        { name: 'approval_required', value: 'policy', detail: 'Policy requires approval before execution can proceed.' },
+        { name: 'timeout', value: 'runtime', detail: 'Execution exceeded timeout intent or host timeout policy.' },
+        { name: 'host_error', value: 'runtime', detail: 'Host failed after accepting the invocation boundary.' },
+      ],
+    },
+    related: [
+      { title: 'Failure examples', href: '/docs/reference/failure-modes/malformed-input' },
+      { title: 'Conformance cases', href: '/docs/reference/conformance-cases' },
+      { title: 'Policy states', href: '/docs/reference/policy-states' },
+    ],
+    code: { label: 'outcome.json', language: 'json', code: OUTCOME_FRAGMENT },
+  }),
+  referencePage({
+    slug: 'reference/evidence-events',
+    title: 'Evidence event fields',
+    summary:
+      'Evidence events preserve ordered protocol facts for audit, replay, debugging, and telemetry export.',
+    plain:
+      'Evidence events are not log lines; they are structured records of what happened at the capability boundary.',
+    why:
+      'Independent infrastructure needs enough stable fields to replay an invocation without reading private host logs.',
+    formal:
+      'An evidence event is an ordered record containing event type, capability identity, host identity, correlation, sequence, timestamp, outcome, and optional hashes.',
+    example:
+      'execution_denied records an approval_required decision for schedule_technician under session-abc.',
+    referenceTable: {
+      title: 'Evidence event field reference',
+      description:
+        'Evidence should preserve the minimum stable fields needed to inspect and replay a protocol decision.',
+      columns: ['Field', 'Type', 'Protocol meaning'],
+      rows: [
+        { name: 'event_id', value: 'string', detail: 'Unique evidence event identifier.' },
+        { name: 'evidence_type', value: 'string', detail: 'Stable event type such as execution_started, execution_completed, execution_failed, or execution_denied.' },
+        { name: 'capability_id', value: 'string', detail: 'Capability involved in the decision or execution.' },
+        { name: 'capability_version', value: 'string', detail: 'Capability contract version at invocation time.' },
+        { name: 'host_id', value: 'string', detail: 'Host that evaluated or executed the invocation.' },
+        { name: 'correlation_id', value: 'string', detail: 'Replay key shared across invocation, outcome, and telemetry.' },
+        { name: 'sequence', value: 'integer', detail: 'Ordered position in the evidence stream.' },
+        { name: 'timestamp', value: 'datetime', detail: 'When the event occurred.' },
+        { name: 'outcome', value: 'string', detail: 'Protocol result associated with this event.' },
+      ],
+    },
+    related: [
+      { title: 'Evidence', href: '/docs/concepts/evidence' },
+      { title: 'Conformance cases', href: '/docs/reference/conformance-cases' },
+      { title: 'Outcome codes', href: '/docs/reference/outcome-codes' },
+    ],
+    code: {
+      label: 'evidence-event.json',
+      language: 'json',
+      code: `{
+  "event_id": "evt_8f3a1c",
+  "evidence_type": "execution_denied",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "host_id": "service-ops-host",
+  "correlation_id": "session-abc",
+  "sequence": 2,
+  "timestamp": "2026-06-16T15:14:22.104Z",
+  "outcome": "approval_required"
+}`,
+    },
+  }),
+  referencePage({
+    slug: 'reference/conformance-cases',
+    title: 'Conformance cases',
+    summary:
+      'Conformance cases prove that independent hosts return stable outcomes for valid and invalid protocol paths.',
+    plain:
+      'Conformance is the test checklist for host behavior, not just a happy-path demo.',
+    why:
+      'Independent capability hosts need shared tests for malformed inputs, unknown hosts, unavailable capabilities, authorization, lifecycle, timeout, and host errors.',
+    formal:
+      'A conformance case defines setup, invocation or discovery input, expected structured outcome, evidence expectation, and pass/fail criteria.',
+    example:
+      'approval_required_denial proves a policy-gated capability returns approval_required before side effects.',
+    referenceTable: {
+      title: 'Conformance case reference',
+      description:
+        'Every public host should prove these cases before relying parties treat it as interoperable.',
+      columns: ['Case', 'Expected code', 'What it proves'],
+      rows: [
+        { name: 'valid_invocation', value: 'ok', detail: 'Happy path executes and emits successful evidence.' },
+        { name: 'malformed_input', value: 'malformed_input', detail: 'Host validates envelope and payload shape before execution.' },
+        { name: 'version_mismatch', value: 'unsupported_protocol_version', detail: 'Host fails closed on incompatible protocol or capability versions.' },
+        { name: 'unknown_host', value: 'unknown_host', detail: 'Infrastructure distinguishes unresolved host identity from host failure.' },
+        { name: 'unavailable_capability', value: 'unavailable_capability', detail: 'Lifecycle state is enforced before invocation side effects.' },
+        { name: 'authorization_denial', value: 'permission_denied', detail: 'Caller entitlement failures return structured denials.' },
+        { name: 'timeout', value: 'timeout', detail: 'Timeout behavior is predictable and machine-readable.' },
+        { name: 'host_error', value: 'host_error', detail: 'Accepted invocations that fail inside the host return structured errors.' },
+      ],
+    },
+    related: [
+      { title: 'Conformance', href: '/docs/concepts/conformance' },
+      { title: 'Outcome codes', href: '/docs/reference/outcome-codes' },
+      { title: 'Malformed input', href: '/docs/reference/failure-modes/malformed-input' },
+    ],
+    code: {
+      label: 'conformance-case.json',
+      language: 'json',
+      code: `{
+  "case": "authorization_denial",
+  "invoke": {
+    "capability_id": "schedule_technician",
+    "caller": "agent://planning-assistant"
+  },
+  "expected": {
+    "ok": false,
+    "code": "permission_denied",
+    "evidence": "execution_denied"
+  }
+}`,
+    },
+  }),
+];
+
+const FAILURE_MODE_PAGES: DocsPage[] = [
+  failureModePage({
+    slug: 'unavailable-capability',
+    title: 'Unavailable capability',
+    summary:
+      'Return unavailable_capability when the manifest knows a capability but lifecycle state prevents invocation.',
+    trigger: 'schedule_technician exists in the manifest, but available is false or the executor is disabled.',
+    code: 'unavailable_capability',
+    message: 'Capability schedule_technician is not currently invokable.',
+    evidence: 'execution_denied',
+    exampleCode: `{
+  "ok": false,
+  "code": "unavailable_capability",
+  "message": "Capability schedule_technician is not currently invokable.",
+  "evidence": "execution_denied",
+  "details": {
+    "capability_id": "schedule_technician",
+    "lifecycle": "unavailable"
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'unknown-host',
+    title: 'Unknown host',
+    summary:
+      'Return unknown_host when callers address a host identity that cannot be resolved or trusted.',
+    trigger: 'The caller asks for service-ops-host-v2, but no trusted manifest or registry entry exists.',
+    code: 'unknown_host',
+    message: 'Host service-ops-host-v2 is not registered.',
+    evidence: 'none before host boundary',
+    exampleCode: `{
+  "ok": false,
+  "code": "unknown_host",
+  "message": "Host service-ops-host-v2 is not registered.",
+  "details": {
+    "host_id": "service-ops-host-v2"
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'malformed-input',
+    title: 'Malformed input',
+    summary:
+      'Return malformed_input when a manifest, invocation envelope, or payload is missing required protocol fields.',
+    trigger: 'The invocation omits caller or sends payload.window as a number when the capability requires a string.',
+    code: 'malformed_input',
+    message: 'Invocation envelope is missing caller.',
+    evidence: 'execution_denied',
+    exampleCode: `{
+  "ok": false,
+  "code": "malformed_input",
+  "message": "Invocation envelope is missing caller.",
+  "evidence": "execution_denied",
+  "details": {
+    "field": "caller"
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'version-mismatch',
+    title: 'Version mismatch',
+    summary:
+      'Return unsupported_protocol_version when host and caller cannot agree on protocol or capability compatibility.',
+    trigger: 'The caller requests protocol_version 0.2 but the host only supports 0.1.',
+    code: 'unsupported_protocol_version',
+    message: 'Host supports CHP 0.1; caller requested 0.2.',
+    evidence: 'execution_denied',
+    exampleCode: `{
+  "ok": false,
+  "code": "unsupported_protocol_version",
+  "message": "Host supports CHP 0.1; caller requested 0.2.",
+  "evidence": "execution_denied",
+  "details": {
+    "supported": ["0.1"],
+    "requested": "0.2"
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'authorization-denial',
+    title: 'Authorization denial',
+    summary:
+      'Return permission_denied when caller identity lacks the entitlement required by the capability.',
+    trigger: 'Planning Agent invokes schedule_technician without service:dispatch permission.',
+    code: 'permission_denied',
+    message: 'service:dispatch is required.',
+    evidence: 'execution_denied',
+    exampleCode: `{
+  "ok": false,
+  "code": "permission_denied",
+  "message": "service:dispatch is required.",
+  "evidence": "execution_denied",
+  "details": {
+    "required_permission": "service:dispatch"
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'timeout',
+    title: 'Timeout',
+    summary:
+      'Return timeout when execution exceeds caller timeout intent or host timeout policy.',
+    trigger: 'The caller sets timeout_ms to 3000 and ServiceOpsHost cannot complete scheduling inside that window.',
+    code: 'timeout',
+    message: 'schedule_technician exceeded timeout_ms.',
+    evidence: 'execution_failed',
+    exampleCode: `{
+  "ok": false,
+  "code": "timeout",
+  "message": "schedule_technician exceeded timeout_ms.",
+  "evidence": "execution_failed",
+  "details": {
+    "timeout_ms": 3000
+  }
+}`,
+  }),
+  failureModePage({
+    slug: 'host-error',
+    title: 'Host error',
+    summary:
+      'Return host_error when the host accepted the invocation but failed during execution.',
+    trigger: 'ServiceOpsHost validates the invocation, starts execution, and the dispatch backend fails.',
+    code: 'host_error',
+    message: 'Dispatch backend failed after invocation started.',
+    evidence: 'execution_failed',
+    exampleCode: `{
+  "ok": false,
+  "code": "host_error",
+  "message": "Dispatch backend failed after invocation started.",
+  "evidence": "execution_failed",
+  "details": {
+    "retryable": true
+  }
+}`,
+  }),
+];
+
 const COMPARISON_PAGES: DocsPage[] = [
   docsPage({
     slug: 'comparisons/chp-vs-apis',
@@ -1268,6 +1729,8 @@ const COMPARISON_PAGES: DocsPage[] = [
 
 export const DOC_PAGES: DocsPage[] = [
   ...SUPPORTING_PAGES,
+  ...DEVELOPER_REFERENCE_PAGES,
+  ...FAILURE_MODE_PAGES,
   ...CONCEPT_PAGES,
   ...COMPARISON_PAGES,
 ];
@@ -1299,13 +1762,24 @@ export const DOC_NAV_GROUPS = [
   },
   {
     label: 'Reference',
-    description: 'Stable notation, lifecycle, policy, and terminology references.',
+    description: 'Stable notation, lifecycle, policy, field, outcome, and terminology references.',
     slugs: [
       'reference/notation',
       'reference/lifecycle',
       'reference/policy-states',
+      'reference/manifest-fields',
+      'reference/invocation-envelope',
+      'reference/outcome-codes',
+      'reference/evidence-events',
+      'reference/conformance-cases',
       'reference/glossary',
     ],
+  },
+  {
+    label: 'Failure Modes',
+    description:
+      'Concrete request/outcome examples for first-class protocol failures.',
+    slugs: FAILURE_MODE_PAGES.map((page) => page.slug),
   },
   {
     label: 'Comparisons',

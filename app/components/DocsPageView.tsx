@@ -120,6 +120,42 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
         </SectionShell>
       )}
 
+      {page.referenceTable && (
+        <SectionShell>
+          <SectionHeader
+            eyebrow="Developer reference"
+            title={page.referenceTable.title}
+            body={page.referenceTable.description}
+            className="mb-8"
+          />
+          <div className="overflow-hidden rounded-lg border border-[color:var(--color-border-subtle)]">
+            <div className="grid gap-3 border-b border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)] px-4 py-3 font-mono text-[11px] uppercase text-zinc-600 md:grid-cols-[0.8fr_0.7fr_1.5fr]">
+              {page.referenceTable.columns.map((column) => (
+                <span key={column}>{column}</span>
+              ))}
+            </div>
+            <div className="divide-y divide-zinc-800">
+              {page.referenceTable.rows.map((row) => (
+                <div
+                  key={row.name}
+                  className="grid gap-3 bg-[color:var(--color-surface-900)]/55 px-4 py-4 md:grid-cols-[0.8fr_0.7fr_1.5fr]"
+                >
+                  <span className="break-words font-mono text-sm text-zinc-100">
+                    {row.name}
+                  </span>
+                  <span className="font-mono text-xs text-zinc-500">
+                    {row.value}
+                  </span>
+                  <p className="text-sm leading-relaxed text-zinc-400">
+                    {row.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </SectionShell>
+      )}
+
       <SectionShell>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeader
