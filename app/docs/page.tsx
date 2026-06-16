@@ -1,150 +1,184 @@
 import type { Metadata } from 'next';
+import CapabilityUnit from '../components/CapabilityUnit';
+import CodePanel from '../components/CodePanel';
+import InvocationTrace from '../components/InvocationTrace';
 import Nav from '../components/Nav';
+import PolicyBoundary from '../components/PolicyBoundary';
+import SectionHeader from '../components/SectionHeader';
+import SectionShell from '../components/SectionShell';
 import SiteFooter from '../components/SiteFooter';
+import SurfacePanel from '../components/SurfacePanel';
+import { DOC_NAV_GROUPS, getDocsPages } from '../lib/docs-content';
 
 export const metadata: Metadata = {
   title: 'Docs - Capability Host Protocol',
   description:
-    'Documentation hub for CHP concepts, manifests, invocation lifecycle, errors, evidence, replay, and conformance.',
+    'Documentation hub for CHP concepts, manifests, invocation lifecycle, policy, evidence, replay, comparisons, and conformance.',
 };
 
-const TOPICS = [
-  {
-    title: 'Protocol concepts',
-    body: 'The nouns CHP standardizes: hosts, manifests, capabilities, products, invocations, evidence, and replay.',
-    href: '/protocol',
-  },
-  {
-    title: 'Manifest model',
-    body: 'How hosts describe identity, capability versions, lifecycle state, availability, and permission requirements.',
-    href: 'https://github.com/capabilityhostprotocol/chp-core/tree/main/schemas',
-  },
-  {
-    title: 'Invocation lifecycle',
-    body: 'Discovery, validation, authorization, execution, response, evidence, and replay as one governed boundary.',
-    href: '/protocol',
-  },
-  {
-    title: 'Errors and denials',
-    body: 'How malformed input, lifecycle violations, unavailable hosts, timeouts, and policy denials should be handled.',
-    href: '/conformance',
-  },
-  {
-    title: 'Evidence and replay',
-    body: 'How accepted invocations become ordered evidence that can be replayed by correlation ID.',
-    href: '/examples',
-  },
-  {
-    title: 'Conformance',
-    body: 'What independent hosts should prove before agents and applications trust them.',
-    href: '/conformance',
-  },
-];
-
-const REFERENCES = [
-  ['Protocol spec', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md'],
-  ['Schemas', 'https://github.com/capabilityhostprotocol/chp-core/tree/main/schemas'],
-  ['Reference host', 'https://github.com/capabilityhostprotocol/chp-core/tree/main/packages/python/chp_core'],
-  ['Conformance suite', 'https://github.com/capabilityhostprotocol/chp-core/tree/main/conformance'],
-  ['Quickstart', '/quickstart'],
-  ['Examples', '/examples'],
-];
-
-const FLOW = [
-  ['Declare', 'A host publishes stable identity, capabilities, versions, and requirements.'],
-  ['Discover', 'A caller selects a compatible capability and understands availability before invoking.'],
-  ['Authorize', 'The host checks lifecycle, entitlements, policy, timeout, and payload validity.'],
-  ['Execute', 'The capability runs or returns a structured denial/error without ambiguous failure.'],
-  ['Replay', 'Evidence can be queried by correlation ID and exported into operational systems.'],
-];
+const EXAMPLE_MANIFEST = `{
+  "host_id": "service-ops-host",
+  "protocol_version": "0.1",
+  "capabilities": [{
+    "id": "schedule_technician",
+    "version": "1.0.0",
+    "permissions": ["service:dispatch"],
+    "available": true,
+    "policy": { "state": "approval_required" }
+  }]
+}`;
 
 export default function DocsPage() {
   return (
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">Docs</p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
-            Learn the protocol boundary before you implement it.
+        <SectionShell border="none" className="pt-16 pb-14">
+          <p className="mb-4 font-mono text-xs uppercase text-zinc-500">Docs</p>
+          <h1 className="mb-6 max-w-4xl text-4xl font-semibold leading-tight text-zinc-50 md:text-6xl">
+            Learn the hosted capability boundary from concept to conformance.
           </h1>
-          <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
-            CHP documentation is organized around the guarantees independent
-            hosts and callers need to agree on: declaration, discovery,
-            invocation safety, structured outcomes, evidence, and conformance.
+          <p className="max-w-3xl text-lg leading-relaxed text-zinc-400">
+            CHP docs are organized around the protocol primitives independent
+            hosts and callers need to share: capabilities, hosts, adapters,
+            registry, invocation, policy, context, evidence, composition, and
+            conformance.
           </p>
-        </section>
+        </SectionShell>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {TOPICS.map((topic) => (
-              <a
-                key={topic.title}
-                href={topic.href}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5 hover:border-zinc-600 transition-colors"
-              >
-                <h2 className="text-base font-semibold text-zinc-100 mb-2">{topic.title}</h2>
-                <p className="text-sm text-zinc-500 leading-relaxed">{topic.body}</p>
-              </a>
-            ))}
-          </div>
-        </section>
+        <SectionShell border="y">
+          <SectionHeader
+            eyebrow="Documentation IA"
+            title="Start with meaning, then implement the protocol."
+            body="Each documentation path keeps a concrete hosted capability example close to the formal definition."
+            className="mb-10"
+          />
+          <div className="grid gap-4 lg:grid-cols-3">
+            {DOC_NAV_GROUPS.map((group) => {
+              const pages = getDocsPages(group.slugs);
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10">
-            <div>
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-                Lifecycle
-              </p>
-              <h2 className="text-3xl font-semibold text-zinc-100 mb-4">
-                The minimum shared flow.
-              </h2>
-              <p className="text-sm text-zinc-400 leading-relaxed">
-                The protocol is useful because callers can reason about the same
-                lifecycle regardless of which host, agent framework, application,
-                or infrastructure provider implements it.
-              </p>
-            </div>
-            <div className="space-y-3">
-              {FLOW.map(([step, body], index) => (
-                <div
-                  key={step}
-                  className="grid grid-cols-[3rem_1fr] gap-4 border border-zinc-800 bg-zinc-950/70 rounded-lg p-4"
-                >
-                  <span className="font-mono text-xs text-zinc-600">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold text-zinc-100 mb-1">{step}</h3>
-                    <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
+              return (
+                <SurfacePanel key={group.label} className="flex flex-col">
+                  <div className="mb-5">
+                    <p className="mb-3 font-mono text-xs uppercase text-zinc-500">
+                      {group.label}
+                    </p>
+                    <p className="text-sm leading-relaxed text-zinc-500">
+                      {group.description}
+                    </p>
                   </div>
-                </div>
-              ))}
+                  <div className="mt-auto space-y-2">
+                    {pages.map((page) => (
+                      <a
+                        key={page.slug}
+                        href={`/docs/${page.slug}`}
+                        className="block rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/60 px-3 py-2 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
+                      >
+                        {page.title}
+                      </a>
+                    ))}
+                  </div>
+                </SurfacePanel>
+              );
+            })}
+          </div>
+        </SectionShell>
+
+        <SectionShell>
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <SectionHeader
+                eyebrow="Core path"
+                title="Read the concepts before the schema."
+                body="The concept path gives implementation teams shared language for the parts of the protocol that must stay portable."
+                className="mb-6 md:block"
+              />
+              <div className="grid gap-2 sm:grid-cols-2">
+                {getDocsPages([
+                  'concepts/capability',
+                  'concepts/host',
+                  'concepts/adapter',
+                  'concepts/registry',
+                  'concepts/invocation',
+                  'concepts/policy',
+                  'concepts/context',
+                  'concepts/evidence',
+                  'concepts/conformance',
+                  'concepts/composition',
+                ]).map((page) => (
+                  <a
+                    key={page.slug}
+                    href={`/docs/${page.slug}`}
+                    className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 px-4 py-3 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
+                  >
+                    {page.title} -&gt;
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <CapabilityUnit
+                name="schedule_technician"
+                description="Finds an available qualified technician and reserves a service window."
+                host="ServiceOpsHost"
+                policy="approval_required"
+                version="1.0.0"
+                state="invokable"
+              />
+              <PolicyBoundary
+                state="approval_required"
+                label="manager_approval"
+                description="A manager must approve technician scheduling before the host returns a confirmed appointment."
+              />
+              <InvocationTrace
+                actor="Planning Agent"
+                capability="schedule_technician"
+                host="ServiceOpsHost"
+                policy="manager_approval"
+                context="job_context"
+                result="Confirmed Appointment"
+              />
             </div>
           </div>
-        </section>
+        </SectionShell>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="mb-8">
-            <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-              Reference artifacts
-            </p>
-            <h2 className="text-3xl font-semibold text-zinc-100 mb-3">
-              Read from the protocol out.
-            </h2>
+        <SectionShell>
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <SectionHeader
+              eyebrow="Example-first docs"
+              title="Every major concept includes a concrete capability."
+              body="Docs should prove the boundary with a manifest, invocation, policy state, outcome, or evidence example before asking readers to trust abstract protocol language."
+              className="md:block"
+            />
+            <CodePanel code={EXAMPLE_MANIFEST} label="manifest.json" language="json" />
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {REFERENCES.map(([label, href]) => (
+        </SectionShell>
+
+        <SectionShell>
+          <SectionHeader
+            eyebrow="Comparisons"
+            title="Place CHP beside adjacent systems without blurring the boundary."
+            body="The comparison pages explain when CHP complements APIs, MCP tools, service mesh, and workflow automation."
+            className="mb-8"
+          />
+          <div className="grid gap-3 md:grid-cols-4">
+            {getDocsPages([
+              'comparisons/chp-vs-apis',
+              'comparisons/chp-vs-mcp-tools',
+              'comparisons/chp-vs-service-mesh',
+              'comparisons/chp-vs-workflow-automation',
+            ]).map((page) => (
               <a
-                key={label}
-                href={href}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg px-4 py-3 text-sm text-zinc-300 hover:text-zinc-50 hover:border-zinc-600 transition-colors"
+                key={page.slug}
+                href={`/docs/${page.slug}`}
+                className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-context-surface)] px-4 py-3 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
               >
-                {label} -&gt;
+                {page.title} -&gt;
               </a>
             ))}
           </div>
-        </section>
+        </SectionShell>
       </main>
       <SiteFooter />
     </div>
