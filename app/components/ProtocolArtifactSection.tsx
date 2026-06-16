@@ -3,6 +3,9 @@ import {
   INVOCATION_EXAMPLE,
   OUTCOME_EXAMPLE,
 } from '../lib/content';
+import CodePanel from './CodePanel';
+import SectionHeader from './SectionHeader';
+import SectionShell from './SectionShell';
 
 const ARTIFACTS = [
   {
@@ -24,35 +27,26 @@ const ARTIFACTS = [
 
 export default function ProtocolArtifactSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 border-t border-zinc-800/60">
-      <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between mb-10">
-        <div>
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-            Concrete artifact
-          </p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-3">
-            A host contract an agent can inspect.
-          </h2>
-          <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-            CHP gives callers concrete manifests, invocation envelopes, and
-            structured outcomes they can validate before trusting a capability.
-          </p>
-        </div>
-        <a
-          href="/examples"
-          className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors whitespace-nowrap"
-        >
-          See examples -&gt;
-        </a>
-      </div>
+    <SectionShell>
+      <SectionHeader
+        eyebrow="Concrete artifact"
+        title="A host contract an agent can inspect."
+        body="CHP gives callers concrete manifests, invocation envelopes, and structured outcomes they can validate before trusting a capability."
+        className="mb-10"
+        action={
+          <a
+            href="/examples"
+            className="whitespace-nowrap text-sm text-zinc-400 transition-colors hover:text-zinc-100"
+          >
+            See examples -&gt;
+          </a>
+        }
+      />
 
       <div className="grid gap-4 lg:grid-cols-3">
         {ARTIFACTS.map((artifact) => (
-          <div
-            key={artifact.label}
-            className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/70"
-          >
-            <div className="border-b border-zinc-800 px-4 py-3">
+          <article key={artifact.label} className="grid gap-4">
+            <div>
               <p className="font-mono text-[11px] uppercase text-zinc-600 mb-1">
                 {artifact.label}
               </p>
@@ -60,12 +54,14 @@ export default function ProtocolArtifactSection() {
                 {artifact.title}
               </h3>
             </div>
-            <pre className="min-h-72 overflow-x-auto p-4 text-xs leading-relaxed text-zinc-300">
-              <code>{artifact.code}</code>
-            </pre>
-          </div>
+            <CodePanel
+              code={artifact.code}
+              label={`${artifact.label.toLowerCase()}.json`}
+              language="json"
+            />
+          </article>
         ))}
       </div>
-    </section>
+    </SectionShell>
   );
 }

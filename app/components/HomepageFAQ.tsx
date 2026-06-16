@@ -1,16 +1,15 @@
 import { HOMEPAGE_FAQS } from '../lib/content';
+import SectionHeader from './SectionHeader';
+import SectionShell from './SectionShell';
 
 export default function HomepageFAQ() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-          Common objections
-        </p>
-        <h2 className="text-lg font-semibold text-zinc-100">
-          Questions a protocol has to answer early.
-        </h2>
-      </div>
+    <SectionShell width="narrow" padding="compact">
+      <SectionHeader
+        eyebrow="Common objections"
+        title="Questions a protocol has to answer early."
+        className="mb-8 md:block"
+      />
       <div className="divide-y divide-zinc-800 border-y border-zinc-800">
         {HOMEPAGE_FAQS.map((faq) => (
           <div
@@ -24,6 +23,6 @@ export default function HomepageFAQ() {
           </div>
         ))}
       </div>
-    </section>
+    </SectionShell>
   );
 }

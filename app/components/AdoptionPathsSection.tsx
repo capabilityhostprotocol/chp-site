@@ -1,26 +1,23 @@
 import { ADOPTION_PATHS } from '../lib/content';
+import SectionHeader from './SectionHeader';
+import SectionShell from './SectionShell';
+import SurfacePanel from './SurfacePanel';
 
 export default function AdoptionPathsSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 border-t border-zinc-800/60">
-      <div className="mb-10">
-        <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-          Adoption paths
-        </p>
-        <h2 className="text-3xl font-semibold text-zinc-100 mb-3">
-          Adopt the protocol one boundary at a time.
-        </h2>
-        <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-          CHP is useful as a local host, a remote invocation boundary, a
-          manifest contract, or a conformance target for infrastructure.
-        </p>
-      </div>
+    <SectionShell>
+      <SectionHeader
+        eyebrow="Adoption paths"
+        title="Adopt the protocol one boundary at a time."
+        body="CHP is useful as a local host, a remote invocation boundary, a manifest contract, or a conformance target for infrastructure."
+        className="mb-10"
+      />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {ADOPTION_PATHS.map((path) => (
-          <div
+          <SurfacePanel
             key={path.step}
-            className="rounded-lg border border-zinc-800 bg-zinc-900/70 p-5 flex flex-col min-h-64"
+            className="flex min-h-64 flex-col"
           >
             <p className="font-mono text-xs text-zinc-600 mb-8">{path.step}</p>
             <h3 className="text-base font-semibold text-zinc-100 mb-2">{path.title}</h3>
@@ -31,9 +28,9 @@ export default function AdoptionPathsSection() {
             >
               {path.cta} -&gt;
             </a>
-          </div>
+          </SurfacePanel>
         ))}
       </div>
-    </section>
+    </SectionShell>
   );
 }
