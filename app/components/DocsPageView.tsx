@@ -52,7 +52,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
 
       <SectionShell>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <div className="min-w-0">
             <SectionHeader
               eyebrow="Concrete example"
               title="Ground the concept before the schema."
@@ -64,13 +64,14 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
               {page.policy && <PolicyBoundary {...page.policy} />}
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             {page.trace && <InvocationTrace {...page.trace} />}
             {page.code && (
               <CodePanel
                 code={page.code.code}
                 label={page.code.label}
                 language={page.code.language}
+                showLineNumbers={page.code.code.split('\n').length >= 8}
               />
             )}
           </div>
