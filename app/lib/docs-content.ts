@@ -75,6 +75,7 @@ export type DocsPage = {
       detail: string;
     }[];
   };
+  productSurface?: boolean;
 };
 
 type ConceptInput = Omit<DocsPage, 'slug' | 'group' | 'related'> & {
@@ -1487,6 +1488,70 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
 }`,
     },
   }),
+  referencePage({
+    slug: 'reference/product-surfaces',
+    title: 'Product surface components',
+    summary:
+      'Product-surface components prepare registry, trust, audit, access, verification, and operational-state views before backend behavior exists.',
+    plain:
+      'These components show how operators should inspect capability state, policy, evidence, and trust without reading raw JSON first.',
+    why:
+      'Public protocol surfaces need product patterns that make unavailable, revoked, empty, loading, and error states explicit before a console or managed provider depends on them.',
+    formal:
+      'A product surface is a static or dynamic view over host descriptors, registry rows, policy grants, evidence events, verification status, and operational state.',
+    example:
+      'A registry row can show schedule_technician as verified, approval_required, sync, and evidence-emitting before a caller invokes it.',
+    relationships: [
+      'Registry rows derive from HostDescriptor and CapabilityDescriptor fields.',
+      'Trust panels summarize conformance, lifecycle, policy, and evidence checks.',
+      'Audit traces and access matrices expose InvocationResult and ExecutionEvidence facts for operators.',
+    ],
+    visualModel: [
+      'Registry makes capability state discoverable.',
+      'Trust and verification explain whether the state is reliable.',
+      'Access, audit, and operational states explain why a caller may proceed, wait, or stop.',
+    ],
+    implementationNotes: [
+      'Keep product-prep examples static until backend contracts are ready.',
+      'Represent empty, loading, unavailable, revoked, and error states before shipping registry or console behavior.',
+      'Use protocol terms in visible labels so operators can connect the UI back to evidence and conformance.',
+    ],
+    commonMistakes: [
+      'Showing only green or red status without lifecycle or policy labels.',
+      'Hiding revoked access inside a generic authorization failure.',
+      'Building a registry table without empty, loading, unavailable, and error states.',
+    ],
+    related: [
+      { title: 'Lifecycle reference', href: '/docs/reference/lifecycle' },
+      { title: 'Policy states', href: '/docs/reference/policy-states' },
+      { title: 'Evidence events', href: '/docs/reference/evidence-events' },
+    ],
+    referenceTable: {
+      title: 'Product-prep component inventory',
+      description:
+        'These components are static candidates for future registry, console, provider, and trust surfaces.',
+      columns: ['Component', 'Protocol source', 'State coverage'],
+      rows: [
+        { name: 'CapabilityRegistryRow', value: 'HostDescriptor + CapabilityDescriptor', detail: 'Lifecycle, policy, version, mode, and emitted evidence.' },
+        { name: 'TrustPanel', value: 'Conformance + evidence checks', detail: 'Pass, review, and fail states with visible reasons.' },
+        { name: 'AuditTrace', value: 'ExecutionEvidence', detail: 'event_type, outcome, code, actor, sequence, and timestamp.' },
+        { name: 'AccessMatrix', value: 'PolicyDescriptor + host grants', detail: 'Allowed, approval_required, revoked, and blocked access states.' },
+        { name: 'VerificationSeal', value: 'Conformance record', detail: 'Verified, candidate, stale, and failed trust labels.' },
+        { name: 'OperationalStatePanel', value: 'Registry and invocation state', detail: 'Empty, loading, unavailable, revoked, and error states.' },
+      ],
+    },
+    capability: {
+      ...DEFAULT_CAPABILITY,
+      state: 'verified',
+    },
+    policy: {
+      state: 'audited',
+      label: 'operator_review',
+      description:
+        'Operators can inspect lifecycle, access, evidence, and trust state before allowing broad capability adoption.',
+    },
+    productSurface: true,
+  }),
 ];
 
 const FAILURE_MODE_PAGES: DocsPage[] = [
@@ -1955,6 +2020,7 @@ export const DOC_NAV_GROUPS = [
       'reference/outcome-codes',
       'reference/evidence-events',
       'reference/conformance-cases',
+      'reference/product-surfaces',
       'reference/glossary',
     ],
   },

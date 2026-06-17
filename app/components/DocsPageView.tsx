@@ -2,6 +2,7 @@ import CapabilityUnit from './CapabilityUnit';
 import CodePanel from './CodePanel';
 import InvocationTrace from './InvocationTrace';
 import PolicyBoundary from './PolicyBoundary';
+import ProductSurfaceShowcase from './ProductSurfaceShowcase';
 import SectionHeader from './SectionHeader';
 import SectionShell from './SectionShell';
 import SurfacePanel from './SurfacePanel';
@@ -75,6 +76,8 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
           </div>
         </div>
       </SectionShell>
+
+      {page.productSurface && <ProductSurfaceShowcase />}
 
       {page.comparison && (
         <SectionShell>
