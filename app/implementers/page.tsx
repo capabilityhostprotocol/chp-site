@@ -19,7 +19,7 @@ const PATHS = [
   {
     role: 'Agent or framework author',
     outcome: 'Call capabilities without hardcoding every provider, tool shape, or failure mode.',
-    first: 'Use discovery and invocation semantics to handle availability, permissions, timeouts, and denials.',
+    first: 'Use discovery and invocation semantics to handle availability, subject policy, host timeout behavior, and denials.',
     link: 'Protocol surface',
     href: '/protocol',
   },
@@ -33,7 +33,7 @@ const PATHS = [
   {
     role: 'Infrastructure provider',
     outcome: 'Build validation, policy, observability, and managed trust services around a portable protocol.',
-    first: 'Validate manifests, enforce permissions, stitch evidence, and run conformance checks.',
+    first: 'Validate host descriptors, enforce policy checks, stitch evidence, and run conformance checks.',
     link: 'Conformance',
     href: '/conformance',
   },
@@ -43,7 +43,7 @@ const READINESS = [
   'Capability IDs and versions are stable.',
   'Manifest validation runs before publication.',
   'Unavailable capabilities fail predictably.',
-  'Permission denials are structured.',
+  'Entitlement denials are structured.',
   'Invocations carry correlation context.',
   'Evidence can be replayed by correlation ID.',
   'Malformed input tests exist.',

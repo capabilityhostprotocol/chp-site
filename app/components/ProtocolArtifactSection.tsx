@@ -15,7 +15,7 @@ const ARTIFACTS = [
   },
   {
     label: 'Invocation',
-    title: 'Carry caller context and timeout intent.',
+    title: 'Carry subject, mode, payload, and correlation.',
     code: INVOCATION_EXAMPLE,
   },
   {

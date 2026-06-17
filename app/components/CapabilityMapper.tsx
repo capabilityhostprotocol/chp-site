@@ -5,9 +5,7 @@ import CapabilityUnit from './CapabilityUnit';
 import CodePanel from './CodePanel';
 import HostFrame from './HostFrame';
 import InvocationTrace from './InvocationTrace';
-import PolicyBoundary from './PolicyBoundary';
-
-type PolicyState = 'open' | 'restricted' | 'approval_required' | 'audited' | 'blocked';
+import PolicyBoundary, { type PolicyState } from './PolicyBoundary';
 
 type MapperState = {
   actor: string;
@@ -52,6 +50,7 @@ const POLICY_OPTIONS: { value: PolicyState; label: string }[] = [
   { value: 'audited', label: 'Audited' },
   { value: 'open', label: 'Open' },
   { value: 'blocked', label: 'Blocked' },
+  { value: 'revoked', label: 'Revoked' },
 ];
 
 const IDENTIFIER_PATTERN = /^[a-z][a-z0-9_.-]{1,63}$/;
@@ -128,8 +127,8 @@ function buildReadinessChecks(
       'Host identity',
       IDENTIFIER_PATTERN.test(hostId) ? 'pass' : 'fail',
       IDENTIFIER_PATTERN.test(hostId)
-        ? `Manifest host_id will be ${hostId}.`
-        : 'Use a host name that normalizes to a valid protocol identifier.',
+        ? `HostDescriptor.id will be ${hostId}.`
+        : 'Use a host name that normalizes to a valid host descriptor identifier.',
     ),
   );
 
@@ -203,14 +202,18 @@ function buildReadinessChecks(
     makeCheck(
       'policy',
       'Policy outcome',
-      state.policyState === 'blocked' || state.policyState === 'approval_required'
+      state.policyState === 'blocked' ||
+        state.policyState === 'approval_required' ||
+        state.policyState === 'revoked'
         ? 'warn'
         : 'pass',
       state.policyState === 'blocked'
         ? 'Blocked capabilities should deny before execution and emit evidence.'
         : state.policyState === 'approval_required'
           ? 'Approval-required capabilities should pause or deny before execution.'
-        : 'Policy state is explicit before execution.',
+          : state.policyState === 'revoked'
+            ? 'Revoked access should deny before execution and explain the revoked grant.'
+            : 'Policy state is explicit before execution.',
     ),
   );
 
@@ -224,39 +227,104 @@ function buildOutcome(
   failedChecks: ReadinessCheck[],
   warningChecks: ReadinessCheck[],
 ) {
-  let code = 'accepted';
-  let ok = true;
+  let outcome: 'success' | 'denied' | 'skipped' = 'success';
+  let success = true;
+  let eventType = 'execution_completed';
+  let denial:
+    | {
+        code: string;
+        message: string;
+        retryable: boolean;
+        details: Record<string, unknown>;
+      }
+    | null = null;
+  let data: Record<string, unknown> | null = {
+    result: state.result || 'Result',
+    readiness: readinessLabel,
+  };
   let message = 'Invocation can be accepted by the host boundary.';
 
   if (failedChecks.length > 0) {
-    ok = false;
-    code = 'validation_failed';
+    outcome = 'denied';
+    success = false;
+    eventType = 'execution_denied';
     message = 'Manifest or invocation fields need protocol fixes.';
+    data = null;
+    denial = {
+      code: 'input_schema_validation_failed',
+      message,
+      retryable: true,
+      details: {
+        failed_checks: failedChecks.map((check) => check.id),
+        warning_checks: warningChecks.map((check) => check.id),
+      },
+    };
   } else if (state.availability === 'unavailable') {
-    ok = false;
-    code = 'capability_unavailable';
+    outcome = 'skipped';
+    success = false;
+    eventType = 'execution_skipped';
     message = `${capabilityId} is declared but unavailable.`;
+    data = null;
+    denial = {
+      code: 'capability_disabled',
+      message,
+      retryable: true,
+      details: { lifecycle: 'unavailable' },
+    };
   } else if (state.policyState === 'blocked') {
-    ok = false;
-    code = 'policy_denied';
+    outcome = 'denied';
+    success = false;
+    eventType = 'execution_denied';
     message = `${state.policy || 'policy'} blocks execution before invocation.`;
+    data = null;
+    denial = {
+      code: 'policy_block_pattern_matched',
+      message,
+      retryable: false,
+      details: { policy: state.policy || 'policy' },
+    };
   } else if (state.policyState === 'approval_required') {
-    ok = false;
-    code = 'approval_required';
+    outcome = 'denied';
+    success = false;
+    eventType = 'execution_denied';
     message = `${state.policy || 'policy'} must approve before execution.`;
+    data = null;
+    denial = {
+      code: 'approval_required',
+      message,
+      retryable: true,
+      details: { policy: state.policy || 'policy' },
+    };
+  } else if (state.policyState === 'revoked') {
+    outcome = 'denied';
+    success = false;
+    eventType = 'execution_denied';
+    message = `${state.actor || 'Actor'} no longer has an active grant for ${capabilityId}.`;
+    data = null;
+    denial = {
+      code: 'entitlement_denied',
+      message,
+      retryable: false,
+      details: { policy: state.policy || 'policy', state: 'revoked' },
+    };
   }
 
   return JSON.stringify(
     {
-      ok,
-      code,
-      message,
-      evidence: ok ? 'execution_started' : 'execution_denied',
-      details: {
-        readiness: readinessLabel,
-        failed_checks: failedChecks.map((check) => check.id),
-        warning_checks: warningChecks.map((check) => check.id),
-      },
+      invocation_id: `inv_${capabilityId}_map`,
+      capability_id: capabilityId,
+      capability_version: state.version || null,
+      correlation: { correlation_id: 'map-001' },
+      outcome,
+      success,
+      data,
+      error: null,
+      denial,
+      evidence_ids: success
+        ? ['evt_map_execution_started', `evt_map_${eventType}`]
+        : [`evt_map_${eventType}`],
+      started_at: success ? '2026-06-16T15:14:20.000Z' : null,
+      completed_at: '2026-06-16T15:14:22.104Z',
     },
     null,
     2,
@@ -315,21 +383,45 @@ export default function CapabilityMapper() {
     () =>
       JSON.stringify(
         {
-          host_id: hostId,
+          id: hostId,
+          version: '0.1.0',
           protocol_version: '0.1',
+          kind: 'service',
           capabilities: [
             {
               id: capabilityId,
               version: state.version || '1.0.0',
               description: state.description || 'Describe the hosted capability.',
-              permissions: [state.permission || 'permission:required'],
-              available: state.availability === 'available',
+              status: state.availability === 'available' ? 'experimental' : 'draft',
+              modes: ['sync'],
+              emits: [
+                'execution_started',
+                'execution_completed',
+                'execution_denied',
+                'execution_skipped',
+              ],
               policy: {
-                state: state.policyState,
-                rule: state.policy || 'policy_rule',
+                risk_tier:
+                  state.policyState === 'blocked' || state.policyState === 'approval_required'
+                    ? 'high'
+                    : 'medium',
+                auth_required: state.policyState !== 'open',
+                approval_required: state.policyState === 'approval_required',
+                allowed_actors: state.actor ? [state.actor] : [],
+              },
+              metadata: {
+                required_permissions: [state.permission || 'permission:required'],
+                lifecycle:
+                  state.availability === 'available' ? 'invokable' : 'unavailable',
+                policy_state: state.policyState,
+                policy_rule: state.policy || 'policy_rule',
               },
             },
           ],
+          evidence: {
+            store: 'local-append-only',
+            append_only: true,
+          },
         },
         null,
         2,
@@ -341,19 +433,27 @@ export default function CapabilityMapper() {
     () =>
       JSON.stringify(
         {
+          invocation_id: `inv_${capabilityId}_map`,
           capability_id: capabilityId,
-          caller: state.actor || 'Actor',
-          correlation_id: 'map-001',
-          timeout_ms: 3000,
+          version: state.version || '1.0.0',
+          mode: 'sync',
+          correlation: {
+            correlation_id: 'map-001',
+          },
+          subject: {
+            id: state.actor || 'Actor',
+            required_permissions: [state.permission || 'permission:required'],
+          },
           payload: {
             context: state.context || 'context',
             requested_result: state.result || 'Result',
           },
+          requested_at: '2026-06-16T15:14:20.000Z',
         },
         null,
         2,
       ),
-    [capabilityId, state.actor, state.context, state.result],
+    [capabilityId, state.actor, state.context, state.permission, state.result, state.version],
   );
 
   const outcome = buildOutcome(
@@ -543,7 +643,7 @@ export default function CapabilityMapper() {
             host={state.host || 'Host'}
             policy={state.policyState}
             version={state.version || '1.0.0'}
-            state={state.availability === 'available' ? 'invokable' : 'blocked'}
+            state={state.availability === 'available' ? 'invokable' : 'unavailable'}
           />
           <PolicyBoundary
             state={state.policyState}
@@ -557,13 +657,13 @@ export default function CapabilityMapper() {
         <HostFrame
           hostType="Mapped host"
           hostName={state.host || 'Host'}
-          policySummary="A host publishes capability identity, lifecycle, version, permission, and policy before callers invoke it."
+          policySummary="A host publishes capability identity, lifecycle, version, entitlement metadata, and policy before callers invoke it."
           health={state.availability === 'available' ? 'Available' : 'Unavailable'}
           capabilities={[
             {
               name: capabilityId,
               description: state.description || 'Describe the hosted capability.',
-              status: state.availability === 'available' ? 'invokable' : 'blocked',
+              status: state.availability === 'available' ? 'invokable' : 'unavailable',
               policy: state.policyState,
               version: state.version || '1.0.0',
             },

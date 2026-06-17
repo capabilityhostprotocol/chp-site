@@ -5,7 +5,7 @@ import SiteFooter from '../components/SiteFooter';
 export const metadata: Metadata = {
   title: 'Conformance - Capability Host Protocol',
   description:
-    'What CHP conformance should prove for manifests, versions, lifecycle, permissions, invocation safety, errors, evidence, and replay.',
+    'What CHP conformance should prove for host descriptors, versions, lifecycle, policy checks, invocation safety, errors, evidence, and replay.',
 };
 
 const AREAS = [
@@ -19,11 +19,11 @@ const AREAS = [
   },
   {
     title: 'Invocation safety',
-    body: 'Validate identity, payload shape, target host, timeout intent, lifecycle state, and capability availability before execution.',
+    body: 'Validate subject identity, payload shape, target host, mode support, lifecycle state, and capability availability before execution.',
   },
   {
     title: 'Permission checks',
-    body: 'Return structured denials for missing entitlements, policy blocks, and actions requiring human review.',
+    body: 'Return structured denials for missing entitlements, policy blocks, revoked grants, and actions requiring human review.',
   },
   {
     title: 'Structured errors',
@@ -31,7 +31,7 @@ const AREAS = [
   },
   {
     title: 'Evidence and replay',
-    body: 'Emit ordered evidence for accepted invocations and make replay by correlation ID predictable.',
+    body: 'Emit ordered evidence for every execution attempt and make replay by correlation ID predictable.',
   },
 ];
 
@@ -57,7 +57,7 @@ export default function ConformancePage() {
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             Conformance turns CHP from a convention into an ecosystem contract:
             implementers can prove that manifests, invocations, lifecycle rules,
-            permissions, errors, evidence, and replay behave predictably.
+            policy checks, errors, evidence, and replay behave predictably.
           </p>
         </section>
 

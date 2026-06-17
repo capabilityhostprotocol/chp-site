@@ -17,15 +17,27 @@ export const metadata: Metadata = {
 };
 
 const EXAMPLE_MANIFEST = `{
-  "host_id": "service-ops-host",
+  "id": "service-ops-host",
+  "version": "0.1.0",
   "protocol_version": "0.1",
+  "kind": "service",
   "capabilities": [{
     "id": "schedule_technician",
     "version": "1.0.0",
-    "permissions": ["service:dispatch"],
-    "available": true,
-    "policy": { "state": "approval_required" }
-  }]
+    "description": "Reserve a qualified technician.",
+    "status": "experimental",
+    "modes": ["sync"],
+    "emits": ["execution_started", "execution_completed", "execution_denied"],
+    "policy": {
+      "risk_tier": "high",
+      "auth_required": true,
+      "approval_required": true
+    }
+  }],
+  "evidence": {
+    "store": "local-append-only",
+    "append_only": true
+  }
 }`;
 
 export default function DocsPage() {

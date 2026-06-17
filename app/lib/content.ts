@@ -17,14 +17,14 @@ export const PROTOCOL_AUDIENCES = [
   {
     role: 'Infrastructure providers',
     headline: 'Build trust layers around the protocol.',
-    body: 'Validate manifests, enforce permissions, stitch evidence, export telemetry, and run conformance for independent hosts.',
+    body: 'Validate host descriptors, enforce policy checks, stitch evidence, export telemetry, and run conformance for independent hosts.',
   },
 ];
 
 export const PROTOCOL_GUARANTEES = [
   {
     title: 'Manifest-first discovery',
-    body: 'Hosts declare capabilities, products, versions, permissions, and availability before invocation.',
+    body: 'Hosts declare identity, capabilities, versions, modes, policy metadata, and evidence behavior before invocation.',
   },
   {
     title: 'Version compatibility',
@@ -32,7 +32,7 @@ export const PROTOCOL_GUARANTEES = [
   },
   {
     title: 'Permissioned invocation',
-    body: 'Invocations carry caller identity, audience context, timeout intent, and entitlement checks.',
+    body: 'Invocation envelopes carry subject identity, correlation context, mode, payload, requested time, and host-enforced policy checks.',
   },
   {
     title: 'Lifecycle enforcement',
@@ -44,7 +44,7 @@ export const PROTOCOL_GUARANTEES = [
   },
   {
     title: 'Evidence and replay',
-    body: 'Every accepted invocation can emit ordered evidence for audit, debugging, telemetry, and compliance.',
+    body: 'Every execution attempt emits ordered evidence for audit, debugging, telemetry, and compliance.',
   },
 ];
 
@@ -87,8 +87,8 @@ export const FAILURE_MODES = [
   },
   {
     pain: 'Sensitive capabilities look like ordinary functions.',
-    cost: 'Authorization, caller context, timeout policy, and denials end up scattered across app glue.',
-    chp: 'CHP carries permission requirements and returns denials as structured protocol outcomes.',
+    cost: 'Authorization, subject context, host timeout policy, and denials end up scattered across app glue.',
+    chp: 'CHP carries policy and entitlement metadata and returns denials as structured protocol outcomes.',
   },
   {
     pain: 'Logs are not evidence.',
@@ -103,34 +103,60 @@ export const FAILURE_MODES = [
 ];
 
 export const ARTIFACT_EXAMPLE = `{
-  "host_id": "service-ops-host",
+  "id": "service-ops-host",
+  "version": "0.1.0",
   "protocol_version": "0.1",
+  "kind": "service",
   "capabilities": [{
     "id": "schedule_technician",
     "version": "1.0.0",
-    "permissions": ["service:dispatch"],
-    "available": true
-  }]
-}`;
-
-export const INVOCATION_EXAMPLE = `{
-  "capability_id": "schedule_technician",
-  "correlation_id": "session-abc",
-  "caller": "agent://planning-assistant",
-  "timeout_ms": 3000,
-  "payload": {
-    "job_id": "job_456",
-    "window": "tomorrow"
+    "description": "Reserve a qualified technician.",
+    "status": "experimental",
+    "modes": ["sync"],
+    "emits": ["execution_started", "execution_completed", "execution_denied"],
+    "policy": {
+      "risk_tier": "high",
+      "auth_required": true,
+      "approval_required": true
+    }
+  }],
+  "evidence": {
+    "store": "local-append-only",
+    "append_only": true
   }
 }`;
 
-export const OUTCOME_EXAMPLE = `{
-  "ok": false,
-  "error": {
-    "code": "permission_denied",
-    "message": "service:dispatch is required"
+export const INVOCATION_EXAMPLE = `{
+  "invocation_id": "inv_session_abc_001",
+  "capability_id": "schedule_technician",
+  "version": "1.0.0",
+  "mode": "sync",
+  "correlation": { "correlation_id": "session-abc" },
+  "subject": { "id": "agent://planning-assistant" },
+  "payload": {
+    "job_id": "job_456",
+    "window": "tomorrow"
   },
-  "evidence": "execution_denied"
+  "requested_at": "2026-06-16T15:14:20.000Z"
+}`;
+
+export const OUTCOME_EXAMPLE = `{
+  "invocation_id": "inv_session_abc_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "session-abc" },
+  "outcome": "denied",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "entitlement_denied",
+    "message": "service:dispatch is required",
+    "retryable": false
+  },
+  "evidence_ids": ["evt_8f3a1c"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`;
 
 export const POSITIONING_POINTS = [
@@ -241,17 +267,18 @@ events = host.replay("session-abc")
 
 export const EVIDENCE_OUTPUT = `{
   "event_id": "evt_8f3a1c",
-  "evidence_type": "execution_completed",
+  "event_type": "execution_completed",
+  "invocation_id": "inv_session_abc_001",
   "capability_id": "payments.transfer",
   "capability_version": "1.0.0",
-  "correlation_id": "session-abc",
   "host_id": "my-host",
+  "correlation": { "correlation_id": "session-abc" },
   "sequence": 2,
-  "prev_hash": "sha256:a3f1...",
-  "hash": "sha256:9c2d...",
   "timestamp": "2026-06-03T00:14:22.104Z",
   "outcome": "success",
-  "duration_ms": 43
+  "payload": { "duration_ms": 43 },
+  "redacted": true,
+  "assurance": { "level": "S1" }
 }`;
 
 export const AGENTIC_EXAMPLE = `async with AgentSession(host, intent="answer user query", model="claude-opus-4") as session:

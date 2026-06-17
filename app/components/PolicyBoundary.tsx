@@ -1,6 +1,12 @@
 import Badge from './Badge';
 
-type PolicyState = 'open' | 'restricted' | 'approval_required' | 'audited' | 'blocked';
+export type PolicyState =
+  | 'open'
+  | 'restricted'
+  | 'approval_required'
+  | 'audited'
+  | 'blocked'
+  | 'revoked';
 
 type PolicyBoundaryProps = {
   state: PolicyState;
@@ -14,6 +20,7 @@ const STATE_STYLES: Record<PolicyState, string> = {
   approval_required: 'border-[color:var(--color-policy-required)] shadow-[var(--shadow-glow-policy)]',
   audited: 'border-[color:var(--color-protocol-blue)]',
   blocked: 'border-[color:var(--color-policy-blocked)]',
+  revoked: 'border-[color:var(--color-policy-blocked)] opacity-85',
 };
 
 const STATE_LABELS: Record<PolicyState, string> = {
@@ -22,6 +29,7 @@ const STATE_LABELS: Record<PolicyState, string> = {
   approval_required: 'Approval required',
   audited: 'Audited',
   blocked: 'Blocked',
+  revoked: 'Revoked',
 };
 
 const STATE_TONES: Record<
@@ -33,6 +41,7 @@ const STATE_TONES: Record<
   approval_required: 'required',
   audited: 'signal',
   blocked: 'blocked',
+  revoked: 'blocked',
 };
 
 export default function PolicyBoundary({

@@ -5,14 +5,14 @@ import SiteFooter from '../components/SiteFooter';
 export const metadata: Metadata = {
   title: 'Protocol Surface - Capability Host Protocol',
   description:
-    'The CHP protocol surface: manifests, discovery, invocation, lifecycle, permissions, structured errors, evidence, replay, and conformance.',
+    'The CHP protocol surface: host descriptors, discovery, invocation, lifecycle, policy checks, structured errors, evidence, replay, and conformance.',
 };
 
 const SURFACE = [
   {
     name: 'Manifests',
     detail:
-      'Hosts declare identity, capabilities, products, versions, lifecycle state, availability, and permission requirements before clients invoke anything.',
+      'Hosts declare identity, capabilities, versions, invocation modes, policy metadata, and evidence behavior before clients invoke anything.',
   },
   {
     name: 'Discovery',
@@ -22,7 +22,7 @@ const SURFACE = [
   {
     name: 'Invocation',
     detail:
-      'Calls carry capability identity, payload, caller context, correlation, timeout intent, and structured response semantics.',
+      'Calls carry invocation identity, capability identity, mode, subject attributes, payload, correlation, and structured response semantics.',
   },
   {
     name: 'Lifecycle',
@@ -32,12 +32,12 @@ const SURFACE = [
   {
     name: 'Permissions',
     detail:
-      'Capabilities can require entitlements or policy approval before execution, returning denials as structured outcomes instead of ambiguous failures.',
+      'Capabilities can require subject entitlements or policy approval before execution, returning denials as structured outcomes instead of ambiguous failures.',
   },
   {
     name: 'Evidence',
     detail:
-      'Accepted invocations can emit ordered, replayable evidence for audit, debugging, telemetry export, and compliance reporting.',
+      'Every execution attempt emits ordered, replayable evidence for audit, debugging, telemetry export, and compliance reporting.',
   },
 ];
 
@@ -53,8 +53,8 @@ const FAILURE_MODES = [
 ];
 
 const CONTRACTS = [
-  ['Before invocation', 'Manifest validation, version compatibility, host identity, and declared permission requirements.'],
-  ['During invocation', 'Correlation context, payload handling, authorization, timeout behavior, and lifecycle checks.'],
+  ['Before invocation', 'HostDescriptor validation, version compatibility, host identity, mode support, and declared policy metadata.'],
+  ['During invocation', 'Correlation context, subject handling, payload validation, authorization, host timeout policy, and lifecycle checks.'],
   ['After invocation', 'Structured response status, denial/error code, evidence emission, replay, and telemetry export.'],
 ];
 

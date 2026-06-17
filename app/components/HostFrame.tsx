@@ -1,10 +1,11 @@
 import Badge from './Badge';
 import CapabilityUnit from './CapabilityUnit';
+import type { CapabilityState } from './CapabilityUnit';
 
 type HostCapability = {
   name: string;
   description: string;
-  status: 'declared' | 'hosted' | 'discoverable' | 'invokable' | 'restricted' | 'blocked' | 'verified';
+  status: CapabilityState;
   policy: string;
   version: string;
 };

@@ -1,13 +1,17 @@
 import Badge from './Badge';
 
-type CapabilityState =
+export type CapabilityState =
   | 'declared'
   | 'hosted'
   | 'discoverable'
   | 'invokable'
   | 'restricted'
   | 'blocked'
-  | 'verified';
+  | 'verified'
+  | 'deprecated'
+  | 'unavailable'
+  | 'composed'
+  | 'evidence_emitting';
 
 type CapabilityUnitProps = {
   name: string;
@@ -27,6 +31,10 @@ const STATE_STYLES: Record<CapabilityState, string> = {
   restricted: 'border-[color:var(--color-policy-required)]',
   blocked: 'border-[color:var(--color-policy-blocked)]',
   verified: 'border-[color:var(--color-policy-approved)]',
+  deprecated: 'border-dashed border-[color:var(--color-policy-required)]',
+  unavailable: 'border-[color:var(--color-policy-blocked)] opacity-85',
+  composed: 'border-[color:var(--color-protocol-blue)]',
+  evidence_emitting: 'border-[color:var(--color-policy-approved)]',
 };
 
 const STATE_LABELS: Record<CapabilityState, string> = {
@@ -37,6 +45,10 @@ const STATE_LABELS: Record<CapabilityState, string> = {
   restricted: 'Restricted',
   blocked: 'Blocked',
   verified: 'Verified',
+  deprecated: 'Deprecated',
+  unavailable: 'Unavailable',
+  composed: 'Composed',
+  evidence_emitting: 'Evidence emitting',
 };
 
 const STATE_TONES: Record<
@@ -50,6 +62,10 @@ const STATE_TONES: Record<
   restricted: 'required',
   blocked: 'blocked',
   verified: 'approved',
+  deprecated: 'required',
+  unavailable: 'blocked',
+  composed: 'signal',
+  evidence_emitting: 'approved',
 };
 
 export default function CapabilityUnit({

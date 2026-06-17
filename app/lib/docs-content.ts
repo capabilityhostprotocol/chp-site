@@ -1,4 +1,10 @@
-type PolicyState = 'open' | 'restricted' | 'approval_required' | 'audited' | 'blocked';
+type PolicyState =
+  | 'open'
+  | 'restricted'
+  | 'approval_required'
+  | 'audited'
+  | 'blocked'
+  | 'revoked';
 
 type CapabilityState =
   | 'declared'
@@ -7,7 +13,11 @@ type CapabilityState =
   | 'invokable'
   | 'restricted'
   | 'blocked'
-  | 'verified';
+  | 'verified'
+  | 'deprecated'
+  | 'unavailable'
+  | 'composed'
+  | 'evidence_emitting';
 
 export type DocsPage = {
   slug: string;
@@ -106,33 +116,69 @@ const DEFAULT_POLICY = {
 };
 
 const MANIFEST_FRAGMENT = `{
-  "host_id": "service-ops-host",
+  "id": "service-ops-host",
+  "version": "0.1.0",
   "protocol_version": "0.1",
+  "kind": "service",
   "capabilities": [{
     "id": "schedule_technician",
     "version": "1.0.0",
-    "permissions": ["service:dispatch"],
-    "available": true,
-    "policy": { "state": "approval_required" }
-  }]
-}`;
-
-const INVOCATION_FRAGMENT = `{
-  "capability_id": "schedule_technician",
-  "caller": "agent://planning-assistant",
-  "correlation_id": "session-abc",
-  "timeout_ms": 3000,
-  "payload": {
-    "job_id": "job_456",
-    "window": "tomorrow"
+    "description": "Finds an available qualified technician and reserves a service window.",
+    "status": "experimental",
+    "modes": ["sync"],
+    "emits": ["execution_started", "execution_completed", "execution_denied"],
+    "policy": {
+      "risk_tier": "high",
+      "auth_required": true,
+      "approval_required": true,
+      "allowed_actors": ["agent://planning-assistant"]
+    },
+    "metadata": {
+      "required_permissions": ["service:dispatch"],
+      "lifecycle": "invokable"
+    }
+  }],
+  "evidence": {
+    "store": "local-append-only",
+    "append_only": true
   }
 }`;
 
+const INVOCATION_FRAGMENT = `{
+  "invocation_id": "inv_session_abc_001",
+  "capability_id": "schedule_technician",
+  "version": "1.0.0",
+  "mode": "sync",
+  "correlation": { "correlation_id": "session-abc" },
+  "subject": {
+    "id": "agent://planning-assistant",
+    "roles": ["dispatcher"]
+  },
+  "payload": {
+    "job_id": "job_456",
+    "window": "tomorrow"
+  },
+  "requested_at": "2026-06-16T15:14:20.000Z"
+}`;
+
 const OUTCOME_FRAGMENT = `{
-  "ok": false,
-  "code": "approval_required",
-  "message": "manager_approval must approve before execution.",
-  "evidence": "execution_denied"
+  "invocation_id": "inv_session_abc_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "session-abc" },
+  "outcome": "denied",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "approval_required",
+    "message": "manager_approval must approve before execution.",
+    "retryable": true,
+    "details": { "policy": "manager_approval" }
+  },
+  "evidence_ids": ["evt_8f3a1c"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`;
 
 function conceptPage(input: ConceptInput): DocsPage {
@@ -198,11 +244,11 @@ function failureModePage(input: {
     slug: `reference/failure-modes/${input.slug}`,
     title: input.title,
     summary: input.summary,
-    plain: `This failure mode should return ${input.code}, not an ambiguous framework or transport failure.`,
+    plain: `This failure mode should return a structured protocol record with ${input.code}, not an ambiguous framework or transport failure.`,
     why:
       'Independent callers need to branch on predictable protocol outcomes when a capability cannot safely execute.',
     formal:
-      'A failure mode is a first-class protocol outcome with a stable code, message, optional details, and evidence semantics.',
+      'A failure mode is a first-class protocol outcome with a stable denial.code or error.code, message, optional details, and evidence semantics.',
     example: input.trigger,
     relationships: [
       'Failure outcomes are produced during discovery, validation, authorization, lifecycle checks, execution, or timeout handling.',
@@ -236,8 +282,8 @@ function failureModePage(input: {
       columns: ['Field', 'Value', 'Meaning'],
       rows: [
         { name: 'trigger', value: 'condition', detail: input.trigger },
-        { name: 'code', value: input.code, detail: input.message },
-        { name: 'evidence', value: input.evidence, detail: 'Evidence type or absence expected for this failure.' },
+        { name: 'denial.code or error.code', value: input.code, detail: input.message },
+        { name: 'event_type', value: input.evidence, detail: 'Evidence type or absence expected for this failure.' },
       ],
     },
     code: {
@@ -299,7 +345,7 @@ const CONCEPT_PAGES: DocsPage[] = [
     formal:
       'A host is a protocol participant that publishes manifest metadata, accepts or rejects invocations, enforces capability lifecycle, and emits outcomes and evidence.',
     example:
-      'ServiceOpsHost exposes schedule_technician and query_inventory while enforcing manager approval and service dispatch permissions.',
+      'ServiceOpsHost exposes schedule_technician and query_inventory while enforcing manager approval and host-recognized entitlements.',
     relationships: [
       'A host publishes capabilities through a manifest.',
       'A host validates invocation envelopes and policy before execution.',
@@ -311,7 +357,7 @@ const CONCEPT_PAGES: DocsPage[] = [
       'Policy and evidence are host responsibilities, not caller guesses.',
     ],
     implementationNotes: [
-      'Make host_id stable and unique inside the trust boundary.',
+      'Make HostDescriptor.id stable and unique inside the trust boundary.',
       'Expose unavailable capabilities as protocol state instead of transport errors.',
       'Keep host health separate from individual capability lifecycle.',
     ],
@@ -416,13 +462,13 @@ const CONCEPT_PAGES: DocsPage[] = [
     slug: 'invocation',
     title: 'Invocation',
     summary:
-      'An invocation is a structured request to run a capability with caller context, payload, timeout, and correlation.',
+      'An invocation is a structured request to run a capability with subject attributes, mode, payload, requested time, and correlation.',
     plain:
       'An invocation is the moment a caller asks a host to do the named thing.',
     why:
       'Sensitive capability calls need more than a function call shape; they need identity, intent, policy checks, timeout behavior, and outcomes.',
     formal:
-      'An invocation is a protocol envelope that names the capability, carries payload and caller context, declares timeout intent, and receives a structured result.',
+      'An invocation is a protocol envelope that names the capability, carries payload and subject context, declares mode, preserves correlation, and receives a structured result.',
     example:
       'Planning Agent invokes schedule_technician with job_context and receives either Confirmed Appointment or approval_required.',
     relationships: [
@@ -437,11 +483,11 @@ const CONCEPT_PAGES: DocsPage[] = [
     ],
     implementationNotes: [
       'Require correlation IDs for replay and debugging.',
-      'Carry timeout intent explicitly instead of relying on transport defaults.',
+      'Carry mode, subject, and correlation explicitly instead of relying on transport defaults.',
       'Keep denial outcomes machine-readable.',
     ],
     commonMistakes: [
-      'Sending raw payloads without caller identity.',
+      'Sending raw payloads without subject identity.',
       'Making policy failures indistinguishable from execution failures.',
       'Dropping correlation context before evidence is emitted.',
     ],
@@ -474,7 +520,7 @@ const CONCEPT_PAGES: DocsPage[] = [
       'Invocation proceeds, pauses, or denies with a protocol outcome.',
     ],
     implementationNotes: [
-      'Expose required permissions before invocation.',
+      'Expose required entitlements or subject requirements before invocation.',
       'Return policy denials as structured outcomes.',
       'Separate policy state from host availability.',
     ],
@@ -514,7 +560,7 @@ const CONCEPT_PAGES: DocsPage[] = [
     implementationNotes: [
       'Name required context fields in capability metadata.',
       'Redact sensitive payload fields from evidence by default.',
-      'Keep caller identity separate from business context.',
+      'Keep subject identity separate from business context.',
     ],
     commonMistakes: [
       'Putting all context into an untyped blob.',
@@ -565,13 +611,19 @@ const CONCEPT_PAGES: DocsPage[] = [
       label: 'evidence-event.json',
       language: 'json',
       code: `{
-  "evidence_type": "execution_denied",
+  "event_id": "evt_8f3a1c",
+  "event_type": "execution_denied",
+  "invocation_id": "inv_session_abc_001",
   "capability_id": "schedule_technician",
   "capability_version": "1.0.0",
   "host_id": "service-ops-host",
-  "correlation_id": "session-abc",
+  "correlation": { "correlation_id": "session-abc" },
   "sequence": 2,
-  "outcome": "approval_required"
+  "timestamp": "2026-06-16T15:14:22.104Z",
+  "outcome": "denied",
+  "payload": { "policy": "manager_approval" },
+  "redacted": true,
+  "assurance": { "level": "S1" }
 }`,
     },
   }),
@@ -616,9 +668,10 @@ const CONCEPT_PAGES: DocsPage[] = [
       code: `{
   "case": "approval_required_denial",
   "expected": {
-    "ok": false,
-    "code": "approval_required",
-    "evidence": "execution_denied"
+    "outcome": "denied",
+    "success": false,
+    "denial": { "code": "approval_required" },
+    "event_type": "execution_denied"
   }
 }`,
     },
@@ -812,7 +865,7 @@ const SUPPORTING_PAGES: DocsPage[] = [
     group: 'Guides',
     title: 'Define a capability contract',
     summary:
-      'Write the stable manifest, version, permissions, lifecycle, payload, and outcome shape for a hosted capability.',
+      'Write the stable manifest, version, entitlement metadata, lifecycle, payload, and outcome shape for a hosted capability.',
     plain:
       'A contract tells independent callers what they can trust before invoking a capability.',
     why:
@@ -838,7 +891,7 @@ const SUPPORTING_PAGES: DocsPage[] = [
     ],
     commonMistakes: [
       'Changing fields without changing capability version.',
-      'Encoding permissions only in application code.',
+      'Encoding entitlement checks only in application code.',
       'Leaving result semantics vague.',
     ],
     related: [
@@ -1010,7 +1063,7 @@ const SUPPORTING_PAGES: DocsPage[] = [
     example:
       '[Planning Agent] -> {schedule_technician} @ ServiceOpsHost | manager_approval | job_context -> Confirmed Appointment',
     relationships: [
-      'Actor maps to caller identity.',
+      'Actor maps to invocation subject identity.',
       'Capability and host map to manifest metadata.',
       'Policy, context, and result map to invocation and outcome semantics.',
     ],
@@ -1075,7 +1128,24 @@ const SUPPORTING_PAGES: DocsPage[] = [
       { title: 'Conformance', href: '/docs/concepts/conformance' },
       { title: 'Policy states', href: '/docs/reference/policy-states' },
     ],
-    capability: DEFAULT_CAPABILITY,
+    referenceTable: {
+      title: 'Lifecycle state reference',
+      description:
+        'CHP v0.1 standardizes descriptor maturity and invocation outcomes; hosts may expose richer lifecycle labels through registry views and metadata when they enforce them consistently.',
+      columns: ['State', 'v0.1 representation', 'Enforcement meaning'],
+      rows: [
+        { name: 'declared', value: 'CapabilityDescriptor exists', detail: 'The capability has an id, version, description, modes, and emits but may not be callable yet.' },
+        { name: 'hosted', value: 'HostDescriptor.capabilities[]', detail: 'The host claims ownership of the descriptor and evidence behavior for that capability.' },
+        { name: 'discoverable', value: 'Published descriptor or registry view', detail: 'Callers can inspect the capability before invocation and check compatibility.' },
+        { name: 'invokable', value: 'mode supported and host local state permits execution', detail: 'A compatible invocation may pass boundary validation and reach the handler.' },
+        { name: 'composed', value: 'correlation plus causation context', detail: 'The capability participates in a larger flow while preserving each host boundary.' },
+        { name: 'evidence_emitting', value: 'emits[] plus ExecutionEvidence events', detail: 'The capability declares and actually emits structured evidence for attempts.' },
+        { name: 'verified', value: 'conformance result or assurance metadata', detail: 'The capability or host has passed checks that can be inspected by relying parties.' },
+        { name: 'deprecated', value: 'CapabilityDescriptor.status = deprecated', detail: 'Callers should migrate before the capability is removed or behavior changes.' },
+        { name: 'unavailable', value: 'InvocationResult.outcome = skipped or denied', detail: 'The capability exists but must not execute; use denial.code such as capability_disabled when explaining why.' },
+      ],
+    },
+    capability: { ...DEFAULT_CAPABILITY, state: 'evidence_emitting' },
     code: { label: 'manifest.json', language: 'json', code: MANIFEST_FRAGMENT },
   }),
   docsPage({
@@ -1118,6 +1188,20 @@ const SUPPORTING_PAGES: DocsPage[] = [
       { title: 'Govern invocation', href: '/docs/guides/govern-invocation' },
       { title: 'Conformance', href: '/docs/concepts/conformance' },
     ],
+    referenceTable: {
+      title: 'Policy state reference',
+      description:
+        'CHP v0.1 leaves full policy engines to hosts, but policy state still needs stable manifest metadata, denial records, and evidence semantics.',
+      columns: ['State', 'v0.1 representation', 'Invocation behavior'],
+      rows: [
+        { name: 'open', value: 'policy.auth_required = false', detail: 'Execute after normal schema, lifecycle, and mode validation.' },
+        { name: 'restricted', value: 'policy.auth_required = true', detail: 'Require host-recognized subject attributes, grants, or entitlements before execution.' },
+        { name: 'approval_required', value: 'policy.approval_required = true', detail: 'Return a denied result with denial.code approval_required until approval exists.' },
+        { name: 'audited', value: 'emits[] and assurance metadata', detail: 'Allow execution but require evidence records suitable for review and replay.' },
+        { name: 'blocked', value: 'invariant or host policy denial', detail: 'Return a denied result before side effects, commonly with policy_block_pattern_matched or invariant_failed.' },
+        { name: 'revoked', value: 'host trust or entitlement state', detail: 'Deny a previously authorized subject with entitlement_denied and details explaining the revoked grant.' },
+      ],
+    },
     policy: DEFAULT_POLICY,
     code: { label: 'outcome.json', language: 'json', code: OUTCOME_FRAGMENT },
   }),
@@ -1173,9 +1257,9 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
     plain:
       'A manifest is the first thing a caller should inspect before trusting a hosted capability.',
     why:
-      'Without a stable manifest shape, independent callers discover incompatibility, unavailable capabilities, or missing permissions too late.',
+      'Without a stable manifest shape, independent callers discover incompatibility, unavailable capabilities, or missing subject requirements too late.',
     formal:
-      'A CHP manifest is the host-published declaration of protocol version, host identity, capability IDs, capability versions, lifecycle, permissions, and policy state.',
+      'A CHP manifest is a HostDescriptor: the host-published declaration of protocol version, host identity, capability descriptors, maturity, evidence behavior, and policy metadata.',
     example:
       'ServiceOpsHost declares schedule_technician version 1.0.0 with service:dispatch permission and approval_required policy.',
     referenceTable: {
@@ -1184,13 +1268,18 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
         'These fields are the minimum interoperable discovery surface for a host capability.',
       columns: ['Field', 'Type', 'Protocol meaning'],
       rows: [
-        { name: 'host_id', value: 'string', detail: 'Stable host identity used in evidence, telemetry, and trust decisions.' },
-        { name: 'protocol_version', value: 'string', detail: 'CHP protocol version the host expects callers to understand.' },
+        { name: 'id', value: 'string', detail: 'Stable host identity used in evidence, telemetry, and trust decisions.' },
+        { name: 'version', value: 'string', detail: 'Host implementation version, separate from capability and protocol versions.' },
+        { name: 'protocol_version', value: 'string', detail: 'CHP protocol version; v0.1 uses 0.1.' },
+        { name: 'kind', value: 'string', detail: 'Host implementation kind such as local, service, cli, device, or mcp-wrapper.' },
         { name: 'capabilities[].id', value: 'string', detail: 'Stable capability identifier selected by callers before invocation.' },
-        { name: 'capabilities[].version', value: 'semver string', detail: 'Capability contract version for compatibility checks.' },
-        { name: 'capabilities[].permissions', value: 'string[]', detail: 'Machine-readable entitlements required before execution.' },
-        { name: 'capabilities[].available', value: 'boolean', detail: 'Current invokable availability; false should become a lifecycle outcome.' },
-        { name: 'capabilities[].policy.state', value: 'policy state', detail: 'Governance state such as open, restricted, approval_required, audited, or blocked.' },
+        { name: 'capabilities[].version', value: 'string', detail: 'Capability contract version for compatibility checks.' },
+        { name: 'capabilities[].status', value: 'draft | experimental | certified | deprecated', detail: 'Capability maturity status; deprecated is the standardized retirement signal.' },
+        { name: 'capabilities[].modes', value: 'sync | async | stream | fire_and_forget[]', detail: 'Supported invocation modes that callers may request.' },
+        { name: 'capabilities[].emits', value: 'string[]', detail: 'Evidence event types the capability can emit.' },
+        { name: 'capabilities[].policy', value: 'PolicyDescriptor', detail: 'Structured policy metadata for risk tier, auth, approval, data classification, and allowed actors.' },
+        { name: 'capabilities[].metadata', value: 'object', detail: 'Extension area for host-specific lifecycle or entitlement labels that are still enforced through protocol outcomes.' },
+        { name: 'evidence.append_only', value: 'boolean', detail: 'Whether the host declares append-only evidence storage.' },
       ],
     },
     related: [
@@ -1204,13 +1293,13 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
     slug: 'reference/invocation-envelope',
     title: 'Invocation envelope fields',
     summary:
-      'Invocation envelopes carry the fields a host needs to validate caller, capability, payload, timeout, and correlation.',
+      'Invocation envelopes carry the fields a host needs to validate subject, capability, mode, payload, requested time, and correlation.',
     plain:
       'The invocation envelope is the request wrapper around the capability payload.',
     why:
-      'A host cannot safely authorize, trace, or replay a capability call if caller identity and correlation are implicit.',
+      'A host cannot safely authorize, trace, or replay a capability call if subject identity and correlation are implicit.',
     formal:
-      'An invocation envelope is a structured request containing capability identity, caller context, correlation ID, timeout intent, and payload.',
+      'An InvocationEnvelope is a structured request containing invocation identity, capability identity, mode, correlation context, subject, payload, requested time, and optional metadata.',
     example:
       'Planning Agent invokes schedule_technician with session-abc correlation and job_context payload.',
     referenceTable: {
@@ -1219,11 +1308,15 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
         'Every invocation should make caller intent and replay context explicit before execution.',
       columns: ['Field', 'Type', 'Protocol meaning'],
       rows: [
+        { name: 'invocation_id', value: 'string', detail: 'Unique request identity preserved in results and evidence.' },
         { name: 'capability_id', value: 'string', detail: 'Capability selected from a compatible manifest or registry entry.' },
-        { name: 'caller', value: 'string', detail: 'Caller identity used for policy, audit, and evidence.' },
-        { name: 'correlation_id', value: 'string', detail: 'Stable ID used to connect invocation, evidence, replay, and telemetry.' },
-        { name: 'timeout_ms', value: 'integer', detail: 'Caller timeout intent that the host can enforce predictably.' },
+        { name: 'version', value: 'string | null', detail: 'Requested capability version, when callers need a specific contract.' },
+        { name: 'mode', value: 'sync | async | stream | fire_and_forget', detail: 'Invocation mode that must be supported by the capability descriptor.' },
+        { name: 'correlation.correlation_id', value: 'string', detail: 'Stable ID used to connect invocation, evidence, replay, and telemetry.' },
+        { name: 'subject', value: 'object', detail: 'Caller identity and caller-local attributes used by host policy.' },
         { name: 'payload', value: 'object', detail: 'Capability-specific inputs validated against the capability contract.' },
+        { name: 'requested_at', value: 'datetime', detail: 'Caller-side request timestamp used for audit and replay context.' },
+        { name: 'metadata', value: 'object', detail: 'Optional extension area for implementation-specific request metadata.' },
       ],
     },
     related: [
@@ -1237,30 +1330,33 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
     slug: 'reference/outcome-codes',
     title: 'Outcome codes',
     summary:
-      'Outcome codes let callers distinguish malformed input, version mismatch, unavailability, denial, timeout, and host failure.',
+      'Outcome and nested codes let callers distinguish malformed input, version mismatch, unavailability, denial, timeout, and host failure.',
     plain:
-      'An outcome code is the machine-readable reason the host succeeded, denied, or failed a capability request.',
+      'The top-level outcome says success, failure, denied, or skipped; nested codes explain why.',
     why:
       'Public protocol callers need stable branches for expected failure, not framework-specific exceptions or generic status text.',
     formal:
-      'Outcome codes are stable protocol identifiers returned in structured invocation outcomes and conformance cases.',
+      'InvocationResult.outcome is one of success, failure, denied, or skipped; denial.code and error.code carry stable protocol reasons for rejected or failed attempts.',
     example:
       'approval_required tells a caller that policy paused or denied schedule_technician before side effects.',
     referenceTable: {
       title: 'Outcome code reference',
       description:
         'Use stable codes so agents, applications, and infrastructure can branch consistently.',
-      columns: ['Code', 'Class', 'Protocol meaning'],
+      columns: ['Code', 'Record location', 'Protocol meaning'],
       rows: [
-        { name: 'ok', value: 'success', detail: 'Capability executed and returned a result.' },
-        { name: 'malformed_input', value: 'validation', detail: 'Invocation or manifest shape is invalid or missing required fields.' },
-        { name: 'unsupported_protocol_version', value: 'compatibility', detail: 'Host and caller do not share a compatible CHP protocol version.' },
-        { name: 'unknown_host', value: 'discovery', detail: 'Caller addressed a host identity that cannot be resolved or trusted.' },
-        { name: 'unavailable_capability', value: 'lifecycle', detail: 'Capability exists but is not currently invokable.' },
-        { name: 'permission_denied', value: 'authorization', detail: 'Caller lacks the entitlement required by the capability.' },
-        { name: 'approval_required', value: 'policy', detail: 'Policy requires approval before execution can proceed.' },
-        { name: 'timeout', value: 'runtime', detail: 'Execution exceeded timeout intent or host timeout policy.' },
-        { name: 'host_error', value: 'runtime', detail: 'Host failed after accepting the invocation boundary.' },
+        { name: 'success', value: 'outcome', detail: 'Capability handler completed and returned data.' },
+        { name: 'failure', value: 'outcome', detail: 'Execution began but failed; inspect error.code for the reason.' },
+        { name: 'denied', value: 'outcome', detail: 'The host rejected execution before the handler completed; inspect denial.code.' },
+        { name: 'skipped', value: 'outcome', detail: 'The host intentionally did not execute a registered capability, commonly because it is disabled.' },
+        { name: 'input_schema_validation_failed', value: 'denial.code or error.code', detail: 'Invocation or payload shape is invalid or missing required fields.' },
+        { name: 'unsupported_protocol_version', value: 'denial.code or discovery error', detail: 'Host and caller do not share a compatible CHP protocol version.' },
+        { name: 'unknown_host', value: 'discovery error', detail: 'Caller addressed a host identity that cannot be resolved or trusted before reaching a host boundary.' },
+        { name: 'capability_disabled', value: 'denial.code', detail: 'Capability exists but is not currently invokable.' },
+        { name: 'entitlement_denied', value: 'denial.code', detail: 'Subject lacks the host-recognized grant or entitlement required by the capability.' },
+        { name: 'approval_required', value: 'denial.code', detail: 'Policy requires approval before execution can proceed.' },
+        { name: 'timeout', value: 'error.code', detail: 'Execution exceeded a host timeout policy after the boundary accepted the invocation.' },
+        { name: 'host_error', value: 'error.code', detail: 'Host failed after accepting the invocation boundary.' },
       ],
     },
     related: [
@@ -1280,7 +1376,7 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
     why:
       'Independent infrastructure needs enough stable fields to replay an invocation without reading private host logs.',
     formal:
-      'An evidence event is an ordered record containing event type, capability identity, host identity, correlation, sequence, timestamp, outcome, and optional hashes.',
+      'ExecutionEvidence is an ordered record containing event type, invocation identity, capability identity, host identity, correlation context, sequence, timestamp, payload, redaction state, and assurance metadata.',
     example:
       'execution_denied records an approval_required decision for schedule_technician under session-abc.',
     referenceTable: {
@@ -1290,14 +1386,18 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
       columns: ['Field', 'Type', 'Protocol meaning'],
       rows: [
         { name: 'event_id', value: 'string', detail: 'Unique evidence event identifier.' },
-        { name: 'evidence_type', value: 'string', detail: 'Stable event type such as execution_started, execution_completed, execution_failed, or execution_denied.' },
+        { name: 'event_type', value: 'string', detail: 'Stable event type such as execution_started, execution_completed, execution_failed, execution_denied, or execution_skipped.' },
+        { name: 'invocation_id', value: 'string', detail: 'Invocation that produced this evidence event.' },
         { name: 'capability_id', value: 'string', detail: 'Capability involved in the decision or execution.' },
-        { name: 'capability_version', value: 'string', detail: 'Capability contract version at invocation time.' },
+        { name: 'capability_version', value: 'string | null', detail: 'Capability contract version at invocation time when known.' },
         { name: 'host_id', value: 'string', detail: 'Host that evaluated or executed the invocation.' },
-        { name: 'correlation_id', value: 'string', detail: 'Replay key shared across invocation, outcome, and telemetry.' },
+        { name: 'correlation.correlation_id', value: 'string', detail: 'Replay key shared across invocation, outcome, and telemetry.' },
         { name: 'sequence', value: 'integer', detail: 'Ordered position in the evidence stream.' },
         { name: 'timestamp', value: 'datetime', detail: 'When the event occurred.' },
-        { name: 'outcome', value: 'string', detail: 'Protocol result associated with this event.' },
+        { name: 'outcome', value: 'success | failure | denied | skipped | null', detail: 'Protocol result associated with this event.' },
+        { name: 'payload', value: 'object', detail: 'Structured, usually redacted event payload.' },
+        { name: 'redacted', value: 'boolean', detail: 'Whether sensitive payload values were redacted.' },
+        { name: 'assurance', value: 'AssuranceMetadata', detail: 'Evidence assurance level and policy metadata.' },
       ],
     },
     related: [
@@ -1310,14 +1410,23 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
       language: 'json',
       code: `{
   "event_id": "evt_8f3a1c",
-  "evidence_type": "execution_denied",
+  "event_type": "execution_denied",
+  "invocation_id": "inv_session_abc_001",
   "capability_id": "schedule_technician",
   "capability_version": "1.0.0",
   "host_id": "service-ops-host",
-  "correlation_id": "session-abc",
+  "correlation": { "correlation_id": "session-abc" },
   "sequence": 2,
   "timestamp": "2026-06-16T15:14:22.104Z",
-  "outcome": "approval_required"
+  "outcome": "denied",
+  "payload": { "policy": "manager_approval" },
+  "redacted": true,
+  "denial": {
+    "code": "approval_required",
+    "message": "manager_approval must approve before execution.",
+    "retryable": true
+  },
+  "assurance": { "level": "S1" }
 }`,
     },
   }),
@@ -1338,16 +1447,16 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
       title: 'Conformance case reference',
       description:
         'Every public host should prove these cases before relying parties treat it as interoperable.',
-      columns: ['Case', 'Expected code', 'What it proves'],
+      columns: ['Case', 'Expected result', 'What it proves'],
       rows: [
-        { name: 'valid_invocation', value: 'ok', detail: 'Happy path executes and emits successful evidence.' },
-        { name: 'malformed_input', value: 'malformed_input', detail: 'Host validates envelope and payload shape before execution.' },
-        { name: 'version_mismatch', value: 'unsupported_protocol_version', detail: 'Host fails closed on incompatible protocol or capability versions.' },
-        { name: 'unknown_host', value: 'unknown_host', detail: 'Infrastructure distinguishes unresolved host identity from host failure.' },
-        { name: 'unavailable_capability', value: 'unavailable_capability', detail: 'Lifecycle state is enforced before invocation side effects.' },
-        { name: 'authorization_denial', value: 'permission_denied', detail: 'Caller entitlement failures return structured denials.' },
-        { name: 'timeout', value: 'timeout', detail: 'Timeout behavior is predictable and machine-readable.' },
-        { name: 'host_error', value: 'host_error', detail: 'Accepted invocations that fail inside the host return structured errors.' },
+        { name: 'valid_invocation', value: 'outcome = success', detail: 'Happy path executes and emits successful evidence.' },
+        { name: 'malformed_input', value: 'denial.code = input_schema_validation_failed', detail: 'Host validates envelope and payload shape before execution.' },
+        { name: 'version_mismatch', value: 'denial.code = unsupported_protocol_version', detail: 'Host fails closed on incompatible protocol or capability versions.' },
+        { name: 'unknown_host', value: 'discovery error = unknown_host', detail: 'Infrastructure distinguishes unresolved host identity from host failure.' },
+        { name: 'unavailable_capability', value: 'denial.code = capability_disabled', detail: 'Lifecycle state is enforced before invocation side effects.' },
+        { name: 'authorization_denial', value: 'denial.code = entitlement_denied', detail: 'Caller entitlement failures return structured denials.' },
+        { name: 'timeout', value: 'error.code = timeout', detail: 'Timeout behavior is predictable and machine-readable.' },
+        { name: 'host_error', value: 'error.code = host_error', detail: 'Accepted invocations that fail inside the host return structured errors.' },
       ],
     },
     related: [
@@ -1361,13 +1470,19 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
       code: `{
   "case": "authorization_denial",
   "invoke": {
+    "invocation_id": "inv_authz_denial_001",
     "capability_id": "schedule_technician",
-    "caller": "agent://planning-assistant"
+    "mode": "sync",
+    "correlation": { "correlation_id": "case-authz-denial" },
+    "subject": { "id": "agent://planning-assistant" },
+    "payload": {},
+    "requested_at": "2026-06-16T15:14:20.000Z"
   },
   "expected": {
-    "ok": false,
-    "code": "permission_denied",
-    "evidence": "execution_denied"
+    "outcome": "denied",
+    "success": false,
+    "denial": { "code": "entitlement_denied" },
+    "event_type": "execution_denied"
   }
 }`,
     },
@@ -1379,20 +1494,32 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     slug: 'unavailable-capability',
     title: 'Unavailable capability',
     summary:
-      'Return unavailable_capability when the manifest knows a capability but lifecycle state prevents invocation.',
-    trigger: 'schedule_technician exists in the manifest, but available is false or the executor is disabled.',
-    code: 'unavailable_capability',
+      'Return skipped or denied with capability_disabled when the host knows a capability but lifecycle state prevents invocation.',
+    trigger: 'schedule_technician exists in the HostDescriptor, but host lifecycle metadata marks the executor unavailable.',
+    code: 'capability_disabled',
     message: 'Capability schedule_technician is not currently invokable.',
-    evidence: 'execution_denied',
+    evidence: 'execution_skipped',
     exampleCode: `{
-  "ok": false,
-  "code": "unavailable_capability",
-  "message": "Capability schedule_technician is not currently invokable.",
-  "evidence": "execution_denied",
-  "details": {
-    "capability_id": "schedule_technician",
-    "lifecycle": "unavailable"
-  }
+  "invocation_id": "inv_unavailable_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-unavailable" },
+  "outcome": "skipped",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "capability_disabled",
+    "message": "Capability schedule_technician is not currently invokable.",
+    "retryable": true,
+    "details": {
+      "capability_id": "schedule_technician",
+      "lifecycle": "unavailable"
+    }
+  },
+  "evidence_ids": ["evt_unavailable_skipped"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`,
   }),
   failureModePage({
@@ -1405,31 +1532,45 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     message: 'Host service-ops-host-v2 is not registered.',
     evidence: 'none before host boundary',
     exampleCode: `{
-  "ok": false,
-  "code": "unknown_host",
-  "message": "Host service-ops-host-v2 is not registered.",
-  "details": {
-    "host_id": "service-ops-host-v2"
-  }
+  "error": {
+    "code": "unknown_host",
+    "message": "Host service-ops-host-v2 is not registered.",
+    "retryable": false,
+    "details": {
+      "host_id": "service-ops-host-v2"
+    }
+  },
+  "host_boundary_reached": false,
+  "evidence_ids": []
 }`,
   }),
   failureModePage({
     slug: 'malformed-input',
     title: 'Malformed input',
     summary:
-      'Return malformed_input when a manifest, invocation envelope, or payload is missing required protocol fields.',
-    trigger: 'The invocation omits caller or sends payload.window as a number when the capability requires a string.',
-    code: 'malformed_input',
-    message: 'Invocation envelope is missing caller.',
+      'Return input_schema_validation_failed when a manifest, invocation envelope, or payload is missing required protocol fields.',
+    trigger: 'The invocation omits subject or sends payload.window as a number when the capability requires a string.',
+    code: 'input_schema_validation_failed',
+    message: 'Invocation envelope is missing subject.',
     evidence: 'execution_denied',
     exampleCode: `{
-  "ok": false,
-  "code": "malformed_input",
-  "message": "Invocation envelope is missing caller.",
-  "evidence": "execution_denied",
-  "details": {
-    "field": "caller"
-  }
+  "invocation_id": "inv_malformed_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-malformed" },
+  "outcome": "denied",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "input_schema_validation_failed",
+    "message": "Invocation envelope is missing subject.",
+    "retryable": true,
+    "details": { "field": "subject" }
+  },
+  "evidence_ids": ["evt_malformed_denied"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`,
   }),
   failureModePage({
@@ -1442,52 +1583,85 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     message: 'Host supports CHP 0.1; caller requested 0.2.',
     evidence: 'execution_denied',
     exampleCode: `{
-  "ok": false,
-  "code": "unsupported_protocol_version",
-  "message": "Host supports CHP 0.1; caller requested 0.2.",
-  "evidence": "execution_denied",
-  "details": {
-    "supported": ["0.1"],
-    "requested": "0.2"
-  }
+  "invocation_id": "inv_version_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-version" },
+  "outcome": "denied",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "unsupported_protocol_version",
+    "message": "Host supports CHP 0.1; caller requested 0.2.",
+    "retryable": false,
+    "details": {
+      "supported": ["0.1"],
+      "requested": "0.2"
+    }
+  },
+  "evidence_ids": ["evt_version_denied"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`,
   }),
   failureModePage({
     slug: 'authorization-denial',
     title: 'Authorization denial',
     summary:
-      'Return permission_denied when caller identity lacks the entitlement required by the capability.',
+      'Return entitlement_denied when subject identity lacks the entitlement required by the capability.',
     trigger: 'Planning Agent invokes schedule_technician without service:dispatch permission.',
-    code: 'permission_denied',
+    code: 'entitlement_denied',
     message: 'service:dispatch is required.',
     evidence: 'execution_denied',
     exampleCode: `{
-  "ok": false,
-  "code": "permission_denied",
-  "message": "service:dispatch is required.",
-  "evidence": "execution_denied",
-  "details": {
-    "required_permission": "service:dispatch"
-  }
+  "invocation_id": "inv_authz_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-authz" },
+  "outcome": "denied",
+  "success": false,
+  "data": null,
+  "error": null,
+  "denial": {
+    "code": "entitlement_denied",
+    "message": "service:dispatch is required.",
+    "retryable": false,
+    "details": {
+      "required_permission": "service:dispatch"
+    }
+  },
+  "evidence_ids": ["evt_authz_denied"],
+  "started_at": null,
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`,
   }),
   failureModePage({
     slug: 'timeout',
     title: 'Timeout',
     summary:
-      'Return timeout when execution exceeds caller timeout intent or host timeout policy.',
-    trigger: 'The caller sets timeout_ms to 3000 and ServiceOpsHost cannot complete scheduling inside that window.',
+      'Return timeout when execution exceeds host timeout policy after the invocation boundary accepts the request.',
+    trigger: 'ServiceOpsHost accepts the invocation and cannot complete scheduling inside its configured execution window.',
     code: 'timeout',
-    message: 'schedule_technician exceeded timeout_ms.',
+    message: 'schedule_technician exceeded host timeout policy.',
     evidence: 'execution_failed',
     exampleCode: `{
-  "ok": false,
-  "code": "timeout",
-  "message": "schedule_technician exceeded timeout_ms.",
-  "evidence": "execution_failed",
-  "details": {
-    "timeout_ms": 3000
-  }
+  "invocation_id": "inv_timeout_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-timeout" },
+  "outcome": "failure",
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "timeout",
+    "message": "schedule_technician exceeded host timeout policy.",
+    "details": { "timeout_ms": 3000 }
+  },
+  "denial": null,
+  "evidence_ids": ["evt_timeout_failed"],
+  "started_at": "2026-06-16T15:14:20.000Z",
+  "completed_at": "2026-06-16T15:14:23.000Z"
 }`,
   }),
   failureModePage({
@@ -1500,13 +1674,22 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     message: 'Dispatch backend failed after invocation started.',
     evidence: 'execution_failed',
     exampleCode: `{
-  "ok": false,
-  "code": "host_error",
-  "message": "Dispatch backend failed after invocation started.",
-  "evidence": "execution_failed",
-  "details": {
-    "retryable": true
-  }
+  "invocation_id": "inv_host_error_001",
+  "capability_id": "schedule_technician",
+  "capability_version": "1.0.0",
+  "correlation": { "correlation_id": "case-host-error" },
+  "outcome": "failure",
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "host_error",
+    "message": "Dispatch backend failed after invocation started.",
+    "details": { "retryable": true }
+  },
+  "denial": null,
+  "evidence_ids": ["evt_host_error_failed"],
+  "started_at": "2026-06-16T15:14:20.000Z",
+  "completed_at": "2026-06-16T15:14:22.104Z"
 }`,
   }),
 ];
