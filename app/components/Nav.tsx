@@ -1,15 +1,11 @@
 export default function Nav() {
   const navItems = [
     ['What is CHP?', '/protocol'],
-    ['How it works', '/examples'],
-    ['Who uses it', '/implementers'],
+    ['Govern', '/govern/agents'],
+    ['Industries', '/industries/software'],
+    ['Why a protocol', '/why-a-protocol'],
     ['Adapters', '/adapters'],
-    ['Architecture', '/protocol'],
-    ['Developers', '/docs'],
-    [
-      'White paper',
-      'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/why-chp.md',
-    ],
+    ['Docs', 'https://docs.capabilityhostprotocol.com'],
   ];
 
   return (
@@ -35,10 +31,10 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="/map"
+            href="/design-partners"
             className="rounded-md border border-[color:var(--color-border-strong)] px-3 py-1.5 text-zinc-300 hover:border-[color:var(--color-capability-active)] hover:text-zinc-50 transition-colors"
           >
-            Map your first capability
+            Become a design partner
           </a>
         </div>
       </div>

@@ -1,5 +1,9 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
+import AgentProofStrip from './components/AgentProofStrip';
+import LaneFork from './components/LaneFork';
+import VerticalGallery from './components/VerticalGallery';
+import DifferentiationSection from './components/DifferentiationSection';
 import StatsStrip from './components/StatsStrip';
 import ConcreteCapabilityExample from './components/ConcreteCapabilityExample';
 import FailureModesSection from './components/FailureModesSection';
@@ -19,6 +23,10 @@ export default function Home() {
     <div className="min-h-screen">
       <Nav />
       <Hero />
+      <AgentProofStrip />
+      <LaneFork />
+      <VerticalGallery />
+      <DifferentiationSection />
       <StatsStrip />
       <ConcreteCapabilityExample />
       <FailureModesSection />

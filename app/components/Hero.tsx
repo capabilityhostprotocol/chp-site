@@ -25,6 +25,8 @@ const EXCHANGE_NODES = [
   },
 ];
 
+// One governed, provable event — whichever actor takes the action.
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-[color:var(--color-border-subtle)]">
@@ -34,32 +36,37 @@ export default function Hero() {
       />
       <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
         <p className="font-mono text-xs text-zinc-500 mb-5 uppercase">
-          Capability Host Protocol
+          Capability Host Protocol · open governance &amp; evidence for capabilities
         </p>
-        <h1 className="text-5xl md:text-7xl font-semibold leading-[0.95] text-zinc-50 mb-7 max-w-4xl">
-          Host what the world can do.
+        <h1 className="text-4xl md:text-6xl font-semibold leading-[1.02] text-zinc-50 mb-7 max-w-4xl">
+          Stay in command of what agents, products, and organizations can do —
+          and prove what they did.
         </h1>
-        <p className="text-lg md:text-xl text-zinc-300 max-w-3xl leading-relaxed mb-9">
-          CHP lets people, agents, products, services, processes, and
-          organizations expose what they can do as composable, governable
-          capabilities.
+        <p className="text-lg md:text-xl text-zinc-300 max-w-3xl leading-relaxed mb-4">
+          CHP is an open protocol that turns every consequential action — taken
+          by a person, an agent, a product, or a business — into a declared,
+          governable, tamper-evidently provable event.
         </p>
-        <div className="flex flex-wrap items-center gap-3 mb-14">
+        <p className="text-base text-zinc-400 max-w-3xl leading-relaxed mb-9">
+          Start where the proof is already real: see exactly what your AI agents
+          did. One command, no application code changes.
+        </p>
+        <div className="flex flex-wrap items-center gap-3 mb-4">
           <a
-            href="/map"
+            href="/govern/agents"
             className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
           >
-            Map your first capability
+            See what your agents did
           </a>
           <a
-            href="https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/why-chp.md"
+            href="/design-partners"
             className="border border-zinc-700 rounded-lg px-4 py-2.5 text-sm text-zinc-300 hover:text-zinc-50 hover:border-zinc-500 transition-colors"
           >
-            Read the white paper
+            Build a vertical with us
           </a>
-          <div className="font-mono text-sm text-zinc-500 px-1 select-all">
-            pip install chp-core
-          </div>
+        </div>
+        <div className="font-mono text-sm text-zinc-500 mb-14 select-all">
+          $ chp hooks install
         </div>
 
         <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-stretch">
@@ -85,6 +92,10 @@ export default function Hero() {
             </div>
           ))}
         </div>
+        <p className="mt-4 font-mono text-xs text-zinc-600 max-w-3xl leading-relaxed">
+          One evidence contract — whether the actor is a person, an agent, a
+          product, or a business. The same declared, governed, replayable event.
+        </p>
       </div>
     </section>
   );
