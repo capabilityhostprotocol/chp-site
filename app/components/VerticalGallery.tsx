@@ -7,13 +7,13 @@ const VERTICALS = [
   },
   {
     name: 'Insurance',
-    href: '/design-partners',
+    href: '/industries/insurance',
     body: 'A provable record of why an automated claim decision went the way it did.',
     status: 'Partner wanted',
   },
   {
     name: 'Legal',
-    href: '/design-partners',
+    href: '/industries/legal',
     body: 'Chain of custody for AI-assisted review; privilege as governed decisions.',
     status: 'Partner wanted',
   },
