@@ -3,6 +3,7 @@ export default function Nav() {
     ['What is CHP?', '/protocol'],
     ['How it works', '/examples'],
     ['Who uses it', '/implementers'],
+    ['Adapters', '/adapters'],
     ['Architecture', '/protocol'],
     ['Developers', '/docs'],
     [

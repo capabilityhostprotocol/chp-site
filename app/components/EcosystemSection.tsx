@@ -1,4 +1,5 @@
 import { PROTOCOL_AUDIENCES } from '../lib/content';
+import { adapterCount } from '../lib/adapters';
 import SectionHeader from './SectionHeader';
 import SectionShell from './SectionShell';
 import SurfacePanel from './SurfacePanel';
@@ -28,6 +29,12 @@ export default function EcosystemSection() {
               </div>
             ))}
           </div>
+          <a
+            href="/adapters"
+            className="mt-6 inline-flex text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
+          >
+            Browse the {adapterCount} governed adapters -&gt;
+          </a>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">

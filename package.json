@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync:adapters": "node scripts/sync-adapters.mjs",
+    "predev": "node scripts/sync-adapters.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-adapters.mjs",
     "build": "next build",
     "start": "next start",
     "test:routes": "node scripts/verify-routes.mjs"
