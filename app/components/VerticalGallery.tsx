@@ -19,19 +19,19 @@ const VERTICALS = [
   },
   {
     name: 'Healthcare',
-    href: '/design-partners',
+    href: '/industries/healthcare',
     body: 'AI acts, a clinician signs off, both land in one replayable trace.',
     status: 'Partner wanted',
   },
   {
     name: 'Manufacturing',
-    href: '/design-partners',
+    href: '/industries/manufacturing',
     body: 'Human and agent commands governed by approval and safety invariants.',
     status: 'Partner wanted',
   },
   {
     name: 'Financial services',
-    href: '/design-partners',
+    href: '/industries/financial',
     body: 'Approvals and model-risk checks captured as a replayable evidence bundle.',
     status: 'Partner wanted',
   },
