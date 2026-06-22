@@ -1,7 +1,18 @@
 {
   "version": "1",
-  "generated": "2026-06-18",
-  "categories": ["network", "filesystem", "ai", "code", "infra", "agents", "cloud", "messaging", "data", "platform"],
+  "generated": "2026-06-22",
+  "categories": [
+    "network",
+    "filesystem",
+    "ai",
+    "code",
+    "infra",
+    "agents",
+    "cloud",
+    "messaging",
+    "data",
+    "platform"
+  ],
   "official": [
     {
       "id": "chp-adapter-http",
@@ -95,7 +106,7 @@
       "id": "chp-adapter-huggingface",
       "pypi": "chp-adapter-huggingface",
       "category": "ai",
-      "description": "Local HuggingFace artifact consumption — pull, pipeline, embed, tokenize, dataset, cache",
+      "description": "Local HuggingFace artifact consumption \u2014 pull, pipeline, embed, tokenize, dataset, cache",
       "status": "certified",
       "tier": 2
     },
@@ -528,6 +539,22 @@
       "pypi": "chp-adapter-auth",
       "category": "platform",
       "description": "Machine-to-machine OAuth2 client credentials and JWT validation",
+      "status": "experimental",
+      "tier": 2
+    },
+    {
+      "id": "chp-adapter-host",
+      "pypi": "chp-adapter-host",
+      "category": "infra",
+      "description": "Report and update the CHP host runtime on a node (governed self-update)",
+      "status": "certified",
+      "tier": 1
+    },
+    {
+      "id": "chp-adapter-mlx",
+      "pypi": "chp-adapter-mlx",
+      "category": "ai",
+      "description": "Apple Silicon native text generation via a local mlx_lm server",
       "status": "experimental",
       "tier": 2
     }

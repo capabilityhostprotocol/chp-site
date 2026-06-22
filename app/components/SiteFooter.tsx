@@ -1,9 +1,23 @@
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-zinc-800/60 py-8 px-6 mt-4">
+    <footer className="border-t border-zinc-800/60 py-10 px-6 mt-4">
+      <div className="max-w-6xl mx-auto mb-8">
+        <p className="text-lg font-semibold text-zinc-300">
+          Host what the world can do.
+        </p>
+        <p className="font-mono text-xs text-zinc-600 mt-1">
+          Capability you can command — and prove.
+        </p>
+      </div>
       <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-600">
         <span>Capability Host Protocol · open protocol · Apache-2.0</span>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <a
+            href="/design-partners"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Design partners
+          </a>
           <a
             href="/protocol"
             className="hover:text-zinc-400 transition-colors"
@@ -11,7 +25,7 @@ export default function SiteFooter() {
             Protocol
           </a>
           <a
-            href="/docs"
+            href="https://docs.capabilityhostprotocol.com"
             className="hover:text-zinc-400 transition-colors"
           >
             Docs
