@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import AdapterCard from './AdapterCard';
-import type { Adapter } from '../lib/adapters';
+import { TIERS, type Adapter } from '../lib/adapters';
 
 type AdapterDirectoryProps = {
   adapters: Adapter[];
@@ -31,12 +31,24 @@ export default function AdapterDirectory({
     [adapters, selected],
   );
 
+  // Group the filtered set into the named tiers, preserving category order.
+  const groups = useMemo(
+    () =>
+      TIERS.map((t) => ({
+        ...t,
+        items: filtered.filter((a) =>
+          t.tier === 1 ? a.tier === 1 : a.tier >= 2,
+        ),
+      })).filter((g) => g.items.length > 0),
+    [filtered],
+  );
+
   const tabs = [ALL, ...available];
 
   return (
     <div>
       <div
-        className="mb-8 flex flex-wrap gap-2"
+        className="mb-4 flex flex-wrap gap-2"
         role="tablist"
         aria-label="Filter adapters by category"
       >
@@ -61,9 +73,28 @@ export default function AdapterDirectory({
         })}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((adapter) => (
-          <AdapterCard key={adapter.id} adapter={adapter} />
+      <p className="mb-8 font-mono text-xs text-zinc-500">
+        Showing {filtered.length} of {adapters.length} adapters
+        {selected !== ALL && ` in ${selected}`}
+      </p>
+
+      <div className="space-y-12">
+        {groups.map((group) => (
+          <section key={group.label}>
+            <div className="mb-4 flex items-baseline gap-3 border-b border-[color:var(--color-border-subtle)] pb-2">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-300">
+                {group.label}
+              </h2>
+              <span className="font-mono text-xs text-zinc-600">
+                {group.blurb} · {group.items.length}
+              </span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {group.items.map((adapter) => (
+                <AdapterCard key={adapter.id} adapter={adapter} />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </div>
