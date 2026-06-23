@@ -1,0 +1,34 @@
+---
+title: "Logs aren't evidence"
+description: "When an AI agent does something consequential and someone asks what happened, scattered application logs aren't an answer. Here's the difference between a log and evidence — and why it's a protocol problem."
+date: "2026-06-18"
+---
+
+Put an agent into a real workflow and one question arrives on a schedule: *what did it actually do?* It might arrive from a security reviewer before launch, an auditor after an incident, or a customer in a dispute. The honest answer, for most teams today, is "let me check the logs" — followed by an hour of grep.
+
+Logs feel like they should be the record. They aren't. Here's the gap.
+
+## A log is an implementation detail
+
+Logs are written by whoever wrote the code, in whatever format they chose, at whatever points they remembered. They're optional, inconsistent across services, and easy to lose. Crucially, a log line is a *side effect* of execution, not a *contract* of it. Nothing guarantees the log exists, that it's complete, or that it hasn't been edited.
+
+So when you try to reconstruct "what the agent did," you're stitching together partial, untrusted fragments across systems — and hoping the important moment was logged at all.
+
+## Evidence is part of the contract
+
+Evidence is different in four specific ways:
+
+- **It's mandatory, not optional.** Every attempt to do something emits a structured event — started, completed, failed, or *denied* — because the boundary requires it, not because someone remembered to log.
+- **Denials are first-class.** "The action was blocked by policy" is a recorded outcome, not a swallowed exception or a missing line.
+- **It's correlated.** One id ties the whole session together, across hosts, so you can replay a causal trace instead of guessing.
+- **It's tamper-evident.** The record is hash-chained, so an altered or missing event is detectable.
+
+The shorthand: a log says *something probably happened*. Evidence says *this happened, here's the ordered trail, and you can prove it wasn't changed.*
+
+## Why it has to be a protocol
+
+You can't bolt trustworthy evidence onto logging after the fact, because the thing that makes evidence trustworthy is that it's produced *at the boundary*, the same way, every time, independently of the application. That's a protocol concern — a contract about how execution is observed — not a library you sprinkle in.
+
+That's what the [Capability Host Protocol](https://capabilityhostprotocol.com) does: it makes structured, replayable, tamper-evident evidence part of the invocation itself. And the place it's already real today is agents — [one command](https://capabilityhostprotocol.com/govern/agents) captures every tool call your AI agent makes as evidence you can replay.
+
+If "we can't prove what the agent did" is the thing blocking your rollout, that's the gap this closes.

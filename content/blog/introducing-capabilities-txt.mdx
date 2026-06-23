@@ -1,0 +1,47 @@
+---
+title: "Introducing capabilities.txt: a discovery standard for the agentic web"
+description: "Agents can find what to read (llms.txt) and respect what to crawl (robots.txt). There's no standard way for a host to advertise what it can do. capabilities.txt is that missing layer."
+date: "2026-06-22"
+---
+
+The web learned to talk to machines in layers. `robots.txt` told crawlers what they may access. Sitemaps told them what exists. More recently, `llms.txt` started telling language models what's worth reading. Each one answered a narrow question for an automated reader.
+
+There's a question none of them answer: **what can this host actually do?**
+
+That question matters now because agents have stopped only *reading* the web and started *acting* on it. An agent that lands on your site can summarize your docs. What it can't do is discover, in any standard way, that you expose a "create support ticket" capability, or "check inventory," or "approve a refund" — and how it's allowed to call them. That discovery happens today through bespoke integrations, one vendor at a time.
+
+We think it should happen through a file.
+
+## What capabilities.txt is
+
+`capabilities.txt` is a public, well-known file where a host declares the capabilities it exposes, so any agent can discover what it can invoke. Two forms:
+
+- **`/capabilities.txt`** — human- and agent-readable markdown: capabilities grouped by category, each with an id, version, and one-line description.
+- **`/.well-known/capabilities.json`** — the structured form: an array of capability references, each resolvable to a full descriptor.
+
+It's deliberately small. `llms.txt` worked because it was simple enough to adopt in an afternoon. `capabilities.txt` follows the same rule.
+
+> robots.txt advertised what crawlers may read. llms.txt advertised what LLMs should read. capabilities.txt advertises what agents can *do*.
+
+## What it is not
+
+It's not a replacement for MCP. The [Model Context Protocol](https://modelcontextprotocol.io) is a stateful connection-and-invocation protocol — a client connects to a server and calls tools. `capabilities.txt` is the layer *before* that: a static, public, crawlable advertisement that an agent (or a search engine) can read with no live connection, and that **points to** your MCP, HTTP, or other endpoint for the actual call. Discovery and invocation are different jobs. capabilities.txt does discovery; it hands off invocation.
+
+It's also not OpenAPI. OpenAPI describes the shape of an HTTP API. A capability declaration is governance-aware: it can carry *who* may invoke a capability, *under what policy*, and *whether it emits provable evidence* — the part a careful agent, or an auditor, actually needs.
+
+## Why we're the ones proposing it
+
+We build the [Capability Host Protocol](https://capabilityhostprotocol.com) — an open protocol for declaring, governing, and proving what agents and systems do. CHP already has a schema for exactly this unit: the `CapabilityDescriptor`. So `capabilities.txt` isn't a new idea bolted on; it's the natural public face of something we already needed.
+
+To make the proposal concrete rather than theoretical, we ship a working reference on our own site. The capability surface of the CHP adapter ecosystem is published, right now, at:
+
+- [`/capabilities.txt`](https://capabilityhostprotocol.com/capabilities.txt)
+- [`/.well-known/capabilities.json`](https://capabilityhostprotocol.com/.well-known/capabilities.json)
+
+A point worth being honest about: those files list the **capabilities the open adapters declare** — what the protocol *can* host. They are not a live readout of anyone's running systems.
+
+## Where this goes
+
+This is a proposal with a reference, not a finished standard. The convention is simple on purpose, complementary to MCP on purpose, and grounded in a real, open schema on purpose. What it needs now is other hosts publishing their own — and feedback on the format from the people who'd consume it.
+
+If you expose capabilities that agents should be able to find, [let's define it together](https://capabilityhostprotocol.com/design-partners). Read the full proposal at [capabilityhostprotocol.com/capabilities-txt](https://capabilityhostprotocol.com/capabilities-txt).
