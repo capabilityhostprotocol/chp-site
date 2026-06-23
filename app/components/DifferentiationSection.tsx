@@ -1,4 +1,4 @@
-import EvidenceContractDiagram from './EvidenceContractDiagram';
+import CompareTable from './motif/CompareTable';
 
 export default function DifferentiationSection() {
   return (
@@ -14,7 +14,47 @@ export default function DifferentiationSection() {
           call as the same governed, provable event — so you can prove an entire
           process end to end.
         </p>
-        <EvidenceContractDiagram />
+        <CompareTable
+          columns={[
+            { label: 'Tool protocols', sub: 'MCP, tool-calling' },
+            { label: 'Observability', sub: 'traces, spans' },
+            { label: 'CHP', sub: 'evidence', accent: true },
+          ]}
+          rows={[
+            {
+              dimension: 'Answers',
+              cells: [
+                'What can the agent call?',
+                'Is the system healthy?',
+                'What happened — and can I prove it?',
+              ],
+            },
+            {
+              dimension: 'Record',
+              cells: [
+                'Tool calls, if logged',
+                'Sampled traces, mutable',
+                'Mandatory, tamper-evident evidence',
+              ],
+            },
+            {
+              dimension: 'Denials',
+              cells: [
+                'Protocol errors',
+                'A failed span',
+                'First-class outcomes, with reason',
+              ],
+            },
+            {
+              dimension: 'Spans',
+              cells: [
+                'One agent, one app',
+                'One system',
+                'People, agents, products — one trace',
+              ],
+            },
+          ]}
+        />
         <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm">
           <a
             href="/why-a-protocol"
