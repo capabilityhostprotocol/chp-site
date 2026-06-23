@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import ConcreteCapabilityExample from '../components/ConcreteCapabilityExample';
+import VisualGrammar from '../components/VisualGrammar';
 import ProtocolArtifactSection from '../components/ProtocolArtifactSection';
 import ProtocolGuaranteesSection from '../components/ProtocolGuaranteesSection';
 import EvidenceFoundation from '../components/EvidenceFoundation';
@@ -42,6 +43,7 @@ export default function HowItWorksPage() {
         </section>
 
         <ConcreteCapabilityExample />
+        <VisualGrammar />
         <ProtocolArtifactSection />
         <ProtocolGuaranteesSection />
         <EvidenceFoundation />
