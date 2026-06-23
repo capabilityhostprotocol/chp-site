@@ -8,6 +8,7 @@ const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://capabilityhostprotocol.com'),
   title: 'Capability Host Protocol',
   description:
     'The open protocol for hosted capability: expose, discover, invoke, compose, and govern what people, agents, products, services, processes, and organizations can do.',
