@@ -1,3 +1,5 @@
+import FieldMotif from './FieldMotif';
+
 const EXCHANGE_NODES = [
   {
     label: 'Human',
@@ -30,9 +32,12 @@ const EXCHANGE_NODES = [
 export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-[color:var(--color-border-subtle)]">
+      <div aria-hidden="true" className="absolute inset-0 opacity-60">
+        <FieldMotif />
+      </div>
       <div
         aria-hidden="true"
-        className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(to_right,rgba(161,161,170,0.25)_1px,transparent_1px),linear-gradient(to_bottom,rgba(161,161,170,0.25)_1px,transparent_1px)] [background-size:44px_44px]"
+        className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,rgba(161,161,170,0.25)_1px,transparent_1px),linear-gradient(to_bottom,rgba(161,161,170,0.25)_1px,transparent_1px)] [background-size:44px_44px]"
       />
       <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
         <p className="font-mono text-xs text-zinc-500 mb-5 uppercase">
