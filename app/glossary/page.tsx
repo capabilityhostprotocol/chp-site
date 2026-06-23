@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
+import Glyph, { type GlyphName } from '../components/motif/Glyph';
 
 export const metadata: Metadata = {
   title: 'Glossary — Capability Host Protocol',
@@ -15,6 +16,24 @@ type Term = {
   body: string;
   href?: string;
   hrefLabel?: string;
+};
+
+// Each primitive gets its identifying glyph — wayfinding marks that frame the
+// vocabulary visually.
+const TERM_GLYPHS: Record<string, GlyphName> = {
+  Capability: 'capability',
+  'Capability boundary': 'boundary',
+  'Capability host': 'host',
+  Invocation: 'invocation',
+  Evidence: 'evidence',
+  'Hash chain': 'chain',
+  Correlation: 'correlation',
+  Denial: 'denial',
+  Replay: 'replay',
+  Conformance: 'conformance',
+  'Capability descriptor': 'descriptor',
+  Adapter: 'adapter',
+  'capabilities.txt': 'discovery',
 };
 
 const TERMS: Term[] = [
@@ -148,6 +167,11 @@ export default function GlossaryPage() {
                 className="grid md:grid-cols-[260px_1fr] gap-x-8 gap-y-2 py-8 scroll-mt-24"
               >
                 <dt>
+                  {TERM_GLYPHS[t.term] && (
+                    <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-zinc-800 bg-zinc-900/60 text-[color:var(--color-signal-cyan)] mb-3">
+                      <Glyph name={TERM_GLYPHS[t.term]} size={20} />
+                    </span>
+                  )}
                   <h2 className="text-xl font-semibold text-zinc-100">
                     {t.term}
                   </h2>
