@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import AdapterDirectory from '../components/AdapterDirectory';
-import { adapterCount, categories, officialAdapters } from '../lib/adapters';
+import ItemListLd from '../components/ItemListLd';
+import {
+  adapterCount,
+  categories,
+  officialAdapters,
+  displayName,
+} from '../lib/adapters';
+import { adapterSlug } from '../lib/capabilities';
 
 export const metadata: Metadata = {
   title: 'Adapters - Capability Host Protocol',
@@ -13,6 +20,13 @@ export const metadata: Metadata = {
 export default function AdaptersPage() {
   return (
     <div className="min-h-screen">
+      <ItemListLd
+        name="CHP official adapters"
+        items={officialAdapters.map((a) => ({
+          name: displayName(a.id),
+          url: `https://capabilityhostprotocol.com/adapters/${adapterSlug(a.id)}`,
+        }))}
+      />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">

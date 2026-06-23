@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import { USE_CASES } from '../components/UseCasesSection';
+import ItemListLd from '../components/ItemListLd';
 
 export const metadata: Metadata = {
   title: 'Use cases - Capability Host Protocol',
@@ -27,6 +28,14 @@ const CONTEXT: Record<string, string> = {
 export default function UseCasesPage() {
   return (
     <div className="min-h-screen">
+      <ItemListLd
+        name="What people use CHP for"
+        items={USE_CASES.map((u) => ({
+          name: u.title,
+          url: `https://capabilityhostprotocol.com${u.href}`,
+          description: u.body,
+        }))}
+      />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">

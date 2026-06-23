@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import { getAllPosts, formatDate } from '../lib/blog';
+import ItemListLd from '../components/ItemListLd';
 
 export const metadata: Metadata = {
   title: 'Blog - Capability Host Protocol',
@@ -14,6 +15,14 @@ export default function BlogIndexPage() {
   const posts = getAllPosts();
   return (
     <div className="min-h-screen">
+      <ItemListLd
+        name="Capability Host Protocol — writing"
+        items={posts.map((p) => ({
+          name: p.title,
+          url: `https://capabilityhostprotocol.com/blog/${p.slug}`,
+          description: p.description,
+        }))}
+      />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
