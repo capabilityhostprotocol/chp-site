@@ -132,8 +132,12 @@ export default function DesignSystemPage() {
             Large display type, generous bands.
           </h2>
           <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-8">
-            Utility classes in <code className="font-mono text-zinc-400">globals.css</code>{' '}
-            carry the evolved scale. Headlines are fluid (<code className="font-mono text-zinc-400">clamp()</code>),
+            <span className="text-zinc-200">Space Grotesk</span> for display,{' '}
+            <span className="text-zinc-200">Inter</span> for body,{' '}
+            <span className="text-zinc-200">JetBrains Mono</span> for instrument
+            labels. Utility classes in{' '}
+            <code className="font-mono text-zinc-400">globals.css</code> carry the
+            scale — headlines are fluid (<code className="font-mono text-zinc-400">clamp()</code>),
             tighter at large sizes; bands set a calm vertical rhythm.
           </p>
           <div className="overflow-hidden rounded-lg border border-zinc-800">

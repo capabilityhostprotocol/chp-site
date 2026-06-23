@@ -125,15 +125,17 @@
 
   /* Display type scale — larger, tighter, more weight contrast. */
   .display-1 {
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
     font-size: clamp(2.75rem, 6.5vw, 5.25rem);
-    line-height: 1.01;
-    letter-spacing: -0.025em;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
     font-weight: 600;
   }
   .display-2 {
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
     font-size: clamp(2rem, 4.2vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
     font-weight: 600;
   }
   .lede {
