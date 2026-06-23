@@ -1,0 +1,31 @@
+---
+title: "Who commanded the machine?"
+description: "Work orders, dispatches, and machine commands are increasingly issued by software and agents, not just people. When something goes wrong, the question is who commanded it, whether it was approved, and whether a safety condition was checked."
+date: "2026-05-12"
+---
+
+On a plant floor, "who did that?" has always been a serious question. It's about to get harder to answer, because the thing that issued the command increasingly isn't a person.
+
+## Commands without a commander
+
+Work orders, dispatches, and machine commands are more and more issued by software and agents, not just operators. That's efficient, until something goes wrong and a safety incident or an audit asks the only questions that matter: **who or what commanded this action, was it approved, and was the required safety condition checked?**
+
+Answering that today is a manual investigation. The command's origin is in one service, the approval (if there was one) in another, the safety interlock state in a PLC or historian, the downstream effect across several edge devices. Stitching those into a defensible account of a single event is exactly the slow, contestable reconstruction you don't want after an incident.
+
+## A command that has to pass the boundary
+
+CHP treats a command as a crossing of a capability boundary — and a boundary is a place you can put conditions:
+
+- **Approval required.** A consequential command can require authorization before it's allowed to proceed.
+- **Safety invariant declared.** The capability can declare a condition that must hold; if it fails, the command is **denied at the boundary** rather than issued and regretted.
+- **One correlation across the floor.** Hosts on many machines share a correlation, so a process that spans several devices replays as a single ordered trace — not a forensic reassembly across PLCs and services.
+
+"Who commanded this, and was the check in place?" becomes a record you read, not an investigation you run.
+
+One scope note worth being precise about: **real-time control loops stay out of scope.** CHP isn't in the millisecond safety path. It governs and evidences the *boundary above* the control layer — the command, the authorization, the decision — where accountability actually lives.
+
+## What's real, and what we'd build with you
+
+The capability boundary, required approvals, declared invariants with deny-at-boundary, and correlated replay exist as primitives today. The plant-grade layer — integration with your MES, historian, and device topology, plus retention shaped to your audit obligations — is what we build with a [design partner](https://capabilityhostprotocol.com/design-partners).
+
+If automated and agent-issued commands are entering your operation faster than your ability to prove they were authorized and safe, [bring a real workflow](https://capabilityhostprotocol.com/industries/manufacturing). We'll map command, approval, and invariant onto the protocol together.
