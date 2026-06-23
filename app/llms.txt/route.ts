@@ -8,6 +8,7 @@ const BODY = `# Capability Host Protocol (CHP)
 - [How it works](https://capabilityhostprotocol.com/how-it-works): the mechanics — capability, host, invocation, evidence.
 - [Why a protocol](https://capabilityhostprotocol.com/why-a-protocol): why an open, conformance-backed boundary, not a feature.
 - [Use cases](https://capabilityhostprotocol.com/use-cases): the concrete jobs CHP does.
+- [Glossary](https://capabilityhostprotocol.com/glossary): the core terms — capability, boundary, host, invocation, evidence, hash chain, correlation, denial, replay, conformance — defined.
 
 ## Govern (what you can govern)
 - [Agents](https://capabilityhostprotocol.com/govern/agents): capture every agent tool call as replayable, tamper-evident evidence (real today).

@@ -37,6 +37,12 @@ export default function SiteFooter() {
             Protocol
           </a>
           <a
+            href="/glossary"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Glossary
+          </a>
+          <a
             href="https://docs.capabilityhostprotocol.com"
             className="hover:text-zinc-400 transition-colors"
           >
