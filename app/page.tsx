@@ -7,6 +7,7 @@ import VerticalGallery from './components/VerticalGallery';
 import DifferentiationSection from './components/DifferentiationSection';
 import StatsStrip from './components/StatsStrip';
 import GoDeeper from './components/GoDeeper';
+import ChainDivider from './components/motif/ChainDivider';
 import GitHubCTA from './components/GitHubCTA';
 import SiteFooter from './components/SiteFooter';
 
@@ -26,6 +27,7 @@ export default function Home() {
         <Applications />
         <VerticalGallery />
         <DifferentiationSection />
+        <ChainDivider />
         <StatsStrip />
         <GoDeeper />
         <GitHubCTA />
