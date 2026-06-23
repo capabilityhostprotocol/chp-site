@@ -58,10 +58,10 @@ export default function ImplementersPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Implementers
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             Adopt CHP from the side of the boundary you own.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
@@ -75,7 +75,7 @@ export default function ImplementersPage() {
           <div className="grid md:grid-cols-2 gap-4">
             {PATHS.map((path) => (
               <div key={path.role} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5 flex flex-col">
-                <p className="font-mono text-xs text-zinc-500 uppercase mb-4">{path.role}</p>
+                <p className="eyebrow mb-4">{path.role}</p>
                 <h2 className="text-lg font-semibold text-zinc-100 mb-3">{path.outcome}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed flex-1">{path.first}</p>
                 <a
@@ -92,10 +92,10 @@ export default function ImplementersPage() {
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
             <div>
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+              <p className="eyebrow mb-3">
                 Readiness checklist
               </p>
-              <h2 className="text-3xl font-semibold text-zinc-100 mb-4">
+              <h2 className="display-2 text-zinc-100 mb-4">
                 What a credible implementation should prove.
               </h2>
               <p className="text-sm text-zinc-400 leading-relaxed">

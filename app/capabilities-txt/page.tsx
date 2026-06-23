@@ -58,8 +58,8 @@ function Section({
 }) {
   return (
     <section className="max-w-6xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase mb-3">{eyebrow}</p>
-      <h2 className="text-2xl md:text-3xl font-semibold text-zinc-100 mb-6 max-w-3xl">
+      <p className="eyebrow mb-3">{eyebrow}</p>
+      <h2 className="display-2 text-zinc-100 mb-6 max-w-3xl">
         {title}
       </h2>
       {children}
@@ -87,10 +87,10 @@ export default function CapabilitiesTxtPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             A proposal · with a working reference
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             capabilities.txt
           </h1>
           <p className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mb-4">

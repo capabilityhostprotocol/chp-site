@@ -19,8 +19,8 @@ export default function BlogIndexPage() {
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-4">Blog</p>
-              <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 max-w-3xl">
+              <p className="eyebrow mb-4">Blog</p>
+              <h1 className="display-1 text-zinc-50 max-w-3xl">
                 On governing and proving what agents do.
               </h1>
             </div>

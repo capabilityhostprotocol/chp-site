@@ -48,10 +48,10 @@ export default function ConformancePage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Conformance
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             Independent hosts should fail, deny, and prove behavior the same way.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
@@ -74,10 +74,10 @@ export default function ConformancePage() {
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
           <div className="mb-8">
-            <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+            <p className="eyebrow mb-3">
               Test shape
             </p>
-            <h2 className="text-3xl font-semibold text-zinc-100 mb-3">
+            <h2 className="display-2 text-zinc-100 mb-3">
               A useful suite covers the whole lifecycle.
             </h2>
             <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">

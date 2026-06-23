@@ -16,7 +16,7 @@ const SAFETY_FEATURES = [
 export default function SafetySection() {
   return (
     <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">Safety &amp; Governance</p>
+      <p className="eyebrow tracking-widest mb-3">Safety &amp; Governance</p>
       <h2 className="text-lg font-semibold text-zinc-100 mb-2">
         Governance isn&apos;t an add-on.
       </h2>

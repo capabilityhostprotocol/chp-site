@@ -33,10 +33,10 @@ export default function GovernOrganizationsPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Govern · Organizations &amp; processes
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             One trace across every host and partner.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">

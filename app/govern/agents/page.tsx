@@ -43,10 +43,10 @@ export default function GovernAgentsPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Govern · Agents
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             See exactly what your agents did.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl mb-4">
@@ -77,10 +77,10 @@ export default function GovernAgentsPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+          <p className="eyebrow mb-3">
             What you get
           </p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-10 max-w-3xl">
+          <h2 className="display-2 text-zinc-100 mb-10 max-w-3xl">
             Observability that is also evidence.
           </h2>
           <div className="grid md:grid-cols-3 gap-4">

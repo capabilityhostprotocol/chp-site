@@ -79,7 +79,7 @@ export default async function AdapterDetailPage({ params }: Params) {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-2">
+          <p className="eyebrow mb-2">
             Capabilities
           </p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">

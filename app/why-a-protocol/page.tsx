@@ -42,10 +42,10 @@ export default function WhyAProtocolPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Why a protocol
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             Evidence you can trust has to outlive the system that made it.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
@@ -74,10 +74,10 @@ export default function WhyAProtocolPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+          <p className="eyebrow mb-3">
             What it does not replace
           </p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-4 max-w-3xl">
+          <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
             CHP is deliberately narrow.
           </h2>
           <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">

@@ -3,7 +3,7 @@ import { PLATFORM_GROUPS } from '../lib/content';
 export default function PlatformGrid() {
   return (
     <section className="max-w-5xl mx-auto px-6 py-16 border-t border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">Platform</p>
+      <p className="eyebrow tracking-widest mb-3">Platform</p>
       <h2 className="text-2xl font-semibold text-zinc-100 mb-2">
         Every layer of a production AI system.
       </h2>
