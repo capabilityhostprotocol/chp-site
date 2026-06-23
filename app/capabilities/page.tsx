@@ -71,7 +71,7 @@ export default function CapabilitiesPage() {
                 <a
                   key={a.slug}
                   href={`/adapters/${a.slug}`}
-                  className="group surface-raised p-5 hover:border-zinc-600 transition-colors"
+                  className="group surface-raised hover-lift p-5 hover:border-zinc-600 transition-colors"
                 >
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <h3 className="text-base font-semibold text-zinc-100">
@@ -97,7 +97,7 @@ export default function CapabilitiesPage() {
                     )}
                   </div>
                   <span className="mt-4 inline-block text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
-                    {a.name} capabilities -&gt;
+                    {a.name} capabilities →
                   </span>
                 </a>
               ))}

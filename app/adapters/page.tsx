@@ -52,7 +52,7 @@ export default function AdaptersPage() {
               href="/docs"
               className="shrink-0 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
             >
-              Adapter authoring guide -&gt;
+              Adapter authoring guide →
             </a>
           </div>
         </section>

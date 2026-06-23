@@ -28,7 +28,7 @@ export default function BlogIndexPage() {
               href="/feed.xml"
               className="hidden sm:inline font-mono text-xs text-zinc-400 hover:text-zinc-300 transition-colors whitespace-nowrap"
             >
-              RSS -&gt;
+              RSS →
             </a>
           </div>
         </section>

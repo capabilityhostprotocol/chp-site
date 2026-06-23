@@ -18,7 +18,7 @@ export default function ProtocolGuaranteesSection() {
             href="/protocol"
             className="whitespace-nowrap text-sm text-zinc-400 transition-colors hover:text-zinc-100"
           >
-            Explore the protocol -&gt;
+            Explore the protocol →
           </a>
         }
       />

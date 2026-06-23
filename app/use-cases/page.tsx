@@ -65,7 +65,7 @@ export default function UseCasesPage() {
                   href={u.href}
                   className="mt-5 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
                 >
-                  {u.status === 'Live' ? 'See it' : 'How it would work'} -&gt;
+                  {u.status === 'Live' ? 'See it' : 'How it would work'} →
                 </a>
               </div>
             ))}

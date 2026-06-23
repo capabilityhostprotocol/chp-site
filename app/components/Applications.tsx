@@ -58,7 +58,7 @@ export default function Applications() {
             <a
               key={u.title}
               href={u.href}
-              className="group border border-zinc-800 bg-zinc-900/60 rounded-xl p-7 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group surface-raised hover-lift p-7 flex flex-col"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <h3 className="text-xl font-semibold text-zinc-100 leading-snug">
@@ -72,7 +72,7 @@ export default function Applications() {
                 {u.body}
               </p>
               <span className="mt-6 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
-                {u.status === 'Live' ? 'See it' : 'How it would work'} -&gt;
+                {u.status === 'Live' ? 'See it' : 'How it would work'} →
               </span>
             </a>
           ))}
@@ -81,7 +81,7 @@ export default function Applications() {
           href="/use-cases"
           className="inline-block mt-8 text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
         >
-          All use cases -&gt;
+          All use cases →
         </a>
       </div>
     </section>

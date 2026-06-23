@@ -56,7 +56,7 @@ export default function LegalIndustryPage() {
             href="/blog/chain-of-custody-for-ai-review"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “Chain of custody for AI-assisted review” -&gt;
+            Read the essay: “Chain of custody for AI-assisted review” →
           </a>
         </section>
 

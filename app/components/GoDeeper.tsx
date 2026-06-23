@@ -31,7 +31,7 @@ export default function GoDeeper() {
             <a
               key={l.label}
               href={l.href}
-              className="group surface-raised p-5 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group surface-raised hover-lift p-5 flex flex-col hover:border-zinc-600 transition-colors"
             >
               <h3 className="text-base font-semibold text-zinc-100 mb-2">
                 {l.label}
@@ -40,7 +40,7 @@ export default function GoDeeper() {
                 {l.body}
               </p>
               <span className="mt-4 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
-                Read -&gt;
+                Read →
               </span>
             </a>
           ))}

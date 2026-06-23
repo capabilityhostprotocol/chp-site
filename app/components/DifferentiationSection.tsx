@@ -20,19 +20,19 @@ export default function DifferentiationSection() {
             href="/why-a-protocol"
             className="text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Why a protocol, not a feature -&gt;
+            Why a protocol, not a feature →
           </a>
           <a
             href="/blog/evidence-is-not-telemetry"
             className="text-zinc-400 hover:text-zinc-100 transition-colors"
           >
-            Evidence vs telemetry -&gt;
+            Evidence vs telemetry →
           </a>
           <a
             href="/blog/chp-and-mcp"
             className="text-zinc-400 hover:text-zinc-100 transition-colors"
           >
-            CHP and MCP -&gt;
+            CHP and MCP →
           </a>
         </div>
       </div>

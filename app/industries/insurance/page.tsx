@@ -56,7 +56,7 @@ export default function InsuranceIndustryPage() {
             href="/blog/proving-why-a-claim-was-denied"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “Proving why a claim was denied” -&gt;
+            Read the essay: “Proving why a claim was denied” →
           </a>
         </section>
 

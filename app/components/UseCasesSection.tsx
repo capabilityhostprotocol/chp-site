@@ -54,7 +54,7 @@ export default function UseCasesSection() {
             href="/use-cases"
             className="hidden sm:inline text-sm text-zinc-400 hover:text-zinc-100 transition-colors whitespace-nowrap"
           >
-            All use cases -&gt;
+            All use cases →
           </a>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -62,7 +62,7 @@ export default function UseCasesSection() {
             <a
               key={u.title}
               href={u.href}
-              className="group surface-raised p-5 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group surface-raised hover-lift p-5 flex flex-col hover:border-zinc-600 transition-colors"
             >
               <div className="flex items-start justify-between gap-2 mb-2">
                 <h3 className="text-base font-semibold text-zinc-100">
@@ -76,7 +76,7 @@ export default function UseCasesSection() {
                 {u.body}
               </p>
               <span className="mt-4 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
-                {u.status === 'Live' ? 'See it' : 'How it would work'} -&gt;
+                {u.status === 'Live' ? 'See it' : 'How it would work'} →
               </span>
             </a>
           ))}

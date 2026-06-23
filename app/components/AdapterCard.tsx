@@ -40,7 +40,7 @@ export default function AdapterCard({ adapter }: { adapter: Adapter }) {
         href={`/adapters/${adapter.id.replace(/^chp-adapter-/, '')}`}
         className="mt-3 inline-block text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
       >
-        View capabilities -&gt;
+        View capabilities →
       </a>
     </SurfacePanel>
   );

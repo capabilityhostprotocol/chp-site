@@ -125,7 +125,7 @@ export default async function AdapterDetailPage({ params }: Params) {
             href="/capabilities"
             className="text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            See the full capability catalog -&gt;
+            See the full capability catalog →
           </a>
         </section>
       </main>

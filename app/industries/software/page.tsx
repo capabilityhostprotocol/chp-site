@@ -53,7 +53,7 @@ export default function SoftwareIndustryPage() {
             href="/blog/the-security-review-that-stalls-your-agent"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “The security review that stalls your agent” -&gt;
+            Read the essay: “The security review that stalls your agent” →
           </a>
         </section>
 
@@ -93,7 +93,7 @@ export default function SoftwareIndustryPage() {
                 href="/govern/agents"
                 className="text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
               >
-                See how the capture works -&gt;
+                See how the capture works →
               </a>
             </div>
             <CodePanel

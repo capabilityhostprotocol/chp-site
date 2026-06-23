@@ -33,7 +33,7 @@ export default function EcosystemSection() {
             href="/adapters"
             className="mt-6 inline-flex text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Browse the {adapterCount} governed adapters -&gt;
+            Browse the {adapterCount} governed adapters →
           </a>
         </div>
 
