@@ -172,7 +172,7 @@ export default function DesignPartnersPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 pb-20">
-          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-signature p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Don&apos;t see your domain?
