@@ -11,14 +11,12 @@ const POINTS = [
 export default function AgentProofStrip() {
   return (
     <section className="border-b border-zinc-800/60">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-          Start where the proof is real
-        </p>
-        <h2 className="text-2xl md:text-3xl font-semibold text-zinc-100 mb-8 max-w-3xl">
-          See exactly what your agents did — in one command.
+      <div className="band">
+        <p className="eyebrow mb-4">Start where the proof is real</p>
+        <h2 className="display-2 text-zinc-100 mb-10 max-w-3xl">
+          One command. Every tool call, captured.
         </h2>
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-6 items-start">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 items-start">
           <CodePanel code={HOOKS_INSTALL} label="chp hooks install" language="bash" />
           <div>
             <ul className="space-y-3 mb-6">
