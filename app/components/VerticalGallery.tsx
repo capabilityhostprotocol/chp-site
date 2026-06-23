@@ -54,7 +54,7 @@ export default function VerticalGallery() {
             <a
               key={v.name}
               href={v.href}
-              className="group border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group surface-raised p-5 flex flex-col hover:border-zinc-600 transition-colors"
             >
               <div className="flex items-center justify-between gap-2 mb-3">
                 <h3 className="text-base font-semibold text-zinc-100">

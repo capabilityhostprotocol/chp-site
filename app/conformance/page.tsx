@@ -64,7 +64,7 @@ export default function ConformancePage() {
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {AREAS.map((area) => (
-              <div key={area.title} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5">
+              <div key={area.title} className="surface-raised p-5">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{area.title}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed">{area.body}</p>
               </div>
@@ -100,7 +100,7 @@ export default function ConformancePage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Use the suite as a public trust signal.

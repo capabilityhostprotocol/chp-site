@@ -55,7 +55,7 @@ export default function GovernOrganizationsPage() {
             {STEPS.map((s) => (
               <div
                 key={s.n}
-                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6"
+                className="surface-raised p-6"
               >
                 <p className="font-mono text-xs text-zinc-600 mb-3">{s.n}</p>
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">
@@ -74,7 +74,7 @@ export default function GovernOrganizationsPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Work that spans hosts or partners?

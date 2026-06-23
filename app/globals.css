@@ -50,6 +50,40 @@
     --shadow-surface: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
     --shadow-glow-signal: 0 0 32px rgba(40, 217, 242, 0.16);
     --shadow-glow-policy: 0 0 28px rgba(217, 154, 43, 0.14);
+
+    /* Radii scale */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+
+    /* Materials — strokes, fills, and the "lit edge" highlight */
+    --stroke-hairline: rgba(209, 213, 219, 0.1);
+    --stroke-strong: rgba(209, 213, 219, 0.2);
+    --fill-flat: rgba(17, 24, 39, 0.3);
+    --fill-raised: rgba(22, 27, 34, 0.55);
+    --fill-sunken: rgba(5, 7, 10, 0.55);
+    --highlight-top: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    /* Elevation — layered soft shadows for the dark surface */
+    --elevation-0: none;
+    --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --elevation-2: 0 4px 14px -3px rgba(0, 0, 0, 0.5);
+    --elevation-3: 0 14px 36px -8px rgba(0, 0, 0, 0.62);
+
+    /* Motion — easing + duration scale (neutralized by reduced-motion below) */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --duration-fast: 150ms;
+    --duration-base: 300ms;
+    --duration-slow: 600ms;
+
+    /* Z-index scale */
+    --z-base: 0;
+    --z-raised: 10;
+    --z-nav: 50;
+    --z-overlay: 100;
   }
 
   body {
@@ -105,6 +139,43 @@
   .lede {
     @apply text-lg md:text-2xl text-zinc-300;
     line-height: 1.5;
+  }
+
+  /* Elevation ladder — three intensities of one material system.
+     Flat = structure (default); raised = content depth; signature = hero moments. */
+  .surface-flat {
+    border: 1px solid var(--stroke-hairline);
+    background: var(--fill-flat);
+    border-radius: var(--radius-xl);
+  }
+  .surface-raised {
+    border: 1px solid var(--stroke-hairline);
+    background: var(--fill-raised);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--elevation-2), var(--highlight-top);
+  }
+  .surface-signature {
+    border: 1px solid rgba(40, 217, 242, 0.18);
+    background: linear-gradient(
+      160deg,
+      rgba(22, 27, 34, 0.72),
+      rgba(13, 17, 23, 0.5)
+    );
+    border-radius: var(--radius-xl);
+    box-shadow: var(--elevation-3), var(--highlight-top), var(--shadow-glow-signal);
+  }
+
+  /* Hover lift — for interactive raised surfaces. */
+  .hover-lift {
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out);
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    border-color: var(--stroke-strong);
+    box-shadow: var(--elevation-3), var(--highlight-top);
   }
 
   /* Calm, one-shot entrance. Neutralized by the reduced-motion block above. */

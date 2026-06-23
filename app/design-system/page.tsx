@@ -64,7 +64,7 @@ const STATE_TOKENS = [
 
 function Swatch({ name, token, note }: { name: string; token: string; note: string }) {
   return (
-    <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-4">
+    <div className="surface-raised p-4">
       <div
         className="h-12 w-full rounded-md mb-3 border border-white/10"
         style={{ background: `var(${token})` }}
@@ -99,7 +99,7 @@ export default function DesignSystemPage() {
           <p className="eyebrow mb-8">Principles</p>
           <div className="grid md:grid-cols-2 gap-4">
             {PRINCIPLES.map(([title, body]) => (
-              <div key={title} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6">
+              <div key={title} className="surface-raised p-6">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{title}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
               </div>
@@ -155,6 +155,42 @@ export default function DesignSystemPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
+          <p className="eyebrow mb-3">Materials</p>
+          <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
+            One elevation ladder, three intensities.
+          </h2>
+          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+            Depth is rationed. <span className="text-zinc-300">Flat</span> is the
+            default; <span className="text-zinc-300">raised</span> carries
+            content; <span className="text-zinc-300">signature</span> is reserved
+            for hero moments. Driven by radii / stroke / fill / elevation tokens
+            in <code className="font-mono text-zinc-400">globals.css</code>.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              ['surface-flat', 'Flat', 'Structure. Hairline, no shadow — dense and secondary surfaces.'],
+              ['surface-raised', 'Raised', 'Content depth. Soft shadow + lit top edge — cards and panels.'],
+              ['surface-signature', 'Signature', 'Hero moments. Gradient tint + signal glow — used sparingly.'],
+            ].map(([cls, name, note]) => (
+              <div key={cls} className={`${cls} p-6`}>
+                <p className="text-sm font-semibold text-zinc-100 mb-1">{name}</p>
+                <p className="font-mono text-[11px] text-[color:var(--color-signal-cyan)] mb-3">
+                  .{cls}
+                </p>
+                <p className="text-xs text-zinc-500 leading-relaxed">{note}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] text-zinc-600">
+            <span>--radius-sm…xl</span>
+            <span>--elevation-0…3</span>
+            <span>--stroke-hairline/strong</span>
+            <span>--fill-flat/raised/sunken</span>
+            <span>--ease-out · --duration-fast/base/slow</span>
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">Iconography</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             A glyph for every primitive.
@@ -169,7 +205,7 @@ export default function DesignSystemPage() {
             {GLYPHS.map(([name, label]) => (
               <div
                 key={name}
-                className="flex items-center gap-3 border border-zinc-800/80 bg-zinc-900/50 rounded-xl px-4 py-3"
+                className="flex items-center gap-3 surface-raised px-4 py-3"
               >
                 <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-zinc-800 bg-zinc-900/60 text-[color:var(--color-signal-cyan)] shrink-0">
                   <Glyph name={name} size={20} />

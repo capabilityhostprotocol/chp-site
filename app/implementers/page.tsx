@@ -74,7 +74,7 @@ export default function ImplementersPage() {
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid md:grid-cols-2 gap-4">
             {PATHS.map((path) => (
-              <div key={path.role} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col">
+              <div key={path.role} className="surface-raised p-5 flex flex-col">
                 <p className="eyebrow mb-4">{path.role}</p>
                 <h2 className="text-lg font-semibold text-zinc-100 mb-3">{path.outcome}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed flex-1">{path.first}</p>
@@ -118,7 +118,7 @@ export default function ImplementersPage() {
         <AdoptionStatusSection />
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Start with one governed boundary.
