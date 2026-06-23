@@ -24,10 +24,39 @@ export const metadata: Metadata = {
   },
 };
 
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://capabilityhostprotocol.com/#org',
+      name: 'Capability Host Protocol',
+      url: 'https://capabilityhostprotocol.com',
+      description:
+        'An open protocol and evidence layer for what AI agents, products, and organizations do.',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Capability Host Protocol (CHP)',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Cross-platform',
+      url: 'https://capabilityhostprotocol.com',
+      softwareHelp: 'https://docs.capabilityhostprotocol.com',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      description:
+        'An open protocol that turns every consequential action — by a person, an agent, a product, or a business — into a declared, governable, tamper-evidently provable event.',
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         {children}
         <Analytics />
         <AnalyticsEvents />
