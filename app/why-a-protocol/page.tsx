@@ -3,6 +3,8 @@ import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import FailureModesSection from '../components/FailureModesSection';
 import EcosystemSection from '../components/EcosystemSection';
+import EvidenceChain from '../components/motif/EvidenceChain';
+import CompareTable from '../components/motif/CompareTable';
 
 export const metadata: Metadata = {
   title: 'Why a protocol - Capability Host Protocol',
@@ -29,11 +31,27 @@ const ARGUMENTS = [
   },
 ];
 
-const NOT_REPLACING = [
-  ['MCP / tool calling', 'Exposes tools to a model. CHP records and governs the execution around those calls.'],
-  ['OpenTelemetry', 'Observes systems with traces and spans. CHP makes evidence and denial part of the invocation contract, not optional logs.'],
-  ['Temporal / workflow engines', 'Orchestrate durable workflows. CHP evidences the individual capability calls inside them.'],
-  ['Application authorization', 'Decides who may act. CHP records that the decision happened, and lets you replay it.'],
+const NOT_REPLACING: { system: string; does: string; adds: string }[] = [
+  {
+    system: 'MCP / tool calling',
+    does: 'Exposes tools to a model.',
+    adds: 'Records and governs the execution around those calls.',
+  },
+  {
+    system: 'OpenTelemetry',
+    does: 'Observes systems with traces and spans.',
+    adds: 'Makes evidence and denial part of the invocation contract — not optional logs.',
+  },
+  {
+    system: 'Temporal / workflow engines',
+    does: 'Orchestrate durable workflows.',
+    adds: 'Evidences the individual capability calls inside them.',
+  },
+  {
+    system: 'Application authorization',
+    does: 'Decides who may act.',
+    adds: 'Records that the decision happened, and lets you replay it.',
+  },
 ];
 
 export default function WhyAProtocolPage() {
@@ -55,6 +73,9 @@ export default function WhyAProtocolPage() {
             neutral, portable, and means the same thing across independent
             systems — which is what a protocol is for.
           </p>
+          <div className="mt-12 max-w-3xl">
+            <EvidenceChain />
+          </div>
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
@@ -85,17 +106,16 @@ export default function WhyAProtocolPage() {
             governed, and proven — and stays out of the model, framework, cloud,
             and policy engine you already chose.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {NOT_REPLACING.map(([name, body]) => (
-              <div
-                key={name}
-                className="border border-zinc-800 bg-zinc-950/70 rounded-lg px-5 py-4"
-              >
-                <p className="font-mono text-xs text-zinc-300 mb-2">{name}</p>
-                <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
-              </div>
-            ))}
-          </div>
+          <CompareTable
+            columns={[
+              { label: 'You already chose' },
+              { label: 'What CHP adds', accent: true },
+            ]}
+            rows={NOT_REPLACING.map((x) => ({
+              dimension: x.system,
+              cells: [x.does, x.adds],
+            }))}
+          />
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm">
             <a
               href="/blog/chp-and-mcp"
