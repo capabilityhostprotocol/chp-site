@@ -196,7 +196,7 @@ export default function GlossaryPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-signature p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Want the full specification?
