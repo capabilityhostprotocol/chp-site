@@ -1,0 +1,2688 @@
+{
+  "generated": "2026-06-23T03:47:36.067Z",
+  "adapters": [
+    {
+      "slug": "asyncapi",
+      "adapterId": "chp.adapters.asyncapi",
+      "name": "AsyncAPI",
+      "pypi": "chp-adapter-asyncapi",
+      "category": "agents",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.asyncapi.describe_channel",
+          "method": "describe_channel",
+          "version": "0.1.0",
+          "description": "Describe a single channel. Schema content never in evidence."
+        },
+        {
+          "id": "chp.adapters.asyncapi.list_channels",
+          "method": "list_channels",
+          "version": "0.1.0",
+          "description": "List channels defined in the loaded AsyncAPI spec."
+        },
+        {
+          "id": "chp.adapters.asyncapi.load_spec",
+          "method": "load_spec",
+          "version": "0.1.0",
+          "description": "Parse and load an AsyncAPI spec document. Spec content never in evidence."
+        },
+        {
+          "id": "chp.adapters.asyncapi.publish",
+          "method": "publish",
+          "version": "0.1.0",
+          "description": "Publish a message to a channel. Message payload never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "audit",
+      "adapterId": "chp.adapters.audit",
+      "name": "Audit Log",
+      "pypi": "chp-adapter-audit",
+      "category": "platform",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.audit.get_invocation",
+          "method": "get_invocation",
+          "version": "1.0.0",
+          "description": "Fetch event metadata for a specific invocation ID."
+        },
+        {
+          "id": "chp.adapters.audit.query_invocations",
+          "method": "query_invocations",
+          "version": "1.0.0",
+          "description": "Query invocation records from the audit log with optional filters."
+        },
+        {
+          "id": "chp.adapters.audit.stats",
+          "method": "stats",
+          "version": "1.0.0",
+          "description": "Aggregate invocation counts by outcome and capability over a time window."
+        },
+        {
+          "id": "chp.adapters.audit.token_report",
+          "method": "token_report",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "aws",
+      "adapterId": "chp.adapters.aws",
+      "name": "AWS",
+      "pypi": "chp-adapter-aws",
+      "category": "cloud",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.aws.ec2_list",
+          "method": "ec2_list",
+          "version": "0.1.0",
+          "description": "List EC2 instances with optional state filter."
+        },
+        {
+          "id": "chp.adapters.aws.ec2_start",
+          "method": "ec2_start",
+          "version": "0.1.0",
+          "description": "Start a stopped EC2 instance."
+        },
+        {
+          "id": "chp.adapters.aws.ec2_stop",
+          "method": "ec2_stop",
+          "version": "0.1.0",
+          "description": "Stop a running EC2 instance."
+        },
+        {
+          "id": "chp.adapters.aws.lambda_invoke",
+          "method": "lambda_invoke",
+          "version": "0.1.0",
+          "description": "Invoke a Lambda function. Payload and response body never in evidence."
+        },
+        {
+          "id": "chp.adapters.aws.lambda_list",
+          "method": "lambda_list",
+          "version": "0.1.0",
+          "description": "List Lambda functions."
+        },
+        {
+          "id": "chp.adapters.aws.s3_delete",
+          "method": "s3_delete",
+          "version": "0.1.0",
+          "description": "Delete an S3 object."
+        },
+        {
+          "id": "chp.adapters.aws.s3_list",
+          "method": "s3_list",
+          "version": "0.1.0",
+          "description": "List objects in an S3 bucket, optionally filtered by prefix."
+        },
+        {
+          "id": "chp.adapters.aws.s3_metadata",
+          "method": "s3_metadata",
+          "version": "0.1.0",
+          "description": "Get metadata for a specific S3 object without downloading its content."
+        },
+        {
+          "id": "chp.adapters.aws.s3_put",
+          "method": "s3_put",
+          "version": "0.1.0",
+          "description": "Upload content to an S3 object. Content never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "azure",
+      "adapterId": "chp.adapters.azure",
+      "name": "Azure",
+      "pypi": "chp-adapter-azure",
+      "category": "cloud",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.azure.blob_delete",
+          "method": "blob_delete",
+          "version": "0.1.0",
+          "description": "Delete an Azure blob."
+        },
+        {
+          "id": "chp.adapters.azure.blob_list",
+          "method": "blob_list",
+          "version": "0.1.0",
+          "description": "List blobs in an Azure Storage container."
+        },
+        {
+          "id": "chp.adapters.azure.blob_metadata",
+          "method": "blob_metadata",
+          "version": "0.1.0",
+          "description": "Get metadata for a specific Azure blob without downloading content."
+        },
+        {
+          "id": "chp.adapters.azure.blob_put",
+          "method": "blob_put",
+          "version": "0.1.0",
+          "description": "Upload content to an Azure blob. Content never in evidence."
+        },
+        {
+          "id": "chp.adapters.azure.function_invoke",
+          "method": "function_invoke",
+          "version": "0.1.0",
+          "description": "Invoke an Azure Function. Payload and response body never in evidence."
+        },
+        {
+          "id": "chp.adapters.azure.function_list",
+          "method": "function_list",
+          "version": "0.1.0",
+          "description": "List Azure Functions, optionally filtered by resource group."
+        },
+        {
+          "id": "chp.adapters.azure.vm_list",
+          "method": "vm_list",
+          "version": "0.1.0",
+          "description": "List Azure Virtual Machines, optionally filtered by resource group."
+        },
+        {
+          "id": "chp.adapters.azure.vm_start",
+          "method": "vm_start",
+          "version": "0.1.0",
+          "description": "Start a stopped Azure Virtual Machine."
+        },
+        {
+          "id": "chp.adapters.azure.vm_stop",
+          "method": "vm_stop",
+          "version": "0.1.0",
+          "description": "Stop a running Azure Virtual Machine."
+        }
+      ]
+    },
+    {
+      "slug": "calendar",
+      "adapterId": "chp.adapters.calendar",
+      "name": "Calendar",
+      "pypi": "chp-adapter-calendar",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.calendar.create_event",
+          "method": "create_event",
+          "version": "0.1.0",
+          "description": "Create a new calendar event. Description and attendees never in evidence."
+        },
+        {
+          "id": "chp.adapters.calendar.delete_event",
+          "method": "delete_event",
+          "version": "0.1.0",
+          "description": "Delete a calendar event."
+        },
+        {
+          "id": "chp.adapters.calendar.get_event",
+          "method": "get_event",
+          "version": "0.1.0",
+          "description": "Get a single event by ID. Description never in evidence."
+        },
+        {
+          "id": "chp.adapters.calendar.list_events",
+          "method": "list_events",
+          "version": "0.1.0",
+          "description": "List events in a calendar within a time range."
+        },
+        {
+          "id": "chp.adapters.calendar.update_event",
+          "method": "update_event",
+          "version": "0.1.0",
+          "description": "Update an existing event. Description and attendees never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "ci",
+      "adapterId": "chp.adapters.ci",
+      "name": "CI",
+      "pypi": "chp-adapter-ci",
+      "category": "code",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.ci.run_all",
+          "method": "run_all",
+          "version": "1.0.0",
+          "description": "Run pytest across all packages in the repo. Each suite is a separate ctx.ainvoke(run_suite) call — every package gets its own evidence record."
+        },
+        {
+          "id": "chp.adapters.ci.run_suite",
+          "method": "run_suite",
+          "version": "1.0.0",
+          "description": "Run pytest for a single package and emit pass/fail evidence. Output is not recorded — only counts and duration."
+        }
+      ]
+    },
+    {
+      "slug": "composition",
+      "adapterId": "chp.adapters.composition",
+      "name": "Composition",
+      "pypi": "chp-adapter-composition",
+      "category": "agents",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.composition.define",
+          "method": "define",
+          "version": "1.0.0",
+          "description": "Register a named workflow (sequence of capability invocations)."
+        },
+        {
+          "id": "chp.adapters.composition.get",
+          "method": "get",
+          "version": "1.0.0",
+          "description": "Get a workflow definition by name."
+        },
+        {
+          "id": "chp.adapters.composition.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List all registered workflows."
+        },
+        {
+          "id": "chp.adapters.composition.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": "Execute a registered workflow by name."
+        }
+      ]
+    },
+    {
+      "slug": "conformance",
+      "adapterId": "chp.adapters.conformance",
+      "name": "Conformance",
+      "pypi": "chp-adapter-conformance",
+      "category": "agents",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.conformance.check_adapter",
+          "method": "check_adapter",
+          "version": "1.0.0",
+          "description": "Runtime introspection of a loaded adapter — checks schema, version, and metadata completeness."
+        },
+        {
+          "id": "chp.adapters.conformance.check_all",
+          "method": "check_all",
+          "version": "1.0.0",
+          "description": "Check all loaded adapters for violations and return a ranked summary."
+        },
+        {
+          "id": "chp.adapters.conformance.check_source",
+          "method": "check_source",
+          "version": "1.0.0",
+          "description": "Run static AST analysis on an adapter source file and report violations."
+        },
+        {
+          "id": "chp.adapters.conformance.check_staged",
+          "method": "check_staged",
+          "version": "1.0.0",
+          "description": "Check staged Python files against the active dev session baseline. Returns new violations only — existing baseline violations are not re-flagged."
+        },
+        {
+          "id": "chp.adapters.conformance.close_dev_session",
+          "method": "close_dev_session",
+          "version": "1.0.0",
+          "description": "Close the active dev session: run final conformance scan, compare vs baseline, delete session state."
+        },
+        {
+          "id": "chp.adapters.conformance.open_dev_session",
+          "method": "open_dev_session",
+          "version": "1.0.0",
+          "description": "Open a tracked dev session: validate Radicle issue, snapshot baseline conformance, create plan, write active-session state."
+        },
+        {
+          "id": "chp.adapters.conformance.policy_check",
+          "method": "policy_check",
+          "version": "1.0.0",
+          "description": "Check a commit message for the Radicle issue reference policy (rad:XXXXXXX)."
+        },
+        {
+          "id": "chp.adapters.conformance.report_violations",
+          "method": "report_violations",
+          "version": "1.0.0",
+          "description": "Auto-open Radicle issues for adapters with conformance violations. Deduplicates against existing open issues."
+        }
+      ]
+    },
+    {
+      "slug": "container",
+      "adapterId": "chp.adapters.container",
+      "name": "Container",
+      "pypi": "chp-adapter-container",
+      "category": "infra",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.container.list_containers",
+          "method": "list_containers",
+          "version": "1.0.0",
+          "description": "List Docker containers (running by default; pass all=true for stopped too)."
+        },
+        {
+          "id": "chp.adapters.container.list_images",
+          "method": "list_images",
+          "version": "1.0.0",
+          "description": "List locally available Docker images."
+        },
+        {
+          "id": "chp.adapters.container.pull",
+          "method": "pull",
+          "version": "1.0.0",
+          "description": "Pull a Docker image from a registry."
+        },
+        {
+          "id": "chp.adapters.container.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": "Run a Docker container to completion and capture output."
+        },
+        {
+          "id": "chp.adapters.container.stop",
+          "method": "stop",
+          "version": "1.0.0",
+          "description": "Stop a running Docker container."
+        }
+      ]
+    },
+    {
+      "slug": "delegation",
+      "adapterId": "chp.adapters.delegation",
+      "name": "Delegation",
+      "pypi": "chp-adapter-delegation",
+      "category": "agents",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.delegation.accept",
+          "method": "accept",
+          "version": "0.1.0",
+          "description": "Accept a pending delegation. Emits delegation_accepted."
+        },
+        {
+          "id": "chp.adapters.delegation.complete",
+          "method": "complete",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.delegation.create",
+          "method": "create",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.delegation.reject",
+          "method": "reject",
+          "version": "0.1.0",
+          "description": "Reject a delegation with a stated reason. Emits delegation_rejected."
+        }
+      ]
+    },
+    {
+      "slug": "document-store",
+      "adapterId": "chp.adapters.document_store",
+      "name": "DocumentStore",
+      "pypi": "chp-adapter-document-store",
+      "category": "filesystem",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.document_store.add",
+          "method": "add",
+          "version": "0.1.0",
+          "description": "Add or replace a document. Content is accepted but never stored in evidence."
+        },
+        {
+          "id": "chp.adapters.document_store.delete",
+          "method": "delete",
+          "version": "0.1.0",
+          "description": "Delete a document by ID."
+        },
+        {
+          "id": "chp.adapters.document_store.get",
+          "method": "get",
+          "version": "0.1.0",
+          "description": "Retrieve a document by ID. Content is returned to caller but never stored in evidence."
+        },
+        {
+          "id": "chp.adapters.document_store.list",
+          "method": "list",
+          "version": "0.1.0",
+          "description": "List documents with optional metadata filter. Returns id and title only."
+        },
+        {
+          "id": "chp.adapters.document_store.search",
+          "method": "search",
+          "version": "0.1.0",
+          "description": "Search documents by keyword query. Returns id, title, url, and score only — content never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "email",
+      "adapterId": "chp.adapters.email",
+      "name": "Email",
+      "pypi": "chp-adapter-email",
+      "category": "messaging",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.email.send",
+          "method": "send",
+          "version": "1.0.0",
+          "description": "Send an outbound email."
+        }
+      ]
+    },
+    {
+      "slug": "evaluation",
+      "adapterId": "chp.adapters.evaluation",
+      "name": "Evaluation",
+      "pypi": "chp-adapter-evaluation",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.evaluation.get_result",
+          "method": "get_result",
+          "version": "0.1.0",
+          "description": "Retrieve a past evaluation result by result ID."
+        },
+        {
+          "id": "chp.adapters.evaluation.list_evals",
+          "method": "list_evals",
+          "version": "0.1.0",
+          "description": "List registered evaluation rubrics."
+        },
+        {
+          "id": "chp.adapters.evaluation.register_eval",
+          "method": "register_eval",
+          "version": "0.1.0",
+          "description": "Register an evaluation rubric with named criteria."
+        },
+        {
+          "id": "chp.adapters.evaluation.run_eval",
+          "method": "run_eval",
+          "version": "0.1.0",
+          "description": "Run a registered rubric against inputs. Inputs and expected NEVER in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "file-transform",
+      "adapterId": "chp.adapters.file_transform",
+      "name": "File Transform",
+      "pypi": "chp-adapter-file-transform",
+      "category": "filesystem",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.file_transform.convert",
+          "method": "convert",
+          "version": "0.1.0",
+          "description": "Convert a file to another format."
+        },
+        {
+          "id": "chp.adapters.file_transform.extract_text",
+          "method": "extract_text",
+          "version": "0.1.0",
+          "description": "Extract text and metadata from a file. Text content never in evidence."
+        },
+        {
+          "id": "chp.adapters.file_transform.get_metadata",
+          "method": "get_metadata",
+          "version": "0.1.0",
+          "description": "Read file metadata without accessing content."
+        },
+        {
+          "id": "chp.adapters.file_transform.split_pages",
+          "method": "split_pages",
+          "version": "0.1.0",
+          "description": "Extract specific pages from a multi-page document into separate files."
+        }
+      ]
+    },
+    {
+      "slug": "filesystem",
+      "adapterId": "chp.adapters.filesystem",
+      "name": "Filesystem",
+      "pypi": "chp-adapter-filesystem",
+      "category": "filesystem",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.filesystem.glob_files",
+          "method": "glob_files",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.filesystem.grep",
+          "method": "grep",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.filesystem.list_directory",
+          "method": "list_directory",
+          "version": "1.0.0",
+          "description": "List entries in a directory."
+        },
+        {
+          "id": "chp.adapters.filesystem.read_file",
+          "method": "read_file",
+          "version": "1.0.0",
+          "description": "Read a file"
+        },
+        {
+          "id": "chp.adapters.filesystem.stat_path",
+          "method": "stat_path",
+          "version": "1.0.0",
+          "description": "Check existence, type, and size of a path."
+        },
+        {
+          "id": "chp.adapters.filesystem.write_file",
+          "method": "write_file",
+          "version": "1.0.0",
+          "description": "Write or overwrite a file."
+        }
+      ]
+    },
+    {
+      "slug": "form",
+      "adapterId": "chp.adapters.form",
+      "name": "Form",
+      "pypi": "chp-adapter-form",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.form.close_form",
+          "method": "close_form",
+          "version": "0.1.0",
+          "description": "Close a form to prevent further submissions."
+        },
+        {
+          "id": "chp.adapters.form.define_form",
+          "method": "define_form",
+          "version": "0.1.0",
+          "description": "Create a form with typed fields. Field definitions never in evidence."
+        },
+        {
+          "id": "chp.adapters.form.get_submission",
+          "method": "get_submission",
+          "version": "0.1.0",
+          "description": "Retrieve a submission by ID including its answers."
+        },
+        {
+          "id": "chp.adapters.form.list_submissions",
+          "method": "list_submissions",
+          "version": "0.1.0",
+          "description": "List submission IDs for a form. Submission answers never in evidence."
+        },
+        {
+          "id": "chp.adapters.form.submit",
+          "method": "submit",
+          "version": "0.1.0",
+          "description": "Submit answers to an open form. Answers never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "gcp",
+      "adapterId": "chp.adapters.gcp",
+      "name": "GCP",
+      "pypi": "chp-adapter-gcp",
+      "category": "cloud",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.gcp.compute_list",
+          "method": "compute_list",
+          "version": "0.1.0",
+          "description": "List Compute Engine instances, optionally filtered by zone."
+        },
+        {
+          "id": "chp.adapters.gcp.compute_start",
+          "method": "compute_start",
+          "version": "0.1.0",
+          "description": "Start a stopped Compute Engine instance."
+        },
+        {
+          "id": "chp.adapters.gcp.compute_stop",
+          "method": "compute_stop",
+          "version": "0.1.0",
+          "description": "Stop a running Compute Engine instance."
+        },
+        {
+          "id": "chp.adapters.gcp.function_invoke",
+          "method": "function_invoke",
+          "version": "0.1.0",
+          "description": "Invoke a Cloud Function. Payload and response never in evidence."
+        },
+        {
+          "id": "chp.adapters.gcp.function_list",
+          "method": "function_list",
+          "version": "0.1.0",
+          "description": "List Cloud Functions, optionally filtered by region."
+        },
+        {
+          "id": "chp.adapters.gcp.gcs_delete",
+          "method": "gcs_delete",
+          "version": "0.1.0",
+          "description": "Delete a GCS object."
+        },
+        {
+          "id": "chp.adapters.gcp.gcs_list",
+          "method": "gcs_list",
+          "version": "0.1.0",
+          "description": "List objects in a GCS bucket."
+        },
+        {
+          "id": "chp.adapters.gcp.gcs_metadata",
+          "method": "gcs_metadata",
+          "version": "0.1.0",
+          "description": "Get metadata for a GCS object without downloading content."
+        },
+        {
+          "id": "chp.adapters.gcp.gcs_put",
+          "method": "gcs_put",
+          "version": "0.1.0",
+          "description": "Upload content to a GCS object. Content never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "git",
+      "adapterId": "chp.adapters.git",
+      "name": "Git",
+      "pypi": "chp-adapter-git",
+      "category": "code",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.git.checkout_branch",
+          "method": "checkout_branch",
+          "version": "0.1.0",
+          "description": "Create a new branch or switch to an existing one."
+        },
+        {
+          "id": "chp.adapters.git.commit",
+          "method": "commit",
+          "version": "0.1.0",
+          "description": "Stage specified files and create a commit. Diff content is never in evidence."
+        },
+        {
+          "id": "chp.adapters.git.diff_summary",
+          "method": "diff_summary",
+          "version": "0.1.0",
+          "description": "Diff statistics only — files changed, insertions, deletions. Patch text is NEVER returned."
+        },
+        {
+          "id": "chp.adapters.git.inspect_repo",
+          "method": "inspect_repo",
+          "version": "0.1.0",
+          "description": "Repository overview: branch, HEAD SHA, remotes, commit count."
+        },
+        {
+          "id": "chp.adapters.git.log",
+          "method": "log",
+          "version": "0.1.0",
+          "description": "Recent commit list: sha7, author name, subject (truncated), ISO date."
+        },
+        {
+          "id": "chp.adapters.git.merge",
+          "method": "merge",
+          "version": "0.1.0",
+          "description": "Merge a branch into the current branch. Evidence: branch, strategy, HEAD SHA7, conflicts flag."
+        },
+        {
+          "id": "chp.adapters.git.precommit_check",
+          "method": "precommit_check",
+          "version": "0.1.0",
+          "description": "List staged files, count unstaged changes, and flag untracked files."
+        },
+        {
+          "id": "chp.adapters.git.pull",
+          "method": "pull",
+          "version": "0.1.0",
+          "description": "Pull from a remote. Evidence: remote, branch, new HEAD SHA7, fast_forward flag."
+        },
+        {
+          "id": "chp.adapters.git.push",
+          "method": "push",
+          "version": "0.1.0",
+          "description": "Push a ref to a remote. Evidence: remote, ref, HEAD SHA7, success flag."
+        },
+        {
+          "id": "chp.adapters.git.status",
+          "method": "status",
+          "version": "0.1.0",
+          "description": "Working tree status: branch name, staged/unstaged/untracked file counts."
+        }
+      ]
+    },
+    {
+      "slug": "github",
+      "adapterId": "chp.adapters.github",
+      "name": "GitHub",
+      "pypi": "chp-adapter-github",
+      "category": "code",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.github.add_labels",
+          "method": "add_labels",
+          "version": "1.0.0",
+          "description": "Add labels to an issue or pull request."
+        },
+        {
+          "id": "chp.adapters.github.create_comment",
+          "method": "create_comment",
+          "version": "1.0.0",
+          "description": "Add a comment to an issue or pull request."
+        },
+        {
+          "id": "chp.adapters.github.create_issue",
+          "method": "create_issue",
+          "version": "1.0.0",
+          "description": "Create a new issue in a repository."
+        },
+        {
+          "id": "chp.adapters.github.create_pull_request",
+          "method": "create_pull_request",
+          "version": "1.0.0",
+          "description": "Open a new pull request."
+        },
+        {
+          "id": "chp.adapters.github.get_issue",
+          "method": "get_issue",
+          "version": "1.0.0",
+          "description": "Get a single issue."
+        },
+        {
+          "id": "chp.adapters.github.get_pull_request",
+          "method": "get_pull_request",
+          "version": "1.0.0",
+          "description": "Get a single pull request with merge/CI detail."
+        },
+        {
+          "id": "chp.adapters.github.get_repo",
+          "method": "get_repo",
+          "version": "1.0.0",
+          "description": "Get repository metadata."
+        },
+        {
+          "id": "chp.adapters.github.list_issues",
+          "method": "list_issues",
+          "version": "1.0.0",
+          "description": "List issues for a repository (pull requests excluded)."
+        },
+        {
+          "id": "chp.adapters.github.list_pr_reviews",
+          "method": "list_pr_reviews",
+          "version": "1.0.0",
+          "description": "List reviews on a pull request."
+        },
+        {
+          "id": "chp.adapters.github.list_pull_requests",
+          "method": "list_pull_requests",
+          "version": "1.0.0",
+          "description": "List pull requests for a repository."
+        },
+        {
+          "id": "chp.adapters.github.list_workflow_runs",
+          "method": "list_workflow_runs",
+          "version": "1.0.0",
+          "description": "List recent GitHub Actions workflow runs (CI status)."
+        },
+        {
+          "id": "chp.adapters.github.update_issue",
+          "method": "update_issue",
+          "version": "1.0.0",
+          "description": "Update an issue (title, state, labels, assignees)."
+        }
+      ]
+    },
+    {
+      "slug": "graphql",
+      "adapterId": "chp.adapters.graphql",
+      "name": "GraphQL",
+      "pypi": "chp-adapter-graphql",
+      "category": "network",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.graphql.introspect",
+          "method": "introspect",
+          "version": "0.1.0",
+          "description": "Fetch schema types via GraphQL introspection."
+        },
+        {
+          "id": "chp.adapters.graphql.mutate",
+          "method": "mutate",
+          "version": "0.1.0",
+          "description": "Execute a GraphQL mutation. Variables never in evidence."
+        },
+        {
+          "id": "chp.adapters.graphql.query",
+          "method": "query",
+          "version": "0.1.0",
+          "description": "Execute a GraphQL query. Variables never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "grpc",
+      "adapterId": "chp.adapters.grpc",
+      "name": "gRPC",
+      "pypi": "chp-adapter-grpc",
+      "category": "network",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.grpc.describe_service",
+          "method": "describe_service",
+          "version": "0.1.0",
+          "description": "Get methods and metadata for a gRPC service."
+        },
+        {
+          "id": "chp.adapters.grpc.list_services",
+          "method": "list_services",
+          "version": "0.1.0",
+          "description": "List available gRPC services via reflection."
+        },
+        {
+          "id": "chp.adapters.grpc.server_health",
+          "method": "server_health",
+          "version": "0.1.0",
+          "description": "Check gRPC server or service health via the standard health protocol."
+        },
+        {
+          "id": "chp.adapters.grpc.unary_call",
+          "method": "unary_call",
+          "version": "0.1.0",
+          "description": "Invoke a unary gRPC method. Request and response body never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "host",
+      "adapterId": "chp.adapters.host",
+      "name": "Host",
+      "pypi": "chp-adapter-host",
+      "category": "infra",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.host.install_adapter",
+          "method": "install_adapter",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.host.restart",
+          "method": "restart",
+          "version": "1.0.0",
+          "description": "Restart this node"
+        },
+        {
+          "id": "chp.adapters.host.stats",
+          "method": "stats",
+          "version": "1.0.0",
+          "description": "Report CPU load, memory, disk, GPU, and platform stats for this node."
+        },
+        {
+          "id": "chp.adapters.host.update",
+          "method": "update",
+          "version": "1.0.0",
+          "description": "Schedule a detached upgrade of this node"
+        },
+        {
+          "id": "chp.adapters.host.version",
+          "method": "version",
+          "version": "1.0.0",
+          "description": "Report this node"
+        }
+      ]
+    },
+    {
+      "slug": "http",
+      "adapterId": "chp.adapters.http",
+      "name": "HTTP",
+      "pypi": "chp-adapter-http",
+      "category": "network",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.http.request",
+          "method": "request",
+          "version": "1.0.0",
+          "description": "Make an HTTP request."
+        }
+      ]
+    },
+    {
+      "slug": "huggingface",
+      "adapterId": "chp.adapters.huggingface",
+      "name": "HuggingFace",
+      "pypi": "chp-adapter-huggingface",
+      "category": "ai",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.huggingface.apply_adapter",
+          "method": "apply_adapter",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.cache_info",
+          "method": "cache_info",
+          "version": "1.0.0",
+          "description": "Scan the local HuggingFace cache and return a storage summary by artifact for governance and quota management."
+        },
+        {
+          "id": "chp.adapters.huggingface.call_space",
+          "method": "call_space",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.classify_image",
+          "method": "classify_image",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.dataset_preview",
+          "method": "dataset_preview",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.embed",
+          "method": "embed",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.evaluate",
+          "method": "evaluate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.faiss_index",
+          "method": "faiss_index",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.finetune",
+          "method": "finetune",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.generate_image",
+          "method": "generate_image",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.leaderboard_scores",
+          "method": "leaderboard_scores",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.list_collections",
+          "method": "list_collections",
+          "version": "1.0.0",
+          "description": "List HuggingFace Hub Collections — curated groupings of models and datasets. Enables agents to navigate thematic clusters (e.g. "
+        },
+        {
+          "id": "chp.adapters.huggingface.load_dataset",
+          "method": "load_dataset",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.model_card",
+          "method": "model_card",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.pull",
+          "method": "pull",
+          "version": "1.0.0",
+          "description": "Download any HuggingFace Hub artifact (model, dataset, tokenizer) to local cache via snapshot_download."
+        },
+        {
+          "id": "chp.adapters.huggingface.pull_for_local_llm",
+          "method": "pull_for_local_llm",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.quantize_to_gguf",
+          "method": "quantize_to_gguf",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.run_pipeline",
+          "method": "run_pipeline",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.search_datasets",
+          "method": "search_datasets",
+          "version": "1.0.0",
+          "description": "Search HuggingFace Hub for datasets by task, sort, and filter. Symmetric to search_models — enables agents to discover datasets before loading them."
+        },
+        {
+          "id": "chp.adapters.huggingface.search_models",
+          "method": "search_models",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.search_spaces",
+          "method": "search_spaces",
+          "version": "1.0.0",
+          "description": "Search HuggingFace Hub for Spaces (Gradio/Streamlit apps) by SDK, sort, and filter. Precondition for call_space discovery."
+        },
+        {
+          "id": "chp.adapters.huggingface.tokenize",
+          "method": "tokenize",
+          "version": "1.0.0",
+          "description": "Encode text to token IDs or decode token IDs to text using a fast HuggingFace tokenizer. No full model load required."
+        },
+        {
+          "id": "chp.adapters.huggingface.transcribe_audio",
+          "method": "transcribe_audio",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "jira",
+      "adapterId": "chp.adapters.jira",
+      "name": "Jira",
+      "pypi": "chp-adapter-jira",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.jira.add_comment",
+          "method": "add_comment",
+          "version": "1.0.0",
+          "description": "Add a comment to a Jira issue."
+        },
+        {
+          "id": "chp.adapters.jira.create_issue",
+          "method": "create_issue",
+          "version": "1.0.0",
+          "description": "Create a new Jira issue."
+        },
+        {
+          "id": "chp.adapters.jira.get_issue",
+          "method": "get_issue",
+          "version": "1.0.0",
+          "description": "Get a Jira issue by key."
+        },
+        {
+          "id": "chp.adapters.jira.list_issues",
+          "method": "list_issues",
+          "version": "1.0.0",
+          "description": "List Jira issues using JQL or field filters."
+        },
+        {
+          "id": "chp.adapters.jira.update_issue",
+          "method": "update_issue",
+          "version": "1.0.0",
+          "description": "Update a Jira issue (summary, priority, assignee, or transition status)."
+        }
+      ]
+    },
+    {
+      "slug": "jobs",
+      "adapterId": "chp.adapters.jobs",
+      "name": "Jobs",
+      "pypi": "chp-adapter-jobs",
+      "category": "infra",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.jobs.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List all jobs and their lifecycle state."
+        },
+        {
+          "id": "chp.adapters.jobs.result",
+          "method": "result",
+          "version": "1.0.0",
+          "description": "Fetch a completed job"
+        },
+        {
+          "id": "chp.adapters.jobs.status",
+          "method": "status",
+          "version": "1.0.0",
+          "description": "Poll a background job"
+        },
+        {
+          "id": "chp.adapters.jobs.submit",
+          "method": "submit",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "kafka",
+      "adapterId": "chp.adapters.kafka",
+      "name": "Kafka",
+      "pypi": "chp-adapter-kafka",
+      "category": "network",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.kafka.consume",
+          "method": "consume",
+          "version": "0.1.0",
+          "description": "Consume messages from a Kafka topic. Message values returned to caller but never in evidence."
+        },
+        {
+          "id": "chp.adapters.kafka.list_topics",
+          "method": "list_topics",
+          "version": "0.1.0",
+          "description": "List available Kafka topics."
+        },
+        {
+          "id": "chp.adapters.kafka.publish",
+          "method": "publish",
+          "version": "0.1.0",
+          "description": "Publish a single message to a Kafka topic. Value never in evidence."
+        },
+        {
+          "id": "chp.adapters.kafka.publish_batch",
+          "method": "publish_batch",
+          "version": "0.1.0",
+          "description": "Publish multiple messages to a topic. Message values never in evidence."
+        },
+        {
+          "id": "chp.adapters.kafka.topic_metadata",
+          "method": "topic_metadata",
+          "version": "0.1.0",
+          "description": "Fetch partition and message-count metadata for a topic."
+        }
+      ]
+    },
+    {
+      "slug": "knowledge-graph",
+      "adapterId": "chp.adapters.knowledge_graph",
+      "name": "KnowledgeGraph",
+      "pypi": "chp-adapter-knowledge-graph",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.knowledge_graph.add_edge",
+          "method": "add_edge",
+          "version": "1.0.0",
+          "description": "Add or replace a directed edge between two nodes."
+        },
+        {
+          "id": "chp.adapters.knowledge_graph.add_node",
+          "method": "add_node",
+          "version": "1.0.0",
+          "description": "Add or replace a node in the knowledge graph."
+        },
+        {
+          "id": "chp.adapters.knowledge_graph.delete_node",
+          "method": "delete_node",
+          "version": "1.0.0",
+          "description": "Delete a node and all its edges."
+        },
+        {
+          "id": "chp.adapters.knowledge_graph.get_edges",
+          "method": "get_edges",
+          "version": "1.0.0",
+          "description": "Get edges connected to a node, with optional direction and relation filter."
+        },
+        {
+          "id": "chp.adapters.knowledge_graph.get_node",
+          "method": "get_node",
+          "version": "1.0.0",
+          "description": "Retrieve a node and its properties by ID."
+        },
+        {
+          "id": "chp.adapters.knowledge_graph.list_nodes",
+          "method": "list_nodes",
+          "version": "1.0.0",
+          "description": "List nodes, optionally filtered by type. Returns IDs and types only."
+        }
+      ]
+    },
+    {
+      "slug": "kubernetes",
+      "adapterId": "chp.adapters.kubernetes",
+      "name": "Kubernetes",
+      "pypi": "chp-adapter-kubernetes",
+      "category": "infra",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.kubernetes.apply_manifest",
+          "method": "apply_manifest",
+          "version": "0.1.0",
+          "description": "Create or update a Kubernetes resource from a manifest. Spec never in evidence."
+        },
+        {
+          "id": "chp.adapters.kubernetes.get_pod_logs",
+          "method": "get_pod_logs",
+          "version": "0.1.0",
+          "description": "Fetch pod logs. Log content returned to caller but never in evidence."
+        },
+        {
+          "id": "chp.adapters.kubernetes.list_deployments",
+          "method": "list_deployments",
+          "version": "0.1.0",
+          "description": "List deployments in a namespace."
+        },
+        {
+          "id": "chp.adapters.kubernetes.list_namespaces",
+          "method": "list_namespaces",
+          "version": "0.1.0",
+          "description": "List Kubernetes namespaces."
+        },
+        {
+          "id": "chp.adapters.kubernetes.list_pods",
+          "method": "list_pods",
+          "version": "0.1.0",
+          "description": "List pods in a namespace, optionally filtered by label selector."
+        },
+        {
+          "id": "chp.adapters.kubernetes.restart_deployment",
+          "method": "restart_deployment",
+          "version": "0.1.0",
+          "description": "Trigger a rolling restart of a deployment."
+        },
+        {
+          "id": "chp.adapters.kubernetes.scale_deployment",
+          "method": "scale_deployment",
+          "version": "0.1.0",
+          "description": "Scale a deployment to the specified number of replicas."
+        }
+      ]
+    },
+    {
+      "slug": "launchd",
+      "adapterId": "chp.adapters.launchd",
+      "name": "Launchd",
+      "pypi": "chp-adapter-launchd",
+      "category": "infra",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.launchd.install",
+          "method": "install",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.launchd.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List CHP-managed launchd services (scoped to the managed label prefix)."
+        },
+        {
+          "id": "chp.adapters.launchd.service_health",
+          "method": "service_health",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.launchd.start",
+          "method": "start",
+          "version": "1.0.0",
+          "description": "Start (bootstrap) a service if not loaded, or restart it (kickstart -k) if already loaded."
+        },
+        {
+          "id": "chp.adapters.launchd.status",
+          "method": "status",
+          "version": "1.0.0",
+          "description": "Report whether a launchd service is loaded/running, its pid, and last exit code."
+        },
+        {
+          "id": "chp.adapters.launchd.stop",
+          "method": "stop",
+          "version": "1.0.0",
+          "description": "Stop (bootout) a loaded launchd service."
+        },
+        {
+          "id": "chp.adapters.launchd.uninstall",
+          "method": "uninstall",
+          "version": "1.0.0",
+          "description": "Bootout a service and remove its LaunchAgent plist."
+        }
+      ]
+    },
+    {
+      "slug": "linear",
+      "adapterId": "chp.adapters.linear",
+      "name": "Linear",
+      "pypi": "chp-adapter-linear",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.linear.add_comment",
+          "method": "add_comment",
+          "version": "1.0.0",
+          "description": "Add a comment to a Linear issue."
+        },
+        {
+          "id": "chp.adapters.linear.create_issue",
+          "method": "create_issue",
+          "version": "1.0.0",
+          "description": "Create a new Linear issue."
+        },
+        {
+          "id": "chp.adapters.linear.get_issue",
+          "method": "get_issue",
+          "version": "1.0.0",
+          "description": "Fetch a single issue by ID, including description."
+        },
+        {
+          "id": "chp.adapters.linear.list_issues",
+          "method": "list_issues",
+          "version": "1.0.0",
+          "description": "List issues with optional filters."
+        },
+        {
+          "id": "chp.adapters.linear.update_issue",
+          "method": "update_issue",
+          "version": "1.0.0",
+          "description": "Update an existing Linear issue."
+        }
+      ]
+    },
+    {
+      "slug": "llm",
+      "adapterId": "chp.adapters.llm",
+      "name": "LLM Tool-Calling Bridge",
+      "pypi": "chp-adapter-llm",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.llm.call_tool",
+          "method": "call_tool",
+          "version": "1.0.0",
+          "description": "Invoke a CHP capability by its sanitized LLM tool name."
+        },
+        {
+          "id": "chp.adapters.llm.list_tools",
+          "method": "list_tools",
+          "version": "1.0.0",
+          "description": "List CHP capabilities as LLM tool definitions."
+        }
+      ]
+    },
+    {
+      "slug": "local-llm",
+      "adapterId": "chp.adapters.local_llm",
+      "name": "LocalLLM",
+      "pypi": "chp-adapter-local-llm",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.local_llm.chat",
+          "method": "chat",
+          "version": "1.0.0",
+          "description": "Multi-turn chat with message history. Messages are NOT recorded in evidence."
+        },
+        {
+          "id": "chp.adapters.local_llm.generate",
+          "method": "generate",
+          "version": "1.0.0",
+          "description": "Single-turn text generation. Prompt and completion are NOT recorded in evidence."
+        },
+        {
+          "id": "chp.adapters.local_llm.list_models",
+          "method": "list_models",
+          "version": "1.0.0",
+          "description": "List models available in the local LLM backend."
+        },
+        {
+          "id": "chp.adapters.local_llm.model_info",
+          "method": "model_info",
+          "version": "1.0.0",
+          "description": "Get metadata for a specific model (parameter count, context length, quantization)."
+        }
+      ]
+    },
+    {
+      "slug": "memory",
+      "adapterId": "chp.adapters.memory",
+      "name": "Memory",
+      "pypi": "chp-adapter-memory",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.memory.delete",
+          "method": "delete",
+          "version": "1.0.0",
+          "description": "Delete a key from scoped agent memory."
+        },
+        {
+          "id": "chp.adapters.memory.get",
+          "method": "get",
+          "version": "1.0.0",
+          "description": "Read a value from scoped agent memory."
+        },
+        {
+          "id": "chp.adapters.memory.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List all keys in a memory scope."
+        },
+        {
+          "id": "chp.adapters.memory.set",
+          "method": "set",
+          "version": "1.0.0",
+          "description": "Write or update a value in scoped agent memory."
+        }
+      ]
+    },
+    {
+      "slug": "messages",
+      "adapterId": "chp.adapters.messages",
+      "name": "Messages",
+      "pypi": "chp-adapter-messages",
+      "category": "messaging",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.messages.archive_to_remote",
+          "method": "archive_to_remote",
+          "version": "1.0.0",
+          "description": "Archive a session"
+        },
+        {
+          "id": "chp.adapters.messages.backfill_session",
+          "method": "backfill_session",
+          "version": "1.0.0",
+          "description": "Parse a Claude Code JSONL transcript and backfill human-typed turns into the evidence chain."
+        },
+        {
+          "id": "chp.adapters.messages.list_sessions",
+          "method": "list_sessions",
+          "version": "1.0.0",
+          "description": "List session IDs that have stored conversation transcripts."
+        },
+        {
+          "id": "chp.adapters.messages.load_session",
+          "method": "load_session",
+          "version": "1.0.0",
+          "description": "Load all conversation turns for a session from the local JSONL store."
+        },
+        {
+          "id": "chp.adapters.messages.record_turn",
+          "method": "record_turn",
+          "version": "1.0.0",
+          "description": "Record a conversation turn (user/assistant/system) into the evidence chain and JSONL store."
+        }
+      ]
+    },
+    {
+      "slug": "mlx",
+      "adapterId": "chp.adapters.mlx",
+      "name": "MLX",
+      "pypi": "chp-adapter-mlx",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.mlx.chat",
+          "method": "chat",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.generate",
+          "method": "generate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.list_models",
+          "method": "list_models",
+          "version": "1.0.0",
+          "description": "List models served by the local mlx_lm server (OpenAI /v1/models), via chp.adapters.http."
+        },
+        {
+          "id": "chp.adapters.mlx.start_server",
+          "method": "start_server",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.status",
+          "method": "status",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.stop_server",
+          "method": "stop_server",
+          "version": "1.0.0",
+          "description": "Stop the local mlx_lm server running on a port (SIGTERM the tracked pid)."
+        }
+      ]
+    },
+    {
+      "slug": "nats",
+      "adapterId": "chp.adapters.nats",
+      "name": "NATS",
+      "pypi": "chp-adapter-nats",
+      "category": "network",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.nats.list_subjects",
+          "method": "list_subjects",
+          "version": "0.1.0",
+          "description": "List known subjects in the NATS server."
+        },
+        {
+          "id": "chp.adapters.nats.publish",
+          "method": "publish",
+          "version": "0.1.0",
+          "description": "Publish a single message to a NATS subject. Message data never in evidence."
+        },
+        {
+          "id": "chp.adapters.nats.publish_batch",
+          "method": "publish_batch",
+          "version": "0.1.0",
+          "description": "Publish multiple NATS messages. Message data never in evidence."
+        },
+        {
+          "id": "chp.adapters.nats.request",
+          "method": "request",
+          "version": "0.1.0",
+          "description": "Send a request message and await a reply. Request and reply data never in evidence."
+        },
+        {
+          "id": "chp.adapters.nats.subscribe_snapshot",
+          "method": "subscribe_snapshot",
+          "version": "0.1.0",
+          "description": "Snapshot of buffered messages for a subject pattern. Message data never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "notification",
+      "adapterId": "chp.adapters.notification",
+      "name": "Notification",
+      "pypi": "chp-adapter-notification",
+      "category": "messaging",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.notification.broadcast",
+          "method": "broadcast",
+          "version": "0.1.0",
+          "description": "Send a notification to multiple recipients. Message body NEVER in evidence."
+        },
+        {
+          "id": "chp.adapters.notification.notify",
+          "method": "notify",
+          "version": "0.1.0",
+          "description": "Send a notification to a single recipient via the specified channel. Message body NEVER in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "notion",
+      "adapterId": "chp.adapters.notion",
+      "name": "Notion",
+      "pypi": "chp-adapter-notion",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.notion.append_blocks",
+          "method": "append_blocks",
+          "version": "1.0.0",
+          "description": "Append blocks to a Notion page or block."
+        },
+        {
+          "id": "chp.adapters.notion.create_page",
+          "method": "create_page",
+          "version": "1.0.0",
+          "description": "Create a new Notion page."
+        },
+        {
+          "id": "chp.adapters.notion.get_page",
+          "method": "get_page",
+          "version": "1.0.0",
+          "description": "Get a Notion page by ID."
+        },
+        {
+          "id": "chp.adapters.notion.query_database",
+          "method": "query_database",
+          "version": "1.0.0",
+          "description": "Query a Notion database with optional filter and sort."
+        },
+        {
+          "id": "chp.adapters.notion.search",
+          "method": "search",
+          "version": "1.0.0",
+          "description": "Search Notion pages and databases."
+        }
+      ]
+    },
+    {
+      "slug": "organization",
+      "adapterId": "chp.adapters.organization",
+      "name": "Organization",
+      "pypi": "chp-adapter-organization",
+      "category": "agents",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.organization.get_person",
+          "method": "get_person",
+          "version": "0.1.0",
+          "description": "Look up a person by ID. Returns name, title, department; email never in evidence."
+        },
+        {
+          "id": "chp.adapters.organization.get_team",
+          "method": "get_team",
+          "version": "0.1.0",
+          "description": "Look up a team by ID. Returns name, department, lead, member count."
+        },
+        {
+          "id": "chp.adapters.organization.list_members",
+          "method": "list_members",
+          "version": "0.1.0",
+          "description": "List org members filtered by department or team."
+        },
+        {
+          "id": "chp.adapters.organization.list_reports",
+          "method": "list_reports",
+          "version": "0.1.0",
+          "description": "List direct or recursive reports for a manager."
+        },
+        {
+          "id": "chp.adapters.organization.org_path",
+          "method": "org_path",
+          "version": "0.1.0",
+          "description": "Get the reporting chain from the root to a given person."
+        }
+      ]
+    },
+    {
+      "slug": "planning",
+      "adapterId": "chp.adapters.planning",
+      "name": "Planning",
+      "pypi": "chp-adapter-planning",
+      "category": "agents",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.planning.create_plan",
+          "method": "create_plan",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.planning.reflect",
+          "method": "reflect",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.planning.revise",
+          "method": "revise",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.planning.step_update",
+          "method": "step_update",
+          "version": "0.1.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "postgres",
+      "adapterId": "chp.adapters.postgres",
+      "name": "PostgreSQL",
+      "pypi": "chp-adapter-postgres",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.postgres.describe_table",
+          "method": "describe_table",
+          "version": "1.0.0",
+          "description": "Describe a table"
+        },
+        {
+          "id": "chp.adapters.postgres.execute",
+          "method": "execute",
+          "version": "1.0.0",
+          "description": "Run a writing SQL statement (INSERT/UPDATE/DELETE/DDL). High risk."
+        },
+        {
+          "id": "chp.adapters.postgres.list_tables",
+          "method": "list_tables",
+          "version": "1.0.0",
+          "description": "List tables in a schema (default public)."
+        },
+        {
+          "id": "chp.adapters.postgres.query",
+          "method": "query",
+          "version": "1.0.0",
+          "description": "Run a read-only SQL query (SELECT/WITH/EXPLAIN/SHOW). Rejects writes."
+        }
+      ]
+    },
+    {
+      "slug": "preference",
+      "adapterId": "chp.adapters.preference",
+      "name": "Preference",
+      "pypi": "chp-adapter-preference",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.preference.delete",
+          "method": "delete",
+          "version": "0.1.0",
+          "description": "Delete a preference key."
+        },
+        {
+          "id": "chp.adapters.preference.get",
+          "method": "get",
+          "version": "0.1.0",
+          "description": "Get a preference value. Value never in evidence."
+        },
+        {
+          "id": "chp.adapters.preference.list",
+          "method": "list",
+          "version": "0.1.0",
+          "description": "List preference keys in a namespace. Values never in evidence."
+        },
+        {
+          "id": "chp.adapters.preference.reset_namespace",
+          "method": "reset_namespace",
+          "version": "0.1.0",
+          "description": "Delete all preference keys in a namespace."
+        },
+        {
+          "id": "chp.adapters.preference.set",
+          "method": "set",
+          "version": "0.1.0",
+          "description": "Store a preference value. Value never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "process",
+      "adapterId": "chp.adapters.process",
+      "name": "Process",
+      "pypi": "chp-adapter-process",
+      "category": "infra",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.process.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": "Execute a CLI command with arguments."
+        }
+      ]
+    },
+    {
+      "slug": "radicle",
+      "adapterId": "chp.adapters.radicle",
+      "name": "Radicle",
+      "pypi": "chp-adapter-radicle",
+      "category": "code",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.radicle.identity",
+          "method": "identity",
+          "version": "",
+          "description": "Local Radicle identity: DID public key only. Private key / NID never returned."
+        },
+        {
+          "id": "chp.adapters.radicle.issue_close",
+          "method": "issue_close",
+          "version": "",
+          "description": "Close a Radicle issue by ID."
+        },
+        {
+          "id": "chp.adapters.radicle.issue_comment",
+          "method": "issue_comment",
+          "version": "",
+          "description": "Post a comment on a Radicle issue. Comment text never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.issue_list",
+          "method": "issue_list",
+          "version": "",
+          "description": "List Radicle issues: IDs, titles, states. Issue body never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.issue_open",
+          "method": "issue_open",
+          "version": "",
+          "description": "Open a new Radicle issue. Issue body never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.issue_show",
+          "method": "issue_show",
+          "version": "",
+          "description": "Show a Radicle issue: title, state, comment count. Body never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.list_repos",
+          "method": "list_repos",
+          "version": "",
+          "description": "List all locally tracked Radicle repositories (names + RIDs)."
+        },
+        {
+          "id": "chp.adapters.radicle.node_status",
+          "method": "node_status",
+          "version": "",
+          "description": "Radicle node status: running/stopped, connected peer count."
+        },
+        {
+          "id": "chp.adapters.radicle.patch_list",
+          "method": "patch_list",
+          "version": "",
+          "description": "List Radicle patches: IDs, titles, states. Patch body and diff never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.patch_open",
+          "method": "patch_open",
+          "version": "",
+          "description": "Open a new Radicle patch for the current branch. Patch body never in evidence."
+        },
+        {
+          "id": "chp.adapters.radicle.push",
+          "method": "push",
+          "version": "",
+          "description": "Push a branch to the Radicle remote (git push rad <branch>)."
+        },
+        {
+          "id": "chp.adapters.radicle.repo_info",
+          "method": "repo_info",
+          "version": "",
+          "description": "Radicle repository identity: RID, name, description, visibility, delegate count."
+        },
+        {
+          "id": "chp.adapters.radicle.sync",
+          "method": "sync",
+          "version": "",
+          "description": "Sync a Radicle repo to the network (push local state to seeds)."
+        }
+      ]
+    },
+    {
+      "slug": "raspi",
+      "adapterId": "chp.adapters.raspi",
+      "name": "RaspberryPi",
+      "pypi": "chp-adapter-raspi",
+      "category": "cloud",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.raspi.camera_capture",
+          "method": "camera_capture",
+          "version": "1.0.0",
+          "description": "Capture a still image. Returns file path, size, and resolution. Image bytes not in evidence."
+        },
+        {
+          "id": "chp.adapters.raspi.gpio_read",
+          "method": "gpio_read",
+          "version": "1.0.0",
+          "description": "Read digital state of a GPIO pin."
+        },
+        {
+          "id": "chp.adapters.raspi.gpio_write",
+          "method": "gpio_write",
+          "version": "1.0.0",
+          "description": "Write digital state to a GPIO pin."
+        },
+        {
+          "id": "chp.adapters.raspi.system_stats",
+          "method": "system_stats",
+          "version": "1.0.0",
+          "description": "CPU temperature, memory, disk usage, and uptime. No hardware dependencies."
+        }
+      ]
+    },
+    {
+      "slug": "registry",
+      "adapterId": "chp.adapters.registry",
+      "name": "Capability Registry",
+      "pypi": "chp-adapter-registry",
+      "category": "platform",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.registry.describe_host",
+          "method": "describe_host",
+          "version": "1.0.0",
+          "description": "Return the host descriptor with its full capability catalog."
+        },
+        {
+          "id": "chp.adapters.registry.get_capability",
+          "method": "get_capability",
+          "version": "1.0.0",
+          "description": "Fetch a capability descriptor by its exact ID."
+        },
+        {
+          "id": "chp.adapters.registry.list_capabilities",
+          "method": "list_capabilities",
+          "version": "1.0.0",
+          "description": "List capabilities registered on the host with optional filters."
+        }
+      ]
+    },
+    {
+      "slug": "release",
+      "adapterId": "chp.adapters.release",
+      "name": "Release",
+      "pypi": "chp-adapter-release",
+      "category": "infra",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.release.bump",
+          "method": "bump",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.release.publish_npm",
+          "method": "publish_npm",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.release.publish_pypi",
+          "method": "publish_pypi",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.release.sync",
+          "method": "sync",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.release.tag",
+          "method": "tag",
+          "version": "0.1.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "rpa",
+      "adapterId": "chp.adapters.rpa",
+      "name": "RPA",
+      "pypi": "chp-adapter-rpa",
+      "category": "agents",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.rpa.click",
+          "method": "click",
+          "version": "0.1.0",
+          "description": "Click a page element by CSS selector."
+        },
+        {
+          "id": "chp.adapters.rpa.extract_text",
+          "method": "extract_text",
+          "version": "0.1.0",
+          "description": "Extract visible text from page or a selector. Text content never in evidence."
+        },
+        {
+          "id": "chp.adapters.rpa.fill",
+          "method": "fill",
+          "version": "0.1.0",
+          "description": "Fill an input element. Fill value never in evidence."
+        },
+        {
+          "id": "chp.adapters.rpa.navigate",
+          "method": "navigate",
+          "version": "0.1.0",
+          "description": "Navigate the browser to a URL."
+        },
+        {
+          "id": "chp.adapters.rpa.screenshot",
+          "method": "screenshot",
+          "version": "0.1.0",
+          "description": "Capture the current page as PNG. Binary data never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "safety",
+      "adapterId": "chp.adapters.safety",
+      "name": "Safety",
+      "pypi": "chp-adapter-safety",
+      "category": "agents",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.safety.assess",
+          "method": "assess",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.safety.report",
+          "method": "report",
+          "version": "0.1.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "scout",
+      "adapterId": "chp.adapters.scout",
+      "name": "Scout",
+      "pypi": "chp-adapter-scout",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.scout.query",
+          "method": "query",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "secrets",
+      "adapterId": "chp.adapters.secrets",
+      "name": "Secrets",
+      "pypi": "chp-adapter-secrets",
+      "category": "infra",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.secrets.delete",
+          "method": "delete",
+          "version": "1.0.0",
+          "description": "Delete a secret by key."
+        },
+        {
+          "id": "chp.adapters.secrets.get",
+          "method": "get",
+          "version": "1.0.0",
+          "description": "Retrieve a secret value by key."
+        },
+        {
+          "id": "chp.adapters.secrets.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List available secret key names (no values returned)."
+        },
+        {
+          "id": "chp.adapters.secrets.set",
+          "method": "set",
+          "version": "1.0.0",
+          "description": "Store or update a secret value."
+        }
+      ]
+    },
+    {
+      "slug": "sglang",
+      "adapterId": "chp.adapters.sglang",
+      "name": "SGLang",
+      "pypi": "chp-adapter-sglang",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.sglang.chat",
+          "method": "chat",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.sglang.generate",
+          "method": "generate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.sglang.list_models",
+          "method": "list_models",
+          "version": "1.0.0",
+          "description": "List models served by the local SGLang server (OpenAI /v1/models), via chp.adapters.http."
+        }
+      ]
+    },
+    {
+      "slug": "slack",
+      "adapterId": "chp.adapters.slack",
+      "name": "Slack",
+      "pypi": "chp-adapter-slack",
+      "category": "messaging",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.slack.add_reaction",
+          "method": "add_reaction",
+          "version": "1.0.0",
+          "description": "Add an emoji reaction to a message."
+        },
+        {
+          "id": "chp.adapters.slack.parse_interaction",
+          "method": "parse_interaction",
+          "version": "1.0.0",
+          "description": "Normalize a Slack block_actions interaction payload."
+        },
+        {
+          "id": "chp.adapters.slack.post_message",
+          "method": "post_message",
+          "version": "1.0.0",
+          "description": "Post a message to a channel (optionally in a thread)."
+        },
+        {
+          "id": "chp.adapters.slack.request_approval",
+          "method": "request_approval",
+          "version": "1.0.0",
+          "description": "Post an interactive Approve/Deny message (human-in-the-loop)."
+        },
+        {
+          "id": "chp.adapters.slack.verify_request",
+          "method": "verify_request",
+          "version": "1.0.0",
+          "description": "Verify a Slack request signature (v0 HMAC) with replay protection."
+        }
+      ]
+    },
+    {
+      "slug": "smolagents",
+      "adapterId": "chp.adapters.smolagents",
+      "name": "Smolagents",
+      "pypi": "chp-adapter-smolagents",
+      "category": "ai",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.smolagents.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "spreadsheet",
+      "adapterId": "chp.adapters.spreadsheet",
+      "name": "Spreadsheet",
+      "pypi": "chp-adapter-spreadsheet",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.spreadsheet.append_rows",
+          "method": "append_rows",
+          "version": "0.1.0",
+          "description": "Append rows using header-keyed dicts. Row data NEVER in evidence."
+        },
+        {
+          "id": "chp.adapters.spreadsheet.get_schema",
+          "method": "get_schema",
+          "version": "0.1.0",
+          "description": "Get headers, row count, and column count for a sheet."
+        },
+        {
+          "id": "chp.adapters.spreadsheet.list_sheets",
+          "method": "list_sheets",
+          "version": "0.1.0",
+          "description": "List all sheet names with row and column counts."
+        },
+        {
+          "id": "chp.adapters.spreadsheet.read_range",
+          "method": "read_range",
+          "version": "0.1.0",
+          "description": "Read rows from a sheet as header-keyed dicts. Cell values are returned to caller but NEVER stored in evidence."
+        },
+        {
+          "id": "chp.adapters.spreadsheet.write_range",
+          "method": "write_range",
+          "version": "0.1.0",
+          "description": "Write rows at a given offset. Row data is accepted but NEVER stored in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "state-machine",
+      "adapterId": "chp.adapters.state_machine",
+      "name": "State Machine",
+      "pypi": "chp-adapter-state-machine",
+      "category": "infra",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.state_machine.create",
+          "method": "create",
+          "version": "1.0.0",
+          "description": "Create a new finite state machine instance."
+        },
+        {
+          "id": "chp.adapters.state_machine.get_state",
+          "method": "get_state",
+          "version": "1.0.0",
+          "description": "Inspect the current state and status of a machine."
+        },
+        {
+          "id": "chp.adapters.state_machine.list_machines",
+          "method": "list_machines",
+          "version": "1.0.0",
+          "description": "List all state machine instances, optionally filtered by status."
+        },
+        {
+          "id": "chp.adapters.state_machine.transition",
+          "method": "transition",
+          "version": "1.0.0",
+          "description": "Fire an event on a state machine (event = target state name)."
+        }
+      ]
+    },
+    {
+      "slug": "synology",
+      "adapterId": "chp.adapters.synology",
+      "name": "Synology",
+      "pypi": "chp-adapter-synology",
+      "category": "cloud",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.synology.container_list",
+          "method": "container_list",
+          "version": "1.0.0",
+          "description": "List Container Manager containers and their status."
+        },
+        {
+          "id": "chp.adapters.synology.container_start",
+          "method": "container_start",
+          "version": "1.0.0",
+          "description": "Start a Container Manager container."
+        },
+        {
+          "id": "chp.adapters.synology.container_stop",
+          "method": "container_stop",
+          "version": "1.0.0",
+          "description": "Stop a Container Manager container."
+        },
+        {
+          "id": "chp.adapters.synology.download_create",
+          "method": "download_create",
+          "version": "1.0.0",
+          "description": "Add a download task to Download Station."
+        },
+        {
+          "id": "chp.adapters.synology.file_info",
+          "method": "file_info",
+          "version": "1.0.0",
+          "description": "Get metadata (size, modified, owner) for a file or folder."
+        },
+        {
+          "id": "chp.adapters.synology.file_list",
+          "method": "file_list",
+          "version": "1.0.0",
+          "description": "List files in a Synology shared folder."
+        },
+        {
+          "id": "chp.adapters.synology.task_list",
+          "method": "task_list",
+          "version": "1.0.0",
+          "description": "List Task Scheduler jobs and their last run status."
+        }
+      ]
+    },
+    {
+      "slug": "tailscale",
+      "adapterId": "chp.adapters.tailscale",
+      "name": "Tailscale",
+      "pypi": "chp-adapter-tailscale",
+      "category": "cloud",
+      "status": "certified",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.tailscale.chp_hosts",
+          "method": "chp_hosts",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tailscale.devices",
+          "method": "devices",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tailscale.verify_mesh",
+          "method": "verify_mesh",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "tei",
+      "adapterId": "chp.adapters.tei",
+      "name": "TEI",
+      "pypi": "chp-adapter-tei",
+      "category": "ai",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.tei.embed",
+          "method": "embed",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tei.health",
+          "method": "health",
+          "version": "1.0.0",
+          "description": "Check whether the local TEI server is reachable and ready, via chp.adapters.http."
+        },
+        {
+          "id": "chp.adapters.tei.info",
+          "method": "info",
+          "version": "1.0.0",
+          "description": "Fetch the TEI server"
+        },
+        {
+          "id": "chp.adapters.tei.rerank",
+          "method": "rerank",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "vector",
+      "adapterId": "chp.adapters.vector",
+      "name": "Vector",
+      "pypi": "chp-adapter-vector",
+      "category": "ai",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.vector.add",
+          "method": "add",
+          "version": "1.0.0",
+          "description": "Store a document for later semantic search."
+        },
+        {
+          "id": "chp.adapters.vector.count",
+          "method": "count",
+          "version": "1.0.0",
+          "description": "Return the total number of stored documents."
+        },
+        {
+          "id": "chp.adapters.vector.delete",
+          "method": "delete",
+          "version": "1.0.0",
+          "description": "Delete a document from the vector store."
+        },
+        {
+          "id": "chp.adapters.vector.search",
+          "method": "search",
+          "version": "1.0.0",
+          "description": "Semantic search over stored documents."
+        }
+      ]
+    },
+    {
+      "slug": "vercel",
+      "adapterId": "chp.adapters.vercel",
+      "name": "Vercel",
+      "pypi": "chp-adapter-vercel",
+      "category": "cloud",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.vercel.cancel_deployment",
+          "method": "cancel_deployment",
+          "version": "0.1.0",
+          "description": "Cancel a running or queued Vercel deployment."
+        },
+        {
+          "id": "chp.adapters.vercel.get_build_logs",
+          "method": "get_build_logs",
+          "version": "0.1.0",
+          "description": "Get build log statistics for a deployment: line count and duration. Log text never in evidence."
+        },
+        {
+          "id": "chp.adapters.vercel.get_deployment",
+          "method": "get_deployment",
+          "version": "0.1.0",
+          "description": "Get a single Vercel deployment: status, URL, build duration. Env var values never in evidence."
+        },
+        {
+          "id": "chp.adapters.vercel.list_deployments",
+          "method": "list_deployments",
+          "version": "0.1.0",
+          "description": "List recent Vercel deployments: ID, state, URL, branch. Log content never in evidence."
+        },
+        {
+          "id": "chp.adapters.vercel.list_preview_urls",
+          "method": "list_preview_urls",
+          "version": "0.1.0",
+          "description": "List Vercel preview deployments and their URLs."
+        },
+        {
+          "id": "chp.adapters.vercel.list_projects",
+          "method": "list_projects",
+          "version": "0.1.0",
+          "description": "List Vercel projects: IDs and names only."
+        },
+        {
+          "id": "chp.adapters.vercel.promote_deployment",
+          "method": "promote_deployment",
+          "version": "0.1.0",
+          "description": "Promote a deployment to production. High risk — requires explicit deployment_id and project_id."
+        },
+        {
+          "id": "chp.adapters.vercel.trigger_deploy",
+          "method": "trigger_deploy",
+          "version": "0.1.0",
+          "description": "Trigger a new Vercel deployment from a git ref. Env var values never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "vllm",
+      "adapterId": "chp.adapters.vllm",
+      "name": "vLLM",
+      "pypi": "chp-adapter-vllm",
+      "category": "ai",
+      "status": "certified",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.vllm.chat",
+          "method": "chat",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.vllm.generate",
+          "method": "generate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.vllm.list_models",
+          "method": "list_models",
+          "version": "1.0.0",
+          "description": "List models served by the local vLLM server (OpenAI /v1/models), via chp.adapters.http."
+        }
+      ]
+    },
+    {
+      "slug": "webhook",
+      "adapterId": "chp.adapters.webhook",
+      "name": "Webhook",
+      "pypi": "chp-adapter-webhook",
+      "category": "network",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.webhook.ingest",
+          "method": "ingest",
+          "version": "1.0.0",
+          "description": "Verify a webhook then normalize it into a CHP event envelope."
+        },
+        {
+          "id": "chp.adapters.webhook.verify",
+          "method": "verify",
+          "version": "1.0.0",
+          "description": "Verify a webhook HMAC signature (constant-time)."
+        }
+      ]
+    },
+    {
+      "slug": "workflow",
+      "adapterId": "chp.adapters.workflow",
+      "name": "Workflow",
+      "pypi": "chp-adapter-workflow",
+      "category": "infra",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.workflow.cancel",
+          "method": "cancel",
+          "version": "1.0.0",
+          "description": "Cancel a running workflow. No-op if already in a terminal state."
+        },
+        {
+          "id": "chp.adapters.workflow.get_status",
+          "method": "get_status",
+          "version": "1.0.0",
+          "description": "Get the current status and step history of a workflow."
+        },
+        {
+          "id": "chp.adapters.workflow.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List workflow executions with optional status and type filters."
+        },
+        {
+          "id": "chp.adapters.workflow.record_step",
+          "method": "record_step",
+          "version": "1.0.0",
+          "description": "Record a step outcome against a running workflow."
+        },
+        {
+          "id": "chp.adapters.workflow.submit",
+          "method": "submit",
+          "version": "1.0.0",
+          "description": "Submit a new workflow execution. Returns a workflow_id."
+        }
+      ]
+    }
+  ]
+}

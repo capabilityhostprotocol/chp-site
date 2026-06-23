@@ -1,4 +1,6 @@
 import type { MetadataRoute } from 'next';
+import { officialAdapters } from './lib/adapters';
+import { adapterSlug } from './lib/capabilities';
 
 const BASE = 'https://capabilityhostprotocol.com';
 
@@ -13,6 +15,7 @@ const ROUTES = [
   '/implementers',
   '/conformance',
   '/adapters',
+  '/capabilities',
   '/quickstart',
   '/map',
   '/govern/agents',
@@ -29,10 +32,17 @@ const ROUTES = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return ROUTES.map((path) => ({
+  const pages: MetadataRoute.Sitemap = ROUTES.map((path) => ({
     url: `${BASE}${path}`,
     lastModified: now,
     changeFrequency: 'weekly',
     priority: path === '' ? 1 : 0.7,
   }));
+  const adapterPages: MetadataRoute.Sitemap = officialAdapters.map((a) => ({
+    url: `${BASE}/adapters/${adapterSlug(a.id)}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.5,
+  }));
+  return [...pages, ...adapterPages];
 }

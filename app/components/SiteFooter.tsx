@@ -19,6 +19,18 @@ export default function SiteFooter() {
             Design partners
           </a>
           <a
+            href="/capabilities"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Capabilities
+          </a>
+          <a
+            href="/adapters"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Adapters
+          </a>
+          <a
             href="/protocol"
             className="hover:text-zinc-400 transition-colors"
           >
