@@ -5,6 +5,7 @@ import {
   capabilityCategories,
   adaptersByCategory,
 } from '../lib/capabilities';
+import CapabilityConstellation from '../components/CapabilityConstellation';
 
 export const metadata: Metadata = {
   title: 'Capabilities - Capability Host Protocol',
@@ -56,6 +57,8 @@ export default function CapabilitiesPage() {
             ))}
           </div>
         </section>
+
+        <CapabilityConstellation />
 
         {capabilityCategories.map((category) => (
           <section
