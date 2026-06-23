@@ -4,7 +4,8 @@ import { HOOKS_INSTALL } from '../lib/content';
 const POINTS = [
   'Every tool call — Bash, Read, Edit, Write — captured as a typed evidence event.',
   'Replay any session by ID; denials are first-class, not swallowed exceptions.',
-  'SHA256 hash-chained and local. Export to any OTLP collector when you want.',
+  'SHA256 hash-chained and local — the record a security or compliance review can replay and trust.',
+  'Works with Claude Code, Codex, and Gemini CLI — and any Python host.',
 ];
 
 export default function AgentProofStrip() {
@@ -27,6 +28,11 @@ export default function AgentProofStrip() {
                 </li>
               ))}
             </ul>
+            <p className="text-xs text-zinc-600 leading-relaxed mb-6">
+              Provable today: local, tamper-evident replay. Hosted retention,
+              role-based access, and compliance export are what we build with
+              design partners.
+            </p>
             <a
               href="/govern/agents"
               className="text-sm text-zinc-200 hover:text-zinc-50 transition-colors"
