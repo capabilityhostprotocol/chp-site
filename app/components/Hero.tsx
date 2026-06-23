@@ -41,20 +41,22 @@ export default function Hero() {
       />
       <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
         <p className="font-mono text-xs text-zinc-500 mb-5 uppercase">
-          Capability Host Protocol · open governance &amp; evidence for capabilities
+          Capability Host Protocol · an evidence layer for what AI agents and
+          automation do
         </p>
         <h1 className="text-4xl md:text-6xl font-semibold leading-[1.02] text-zinc-50 mb-7 max-w-4xl">
           Stay in command of what agents, products, and organizations can do —
           and prove what they did.
         </h1>
         <p className="text-lg md:text-xl text-zinc-300 max-w-3xl leading-relaxed mb-4">
-          CHP is an open protocol that turns every consequential action — taken
-          by a person, an agent, a product, or a business — into a declared,
-          governable, tamper-evidently provable event.
+          Start where the proof is real: see exactly what your AI agents did —
+          every tool call captured, replayable, and tamper-evident. One command,
+          no application code changes.
         </p>
         <p className="text-base text-zinc-400 max-w-3xl leading-relaxed mb-9">
-          Start where the proof is already real: see exactly what your AI agents
-          did. One command, no application code changes.
+          CHP is the open protocol underneath — it turns every consequential
+          action, by a person, an agent, a product, or a business, into a
+          declared, governable, provable event.
         </p>
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <a
