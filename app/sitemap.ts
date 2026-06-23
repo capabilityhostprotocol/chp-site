@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { officialAdapters } from './lib/adapters';
 import { adapterSlug } from './lib/capabilities';
+import { getPostSlugs } from './lib/blog';
 
 const BASE = 'https://capabilityhostprotocol.com';
 
@@ -8,6 +9,7 @@ const ROUTES = [
   '',
   '/how-it-works',
   '/use-cases',
+  '/blog',
   '/why-a-protocol',
   '/design-partners',
   '/protocol',
@@ -45,5 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
     priority: 0.5,
   }));
-  return [...pages, ...adapterPages];
+  const blogPages: MetadataRoute.Sitemap = getPostSlugs().map((slug) => ({
+    url: `${BASE}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+  return [...pages, ...adapterPages, ...blogPages];
 }

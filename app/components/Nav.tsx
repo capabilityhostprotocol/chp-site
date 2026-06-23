@@ -5,6 +5,7 @@ export default function Nav() {
     ['Industries', '/industries/software'],
     ['Use cases', '/use-cases'],
     ['Why a protocol', '/why-a-protocol'],
+    ['Blog', '/blog'],
     ['Docs', 'https://docs.capabilityhostprotocol.com'],
   ];
 
