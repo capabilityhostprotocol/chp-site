@@ -55,13 +55,13 @@ export default function OperationalStatePanel({
       {...busyProps}
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-mono text-[11px] uppercase text-zinc-600">
+        <p className="font-mono text-[11px] uppercase text-zinc-400">
           Product state
         </p>
         <Badge tone={STATE_TONES[state]}>{STATE_LABELS[state]}</Badge>
       </div>
       <h3 className="mt-4 text-sm font-semibold text-zinc-100">{title}</h3>
-      <p className="mt-2 text-xs leading-relaxed text-zinc-500">{body}</p>
+      <p className="mt-2 text-xs leading-relaxed text-zinc-400">{body}</p>
       {state === 'loading' && (
         <div className="mt-4 grid gap-2" aria-hidden="true">
           <div className="h-2 rounded bg-zinc-800" />
@@ -69,7 +69,7 @@ export default function OperationalStatePanel({
         </div>
       )}
       {evidence && (
-        <p className="mt-4 break-words border-t border-[color:var(--color-border-subtle)] pt-3 font-mono text-[11px] text-zinc-600">
+        <p className="mt-4 break-words border-t border-[color:var(--color-border-subtle)] pt-3 font-mono text-[11px] text-zinc-400">
           {evidence}
         </p>
       )}

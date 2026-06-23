@@ -36,7 +36,7 @@ export default function GoDeeper() {
               <h3 className="text-base font-semibold text-zinc-100 mb-2">
                 {l.label}
               </h3>
-              <p className="text-sm text-zinc-500 leading-relaxed flex-1">
+              <p className="text-sm text-zinc-400 leading-relaxed flex-1">
                 {l.body}
               </p>
               <span className="mt-4 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">

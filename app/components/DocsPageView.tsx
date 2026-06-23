@@ -16,7 +16,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
   return (
     <>
       <SectionShell border="none" className="pt-16 pb-14">
-        <p className="mb-4 font-mono text-xs uppercase text-zinc-500">
+        <p className="mb-4 font-mono text-xs uppercase text-zinc-400">
           Docs / {page.group}
         </p>
         <h1 className="mb-6 max-w-4xl text-4xl font-semibold leading-tight text-zinc-50 md:text-6xl">
@@ -30,19 +30,19 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
       <SectionShell border="y">
         <div className="grid gap-4 md:grid-cols-3">
           <SurfacePanel>
-            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
               Plain English
             </p>
             <p className="text-sm leading-relaxed text-zinc-300">{page.plain}</p>
           </SurfacePanel>
           <SurfacePanel>
-            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
               Why it exists
             </p>
             <p className="text-sm leading-relaxed text-zinc-300">{page.why}</p>
           </SurfacePanel>
           <SurfacePanel variant="field">
-            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+            <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
               Formal definition
             </p>
             <p className="text-sm leading-relaxed text-zinc-300">{page.formal}</p>
@@ -90,7 +90,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
           />
           <div className="grid gap-4 lg:grid-cols-3">
             <SurfacePanel>
-              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
                 Compared to
               </p>
               <h2 className="text-base font-semibold text-zinc-100">
@@ -98,7 +98,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
               </h2>
             </SurfacePanel>
             <SurfacePanel>
-              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
                 They center
               </p>
               <p className="text-sm leading-relaxed text-zinc-400">
@@ -106,7 +106,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
               </p>
             </SurfacePanel>
             <SurfacePanel variant="field">
-              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-600">
+              <p className="mb-3 font-mono text-[11px] uppercase text-zinc-400">
                 CHP centers
               </p>
               <p className="text-sm leading-relaxed text-zinc-300">
@@ -133,7 +133,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
             className="mb-8"
           />
           <div className="overflow-hidden rounded-lg border border-[color:var(--color-border-subtle)]">
-            <div className="grid gap-3 border-b border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)] px-4 py-3 font-mono text-[11px] uppercase text-zinc-600 md:grid-cols-[0.8fr_0.7fr_1.5fr]">
+            <div className="grid gap-3 border-b border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)] px-4 py-3 font-mono text-[11px] uppercase text-zinc-400 md:grid-cols-[0.8fr_0.7fr_1.5fr]">
               {page.referenceTable.columns.map((column) => (
                 <span key={column}>{column}</span>
               ))}
@@ -147,7 +147,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
                   <span className="break-words font-mono text-sm text-zinc-100">
                     {row.name}
                   </span>
-                  <span className="font-mono text-xs text-zinc-500">
+                  <span className="font-mono text-xs text-zinc-400">
                     {row.value}
                   </span>
                   <p className="text-sm leading-relaxed text-zinc-400">
@@ -189,7 +189,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
             <ol className="space-y-3">
               {page.visualModel.map((item, index) => (
                 <li key={item} className="flex gap-3 text-sm text-zinc-400">
-                  <span className="font-mono text-xs text-zinc-600">
+                  <span className="font-mono text-xs text-zinc-400">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <span>{item}</span>

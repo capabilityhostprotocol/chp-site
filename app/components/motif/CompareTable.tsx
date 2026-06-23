@@ -55,7 +55,7 @@ export default function CompareTable({
                   {c.label}
                 </p>
                 {c.sub && (
-                  <p className="font-mono text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-mono text-[11px] text-zinc-400 mt-0.5">
                     {c.sub}
                   </p>
                 )}
@@ -108,7 +108,7 @@ export default function CompareTable({
                     : ''
                 }`}
               >
-                <p className="font-mono text-[11px] uppercase text-zinc-500 mb-1">
+                <p className="font-mono text-[11px] uppercase text-zinc-400 mb-1">
                   {columns[i].label}
                 </p>
                 <p className="text-sm text-zinc-300 leading-relaxed">{cell}</p>
@@ -119,7 +119,7 @@ export default function CompareTable({
       </div>
 
       {caption && (
-        <figcaption className="mt-3 text-sm text-zinc-500 leading-relaxed">
+        <figcaption className="mt-3 text-sm text-zinc-400 leading-relaxed">
           {caption}
         </figcaption>
       )}

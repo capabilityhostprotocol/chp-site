@@ -47,7 +47,7 @@ export default function ProtocolArtifactSection() {
         {ARTIFACTS.map((artifact) => (
           <article key={artifact.label} className="grid gap-4">
             <div>
-              <p className="font-mono text-[11px] uppercase text-zinc-600 mb-1">
+              <p className="font-mono text-[11px] uppercase text-zinc-400 mb-1">
                 {artifact.label}
               </p>
               <h3 className="text-sm font-semibold text-zinc-100">

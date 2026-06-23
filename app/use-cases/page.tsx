@@ -54,7 +54,7 @@ export default function UseCasesPage() {
                   <h2 className="text-lg font-semibold text-zinc-100">
                     {u.title}
                   </h2>
-                  <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1 whitespace-nowrap">
+                  <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1 whitespace-nowrap">
                     {u.status}
                   </span>
                 </div>
@@ -78,7 +78,7 @@ export default function UseCasesPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Have a job that needs a provable record?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If your work needs to show what people, agents, and systems did,
                 the protocol probably fits. Tell us the workflow and we will map
                 it.

@@ -20,7 +20,7 @@ export default function Figure({
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
       {children}
       {caption && (
-        <figcaption className="mt-3 text-sm text-zinc-500 leading-relaxed">
+        <figcaption className="mt-3 text-sm text-zinc-400 leading-relaxed">
           {caption}
         </figcaption>
       )}

@@ -6,7 +6,7 @@ export default function EvidenceFoundation() {
       {/* How it works — 3 steps */}
       <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
         <h2 className="text-lg font-semibold text-zinc-100 mb-2">The evidence foundation</h2>
-        <p className="text-sm text-zinc-500 mb-10">
+        <p className="text-sm text-zinc-400 mb-10">
           Every capability invocation — across any group — runs through the same three-step protocol.
         </p>
         <div className="grid md:grid-cols-3 gap-6">
@@ -14,7 +14,7 @@ export default function EvidenceFoundation() {
             <div key={step.number}>
               <div className="text-3xl font-mono text-zinc-800 mb-4 leading-none">{step.number}</div>
               <h3 className="text-sm font-semibold text-zinc-200 mb-2">{step.title}</h3>
-              <p className="text-sm text-zinc-500 leading-relaxed mb-4">{step.body}</p>
+              <p className="text-sm text-zinc-400 leading-relaxed mb-4">{step.body}</p>
               <div className="bg-zinc-900 border border-zinc-800 rounded px-3 py-2 font-mono text-xs text-zinc-400 break-all">
                 {step.code}
               </div>
@@ -37,14 +37,14 @@ export default function EvidenceFoundation() {
               <div className="flex items-start gap-3">
                 <div className="flex-1">
                   <p className="text-xs font-semibold text-zinc-200 mb-1">SHA256 hash-chained events</p>
-                  <p className="text-xs text-zinc-500 leading-relaxed mb-2">
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-2">
                     Every evidence event includes <code className="font-mono text-zinc-400">prev_hash</code> and{' '}
                     <code className="font-mono text-zinc-400">hash</code> — forming a tamper-detectable chain
                     across the session. No external signing required.
                   </p>
                   <div className="font-mono text-xs text-zinc-400 bg-zinc-950 border border-zinc-800 rounded px-3 py-2">
                     $ chp verify-evidence &lt;session_id&gt;<br />
-                    <span className="text-zinc-600">→ 47 events verified · chain intact</span>
+                    <span className="text-zinc-400">→ 47 events verified · chain intact</span>
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@ export default function EvidenceFoundation() {
                 'execution_failed',
                 'execution_denied',
               ].map((evt) => (
-                <div key={evt} className="flex items-center gap-3 font-mono text-xs text-zinc-500">
+                <div key={evt} className="flex items-center gap-3 font-mono text-xs text-zinc-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 flex-shrink-0" />
                   {evt}
                 </div>
@@ -68,7 +68,7 @@ export default function EvidenceFoundation() {
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
-              <span className="ml-2 font-mono text-xs text-zinc-600">evidence event</span>
+              <span className="ml-2 font-mono text-xs text-zinc-400">evidence event</span>
             </div>
             <pre className="p-4 font-mono text-xs text-zinc-300 overflow-x-auto leading-relaxed">
               <code>{EVIDENCE_OUTPUT}</code>
@@ -80,7 +80,7 @@ export default function EvidenceFoundation() {
       {/* Minimal code example */}
       <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
         <h2 className="text-lg font-semibold text-zinc-100 mb-1">Minimal example</h2>
-        <p className="text-sm text-zinc-500 mb-6">Register a capability, invoke it, replay the evidence.</p>
+        <p className="text-sm text-zinc-400 mb-6">Register a capability, invoke it, replay the evidence.</p>
         <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
           <div className="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-800">
             <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />

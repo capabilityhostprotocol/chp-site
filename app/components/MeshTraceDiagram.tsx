@@ -8,7 +8,7 @@ const HOSTS = [
 export default function MeshTraceDiagram() {
   return (
     <div className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)] p-5 md:p-6 shadow-[var(--shadow-surface)]">
-      <p className="font-mono text-[10px] uppercase text-zinc-500 mb-4">
+      <p className="font-mono text-[10px] uppercase text-zinc-400 mb-4">
         correlation_id: session-abc
       </p>
 
@@ -18,18 +18,18 @@ export default function MeshTraceDiagram() {
             key={h.label}
             className="rounded-md border border-zinc-700 bg-[color:var(--color-host-background)] px-3 py-2.5"
           >
-            <p className="font-mono text-[10px] uppercase text-zinc-500">{h.label}</p>
+            <p className="font-mono text-[10px] uppercase text-zinc-400">{h.label}</p>
             <p className="font-mono text-xs text-zinc-300 mt-1">{h.event}</p>
           </div>
         ))}
       </div>
 
-      <div aria-hidden="true" className="flex items-center justify-center text-zinc-700 font-mono text-sm mb-5">
+      <div aria-hidden="true" className="flex items-center justify-center text-zinc-500 font-mono text-sm mb-5">
         &#8595;&nbsp;&nbsp;gateway stitches by correlation&nbsp;&nbsp;&#8595;
       </div>
 
       <div className="rounded-md border border-zinc-600 bg-[color:var(--color-host-background)] px-4 py-3">
-        <p className="font-mono text-[10px] uppercase text-zinc-500 mb-2">
+        <p className="font-mono text-[10px] uppercase text-zinc-400 mb-2">
           one ordered replay
         </p>
         <p className="font-mono text-xs text-zinc-400 leading-relaxed">
@@ -37,7 +37,7 @@ export default function MeshTraceDiagram() {
         </p>
       </div>
 
-      <p className="font-mono text-xs text-zinc-600 mt-5 pt-4 border-t border-[color:var(--color-border-subtle)]">
+      <p className="font-mono text-xs text-zinc-400 mt-5 pt-4 border-t border-[color:var(--color-border-subtle)]">
         Four hosts, one causal thread, a single replayable timeline.
       </p>
     </div>

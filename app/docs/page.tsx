@@ -46,7 +46,7 @@ export default function DocsPage() {
       <Nav />
       <main>
         <SectionShell border="none" className="pt-16 pb-14">
-          <p className="mb-4 font-mono text-xs uppercase text-zinc-500">Docs</p>
+          <p className="mb-4 font-mono text-xs uppercase text-zinc-400">Docs</p>
           <h1 className="mb-6 max-w-4xl text-4xl font-semibold leading-tight text-zinc-50 md:text-6xl">
             Learn the hosted capability boundary from concept to conformance.
           </h1>
@@ -72,10 +72,10 @@ export default function DocsPage() {
               return (
                 <SurfacePanel key={group.label} className="flex flex-col">
                   <div className="mb-5">
-                    <p className="mb-3 font-mono text-xs uppercase text-zinc-500">
+                    <p className="mb-3 font-mono text-xs uppercase text-zinc-400">
                       {group.label}
                     </p>
-                    <p className="text-sm leading-relaxed text-zinc-500">
+                    <p className="text-sm leading-relaxed text-zinc-400">
                       {group.description}
                     </p>
                   </div>

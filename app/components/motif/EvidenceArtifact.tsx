@@ -32,7 +32,7 @@ export default function EvidenceArtifact({
         </ul>
       )}
       {caption && (
-        <figcaption className="mt-3 text-sm text-zinc-500 leading-relaxed">
+        <figcaption className="mt-3 text-sm text-zinc-400 leading-relaxed">
           {caption}
         </figcaption>
       )}

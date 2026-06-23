@@ -54,11 +54,11 @@ export default function PolicyBoundary({
       className={`rounded-lg border bg-[color:var(--color-surface-900)]/75 p-4 ${STATE_STYLES[state]}`}
     >
       <div className="flex flex-wrap items-center gap-2">
-        <p className="font-mono text-[11px] uppercase text-zinc-600">Policy boundary</p>
+        <p className="font-mono text-[11px] uppercase text-zinc-400">Policy boundary</p>
         <Badge tone={STATE_TONES[state]}>{STATE_LABELS[state]}</Badge>
       </div>
       <h3 className="mt-3 text-sm font-semibold text-zinc-100">{label}</h3>
-      <p className="mt-2 text-xs leading-relaxed text-zinc-500">{description}</p>
+      <p className="mt-2 text-xs leading-relaxed text-zinc-400">{description}</p>
     </div>
   );
 }

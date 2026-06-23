@@ -99,7 +99,7 @@ export default function CapabilitiesTxtPage() {
             sibling to <code className="font-mono">robots.txt</code> and{' '}
             <code className="font-mono">llms.txt</code>, for the agentic web.
           </p>
-          <p className="text-base text-zinc-500 leading-relaxed max-w-3xl">
+          <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
             robots.txt advertised what crawlers may read. llms.txt advertised what
             LLMs should read. capabilities.txt advertises what agents can{' '}
             <em>do</em>.
@@ -126,7 +126,7 @@ export default function CapabilitiesTxtPage() {
               <code className="font-mono text-sm text-zinc-100">
                 /capabilities.txt
               </code>
-              <p className="text-sm text-zinc-500 leading-relaxed mt-2">
+              <p className="text-sm text-zinc-400 leading-relaxed mt-2">
                 Human- and agent-readable markdown: capabilities grouped by
                 category, each with an id, version, and one-line description.
               </p>
@@ -135,14 +135,14 @@ export default function CapabilitiesTxtPage() {
               <code className="font-mono text-sm text-zinc-100">
                 /.well-known/capabilities.json
               </code>
-              <p className="text-sm text-zinc-500 leading-relaxed mt-2">
+              <p className="text-sm text-zinc-400 leading-relaxed mt-2">
                 The structured form — an array of capability references, each
                 resolvable to a full descriptor (modes, policy, evidence,
                 schemas).
               </p>
             </div>
           </div>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mt-6">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mt-6">
             Grounded in a real, open schema:{' '}
             <a
               href="https://github.com/capabilityhostprotocol/chp-core/blob/main/schemas/capability-descriptor.schema.json"
@@ -162,7 +162,7 @@ export default function CapabilitiesTxtPage() {
                 className="border border-zinc-800 bg-zinc-950/70 rounded-lg px-5 py-4"
               >
                 <p className="font-mono text-xs text-zinc-300 mb-2">vs {name}</p>
-                <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -188,7 +188,7 @@ export default function CapabilitiesTxtPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Want to publish one — or shape the convention?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 This is an early proposal with a live reference. If you expose
                 capabilities agents should find, let&apos;s define it together.
               </p>

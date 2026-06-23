@@ -66,7 +66,7 @@ export default function ConformancePage() {
             {AREAS.map((area) => (
               <div key={area.title} className="surface-raised p-5">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{area.title}</h2>
-                <p className="text-sm text-zinc-500 leading-relaxed">{area.body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{area.body}</p>
               </div>
             ))}
           </div>
@@ -89,11 +89,11 @@ export default function ConformancePage() {
           <div className="grid md:grid-cols-4 gap-4">
             {TEST_SHAPE.map(([title, body], index) => (
               <div key={title} className="border border-zinc-800 bg-zinc-950/70 rounded-lg p-5">
-                <p className="font-mono text-xs text-zinc-600 mb-6">
+                <p className="font-mono text-xs text-zinc-400 mb-6">
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <h3 className="text-base font-semibold text-zinc-100 mb-2">{title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -105,7 +105,7 @@ export default function ConformancePage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Use the suite as a public trust signal.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Host providers can publish conformance results alongside their
                 manifests so agents and applications know which protocol guarantees
                 are implemented.

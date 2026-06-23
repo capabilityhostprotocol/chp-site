@@ -12,7 +12,7 @@ export default function InstallSection() {
           </div>
           <a
             href="https://pypi.org/project/chp-core/"
-            className="text-xs text-zinc-600 mt-2 inline-block hover:text-zinc-400 transition-colors font-mono"
+            className="text-xs text-zinc-400 mt-2 inline-block hover:text-zinc-400 transition-colors font-mono"
           >
             pypi.org/project/chp-core ↗
           </a>
@@ -26,7 +26,7 @@ export default function InstallSection() {
           </div>
           <a
             href="https://www.npmjs.com/package/@capabilityhostprotocol/chp-types"
-            className="text-xs text-zinc-600 mt-2 inline-block hover:text-zinc-400 transition-colors font-mono"
+            className="text-xs text-zinc-400 mt-2 inline-block hover:text-zinc-400 transition-colors font-mono"
           >
             npmjs.com/@capabilityhostprotocol/chp-types ↗
           </a>
@@ -37,7 +37,7 @@ export default function InstallSection() {
         <div className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 font-mono text-sm text-zinc-200 mb-2">
           chp host verify
         </div>
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-zinc-400">
           Smoke-tests host + evidence in &lt;1s. Prints{' '}
           <span className="font-mono text-zinc-400">
             chp host is healthy — evidence recorded and replayed

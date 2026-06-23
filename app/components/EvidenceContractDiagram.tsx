@@ -17,7 +17,7 @@ export default function EvidenceContractDiagram() {
               key={a.label}
               className={`rounded-md border ${a.accent} bg-[color:var(--color-host-background)] px-3 py-2.5`}
             >
-              <p className="font-mono text-[10px] uppercase text-zinc-500">{a.label}</p>
+              <p className="font-mono text-[10px] uppercase text-zinc-400">{a.label}</p>
               <p className="text-sm text-zinc-200">{a.action}</p>
             </div>
           ))}
@@ -25,16 +25,16 @@ export default function EvidenceContractDiagram() {
 
         {/* Boundary connector */}
         <div className="flex flex-col items-center justify-center py-2 md:py-0">
-          <div className="font-mono text-[10px] uppercase text-zinc-600 md:[writing-mode:vertical-rl] md:rotate-180">
+          <div className="font-mono text-[10px] uppercase text-zinc-400 md:[writing-mode:vertical-rl] md:rotate-180">
             capability boundary
           </div>
           <div aria-hidden="true" className="hidden md:block h-24 w-px bg-zinc-700 my-2" />
-          <div aria-hidden="true" className="text-zinc-700 font-mono md:hidden">-&gt;</div>
+          <div aria-hidden="true" className="text-zinc-500 font-mono md:hidden">-&gt;</div>
         </div>
 
         {/* One evidence chain */}
         <div>
-          <p className="font-mono text-[10px] uppercase text-zinc-500 mb-2.5">
+          <p className="font-mono text-[10px] uppercase text-zinc-400 mb-2.5">
             One evidence event
           </p>
           <div className="flex flex-wrap items-stretch gap-2">
@@ -44,20 +44,20 @@ export default function EvidenceContractDiagram() {
                   <span className="text-xs text-zinc-300">{s}</span>
                 </div>
                 {i < STAGES.length - 1 && (
-                  <div aria-hidden="true" className="flex items-center text-zinc-700 font-mono text-xs">
+                  <div aria-hidden="true" className="flex items-center text-zinc-500 font-mono text-xs">
                     -&gt;
                   </div>
                 )}
               </div>
             ))}
           </div>
-          <p className="text-xs text-zinc-600 leading-relaxed mt-3">
+          <p className="text-xs text-zinc-400 leading-relaxed mt-3">
             SHA256-chained · correlated · queryable by replay
           </p>
         </div>
       </div>
 
-      <p className="font-mono text-xs text-zinc-600 mt-5 pt-4 border-t border-[color:var(--color-border-subtle)]">
+      <p className="font-mono text-xs text-zinc-400 mt-5 pt-4 border-t border-[color:var(--color-border-subtle)]">
         Whoever takes the action, it becomes the same declared, governed,
         provable event.
       </p>

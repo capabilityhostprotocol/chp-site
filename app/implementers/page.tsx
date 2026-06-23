@@ -77,7 +77,7 @@ export default function ImplementersPage() {
               <div key={path.role} className="surface-raised p-5 flex flex-col">
                 <p className="eyebrow mb-4">{path.role}</p>
                 <h2 className="text-lg font-semibold text-zinc-100 mb-3">{path.outcome}</h2>
-                <p className="text-sm text-zinc-500 leading-relaxed flex-1">{path.first}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed flex-1">{path.first}</p>
                 <a
                   href={path.href}
                   className="mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
@@ -123,7 +123,7 @@ export default function ImplementersPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Start with one governed boundary.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Implement a local reference host, serve it over HTTP, then add
                 manifest validation, permission checks, and conformance coverage
                 as the surface becomes public.

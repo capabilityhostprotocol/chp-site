@@ -28,17 +28,17 @@ export default function ZeroFrictionAdoption() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-sm font-semibold text-zinc-200">{agent.name}</span>
-                  <span className="font-mono text-xs text-zinc-600 bg-zinc-800 rounded px-1.5 py-0.5">{agent.id}</span>
+                  <span className="font-mono text-xs text-zinc-400 bg-zinc-800 rounded px-1.5 py-0.5">{agent.id}</span>
                 </div>
-                <p className="text-xs text-zinc-600 font-mono">{agent.note}</p>
+                <p className="text-xs text-zinc-400 font-mono">{agent.note}</p>
               </div>
-              <span className="text-xs font-mono text-zinc-600 bg-zinc-800/60 rounded px-1.5 py-0.5 whitespace-nowrap flex-shrink-0">
+              <span className="text-xs font-mono text-zinc-400 bg-zinc-800/60 rounded px-1.5 py-0.5 whitespace-nowrap flex-shrink-0">
                 hooked
               </span>
             </div>
           ))}
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4">
-            <p className="text-xs text-zinc-500 leading-relaxed">
+            <p className="text-xs text-zinc-400 leading-relaxed">
               Hooks run as pre-tool and post-tool shell scripts. Pre-tool applies policy gates
               (block / warn / audit). Post-tool writes evidence. Neither modifies agent behavior
               or adds latency to the critical path.
@@ -53,7 +53,7 @@ export default function ZeroFrictionAdoption() {
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
-              <span className="ml-2 font-mono text-xs text-zinc-600">terminal</span>
+              <span className="ml-2 font-mono text-xs text-zinc-400">terminal</span>
             </div>
             <pre className="p-4 font-mono text-xs text-zinc-300 overflow-x-auto leading-relaxed">
               <code>{HOOKS_INSTALL}</code>
@@ -64,7 +64,7 @@ export default function ZeroFrictionAdoption() {
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
               <span className="w-2 h-2 rounded-full bg-zinc-700" />
-              <span className="ml-2 font-mono text-xs text-zinc-600">session tree</span>
+              <span className="ml-2 font-mono text-xs text-zinc-400">session tree</span>
             </div>
             <pre className="p-4 font-mono text-xs text-zinc-300 overflow-x-auto leading-relaxed">
               <code>{HOOKS_INSPECT}</code>

@@ -38,7 +38,7 @@ export default function TrustPanel({ host, summary, checks }: TrustPanelProps) {
   return (
     <section className="rounded-lg border border-[color:var(--color-host-border)] bg-[color:var(--color-host-background)] p-5 shadow-[var(--shadow-glow-signal)]">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-mono text-[11px] uppercase text-zinc-600">
+        <p className="font-mono text-[11px] uppercase text-zinc-400">
           Trust panel
         </p>
         <Badge tone={STATE_TONES[panelState]}>
@@ -46,7 +46,7 @@ export default function TrustPanel({ host, summary, checks }: TrustPanelProps) {
         </Badge>
       </div>
       <h3 className="mt-3 text-lg font-semibold text-zinc-100">{host}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-500">{summary}</p>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-400">{summary}</p>
       <div className="mt-5 divide-y divide-[color:var(--color-border-subtle)] border-y border-[color:var(--color-border-subtle)]">
         {checks.map((check) => (
           <div key={check.label} className="grid gap-2 py-3 sm:grid-cols-[0.7fr_0.4fr_1.2fr]">
@@ -54,7 +54,7 @@ export default function TrustPanel({ host, summary, checks }: TrustPanelProps) {
             <Badge tone={STATE_TONES[check.state]}>
               {STATE_LABELS[check.state]}
             </Badge>
-            <p className="text-xs leading-relaxed text-zinc-500">{check.detail}</p>
+            <p className="text-xs leading-relaxed text-zinc-400">{check.detail}</p>
           </div>
         ))}
       </div>

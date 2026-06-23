@@ -38,15 +38,15 @@ export default function ModelAdapters() {
         {PROVIDERS.map((p) => (
           <div key={p.name} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-1">{p.name}</h3>
-            <div className="font-mono text-xs text-zinc-600 mb-3">{p.capability}</div>
-            <p className="text-xs text-zinc-600 leading-relaxed mb-3">{p.note}</p>
+            <div className="font-mono text-xs text-zinc-400 mb-3">{p.capability}</div>
+            <p className="text-xs text-zinc-400 leading-relaxed mb-3">{p.note}</p>
             <div className="border-t border-zinc-800 pt-3">
-              <p className="font-mono text-xs text-zinc-600 mb-1.5">auto-captured</p>
+              <p className="font-mono text-xs text-zinc-400 mb-1.5">auto-captured</p>
               <div className="flex flex-wrap gap-1">
                 {p.tracked.map((field) => (
                   <span
                     key={field}
-                    className="font-mono text-xs text-zinc-500 bg-zinc-800/60 rounded px-1.5 py-0.5"
+                    className="font-mono text-xs text-zinc-400 bg-zinc-800/60 rounded px-1.5 py-0.5"
                   >
                     {field}
                   </span>
@@ -64,7 +64,7 @@ export default function ModelAdapters() {
               <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
               <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
               <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-              <span className="ml-2 font-mono text-xs text-zinc-600">model adapters</span>
+              <span className="ml-2 font-mono text-xs text-zinc-400">model adapters</span>
             </div>
             <pre className="p-5 font-mono text-sm text-zinc-300 overflow-x-auto leading-relaxed">
               <code>{MODEL_ADAPTERS_EXAMPLE}</code>
@@ -74,7 +74,7 @@ export default function ModelAdapters() {
         <div className="space-y-3">
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-2">Tool schema bridge</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed mb-3">
+            <p className="text-xs text-zinc-400 leading-relaxed mb-3">
               <code className="font-mono text-zinc-400 text-xs">capability_to_anthropic_tool()</code> and{' '}
               <code className="font-mono text-zinc-400 text-xs">capability_to_openai_tool()</code> convert
               any CHP CapabilityDescriptor to Anthropic or OpenAI tool-call format. Safety hints
@@ -82,7 +82,7 @@ export default function ModelAdapters() {
             </p>
             <div className="flex flex-wrap gap-1.5">
               {['capability_to_anthropic_tool', 'capability_to_openai_tool', 'capabilities_to_tool_list'].map((fn) => (
-                <span key={fn} className="font-mono text-xs text-zinc-500 bg-zinc-800/60 rounded px-1.5 py-0.5">
+                <span key={fn} className="font-mono text-xs text-zinc-400 bg-zinc-800/60 rounded px-1.5 py-0.5">
                   {fn}
                 </span>
               ))}
@@ -90,7 +90,7 @@ export default function ModelAdapters() {
           </div>
           <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-2">Multi-vendor routing</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
+            <p className="text-xs text-zinc-400 leading-relaxed">
               All three providers register on the same host. Switch models mid-execution,
               implement fallbacks, or compare providers — all under one correlation ID with
               unified cost and latency evidence.

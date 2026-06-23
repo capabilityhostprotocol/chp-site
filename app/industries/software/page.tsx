@@ -110,7 +110,7 @@ export default function SoftwareIndustryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Unblock the review this week.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Install the hooks against a real agent session, replay it, and
                 hand the reviewer a record they can verify. If you want hosted
                 retention or team access on top, that is what we build with design

@@ -19,9 +19,9 @@ export default function AdoptionPathsSection() {
             key={path.step}
             className="flex min-h-64 flex-col"
           >
-            <p className="font-mono text-xs text-zinc-600 mb-8">{path.step}</p>
+            <p className="font-mono text-xs text-zinc-400 mb-8">{path.step}</p>
             <h3 className="text-base font-semibold text-zinc-100 mb-2">{path.title}</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed flex-1">{path.body}</p>
+            <p className="text-xs text-zinc-400 leading-relaxed flex-1">{path.body}</p>
             <a
               href={path.href}
               className="mt-5 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"

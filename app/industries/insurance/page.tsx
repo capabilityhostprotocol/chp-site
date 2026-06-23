@@ -39,7 +39,7 @@ export default function InsuranceIndustryPage() {
             <p className="eyebrow">
               Industries · Insurance
             </p>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1">
+            <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
               Demonstrated · design partner wanted
             </span>
           </div>
@@ -91,7 +91,7 @@ export default function InsuranceIndustryPage() {
                 the case, and the evidence ids that back it. It is the record an
                 adjuster, a policyholder, and a regulator can all replay.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: the decision and denial primitives
                 exist today. Hosted retention and regulator-shaped audit export
                 are what we build with a design partner.
@@ -107,7 +107,7 @@ export default function InsuranceIndustryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Building automated claims decisions?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Bring a real approve/deny flow. We’ll map it onto the protocol and
                 build the retention and audit export your compliance function
                 needs, together.

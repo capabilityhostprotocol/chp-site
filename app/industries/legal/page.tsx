@@ -39,7 +39,7 @@ export default function LegalIndustryPage() {
             <p className="eyebrow">
               Industries · Legal
             </p>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1">
+            <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
               Demonstrated · design partner wanted
             </span>
           </div>
@@ -91,7 +91,7 @@ export default function LegalIndustryPage() {
                 hash that links it to the prior event. Alter any record and the
                 chain breaks — which is exactly what defensibility requires.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: hash-chained evidence and replay
                 exist today. Matter-level retention, access control, and export
                 are what we build with a design partner.
@@ -107,7 +107,7 @@ export default function LegalIndustryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Using AI in review or e-discovery?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Bring a real review workflow. We’ll map provenance and privilege
                 onto the protocol and build the retention and access your matters
                 require, together.

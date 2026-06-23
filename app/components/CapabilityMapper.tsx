@@ -349,7 +349,7 @@ function Field({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="min-h-11 rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)] px-3 py-2 text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-700 focus:border-[color:var(--color-capability-active)]"
+        className="min-h-11 rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)] px-3 py-2 text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-500 focus:border-[color:var(--color-capability-active)]"
       />
     </label>
   );
@@ -473,7 +473,7 @@ export default function CapabilityMapper() {
       <section className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 p-5 shadow-[var(--shadow-surface)]">
         <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="font-mono text-[11px] uppercase text-zinc-600">
+            <p className="font-mono text-[11px] uppercase text-zinc-400">
               Capability map
             </p>
             <h2 className="mt-2 text-xl font-semibold text-zinc-100">
@@ -546,7 +546,7 @@ export default function CapabilityMapper() {
             value={state.description}
             onChange={(event) => update('description', event.target.value)}
             rows={3}
-            className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)] px-3 py-2 text-sm leading-relaxed text-zinc-100 outline-none transition-colors placeholder:text-zinc-700 focus:border-[color:var(--color-capability-active)]"
+            className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)] px-3 py-2 text-sm leading-relaxed text-zinc-100 outline-none transition-colors placeholder:text-zinc-500 focus:border-[color:var(--color-capability-active)]"
           />
         </label>
 
@@ -587,7 +587,7 @@ export default function CapabilityMapper() {
 
         <div className="mt-5 rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-field-950)]/75 p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="font-mono text-[11px] uppercase text-zinc-600">
+            <p className="font-mono text-[11px] uppercase text-zinc-400">
               Protocol readiness
             </p>
             <span className="rounded-full border border-[color:var(--color-border-subtle)] px-2.5 py-1 text-xs text-zinc-300">
@@ -601,14 +601,14 @@ export default function CapabilityMapper() {
                 className={`rounded-md border bg-[color:var(--color-surface-900)]/70 p-3 ${LEVEL_STYLES[check.level]}`}
               >
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[11px] uppercase text-zinc-500">
+                  <span className="font-mono text-[11px] uppercase text-zinc-400">
                     {LEVEL_LABELS[check.level]}
                   </span>
                   <span className="text-sm font-medium text-zinc-200">
                     {check.label}
                   </span>
                 </div>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
                   {check.detail}
                 </p>
               </li>
@@ -619,7 +619,7 @@ export default function CapabilityMapper() {
 
       <section className="grid gap-4">
         <div className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-registry-surface)] p-5">
-          <p className="font-mono text-[11px] uppercase text-zinc-600">
+          <p className="font-mono text-[11px] uppercase text-zinc-400">
             CHP notation
           </p>
           <p className="mt-3 break-words font-mono text-sm leading-relaxed text-zinc-200">

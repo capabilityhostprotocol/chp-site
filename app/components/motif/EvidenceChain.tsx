@@ -37,7 +37,7 @@ export default function EvidenceChain({
             type="button"
             onClick={() => setTampered(null)}
             disabled={tampered === null}
-            className="font-mono text-[11px] text-zinc-500 hover:text-zinc-200 disabled:opacity-40 disabled:hover:text-zinc-500 transition-colors"
+            className="font-mono text-[11px] text-zinc-400 hover:text-zinc-200 disabled:opacity-40 disabled:hover:text-zinc-400 transition-colors"
           >
             reset ↺
           </button>
@@ -61,7 +61,7 @@ export default function EvidenceChain({
                 tampered === i ? 'ring-1 ring-[color:var(--color-critical-red)]' : ''
               }`}
             >
-              <p className="font-mono text-[10px] uppercase text-zinc-500">
+              <p className="font-mono text-[10px] uppercase text-zinc-400">
                 evt {e.seq}
               </p>
               <p className="text-[11px] text-zinc-300 leading-tight mt-1 mb-2 break-words">
@@ -94,7 +94,7 @@ export default function EvidenceChain({
       <p
         className={`mt-5 font-mono text-xs ${
           tampered === null
-            ? 'text-zinc-500'
+            ? 'text-zinc-400'
             : 'text-[color:var(--color-critical-red)]'
         }`}
       >
@@ -103,7 +103,7 @@ export default function EvidenceChain({
           : `tamper detected at evt ${events[tampered].seq} — every link after it breaks ✕`}
       </p>
       {interactive && tampered === null && (
-        <p className="mt-1 font-mono text-[11px] text-zinc-600">
+        <p className="mt-1 font-mono text-[11px] text-zinc-400">
           tip: click a block to alter it
         </p>
       )}

@@ -90,10 +90,10 @@ export default function CapabilityUnit({
         <Badge tone={STATE_TONES[state]}>{STATE_LABELS[state]}</Badge>
       </div>
       {description && !isCompact && (
-        <p className="mt-3 text-xs leading-relaxed text-zinc-500">{description}</p>
+        <p className="mt-3 text-xs leading-relaxed text-zinc-400">{description}</p>
       )}
       {(host || policy || version) && (
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-zinc-600">
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-zinc-400">
           {host && <span>host: {host}</span>}
           {policy && <span>policy: {policy}</span>}
           {version && <span>v{version}</span>}

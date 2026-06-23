@@ -64,7 +64,7 @@ export default function AdapterDirectory({
               className={`min-h-8 rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide transition-colors ${
                 active
                   ? 'border-[color:var(--color-capability-active)] text-cyan-200'
-                  : 'border-[color:var(--color-border-subtle)] text-zinc-500 hover:border-zinc-600 hover:text-zinc-200'
+                  : 'border-[color:var(--color-border-subtle)] text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
               }`}
             >
               {cat === ALL ? 'All' : cat}
@@ -73,7 +73,7 @@ export default function AdapterDirectory({
         })}
       </div>
 
-      <p className="mb-8 font-mono text-xs text-zinc-500">
+      <p className="mb-8 font-mono text-xs text-zinc-400">
         Showing {filtered.length} of {adapters.length} adapters
         {selected !== ALL && ` in ${selected}`}
       </p>
@@ -85,7 +85,7 @@ export default function AdapterDirectory({
               <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-300">
                 {group.label}
               </h2>
-              <span className="font-mono text-xs text-zinc-600">
+              <span className="font-mono text-xs text-zinc-400">
                 {group.blurb} · {group.items.length}
               </span>
             </div>

@@ -28,7 +28,7 @@ export default function ProtocolGuaranteesSection() {
           {FLOW.map((step, index) => (
             <div key={step} className="relative">
               <div className="rounded-md border border-zinc-800 bg-zinc-950 px-3 py-3">
-                <p className="font-mono text-[11px] text-zinc-600 mb-1">
+                <p className="font-mono text-[11px] text-zinc-400 mb-1">
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <p className="text-sm font-medium text-zinc-200">{step}</p>
@@ -44,7 +44,7 @@ export default function ProtocolGuaranteesSection() {
             <h3 className="text-sm font-semibold text-zinc-100 mb-2">
               {guarantee.title}
             </h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
+            <p className="text-xs text-zinc-400 leading-relaxed">
               {guarantee.body}
             </p>
           </SurfacePanel>

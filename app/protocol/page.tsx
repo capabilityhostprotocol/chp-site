@@ -78,7 +78,7 @@ export default function ProtocolPage() {
         </section>
 
         <section className="border-y border-zinc-800/60 bg-zinc-900/40">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs text-zinc-500">
+          <div className="max-w-6xl mx-auto px-6 py-5 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs text-zinc-400">
             {['Spec', 'Schemas', 'Reference host', 'Structured errors', 'Replay', 'Conformance'].map(
               (item) => (
                 <span key={item}>{item}</span>
@@ -92,7 +92,7 @@ export default function ProtocolPage() {
             {SURFACE.map((item) => (
               <div key={item.name} className="surface-raised p-5">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{item.name}</h2>
-                <p className="text-sm text-zinc-500 leading-relaxed">{item.detail}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -136,11 +136,11 @@ export default function ProtocolPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {CONTRACTS.map(([phase, detail], index) => (
               <div key={phase} className="surface-raised p-5">
-                <p className="font-mono text-xs text-zinc-600 mb-6">
+                <p className="font-mono text-xs text-zinc-400 mb-6">
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <h3 className="text-base font-semibold text-zinc-100 mb-2">{phase}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{detail}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{detail}</p>
               </div>
             ))}
           </div>

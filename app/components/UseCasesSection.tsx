@@ -68,11 +68,11 @@ export default function UseCasesSection() {
                 <h3 className="text-base font-semibold text-zinc-100">
                   {u.title}
                 </h3>
-                <span className="font-mono text-[10px] uppercase text-zinc-600 border border-zinc-800 rounded px-1.5 py-0.5 whitespace-nowrap">
+                <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-800 rounded px-1.5 py-0.5 whitespace-nowrap">
                   {u.status}
                 </span>
               </div>
-              <p className="text-sm text-zinc-500 leading-relaxed flex-1">
+              <p className="text-sm text-zinc-400 leading-relaxed flex-1">
                 {u.body}
               </p>
               <span className="mt-4 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">

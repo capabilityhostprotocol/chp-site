@@ -19,7 +19,7 @@ export default function AdoptionStatusSection() {
             <h3 className="text-sm font-semibold text-zinc-100 mb-2">
               {item.label}
             </h3>
-            <p className="text-xs leading-relaxed text-zinc-500">{item.body}</p>
+            <p className="text-xs leading-relaxed text-zinc-400">{item.body}</p>
           </SurfacePanel>
         ))}
       </div>

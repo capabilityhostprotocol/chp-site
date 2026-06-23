@@ -54,7 +54,7 @@ export default function GovernAgentsPage() {
             agent CLI and records every tool call as replayable, tamper-evident
             evidence — no application code changes, no backend.
           </p>
-          <p className="text-base text-zinc-500 leading-relaxed max-w-3xl">
+          <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
             When a security review asks &ldquo;how do you know what the agent did,
             and that it was allowed to?&rdquo; — this is the answer you can run
             today.
@@ -92,7 +92,7 @@ export default function GovernAgentsPage() {
                 <h3 className="text-base font-semibold text-zinc-100 mb-2">
                   {g.title}
                 </h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{g.body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{g.body}</p>
               </div>
             ))}
           </div>
@@ -104,7 +104,7 @@ export default function GovernAgentsPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Same protocol, every other layer.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 A human approval, a product API call, and an agent&apos;s bash
                 command are the same kind of governed, provable event. Agents are
                 where it is easiest to start — bring a regulated workflow and we

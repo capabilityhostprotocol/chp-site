@@ -88,7 +88,7 @@ export default function VisualGrammar() {
       <h2 className="display-2 text-zinc-100 mb-3 max-w-3xl">
         One example, through every primitive.
       </h2>
-      <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-12">
+      <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-12">
         The same field-service action — a planning agent scheduling a technician,
         gated by a manager&apos;s approval — drawn through the host, the
         invocation, the policy boundary, and the evidence it leaves.
@@ -101,7 +101,7 @@ export default function VisualGrammar() {
               <h3 className="text-lg font-semibold text-zinc-100 mb-2">
                 {b.label}
               </h3>
-              <p className="text-sm text-zinc-500 leading-relaxed">{b.body}</p>
+              <p className="text-sm text-zinc-400 leading-relaxed">{b.body}</p>
             </div>
             <div>{b.visual}</div>
           </div>
