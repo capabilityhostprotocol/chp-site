@@ -1,0 +1,31 @@
+---
+title: "Why a protocol, not a feature"
+description: "Every agent framework will add its own audit log. So why does governing AI actions need an open protocol? Because evidence you can trust has to outlive the system that produced it."
+date: "2026-06-16"
+---
+
+A reasonable objection greets anyone proposing new infrastructure for AI governance: *why a protocol? My agent framework already logs what its tools do. Won't this just be a feature?*
+
+It's the right question. Here's the honest answer: a feature inside one system can record what that system did. It cannot be the thing a second system, an auditor, or a regulator will trust. And trust is the entire point.
+
+## Evidence has to outlive its producer
+
+When you ask "what did the AI do," you're usually asking *after* something went wrong, or *before* you're allowed to ship. In both cases the person asking is skeptical — and skeptical-by-job. They will not accept "our framework logged it" any more than an auditor accepts "trust me, the numbers are right."
+
+What makes a record trustworthy is that it means the same thing independent of the system that produced it. A log written by the framework, in the framework's format, retained at the framework's discretion, is exactly the kind of self-attestation skeptics discount. The record has to be portable, structured, and verifiable on its own terms. That's a property of a shared contract — a protocol — not of any one vendor's feature.
+
+## "Won't MCP or a model vendor just absorb this?"
+
+The [Model Context Protocol](https://modelcontextprotocol.io) answers "what can the model call." It's a real, useful standard, and it's becoming widely adopted. But it's model-facing: it describes the tools a client connects to.
+
+The question "what actually happened, who was denied, and can I replay it" is different, and it spans hosts that no single vendor controls — because a capability host can be a person approving something, a business process, a device, or another vendor's framework entirely. The value of an open evidence boundary is precisely the part a single vendor *cannot* own: independence and portability. A standard whose trustworthiness depends on one company staying in business, or one framework staying in fashion, isn't trust.
+
+## Why now
+
+Agents are being put into consequential work faster than anyone can prove what they did. The gap between "the agent acted" and "we can show what it did, and that it was allowed to" is becoming a launch blocker — first in software, where a security review stalls a rollout, and then everywhere a wrong action is expensive: claims, clinical workflows, trades, dispatch.
+
+That gap doesn't close with better logging. It closes when structured, replayable, tamper-evident evidence is produced *at the boundary*, the same way every time, independent of the application. That's what the [Capability Host Protocol](https://capabilityhostprotocol.com) standardizes — a small, versioned, conformance-backed contract for how capabilities are declared, governed, and proven.
+
+A feature governs one app. A protocol lets a distributed ecosystem of people, agents, and systems trust each other's actions. Those are different jobs — and only the second one is worth building once.
+
+Read the full argument at [capabilityhostprotocol.com/why-a-protocol](https://capabilityhostprotocol.com/why-a-protocol), or [start where the proof is already real](https://capabilityhostprotocol.com/govern/agents).
