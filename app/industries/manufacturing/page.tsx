@@ -34,7 +34,7 @@ export default function ManufacturingIndustryPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <div className="flex items-center gap-3 mb-4">
             <p className="eyebrow">
               Industries · Manufacturing &amp; industrial
@@ -52,14 +52,20 @@ export default function ManufacturingIndustryPage() {
             come together for industrial operations; the operational hardening is
             what we build with a design partner.
           </p>
+          <a
+            href="/blog/who-commanded-the-machine"
+            className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
+          >
+            Read the essay: “Who commanded the machine?” -&gt;
+          </a>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid md:grid-cols-2 gap-4">
             {FLOW.map((f) => (
               <div
                 key={f.step}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6"
+                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6"
               >
                 <p className="eyebrow mb-3">
                   {f.step}
@@ -70,7 +76,7 @@ export default function ManufacturingIndustryPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
@@ -96,8 +102,8 @@ export default function ManufacturingIndustryPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-zinc-800/60">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-t border-zinc-800/60">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Automating dispatch or machine actions?

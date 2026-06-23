@@ -40,7 +40,7 @@ export const USE_CASES = [
 export default function UseCasesSection() {
   return (
     <section className="border-b border-zinc-800/60">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
         <div className="flex items-end justify-between gap-4 mb-10">
           <div>
             <p className="eyebrow mb-3">
@@ -62,7 +62,7 @@ export default function UseCasesSection() {
             <a
               key={u.title}
               href={u.href}
-              className="group border border-zinc-800 bg-zinc-900/70 rounded-lg p-5 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col hover:border-zinc-600 transition-colors"
             >
               <div className="flex items-start justify-between gap-2 mb-2">
                 <h3 className="text-base font-semibold text-zinc-100">

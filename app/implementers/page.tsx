@@ -57,7 +57,7 @@ export default function ImplementersPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Implementers
           </p>
@@ -71,10 +71,10 @@ export default function ImplementersPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid md:grid-cols-2 gap-4">
             {PATHS.map((path) => (
-              <div key={path.role} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5 flex flex-col">
+              <div key={path.role} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col">
                 <p className="eyebrow mb-4">{path.role}</p>
                 <h2 className="text-lg font-semibold text-zinc-100 mb-3">{path.outcome}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed flex-1">{path.first}</p>
@@ -89,7 +89,7 @@ export default function ImplementersPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
             <div>
               <p className="eyebrow mb-3">
@@ -117,8 +117,8 @@ export default function ImplementersPage() {
         <AdoptionPathsSection />
         <AdoptionStatusSection />
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Start with one governed boundary.

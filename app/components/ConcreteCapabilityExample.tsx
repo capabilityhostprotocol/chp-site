@@ -5,7 +5,7 @@ import { FIELD_SERVICE_EXAMPLE } from '../lib/content';
 
 export default function ConcreteCapabilityExample() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 border-t border-[color:var(--color-border-subtle)]">
+    <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-t border-[color:var(--color-border-subtle)]">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] items-start">
         <div>
           <p className="eyebrow mb-3">

@@ -76,7 +76,7 @@ export default function ExamplesPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">Examples</p>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             See the protocol from each side of the boundary.
@@ -87,7 +87,7 @@ export default function ExamplesPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid gap-8">
             {EXAMPLES.map((example) => (
               <div key={example.role} className="grid lg:grid-cols-[0.8fr_1.2fr] gap-6 items-start">
@@ -106,7 +106,7 @@ export default function ExamplesPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-6 items-start">
             <div>
               <p className="eyebrow mb-3">
@@ -125,8 +125,8 @@ export default function ExamplesPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Add safety before broad exposure.

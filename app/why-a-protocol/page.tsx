@@ -41,7 +41,7 @@ export default function WhyAProtocolPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Why a protocol
           </p>
@@ -57,12 +57,12 @@ export default function WhyAProtocolPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid lg:grid-cols-2 gap-4">
             {ARGUMENTS.map((item) => (
               <div
                 key={item.q}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6"
+                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6"
               >
                 <h2 className="text-lg font-semibold text-zinc-100 mb-3">
                   {item.q}
@@ -73,7 +73,7 @@ export default function WhyAProtocolPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">
             What it does not replace
           </p>
@@ -96,19 +96,39 @@ export default function WhyAProtocolPage() {
               </div>
             ))}
           </div>
-          <a
-            href="https://docs.capabilityhostprotocol.com/docs/compare/chp-vs-mcp"
-            className="inline-block mt-8 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
-          >
-            Read the full comparisons -&gt;
-          </a>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm">
+            <a
+              href="/blog/chp-and-mcp"
+              className="text-zinc-300 hover:text-zinc-50 transition-colors"
+            >
+              CHP and MCP -&gt;
+            </a>
+            <a
+              href="/blog/evidence-is-not-telemetry"
+              className="text-zinc-400 hover:text-zinc-100 transition-colors"
+            >
+              Evidence vs telemetry -&gt;
+            </a>
+            <a
+              href="/glossary"
+              className="text-zinc-400 hover:text-zinc-100 transition-colors"
+            >
+              Glossary -&gt;
+            </a>
+            <a
+              href="https://docs.capabilityhostprotocol.com/docs/compare/chp-vs-mcp"
+              className="text-zinc-400 hover:text-zinc-100 transition-colors"
+            >
+              Full comparisons -&gt;
+            </a>
+          </div>
         </section>
 
         <FailureModesSection />
         <EcosystemSection />
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 See the boundary where the proof is already real.

@@ -29,7 +29,7 @@ export default function UseCasesPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Use cases
           </p>
@@ -43,12 +43,12 @@ export default function UseCasesPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid md:grid-cols-2 gap-4">
             {USE_CASES.map((u) => (
               <div
                 key={u.title}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col"
+                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <h2 className="text-lg font-semibold text-zinc-100">
@@ -72,8 +72,8 @@ export default function UseCasesPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Have a job that needs a provable record?

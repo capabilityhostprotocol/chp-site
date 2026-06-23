@@ -15,7 +15,7 @@ export default function AdaptersPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Ecosystem
           </p>
@@ -31,11 +31,11 @@ export default function AdaptersPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-[color:var(--color-border-subtle)]">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-[color:var(--color-border-subtle)]">
           <AdapterDirectory adapters={officialAdapters} categories={categories} />
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">

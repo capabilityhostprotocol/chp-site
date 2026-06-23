@@ -15,7 +15,7 @@ export default function GovernProductsPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Govern · Products &amp; services
           </p>
@@ -31,7 +31,7 @@ export default function GovernProductsPage() {
           </p>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-y border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
@@ -57,8 +57,8 @@ export default function GovernProductsPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Exposing capabilities to agents?

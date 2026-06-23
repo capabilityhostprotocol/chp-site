@@ -122,7 +122,7 @@ export default function CapabilitiesTxtPage() {
 
         <Section eyebrow="The format" title="Two files, dead simple.">
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5">
+            <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5">
               <code className="font-mono text-sm text-zinc-100">
                 /capabilities.txt
               </code>
@@ -131,7 +131,7 @@ export default function CapabilitiesTxtPage() {
                 category, each with an id, version, and one-line description.
               </p>
             </div>
-            <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5">
+            <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5">
               <code className="font-mono text-sm text-zinc-100">
                 /.well-known/capabilities.json
               </code>
@@ -173,7 +173,7 @@ export default function CapabilitiesTxtPage() {
             {FAQ.map(([q, a]) => (
               <div
                 key={q}
-                className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6"
+                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6"
               >
                 <h3 className="text-base font-semibold text-zinc-100 mb-2">{q}</h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{a}</p>
@@ -182,8 +182,8 @@ export default function CapabilitiesTxtPage() {
           </div>
         </Section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-zinc-800/60">
-          <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-t border-zinc-800/60">
+          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Want to publish one — or shape the convention?
