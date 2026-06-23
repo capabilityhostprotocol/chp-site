@@ -19,13 +19,25 @@ function tokens(s: string): string[] {
     .filter((t) => t.length > 2);
 }
 
-function score(text: string, qt: string[]): number {
-  const t = text.toLowerCase();
-  return qt.reduce((n, w) => n + (t.includes(w) ? 1 : 0), 0);
+// Weighted relevance: matches in a key/term or title count far more than in a
+// long body, and an exact term/title appearing in the query gets a phrase
+// bonus — so "capability boundary" resolves to that term, not the CHP overview.
+function rank(
+  qt: string[],
+  q: string,
+  fields: { key?: string; title?: string; body?: string },
+): number {
+  const { key = '', title = '', body = '' } = fields;
+  const hits = (s: string) => qt.filter((w) => s.toLowerCase().includes(w)).length;
+  let s = hits(key) * 5 + hits(title) * 3 + Math.min(hits(body), 3);
+  if (key && q.includes(key.toLowerCase())) s += 12;
+  if (title && q.includes(title.toLowerCase())) s += 8;
+  return s;
 }
 
 function answer(query: string) {
   const qt = tokens(query);
+  const q = query.toLowerCase();
   if (qt.length === 0) {
     return {
       query,
@@ -36,19 +48,19 @@ function answer(query: string) {
   }
 
   const concepts = Object.entries(CONCEPTS)
-    .map(([id, c]) => ({ id, c, s: score(c.title + ' ' + c.body, qt) + score(id, qt) }))
+    .map(([id, c]) => ({ id, c, s: rank(qt, q, { key: id, title: c.title, body: c.body }) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s);
   const terms = Object.entries(GLOSSARY)
-    .map(([k, v]) => ({ k, v, s: score(k + ' ' + v, qt) }))
+    .map(([k, v]) => ({ k, v, s: rank(qt, q, { key: k, body: v }) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s);
-  const faqs = FAQS.map((f) => ({ f, s: score(f.question + ' ' + f.answer, qt) }))
+  const faqs = FAQS.map((f) => ({ f, s: rank(qt, q, { title: f.question, body: f.answer }) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s);
   const caps = capabilityAdapters
     .flatMap((a) => a.capabilities)
-    .map((c) => ({ c, s: score(c.id + ' ' + (c.description ?? ''), qt) }))
+    .map((c) => ({ c, s: rank(qt, q, { key: c.id, body: c.description ?? '' }) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s)
     .slice(0, 8);
