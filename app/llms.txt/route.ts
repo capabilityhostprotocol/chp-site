@@ -24,6 +24,11 @@ const BODY = `# Capability Host Protocol (CHP)
 - [Manufacturing](https://capabilityhostprotocol.com/industries/manufacturing)
 - [Financial services](https://capabilityhostprotocol.com/industries/financial)
 
+## For agents (discover + invoke)
+- [MCP server](https://capabilityhostprotocol.com/api/mcp): connect over the Model Context Protocol to query capabilities, adapters, the spec, and the glossary — every call emits replayable CHP evidence.
+- [A2A agent card](https://capabilityhostprotocol.com/.well-known/agent-card.json): the recognized capability-advertisement manifest.
+- [MCP server card](https://capabilityhostprotocol.com/.well-known/mcp/server-card.json): the MCP server descriptor.
+
 ## Capabilities (agent-discoverable)
 - [capabilities.txt](https://capabilityhostprotocol.com/capabilities.txt): the capability surface this host declares, as markdown.
 - [/.well-known/capabilities.json](https://capabilityhostprotocol.com/.well-known/capabilities.json): the structured discovery manifest.
