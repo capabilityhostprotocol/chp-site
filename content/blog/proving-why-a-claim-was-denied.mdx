@@ -1,0 +1,32 @@
+---
+title: "Proving why a claim was denied"
+description: "Insurers are automating approve/deny decisions faster than they can defend them. Denial is a first-class outcome in CHP — which makes 'show me why' a recorded fact, not a reconstruction."
+date: "2026-06-11"
+---
+
+Of all the places AI is moving into consequential decisions, insurance may be the cleanest fit for a protocol built on evidence — because the hardest question in claims is one CHP answers by design: *why did this decision go the way it did?*
+
+## The decision is the easy part. Defending it isn't.
+
+Models and agents increasingly approve, deny, and price claims. The outcome is the easy part. The hard part arrives later, from three directions at once: a policyholder disputes it, an adjuster has to stand behind it, and a market-conduct exam asks the carrier to demonstrate how automated decisions are made — and that the record hasn't been altered.
+
+Today that defense is a reconstruction. Someone assembles logs from several services, infers the decision path, and hopes the important step was captured. It's slow, expensive, and contestable — which is exactly what you don't want when the question is adversarial.
+
+## Denial as a first-class outcome
+
+Most systems treat a denial as an exception or an absence — a thing that *didn't* happen, recorded (if at all) as an error. The Capability Host Protocol treats it as a **first-class outcome**. When a capability is denied at the boundary, the protocol emits a structured record: an explicit reason code, the deciding subject, and an evidence id, all tied to the same correlation as everything else in the case.
+
+That is, almost exactly, what a defensible claim decision needs:
+
+- **The reason**, as a stable code, not free-text after the fact.
+- **Who or what decided** — the model, the rule, or the human who signed off.
+- **A replayable trace** of the whole case, in order.
+- **Tamper-evidence** — the record is hash-chained, so an altered or missing step is detectable.
+
+"Show me why this claim was denied" stops being a reconstruction and becomes a query.
+
+## Honest about what's ready
+
+This is where it's worth being precise. CHP's denial, decision, and evidence primitives exist today. The production audit layer a regulated carrier needs — hosted retention, role-based access, compliance export shaped to your examiner — is what we build with [design partners](https://capabilityhostprotocol.com/design-partners), not something to claim is finished. We'd rather show you exactly how it would work in your claims flow than pretend it's done.
+
+If you're putting AI into approve/deny decisions and the question "can we defend this later?" is starting to surface, that's the conversation to have. See how it maps on the [insurance page](https://capabilityhostprotocol.com/industries/insurance).

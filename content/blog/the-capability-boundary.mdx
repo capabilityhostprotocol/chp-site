@@ -1,0 +1,32 @@
+---
+title: "The capability boundary: where AI governance actually happens"
+description: "You can't govern an AI agent by watching the model. Governance happens at the capability boundary — the moment an action crosses from intent into effect. Here's why that line is the right place to stand."
+date: "2026-06-06"
+---
+
+Most attempts to govern AI aim at the model: better prompts, guardrail classifiers, evaluations. Those matter. But they all sit *before* the consequential moment. The place where an AI system actually does something — and where governance and proof have to live — is the **capability boundary**.
+
+## What the capability boundary is
+
+A capability is a named, invokable unit of useful work: `schedule_technician`, `transfer_funds`, `approve_discount`, `read_file`. The capability boundary is the line an invocation crosses to go from *intent* (the model decided to call something) into *effect* (the thing actually happens).
+
+It's the right place to stand for a simple reason: it's where the action becomes real, and it's the same line regardless of who or what initiated it. A human approving a discount, an agent running a tool, a product calling an API — they all cross the same boundary. Govern there, and you govern everything that acts, with one model instead of one integration per tool.
+
+## What you can do at the boundary
+
+Standing at the boundary, four things become possible that aren't possible by watching the model:
+
+- **Declare** what a capability is — a stable id, a version, the policy it requires — *before* anyone calls it.
+- **Govern** the crossing — require approval or an entitlement, and **deny** the action at the boundary when a condition fails, as a first-class outcome rather than a swallowed exception.
+- **Prove** what happened — emit a structured, tamper-evident evidence event for every attempt, correlated so the whole session replays in order.
+- **Compose** — because every action is the same kind of governed event, a process that spans many capabilities (and many hosts) reconstructs as one trace.
+
+None of that requires changing the model. It requires standing at the right line.
+
+## Why this reframes the problem
+
+"How do we make the AI safe" is a hard, open question. "How do we govern and prove what crosses this boundary" is a tractable engineering one — and it's the one that actually unblocks shipping. The security review that stalls an agent rollout isn't asking you to solve alignment; it's asking you to show what the agent did and that it was allowed to. That's a boundary question.
+
+This is the bet behind the [Capability Host Protocol](https://capabilityhostprotocol.com): make execution **visible, replayable, and ready for governance** at the capability boundary, and start where the proof is already real — [agents](https://capabilityhostprotocol.com/govern/agents), where one command captures every tool call as evidence you can replay.
+
+Govern the boundary, not the model. That's where what actually happened actually happens.
