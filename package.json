@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "sync:adapters": "node scripts/sync-adapters.mjs",
-    "predev": "node scripts/sync-adapters.mjs",
+    "sync:capabilities": "node scripts/sync-capabilities.mjs",
+    "sync": "node scripts/sync-adapters.mjs && node scripts/sync-capabilities.mjs",
+    "predev": "npm run sync",
     "dev": "next dev",
-    "prebuild": "node scripts/sync-adapters.mjs",
+    "prebuild": "npm run sync",
     "build": "next build",
-    "verify": "node scripts/sync-adapters.mjs && NEXT_DIST_DIR=.next-verify next build",
+    "verify": "npm run sync && NEXT_DIST_DIR=.next-verify next build",
     "start": "next start",
     "test:routes": "node scripts/verify-routes.mjs"
   },

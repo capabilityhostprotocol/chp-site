@@ -35,6 +35,13 @@ export default function AdapterCard({ adapter }: { adapter: Adapter }) {
         </code>
         <CodeCopyButton code={install} label={`${name} install command`} />
       </div>
+
+      <a
+        href={`/adapters/${adapter.id.replace(/^chp-adapter-/, '')}`}
+        className="mt-3 inline-block text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+      >
+        View capabilities -&gt;
+      </a>
     </SurfacePanel>
   );
 }
