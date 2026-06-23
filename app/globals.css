@@ -192,6 +192,23 @@
   }
 }
 
+/* Scroll-in reveal — transform-only so content is never hidden (SEO/a11y safe). */
+[data-reveal] {
+  transition: transform 0.7s var(--ease-out);
+}
+[data-reveal='hidden'] {
+  transform: translateY(16px);
+}
+[data-reveal='shown'] {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @keyframes chp-rise {
   from {
     opacity: 0;

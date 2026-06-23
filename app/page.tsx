@@ -9,6 +9,7 @@ import DifferentiationSection from './components/DifferentiationSection';
 import StatsStrip from './components/StatsStrip';
 import GoDeeper from './components/GoDeeper';
 import ChainDivider from './components/motif/ChainDivider';
+import Reveal from './components/motif/Reveal';
 import GitHubCTA from './components/GitHubCTA';
 import SiteFooter from './components/SiteFooter';
 
@@ -24,15 +25,29 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <AgentProofStrip />
-        <Applications />
-        <VerticalGallery />
+        <Reveal>
+          <AgentProofStrip />
+        </Reveal>
+        <Reveal>
+          <Applications />
+        </Reveal>
+        <Reveal>
+          <VerticalGallery />
+        </Reveal>
         <ScrollStory />
-        <DifferentiationSection />
+        <Reveal>
+          <DifferentiationSection />
+        </Reveal>
         <ChainDivider />
-        <StatsStrip />
-        <GoDeeper />
-        <GitHubCTA />
+        <Reveal>
+          <StatsStrip />
+        </Reveal>
+        <Reveal>
+          <GoDeeper />
+        </Reveal>
+        <Reveal>
+          <GitHubCTA />
+        </Reveal>
       </main>
       <SiteFooter />
     </div>
