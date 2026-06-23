@@ -5,6 +5,7 @@ import FieldMotif from '../components/FieldMotif';
 import VisualGrammar from '../components/VisualGrammar';
 import EvidenceContractDiagram from '../components/EvidenceContractDiagram';
 import MeshTraceDiagram from '../components/MeshTraceDiagram';
+import CapabilityConstellation from '../components/CapabilityConstellation';
 import Glyph, { type GlyphName } from '../components/motif/Glyph';
 
 export const metadata: Metadata = {
@@ -209,6 +210,21 @@ export default function DesignSystemPage() {
             <MeshTraceDiagram />
           </div>
         </section>
+
+        <section className="max-w-6xl mx-auto px-6 pt-20 md:pt-24">
+          <p className="eyebrow mb-3">Data-driven motif</p>
+          <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
+            The catalog, mapped from real data.
+          </h2>
+          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl">
+            A motif generated from the live adapter catalog — categories as
+            clusters, adapters sized by the capabilities they declare. Documented
+            here as a reusable pattern; surface it where breadth is the point.
+            Component:{' '}
+            <code className="font-mono text-zinc-400">CapabilityConstellation</code>.
+          </p>
+        </section>
+        <CapabilityConstellation />
       </main>
       <SiteFooter />
     </div>
