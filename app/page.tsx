@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import AgentProofStrip from './components/AgentProofStrip';
 import Applications from './components/Applications';
 import VerticalGallery from './components/VerticalGallery';
+import ScrollStory from './components/motif/ScrollStory';
 import DifferentiationSection from './components/DifferentiationSection';
 import StatsStrip from './components/StatsStrip';
 import GoDeeper from './components/GoDeeper';
@@ -17,6 +18,7 @@ export default function Home() {
       <AgentProofStrip />
       <Applications />
       <VerticalGallery />
+      <ScrollStory />
       <DifferentiationSection />
       <StatsStrip />
       <GoDeeper />
