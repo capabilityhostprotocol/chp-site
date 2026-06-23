@@ -1,0 +1,31 @@
+---
+title: "Controls in the contract, not the code review"
+description: "When AI sits inside trading, credit, and payments decisions, 'demonstrate the controls' is the question that arrives from model risk and regulators. CHP puts the controls in the capability contract — enforced before invocation, not asserted after."
+date: "2026-05-21"
+---
+
+In financial services, a control you can describe but can't demonstrate isn't a control — it's a hope. And AI is moving into exactly the decisions where that distinction is examined: trading, credit, payments, onboarding.
+
+## The question that arrives later
+
+Automation and models now sit inside consequential financial decisions. The outcome gets logged. But that's not what model risk, internal audit, or a regulator asks for. They ask: **"Demonstrate the controls around this automated decision."** Show that the model was only allowed to do what it was permitted to, that required approvals were actually enforced, and that the whole decision can be replayed.
+
+Assembling that after the fact is expensive and incomplete. You're reconstructing, from application logs, a story about controls that lived in code review comments and runbooks — not in the system itself. The gap between "we have a control" and "here is the evidence the control held, every time" is where audit findings live.
+
+## Put the control in the capability
+
+CHP's move is to make the control a property of the capability declaration, enforced at the boundary, rather than a convention enforced by discipline. A high-risk capability is declared with:
+
+- **A risk tier** — the capability itself carries how consequential it is.
+- **Required authorization** — who or what is entitled to invoke it.
+- **Required approval** — a gate that must be satisfied *before* the action can happen, not noticed afterward.
+
+An invocation that doesn't meet those conditions is **denied at the boundary**, and the denial is recorded with its reason. Every invocation that does proceed emits evidence, and the entire decision — inputs, authorization, approval, outcome — replays as a single correlated bundle.
+
+The phrase worth holding onto: **the controls are in the contract, not just the code review.** When the examiner asks you to demonstrate them, you don't reconstruct a narrative — you replay the bundle.
+
+## Honest about the boundary
+
+CHP's risk-tier declarations, required-approval gates, denial records, and replay exist as protocol primitives today. The model-risk reporting and retention layer a regulated institution needs — examiner-shaped export, segregation of duties, retention matched to your obligations — is what we build with a [design partner](https://capabilityhostprotocol.com/design-partners). We'd rather map it onto a real decision flow with you than claim it's finished.
+
+If "demonstrate the controls" is a question your team answers by hand today, [bring a real automated decision](https://capabilityhostprotocol.com/industries/financial). We'll put the controls in the contract together.

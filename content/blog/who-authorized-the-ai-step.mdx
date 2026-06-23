@@ -1,0 +1,28 @@
+---
+title: "Who authorized the AI step?"
+description: "AI scribes and agents draft notes, summarize charts, and prepare orders — but a clinician stays in command. CHP records the sign-off as a governed approval in the same trace, capturing who-did-what without storing the PHI body."
+date: "2026-05-16"
+---
+
+In healthcare, the dangerous AI failure isn't usually a wrong answer. It's an unaccountable action — a step that happened without a clear record of what it did, who approved it, and that the record is intact. Under HIPAA scrutiny, "the tool did it" is not an answer.
+
+## The clinician stays in command — prove it
+
+AI scribes and agents now draft notes, summarize charts, and prepare orders. The intended design is sound: the AI assists, and a clinician stays in command and signs off. But when a safety event, a payer audit, or a malpractice inquiry asks **"what did the automated step do, and who authorized it?"**, the design only matters if you can demonstrate it held.
+
+Reconstructing that from application logs is slow and not defensible. The sign-off lived in one system, the AI's action in another, the chart in a third — and proving the clinician actually reviewed the thing they approved means stitching across all of them after the fact, under exactly the scrutiny you'd least want to improvise under.
+
+## The action and the approval, in one trace
+
+CHP records each AI action as a crossing of a capability boundary: a structured event with the acting subject and a correlation that ties it to the encounter. The clinician's sign-off isn't a separate system's checkbox — it's a **governed approval in the same trace**, on the same action. "Who authorized this step?" stops being an investigation and becomes a field on the record.
+
+Two properties make this fit clinical reality rather than fight it:
+
+- **Redacted by default.** The evidence captures *who did what, when, and that it was approved* — without storing the PHI body. You get an accountable record of the action without making the audit log a second copy of the chart.
+- **Integrity you can show.** The events are hash-chained, so the record an auditor or attorney examines is demonstrably intact, not a screenshot that proves nothing.
+
+## What's real, and what we'd build with you
+
+The capability boundary, governed approvals, redaction, and hash-chained evidence exist as primitives today. The clinical-grade layer a health system needs — HIPAA-aligned retention, role-based access, and integration with your EHR and audit workflows — is what we build with a [design partner](https://capabilityhostprotocol.com/design-partners), not something to claim is done.
+
+If you're putting AI into documentation or order prep and patient-safety accountability is the question that keeps it from scaling, [bring a real workflow](https://capabilityhostprotocol.com/industries/healthcare). We'll map the action-and-approval trace onto it together.

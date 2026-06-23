@@ -1,0 +1,37 @@
+---
+title: "The security review that stalls your agent"
+description: "You built the agent. It works. Then a security review asks what it did and whether it was allowed to — and the rollout stops. That gap is where CHP starts, and it's real today."
+date: "2026-05-26"
+---
+
+Here is the most common way an agent project dies, and it isn't the model.
+
+You put an agent into a real workflow. It reads files, runs commands, calls tools, makes changes. In a demo it's magic. Then it has to ship, and a security or platform review gates the launch with one question: **"How do we know what the agent did, and that it was permitted to do it?"** Today there's no clean answer — the logs are scattered, partial, and not trustworthy as a record — so the rollout stalls.
+
+## The blocker isn't capability. It's accountability.
+
+Notice what the reviewer is *not* asking. They're not asking you to prove the model is aligned, or that it will never make a mistake. They're asking for something narrower and entirely reasonable: a replayable, trustworthy record of what the agent actually did, and evidence that each action was within policy. It's an accountability question, not an AI-safety question — and it's answerable.
+
+The reason it stalls anyway is that most agent stacks produce *logs*, and logs aren't built to be defended. They're written by the application, in the application's format, scattered across services, with no guarantee the important step was captured or that the record wasn't edited. Hand that to a skeptical reviewer and you've handed them reasons to say no.
+
+## What closes the gap
+
+This is the one vertical where CHP isn't a demonstration — it's real today. One command:
+
+```
+chp hooks install
+```
+
+captures every tool call your agent makes as a typed, SHA256-chained evidence event. From there:
+
+- **Replay any session by id** — the full sequence of what the agent touched, in order, reconstructed from evidence rather than inferred from logs.
+- **Denials are first-class outcomes** — when a tool call is blocked by policy, that's a recorded event with a reason, not a swallowed exception. "Show me what it *wasn't* allowed to do" is a query.
+- **Export the whole trace** to the observability stack you already run — the evidence is portable, not locked in.
+
+The reviewer gets exactly what they asked for: what happened, that it was permitted, and a record whose integrity is a property of the chain, not a promise from your service.
+
+## Start where the proof is real
+
+Every other place CHP is going — claims, clinical workflows, trades, dispatch — inherits this same pattern. But software is where you can have it today, on an agent you've already built, in the time it takes to install a hook. If a security review is the thing standing between your agent and production, that's the place to start.
+
+See it on the [AI-native software page](https://capabilityhostprotocol.com/industries/software), or [capture your first session](https://capabilityhostprotocol.com/govern/agents).
