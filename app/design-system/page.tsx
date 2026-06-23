@@ -46,7 +46,7 @@ const STATE_TOKENS = [
 
 function Swatch({ name, token, note }: { name: string; token: string; note: string }) {
   return (
-    <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-4">
+    <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-4">
       <div
         className="h-12 w-full rounded-md mb-3 border border-white/10"
         style={{ background: `var(${token})` }}
@@ -77,11 +77,11 @@ export default function DesignSystemPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-8">Principles</p>
           <div className="grid md:grid-cols-2 gap-4">
             {PRINCIPLES.map(([title, body]) => (
-              <div key={title} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6">
+              <div key={title} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{title}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
               </div>
@@ -89,7 +89,7 @@ export default function DesignSystemPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">Color tokens</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">
             Actors and states have fixed colors.
@@ -108,7 +108,7 @@ export default function DesignSystemPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">Type scale &amp; rhythm</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             Large display type, generous bands.
@@ -136,7 +136,7 @@ export default function DesignSystemPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">Signature motif</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             The field — many actions, one provable record.
@@ -153,7 +153,7 @@ export default function DesignSystemPage() {
 
         <VisualGrammar />
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <p className="eyebrow mb-3">Diagrams</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">
             Concepts drawn as structured schematics.

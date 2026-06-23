@@ -81,7 +81,7 @@ const BLOCKS = [
 
 export default function VisualGrammar() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+    <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
       <p className="eyebrow mb-3">
         The protocol, drawn
       </p>

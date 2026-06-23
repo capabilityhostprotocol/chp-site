@@ -90,7 +90,7 @@ export default async function AdapterDetailPage({ params }: Params) {
               {caps.map((c) => (
                 <div
                   key={c.id}
-                  className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-4"
+                  className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-4"
                 >
                   <div className="flex items-center justify-between gap-3 mb-1.5">
                     <code className="font-mono text-sm text-zinc-100">

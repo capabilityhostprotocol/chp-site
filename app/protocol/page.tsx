@@ -63,7 +63,7 @@ export default function ProtocolPage() {
     <div className="min-h-screen">
       <Nav />
       <main>
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
           <p className="eyebrow mb-4">
             Protocol surface
           </p>
@@ -87,10 +87,10 @@ export default function ProtocolPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {SURFACE.map((item) => (
-              <div key={item.name} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5">
+              <div key={item.name} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{item.name}</h2>
                 <p className="text-sm text-zinc-500 leading-relaxed">{item.detail}</p>
               </div>
@@ -98,7 +98,7 @@ export default function ProtocolPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
             <div>
               <p className="eyebrow mb-3">
@@ -124,7 +124,7 @@ export default function ProtocolPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 py-16">
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="mb-8">
             <p className="eyebrow mb-3">
               End-to-end contract
@@ -135,7 +135,7 @@ export default function ProtocolPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {CONTRACTS.map(([phase, detail], index) => (
-              <div key={phase} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-5">
+              <div key={phase} className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5">
                 <p className="font-mono text-xs text-zinc-600 mb-6">
                   {String(index + 1).padStart(2, '0')}
                 </p>
