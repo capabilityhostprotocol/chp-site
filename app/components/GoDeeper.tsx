@@ -31,7 +31,7 @@ export default function GoDeeper() {
             <a
               key={l.label}
               href={l.href}
-              className="group border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col hover:border-zinc-600 transition-colors"
+              className="group surface-raised p-5 flex flex-col hover:border-zinc-600 transition-colors"
             >
               <h3 className="text-base font-semibold text-zinc-100 mb-2">
                 {l.label}

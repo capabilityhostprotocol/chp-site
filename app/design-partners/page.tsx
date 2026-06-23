@@ -109,7 +109,7 @@ export default function DesignPartnersPage() {
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-y border-zinc-800/60">
           <div className="grid lg:grid-cols-2 gap-4">
-            <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6">
+            <div className="surface-raised p-6">
               <p className="font-mono text-xs text-emerald-400/80 uppercase mb-4">
                 Provable today
               </p>
@@ -152,7 +152,7 @@ export default function DesignPartnersPage() {
             {VERTICALS.map((v) => (
               <div
                 key={v.name}
-                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5 flex flex-col"
+                className="surface-raised p-5 flex flex-col"
               >
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h3 className="text-lg font-semibold text-zinc-100">{v.name}</h3>
@@ -172,7 +172,7 @@ export default function DesignPartnersPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 pb-20">
-          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Don&apos;t see your domain?

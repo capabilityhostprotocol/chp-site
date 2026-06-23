@@ -87,7 +87,7 @@ export default function GovernAgentsPage() {
             {GUARANTEES.map((g) => (
               <div
                 key={g.title}
-                className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-5"
+                className="surface-raised p-5"
               >
                 <h3 className="text-base font-semibold text-zinc-100 mb-2">
                   {g.title}
@@ -99,7 +99,7 @@ export default function GovernAgentsPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-t border-zinc-800/60">
-          <div className="border border-zinc-800/80 bg-zinc-900/50 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div className="surface-raised p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Same protocol, every other layer.
