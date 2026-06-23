@@ -1,0 +1,28 @@
+---
+title: "Chain of custody for AI-assisted review"
+description: "When AI reads, summarizes, and flags documents in legal review, the work product is only as defensible as its provenance. CHP's evidence is hash-chained — which is, almost literally, chain of custody."
+date: "2026-06-01"
+---
+
+Legal has a word for what most software calls "an audit log": **chain of custody**. It means a record of who handled a thing, when, and in what order — complete enough, and intact enough, that a court will rely on it. It's a high bar, and it's exactly the bar AI-assisted review is about to be held to.
+
+## The work product is only as good as its provenance
+
+AI now reads, summarizes, and flags documents across review and e-discovery. It's fast and it's useful. But the moment the work product is questioned — by opposing counsel, a court, or an internal risk review — the question is never "is the model smart?" It's "show the provenance of this AI-assisted review, and demonstrate it hasn't been altered."
+
+That second clause is the hard one. A screenshot of a tool's output isn't provenance. A log the review platform wrote, in its own format, retained at its own discretion, is the kind of self-attestation an adversary picks apart. What you need is a record where any alteration is *detectable* — where the integrity of the chain is a property of the record itself, not a promise from the vendor who produced it.
+
+## Hash-chained evidence is chain of custody
+
+The [Capability Host Protocol](https://capabilityhostprotocol.com) records every action — a model reading a document, a reviewer asserting or waiving privilege — as a governed event in a SHA256 hash-chained record, correlated by matter. Each event links to the one before it by hash. Alter or remove any record and the chain breaks visibly. That's not a metaphor for chain of custody; it's the same mechanism, applied to the actions an AI and its reviewers take.
+
+Two things fall out of that design that legal work specifically needs:
+
+- **Privilege as an explicit decision.** Asserting or waiving privilege isn't a side effect — it's a first-class approve/deny event, with the deciding person, the reason, and the time captured in the chain. ["Why was this withheld?"](https://capabilityhostprotocol.com/govern) becomes a recorded fact.
+- **Replay by matter.** Because every action shares a correlation, the entire provenance of a review reconstructs in order — what the model touched, what a person decided, in what sequence — instead of being inferred from scattered logs.
+
+## What's real, and what we'd build with you
+
+Being precise matters here more than anywhere. The hash-chained evidence, the approve/deny decisions, and replay exist today. The matter-level layer a firm or legal-ops team actually needs — retention shaped to a matter's lifecycle, role-based access, and export a court will accept — is what we build with a [design partner](https://capabilityhostprotocol.com/design-partners), not something to claim is finished.
+
+If you're using AI in review or e-discovery and "can we defend this record later?" is a question you'd rather answer before it's asked, [bring a real workflow](https://capabilityhostprotocol.com/industries/legal). We'll map provenance and privilege onto the protocol together.

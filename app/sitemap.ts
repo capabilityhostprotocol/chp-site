@@ -19,6 +19,7 @@ const ROUTES = [
   '/adapters',
   '/capabilities',
   '/capabilities-txt',
+  '/glossary',
   '/quickstart',
   '/map',
   '/govern/agents',
