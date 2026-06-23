@@ -5,6 +5,7 @@ import FieldMotif from '../components/FieldMotif';
 import VisualGrammar from '../components/VisualGrammar';
 import EvidenceContractDiagram from '../components/EvidenceContractDiagram';
 import MeshTraceDiagram from '../components/MeshTraceDiagram';
+import Glyph, { type GlyphName } from '../components/motif/Glyph';
 
 export const metadata: Metadata = {
   title: 'Design system - Capability Host Protocol',
@@ -28,6 +29,22 @@ const TYPE_SCALE = [
   ['.lede', 'Section lede / subhead', 'text-lg → text-2xl, 1.5 line-height'],
   ['.eyebrow', 'Section eyebrow', 'mono, xs, 0.2em tracking, uppercase'],
   ['.band', 'Section rhythm', 'max-w-6xl, px-6, py-24 → py-32'],
+];
+
+const GLYPHS: [GlyphName, string][] = [
+  ['capability', 'Capability'],
+  ['boundary', 'Capability boundary'],
+  ['host', 'Host'],
+  ['invocation', 'Invocation'],
+  ['evidence', 'Evidence'],
+  ['chain', 'Hash chain'],
+  ['correlation', 'Correlation'],
+  ['denial', 'Denial'],
+  ['replay', 'Replay'],
+  ['conformance', 'Conformance'],
+  ['descriptor', 'Descriptor'],
+  ['adapter', 'Adapter'],
+  ['discovery', 'Discovery'],
 ];
 
 const ACTOR_TOKENS = [
@@ -131,6 +148,35 @@ export default function DesignSystemPage() {
                 </code>
                 <span className="text-sm text-zinc-300">{use}</span>
                 <span className="font-mono text-xs text-zinc-600">{spec}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-20 md:py-24 border-b border-zinc-800/60">
+          <p className="eyebrow mb-3">Iconography</p>
+          <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
+            A glyph for every primitive.
+          </h2>
+          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+            Schematic line-marks that frame the vocabulary visually — beside
+            glossary terms, in eyebrows, and inside diagrams. Geometric, not
+            decorative; stroke inherits <code className="font-mono text-zinc-400">currentColor</code>.
+            Component: <code className="font-mono text-zinc-400">Glyph</code>.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {GLYPHS.map(([name, label]) => (
+              <div
+                key={name}
+                className="flex items-center gap-3 border border-zinc-800/80 bg-zinc-900/50 rounded-xl px-4 py-3"
+              >
+                <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-zinc-800 bg-zinc-900/60 text-[color:var(--color-signal-cyan)] shrink-0">
+                  <Glyph name={name} size={20} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm text-zinc-200">{label}</p>
+                  <p className="font-mono text-[11px] text-zinc-600">{name}</p>
+                </div>
               </div>
             ))}
           </div>
