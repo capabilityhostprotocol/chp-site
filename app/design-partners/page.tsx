@@ -73,10 +73,10 @@ export default function DesignPartnersPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+          <p className="eyebrow mb-4">
             Design partners
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             Build the governance layer for your domain with us.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl mb-4">
@@ -122,7 +122,7 @@ export default function DesignPartnersPage() {
               </ul>
             </div>
             <div className="border border-zinc-800 bg-zinc-950/70 rounded-lg p-6">
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+              <p className="eyebrow mb-4">
                 What we build with design partners
               </p>
               <ul className="space-y-3">
@@ -137,10 +137,10 @@ export default function DesignPartnersPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+          <p className="eyebrow mb-3">
             Where we are looking for partners
           </p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-4 max-w-3xl">
+          <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
             Pick the workflow you would prove with us.
           </h2>
           <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">

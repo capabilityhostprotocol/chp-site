@@ -8,10 +8,10 @@ export default function ConcreteCapabilityExample() {
     <section className="max-w-6xl mx-auto px-6 py-16 border-t border-[color:var(--color-border-subtle)]">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] items-start">
         <div>
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+          <p className="eyebrow mb-3">
             Concrete example first
           </p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-4">
+          <h2 className="display-2 text-zinc-100 mb-4">
             A capability is something a host can do.
           </h2>
           <p className="text-sm text-zinc-400 leading-relaxed mb-6">

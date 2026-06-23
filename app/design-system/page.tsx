@@ -68,17 +68,17 @@ export default function DesignSystemPage() {
             <FieldMotif />
           </div>
           <div className="relative max-w-6xl mx-auto px-6 py-20 w-full">
-            <p className="font-mono text-xs text-zinc-500 uppercase mb-4">
+            <p className="eyebrow mb-4">
               Design system
             </p>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 max-w-4xl">
+            <h1 className="display-1 text-zinc-50 max-w-4xl">
               The visual language of CHP.
             </h1>
           </div>
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-8">Principles</p>
+          <p className="eyebrow mb-8">Principles</p>
           <div className="grid md:grid-cols-2 gap-4">
             {PRINCIPLES.map(([title, body]) => (
               <div key={title} className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6">
@@ -90,7 +90,7 @@ export default function DesignSystemPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">Color tokens</p>
+          <p className="eyebrow mb-3">Color tokens</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">
             Actors and states have fixed colors.
           </h2>
@@ -109,7 +109,7 @@ export default function DesignSystemPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">Type scale &amp; rhythm</p>
+          <p className="eyebrow mb-3">Type scale &amp; rhythm</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             Large display type, generous bands.
           </h2>
@@ -137,7 +137,7 @@ export default function DesignSystemPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">Signature motif</p>
+          <p className="eyebrow mb-3">Signature motif</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             The field — many actions, one provable record.
           </h2>
@@ -154,7 +154,7 @@ export default function DesignSystemPage() {
         <VisualGrammar />
 
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">Diagrams</p>
+          <p className="eyebrow mb-3">Diagrams</p>
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">
             Concepts drawn as structured schematics.
           </h2>

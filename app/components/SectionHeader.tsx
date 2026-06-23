@@ -23,7 +23,7 @@ export default function SectionHeader({
         <p className="mb-3 font-mono text-xs uppercase text-zinc-500">
           {eyebrow}
         </p>
-        <h2 className="mb-3 text-3xl font-semibold text-zinc-100">{title}</h2>
+        <h2 className="mb-3 display-2 text-zinc-100">{title}</h2>
         {body && (
           <p className="max-w-2xl text-sm leading-relaxed text-zinc-400">
             {body}

@@ -77,8 +77,8 @@ export default function ExamplesPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-14">
-          <p className="font-mono text-xs text-zinc-500 uppercase mb-4">Examples</p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-zinc-50 mb-6 max-w-4xl">
+          <p className="eyebrow mb-4">Examples</p>
+          <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             See the protocol from each side of the boundary.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
@@ -92,7 +92,7 @@ export default function ExamplesPage() {
             {EXAMPLES.map((example) => (
               <div key={example.role} className="grid lg:grid-cols-[0.8fr_1.2fr] gap-6 items-start">
                 <div>
-                  <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+                  <p className="eyebrow mb-3">
                     {example.role}
                   </p>
                   <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
@@ -109,7 +109,7 @@ export default function ExamplesPage() {
         <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-6 items-start">
             <div>
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+              <p className="eyebrow mb-3">
                 Evidence
               </p>
               <h2 className="text-2xl font-semibold text-zinc-100 mb-3">

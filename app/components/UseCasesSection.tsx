@@ -43,10 +43,10 @@ export default function UseCasesSection() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-end justify-between gap-4 mb-10">
           <div>
-            <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+            <p className="eyebrow mb-3">
               Use cases
             </p>
-            <h2 className="text-2xl md:text-3xl font-semibold text-zinc-100 max-w-3xl">
+            <h2 className="display-2 text-zinc-100 max-w-3xl">
               What people use it for.
             </h2>
           </div>

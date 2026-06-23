@@ -82,10 +82,10 @@ const BLOCKS = [
 export default function VisualGrammar() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+      <p className="eyebrow mb-3">
         The protocol, drawn
       </p>
-      <h2 className="text-3xl font-semibold text-zinc-100 mb-3 max-w-3xl">
+      <h2 className="display-2 text-zinc-100 mb-3 max-w-3xl">
         One example, through every primitive.
       </h2>
       <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-12">

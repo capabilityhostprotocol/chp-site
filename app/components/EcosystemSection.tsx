@@ -40,7 +40,7 @@ export default function EcosystemSection() {
         <div className="grid sm:grid-cols-2 gap-4">
           {PROTOCOL_AUDIENCES.map((audience) => (
             <SurfacePanel key={audience.role}>
-              <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
+              <p className="eyebrow mb-3">
                 {audience.role}
               </p>
               <h3 className="text-base font-semibold text-zinc-100 mb-2">

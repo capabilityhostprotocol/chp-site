@@ -26,7 +26,7 @@ const FEATURES = [
 export default function AgenticSection() {
   return (
     <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">Agentic Intelligence</p>
+      <p className="eyebrow tracking-widest mb-3">Agentic Intelligence</p>
       <h2 className="text-lg font-semibold text-zinc-100 mb-2">
         Make your agent&apos;s reasoning observable.
       </h2>

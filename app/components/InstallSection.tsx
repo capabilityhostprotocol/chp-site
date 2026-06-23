@@ -4,7 +4,7 @@ export default function InstallSection() {
       <h2 className="text-lg font-semibold text-zinc-100 mb-7">Install</h2>
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div>
-          <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">
+          <p className="eyebrow tracking-widest mb-3">
             Python reference host
           </p>
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 font-mono text-sm text-zinc-200 select-all">
@@ -18,7 +18,7 @@ export default function InstallSection() {
           </a>
         </div>
         <div>
-          <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">
+          <p className="eyebrow tracking-widest mb-3">
             TypeScript types
           </p>
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 font-mono text-sm text-zinc-200 select-all">
@@ -33,7 +33,7 @@ export default function InstallSection() {
         </div>
       </div>
       <div className="border border-zinc-800 rounded-xl p-5 bg-zinc-900/50">
-        <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">Verify your setup</p>
+        <p className="eyebrow tracking-widest mb-3">Verify your setup</p>
         <div className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 font-mono text-sm text-zinc-200 mb-2">
           chp host verify
         </div>

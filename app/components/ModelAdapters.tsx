@@ -24,7 +24,7 @@ const PROVIDERS = [
 export default function ModelAdapters() {
   return (
     <section className="max-w-5xl mx-auto px-6 py-14 border-t border-zinc-800/60">
-      <p className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-3">Model Adapters</p>
+      <p className="eyebrow tracking-widest mb-3">Model Adapters</p>
       <h2 className="text-lg font-semibold text-zinc-100 mb-2">
         Every LLM call — governed, auditable, and replayable.
       </h2>
