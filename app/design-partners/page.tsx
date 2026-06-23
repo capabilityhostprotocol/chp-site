@@ -92,6 +92,8 @@ export default function DesignPartnersPage() {
           <div className="flex flex-wrap items-center gap-3 mt-8">
             <a
               href="mailto:partners@capabilityhostprotocol.com?subject=CHP%20design%20partner"
+              data-event="design_partner_contact"
+              data-event-label="design_partners"
               className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
             >
               Start a conversation
@@ -183,6 +185,8 @@ export default function DesignPartnersPage() {
             </div>
             <a
               href="mailto:partners@capabilityhostprotocol.com?subject=CHP%20design%20partner"
+              data-event="design_partner_contact"
+              data-event-label="design_partners"
               className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors whitespace-nowrap"
             >
               Start a conversation

@@ -32,6 +32,8 @@ export default function Nav() {
           ))}
           <a
             href="/design-partners"
+            data-event="design_partner"
+            data-event-label="nav"
             className="rounded-md border border-[color:var(--color-border-strong)] px-3 py-1.5 text-zinc-300 hover:border-[color:var(--color-capability-active)] hover:text-zinc-50 transition-colors"
           >
             Become a design partner

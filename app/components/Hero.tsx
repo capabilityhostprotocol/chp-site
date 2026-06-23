@@ -59,12 +59,16 @@ export default function Hero() {
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <a
             href="/govern/agents"
+            data-event="see_agents"
+            data-event-label="hero"
             className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
           >
             See what your agents did
           </a>
           <a
             href="/design-partners"
+            data-event="design_partner"
+            data-event-label="hero"
             className="border border-zinc-700 rounded-lg px-4 py-2.5 text-sm text-zinc-300 hover:text-zinc-50 hover:border-zinc-500 transition-colors"
           >
             Build a vertical with us

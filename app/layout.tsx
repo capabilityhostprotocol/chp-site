@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import AnalyticsEvents from './components/AnalyticsEvents';
 import './globals.css';
 
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <AnalyticsEvents />
       </body>
     </html>
   );
