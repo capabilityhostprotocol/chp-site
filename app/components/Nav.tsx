@@ -1,10 +1,10 @@
 export default function Nav() {
   const navItems = [
-    ['What is CHP?', '/protocol'],
+    ['How it works', '/how-it-works'],
     ['Govern', '/govern/agents'],
     ['Industries', '/industries/software'],
+    ['Use cases', '/use-cases'],
     ['Why a protocol', '/why-a-protocol'],
-    ['Adapters', '/adapters'],
     ['Docs', 'https://docs.capabilityhostprotocol.com'],
   ];
 

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
+import FailureModesSection from '../components/FailureModesSection';
+import EcosystemSection from '../components/EcosystemSection';
 
 export const metadata: Metadata = {
   title: 'Why a protocol - Capability Host Protocol',
@@ -101,6 +103,9 @@ export default function WhyAProtocolPage() {
             Read the full comparisons -&gt;
           </a>
         </section>
+
+        <FailureModesSection />
+        <EcosystemSection />
 
         <section className="max-w-6xl mx-auto px-6 py-16">
           <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
