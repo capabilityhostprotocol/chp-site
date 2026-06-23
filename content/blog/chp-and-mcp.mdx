@@ -1,0 +1,44 @@
+---
+title: "CHP and MCP: discovery, invocation, and evidence"
+description: "The Model Context Protocol answers 'what can the model call.' CHP answers 'what actually happened, and can I prove it.' They're different layers of the same stack — here's how they fit."
+date: "2026-05-06"
+---
+
+If you're building agents, you've adopted or evaluated the [Model Context Protocol](https://modelcontextprotocol.io). So the reasonable question about anything adjacent is: *does this compete with MCP, or sit on top of it?* For the Capability Host Protocol the answer is clear, and worth being precise about — **they're complementary, and CHP should not claim to replace MCP.**
+
+## Different questions
+
+MCP and CHP answer different questions:
+
+- **MCP** answers *"what can the model call?"* It's a stateful connect-and-invoke protocol — a client connects to a server, negotiates capabilities, lists tools (`tools/list`), and calls them (`tools/call`). It's model-facing, and it's becoming the standard way LLM applications reach tools and context.
+- **CHP** answers *"what actually happened, who was denied, and can I replay it?"* It defines a capability boundary where every attempt emits structured, mandatory evidence — and it's agnostic about how the call was made.
+
+One describes the surface a model talks to. The other records and governs what crossed the boundary. You can want both, because you usually do.
+
+## Three layers, not two competitors
+
+It's cleanest to see the agentic stack as three layers, each answering its own question:
+
+| Layer | Question | Standard |
+|-------|----------|----------|
+| **Discovery** | What can this host do? | [capabilities.txt](https://capabilityhostprotocol.com/capabilities-txt) |
+| **Invocation** | How do I call it? | MCP (and HTTP, SDKs) |
+| **Evidence** | What happened, and can I prove it? | CHP |
+
+Discovery is a static, crawlable advertisement. Invocation is the live connection that runs the tool. Evidence is the durable, governed record of the attempt. MCP owns the middle layer well; CHP owns the third — and `capabilities.txt` hands off to whichever invocation layer you use.
+
+## How they compose in practice
+
+The mapping is direct, not forced:
+
+- An **MCP server can be wrapped as a CHP host** — its tools become declared capabilities that emit evidence on every call.
+- A **CHP capability can be exposed through an MCP-compatible tool surface**, so a model can discover and call it normally.
+- An MCP `tools/call` becomes a CHP **invocation envelope** carrying correlation, subject, and mode; the tool result becomes a CHP outcome — explicit `success`, `failure`, or `denied` — with evidence references attached.
+
+The gaps CHP fills are exactly the ones MCP doesn't set out to cover: MCP doesn't require every tool attempt to emit started/completed/failed/**denied** evidence; its request IDs correlate a request to its response, where CHP correlation reconstructs causal execution *across* tools, agents, and replay; and MCP has no notion of a denial decision made *before* execution. None of that is a knock on MCP — it's a different job.
+
+## The honest summary
+
+MCP exposes tools to AI applications. CHP governs and evidences execution of capabilities. Use MCP to let your agent reach its tools; wrap those calls with CHP when you need to prove what they did. The full concept-by-concept mapping — server↔host, tool↔capability, `tools/call`↔invocation envelope — is in the [CHP vs MCP comparison](https://docs.capabilityhostprotocol.com/docs/compare/chp-vs-mcp).
+
+If you're running agents on MCP today and the question "can we show what they did?" is coming, [that's the layer CHP adds](https://capabilityhostprotocol.com/govern/agents).
