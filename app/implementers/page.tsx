@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
+import AdoptionPathsSection from '../components/AdoptionPathsSection';
+import AdoptionStatusSection from '../components/AdoptionStatusSection';
 
 export const metadata: Metadata = {
   title: 'Implementers - Capability Host Protocol',
@@ -111,6 +113,9 @@ export default function ImplementersPage() {
             </div>
           </div>
         </section>
+
+        <AdoptionPathsSection />
+        <AdoptionStatusSection />
 
         <section className="max-w-6xl mx-auto px-6 py-16">
           <div className="border border-zinc-800 bg-zinc-900/70 rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">

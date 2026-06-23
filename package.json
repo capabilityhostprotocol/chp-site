@@ -8,6 +8,7 @@
     "dev": "next dev",
     "prebuild": "node scripts/sync-adapters.mjs",
     "build": "next build",
+    "verify": "node scripts/sync-adapters.mjs && NEXT_DIST_DIR=.next-verify next build",
     "start": "next start",
     "test:routes": "node scripts/verify-routes.mjs"
   },
