@@ -5,14 +5,14 @@ const LINKS = [
     href: '/how-it-works',
   },
   {
+    label: 'Writing',
+    body: 'Essays on evidence, the capability boundary, and each vertical.',
+    href: '/blog',
+  },
+  {
     label: 'Protocol surface',
     body: 'The formal contract: descriptors, invocation, lifecycle, replay.',
     href: '/protocol',
-  },
-  {
-    label: 'Conformance',
-    body: 'The nine checks an independent host must pass.',
-    href: '/conformance',
   },
   {
     label: 'Documentation',
@@ -24,10 +24,8 @@ const LINKS = [
 export default function GoDeeper() {
   return (
     <section className="border-b border-zinc-800/60">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <p className="font-mono text-xs text-zinc-500 uppercase mb-8">
-          Go deeper
-        </p>
+      <div className="band">
+        <p className="eyebrow mb-10">Go deeper</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {LINKS.map((l) => (
             <a

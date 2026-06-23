@@ -40,17 +40,14 @@ const VERTICALS = [
 export default function VerticalGallery() {
   return (
     <section className="border-b border-zinc-800/60">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <p className="font-mono text-xs text-zinc-500 uppercase mb-3">
-          Across domains
-        </p>
-        <h2 className="text-2xl md:text-3xl font-semibold text-zinc-100 mb-3 max-w-3xl">
-          One protocol, demonstrated where governance matters.
+      <div className="band">
+        <p className="eyebrow mb-4">By industry</p>
+        <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
+          Demonstrated where governance matters.
         </h2>
-        <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">
-          Software is provable today. The rest are demonstrations of how the same
-          primitives would work in your domain — each is an open invitation to
-          build it with us.
+        <p className="lede max-w-2xl mb-12 text-zinc-400">
+          Software is provable today. The rest show how the same primitives would
+          work in your domain — each an open invitation to build it with us.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {VERTICALS.map((v) => (

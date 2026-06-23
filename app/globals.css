@@ -73,3 +73,59 @@
     }
   }
 }
+
+/* Evolved design language — sparse rhythm, large display type, one idea per band.
+   Color tokens above are unchanged; this layer governs scale, space, and motion. */
+@layer components {
+  /* Section rhythm: generous vertical space, one idea per screen. */
+  .band {
+    @apply max-w-6xl mx-auto px-6 py-24 md:py-32;
+  }
+  .band-tight {
+    @apply max-w-6xl mx-auto px-6 py-16 md:py-20;
+  }
+  .eyebrow {
+    @apply font-mono text-xs uppercase text-zinc-500;
+    letter-spacing: 0.2em;
+  }
+
+  /* Display type scale — larger, tighter, more weight contrast. */
+  .display-1 {
+    font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+    line-height: 1.01;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  .display-2 {
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  .lede {
+    @apply text-lg md:text-2xl text-zinc-300;
+    line-height: 1.5;
+  }
+
+  /* Calm, one-shot entrance. Neutralized by the reduced-motion block above. */
+  .rise {
+    animation: chp-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .rise-2 {
+    animation: chp-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  }
+  .rise-3 {
+    animation: chp-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+  }
+}
+
+@keyframes chp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

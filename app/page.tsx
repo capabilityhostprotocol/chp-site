@@ -1,8 +1,7 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import AgentProofStrip from './components/AgentProofStrip';
-import LaneFork from './components/LaneFork';
-import UseCasesSection from './components/UseCasesSection';
+import Applications from './components/Applications';
 import VerticalGallery from './components/VerticalGallery';
 import DifferentiationSection from './components/DifferentiationSection';
 import StatsStrip from './components/StatsStrip';
@@ -16,8 +15,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <AgentProofStrip />
-      <LaneFork />
-      <UseCasesSection />
+      <Applications />
       <VerticalGallery />
       <DifferentiationSection />
       <StatsStrip />

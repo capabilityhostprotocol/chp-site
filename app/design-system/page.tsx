@@ -14,10 +14,20 @@ export const metadata: Metadata = {
 };
 
 const PRINCIPLES = [
+  ['Applications first, progressive depth', 'The homepage leads with what people use the protocol for — concrete, real-today applications — then lets the reader dive deeper. Worldview and mechanics live one click down, not in the first screen.'],
+  ['One idea per band', 'Sparse, full-bleed sections with generous negative space. Large display type carries a single message per screen; supporting detail stays quiet. Inspired by the calm, declarative rhythm of sparse technical sites.'],
   ['Structured, not decorative', 'Every visual maps to a protocol concept. If it does not clarify the protocol, it is questioned. We are not a network-diagram brand.'],
   ['Concept-mapped color', 'Color carries meaning: each actor, policy state, and the evidence trace has a fixed token. Color is never arbitrary.'],
   ['One evocative moment', 'A single signature motif (the hero field) does the emotional work. Everywhere else stays precise and diagrammatic.'],
   ['Calm and accessible', 'Negative space, monospace restraint, calm motion. Animation pauses offscreen and honours prefers-reduced-motion.'],
+];
+
+const TYPE_SCALE = [
+  ['.display-1', 'Hero headline', 'clamp(2.75rem → 5.25rem), -0.025em, 600'],
+  ['.display-2', 'Section headline', 'clamp(2rem → 3.5rem), -0.02em, 600'],
+  ['.lede', 'Section lede / subhead', 'text-lg → text-2xl, 1.5 line-height'],
+  ['.eyebrow', 'Section eyebrow', 'mono, xs, 0.2em tracking, uppercase'],
+  ['.band', 'Section rhythm', 'max-w-6xl, px-6, py-24 → py-32'],
 ];
 
 const ACTOR_TOKENS = [
@@ -94,6 +104,34 @@ export default function DesignSystemPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {STATE_TOKENS.map(([n, t, note]) => (
               <Swatch key={t} name={n} token={t} note={note} />
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-16 border-b border-zinc-800/60">
+          <p className="font-mono text-xs text-zinc-500 uppercase mb-3">Type scale &amp; rhythm</p>
+          <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
+            Large display type, generous bands.
+          </h2>
+          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+            Utility classes in <code className="font-mono text-zinc-400">globals.css</code>{' '}
+            carry the evolved scale. Headlines are fluid (<code className="font-mono text-zinc-400">clamp()</code>),
+            tighter at large sizes; bands set a calm vertical rhythm.
+          </p>
+          <div className="overflow-hidden rounded-lg border border-zinc-800">
+            {TYPE_SCALE.map(([cls, use, spec], i) => (
+              <div
+                key={cls}
+                className={`grid grid-cols-1 sm:grid-cols-[160px_1fr_1fr] gap-2 sm:gap-4 px-5 py-4 ${
+                  i % 2 ? 'bg-zinc-900/40' : 'bg-zinc-900/70'
+                }`}
+              >
+                <code className="font-mono text-sm text-[color:var(--color-signal-cyan)]">
+                  {cls}
+                </code>
+                <span className="text-sm text-zinc-300">{use}</span>
+                <span className="font-mono text-xs text-zinc-600">{spec}</span>
+              </div>
             ))}
           </div>
         </section>
