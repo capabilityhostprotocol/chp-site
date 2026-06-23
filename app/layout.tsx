@@ -12,6 +12,10 @@ const display = Space_Grotesk({
   variable: '--font-display',
 });
 
+export const viewport = {
+  themeColor: '#05070a',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://capabilityhostprotocol.com'),
   title: 'Capability Host Protocol',

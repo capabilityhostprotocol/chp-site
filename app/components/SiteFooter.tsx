@@ -1,7 +1,10 @@
+import EvidenceTexture from './motif/EvidenceTexture';
+
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-zinc-800/60 py-10 px-6 mt-4">
-      <div className="max-w-6xl mx-auto mb-8">
+    <footer className="relative overflow-hidden border-t border-zinc-800/60 py-10 px-6 mt-4">
+      <EvidenceTexture className="absolute inset-0" />
+      <div className="relative max-w-6xl mx-auto mb-8">
         <p className="text-lg font-semibold text-zinc-300">
           Host what the world can do.
         </p>
@@ -9,7 +12,7 @@ export default function SiteFooter() {
           Capability you can command — and prove.
         </p>
       </div>
-      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+      <div className="relative max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
         <span>Capability Host Protocol · open protocol · Apache-2.0</span>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <a
