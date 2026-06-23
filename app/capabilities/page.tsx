@@ -4,7 +4,9 @@ import SiteFooter from '../components/SiteFooter';
 import {
   capabilityCategories,
   adaptersByCategory,
+  capabilityAdapters,
 } from '../lib/capabilities';
+import ItemListLd from '../components/ItemListLd';
 
 export const metadata: Metadata = {
   title: 'Capabilities - Capability Host Protocol',
@@ -29,6 +31,14 @@ const CATEGORY_LABEL: Record<string, string> = {
 export default function CapabilitiesPage() {
   return (
     <div className="min-h-screen">
+      <ItemListLd
+        name="CHP capabilities by adapter"
+        items={capabilityAdapters.map((a) => ({
+          name: a.name,
+          url: `https://capabilityhostprotocol.com/adapters/${a.slug}`,
+          description: `${a.capabilities.length} governed capabilities (${a.category})`,
+        }))}
+      />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
