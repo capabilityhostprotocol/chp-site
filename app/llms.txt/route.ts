@@ -23,6 +23,12 @@ const BODY = `# Capability Host Protocol (CHP)
 - [Manufacturing](https://capabilityhostprotocol.com/industries/manufacturing)
 - [Financial services](https://capabilityhostprotocol.com/industries/financial)
 
+## Capabilities (agent-discoverable)
+- [capabilities.txt](https://capabilityhostprotocol.com/capabilities.txt): the capability surface this host declares, as markdown.
+- [/.well-known/capabilities.json](https://capabilityhostprotocol.com/.well-known/capabilities.json): the structured discovery manifest.
+- [capabilities.txt proposal](https://capabilityhostprotocol.com/capabilities-txt): a discovery standard for the agentic web (vs robots.txt, llms.txt, MCP).
+- [Capability catalog](https://capabilityhostprotocol.com/capabilities): browsable by category.
+
 ## Build with us
 - [Become a design partner](https://capabilityhostprotocol.com/design-partners)
 

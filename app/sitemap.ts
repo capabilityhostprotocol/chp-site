@@ -16,6 +16,7 @@ const ROUTES = [
   '/conformance',
   '/adapters',
   '/capabilities',
+  '/capabilities-txt',
   '/quickstart',
   '/map',
   '/govern/agents',
