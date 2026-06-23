@@ -16,6 +16,10 @@ That second clause is the hard one. A screenshot of a tool's output isn't proven
 
 The [Capability Host Protocol](https://capabilityhostprotocol.com) records every action — a model reading a document, a reviewer asserting or waiving privilege — as a governed event in a SHA256 hash-chained record, correlated by matter. Each event links to the one before it by hash. Alter or remove any record and the chain breaks visibly. That's not a metaphor for chain of custody; it's the same mechanism, applied to the actions an AI and its reviewers take.
 
+<Figure caption="Each event hashes the one before it. Tamper with any record and every link after it breaks — chain of custody, enforced by math. Try it:">
+  <EvidenceChain />
+</Figure>
+
 Two things fall out of that design that legal work specifically needs:
 
 - **Privilege as an explicit decision.** Asserting or waiving privilege isn't a side effect — it's a first-class approve/deny event, with the deciding person, the reason, and the time captured in the chain. ["Why was this withheld?"](https://capabilityhostprotocol.com/govern) becomes a recorded fact.
@@ -23,6 +27,8 @@ Two things fall out of that design that legal work specifically needs:
 
 ## What's real, and what we'd build with you
 
+<Callout tone="warning" label="Demonstrated, not yet shipped">
 Being precise matters here more than anywhere. The hash-chained evidence, the approve/deny decisions, and replay exist today. The matter-level layer a firm or legal-ops team actually needs — retention shaped to a matter's lifecycle, role-based access, and export a court will accept — is what we build with a [design partner](https://capabilityhostprotocol.com/design-partners), not something to claim is finished.
+</Callout>
 
 If you're using AI in review or e-discovery and "can we defend this record later?" is a question you'd rather answer before it's asked, [bring a real workflow](https://capabilityhostprotocol.com/industries/legal). We'll map provenance and privilege onto the protocol together.

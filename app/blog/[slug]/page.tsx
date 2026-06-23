@@ -8,9 +8,14 @@ import Callout from '../../components/motif/Callout';
 import PullQuote from '../../components/motif/PullQuote';
 import CompareTable from '../../components/motif/CompareTable';
 import EvidenceChain from '../../components/motif/EvidenceChain';
+import EvidenceArtifact from '../../components/motif/EvidenceArtifact';
+import EvidenceContractDiagram from '../../components/EvidenceContractDiagram';
 import {
   TelemetryVsEvidenceTable,
   AgenticStackTable,
+  LogsVsEvidenceTable,
+  DiscoveryFilesTable,
+  ClaimDenialArtifact,
 } from '../../components/motif/BlogFigures';
 import { getPostSlugs, getPost, formatDate } from '../../lib/blog';
 
@@ -62,8 +67,13 @@ const mdxComponents = {
   PullQuote,
   CompareTable,
   EvidenceChain,
+  EvidenceArtifact,
+  EvidenceContractDiagram,
   TelemetryVsEvidenceTable,
   AgenticStackTable,
+  LogsVsEvidenceTable,
+  DiscoveryFilesTable,
+  ClaimDenialArtifact,
 };
 
 export default async function BlogPostPage({ params }: Params) {
