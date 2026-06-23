@@ -19,11 +19,7 @@ One describes the surface a model talks to. The other records and governs what c
 
 It's cleanest to see the agentic stack as three layers, each answering its own question:
 
-| Layer | Question | Standard |
-|-------|----------|----------|
-| **Discovery** | What can this host do? | [capabilities.txt](https://capabilityhostprotocol.com/capabilities-txt) |
-| **Invocation** | How do I call it? | MCP (and HTTP, SDKs) |
-| **Evidence** | What happened, and can I prove it? | CHP |
+<AgenticStackTable />
 
 Discovery is a static, crawlable advertisement. Invocation is the live connection that runs the tool. Evidence is the durable, governed record of the attempt. MCP owns the middle layer well; CHP owns the third — and `capabilities.txt` hands off to whichever invocation layer you use.
 

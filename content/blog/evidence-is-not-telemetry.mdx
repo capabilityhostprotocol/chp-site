@@ -6,6 +6,10 @@ date: "2026-04-30"
 
 A fair pushback from any team with a mature stack: *we already have OpenTelemetry — traces, spans, logs, the works. Why would what our agents do need a separate record?* It's the right question, and the answer isn't "OTel is bad." It's that **telemetry and evidence are built for different jobs, and one was never trying to be the other.**
 
+<Figure caption="Evidence is built to be defended: each event hashes the one before it, so any alteration is detectable. Click a block to see what tampering does.">
+  <EvidenceChain />
+</Figure>
+
 ## What telemetry is for
 
 OpenTelemetry exists to help you *understand a running system*. Traces show how a request flowed; spans show where time went; logs and metrics show health. It's an extraordinary tool for debugging latency, finding a bad deploy, and watching a fleet. To do that job well, it makes choices that are exactly right for observability and exactly wrong for proof:
@@ -25,7 +29,11 @@ CHP evidence exists to be *defended* — by a security reviewer, an auditor, opp
 - **Decision-aware.** Denials and approvals are first-class outcomes, with reason and subject — because "what was it *not* allowed to do, and who signed off" is the question that matters.
 - **Replayable by correlation.** One id reconstructs the whole causal execution across tools, agents, and systems — not a sampled trace, the actual ordered sequence.
 
-Telemetry tells you a system is *healthy*. Evidence lets you *prove what it did*. The second is what unblocks shipping an agent into consequential work.
+<TelemetryVsEvidenceTable />
+
+<PullQuote>Telemetry tells you a system is healthy. Evidence lets you prove what it did.</PullQuote>
+
+The second is what unblocks shipping an agent into consequential work.
 
 ## They compose — you don't rip anything out
 

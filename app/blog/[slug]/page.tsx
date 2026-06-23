@@ -3,6 +3,15 @@ import { notFound } from 'next/navigation';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import Nav from '../../components/Nav';
 import SiteFooter from '../../components/SiteFooter';
+import Figure from '../../components/motif/Figure';
+import Callout from '../../components/motif/Callout';
+import PullQuote from '../../components/motif/PullQuote';
+import CompareTable from '../../components/motif/CompareTable';
+import EvidenceChain from '../../components/motif/EvidenceChain';
+import {
+  TelemetryVsEvidenceTable,
+  AgenticStackTable,
+} from '../../components/motif/BlogFigures';
 import { getPostSlugs, getPost, formatDate } from '../../lib/blog';
 
 type Params = { params: Promise<{ slug: string }> };
@@ -47,6 +56,14 @@ const mdxComponents = {
     <code className="font-mono text-sm text-zinc-200 bg-zinc-900 rounded px-1.5 py-0.5" {...p} />
   ),
   strong: (p: object) => <strong className="text-zinc-100 font-semibold" {...p} />,
+  // Visual-aid components — usable inline in any post's MDX.
+  Figure,
+  Callout,
+  PullQuote,
+  CompareTable,
+  EvidenceChain,
+  TelemetryVsEvidenceTable,
+  AgenticStackTable,
 };
 
 export default async function BlogPostPage({ params }: Params) {
