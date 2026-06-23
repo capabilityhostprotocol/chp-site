@@ -18,12 +18,12 @@ export default function PlatformGrid() {
             className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 flex flex-col gap-3"
           >
             <h3 className="text-sm font-semibold text-zinc-100">{group.label}</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed flex-1">{group.description}</p>
+            <p className="text-xs text-zinc-400 leading-relaxed flex-1">{group.description}</p>
             <div className="flex flex-wrap gap-1.5 pt-1 border-t border-zinc-800">
               {group.exports.map((exp) => (
                 <span
                   key={exp}
-                  className="font-mono text-xs text-zinc-500 bg-zinc-800/60 rounded px-1.5 py-0.5"
+                  className="font-mono text-xs text-zinc-400 bg-zinc-800/60 rounded px-1.5 py-0.5"
                 >
                   {exp}
                 </span>

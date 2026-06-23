@@ -46,7 +46,7 @@ export default function GovernHumanDecisionsPage() {
                 session. The record shows not just what happened, but who was
                 allowed to make it happen.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: the approval and denial primitives
                 exist in the protocol today. The human-in-the-loop workflow and UI
                 are what we build with a design partner.
@@ -62,7 +62,7 @@ export default function GovernHumanDecisionsPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Have a high-stakes approval flow?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Bring the decision that has to be defensible later. We will show
                 you how it maps onto the protocol and build the human-in-command
                 workflow with you.

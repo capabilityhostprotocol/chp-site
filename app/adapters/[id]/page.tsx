@@ -46,7 +46,7 @@ export default async function AdapterDetailPage({ params }: Params) {
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
           <a
             href="/adapters"
-            className="font-mono text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+            className="font-mono text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
           >
             &lt;- Adapters
           </a>
@@ -54,10 +54,10 @@ export default async function AdapterDetailPage({ params }: Params) {
             <h1 className="text-4xl md:text-5xl font-semibold text-zinc-50">
               {name}
             </h1>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1">
+            <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
               {status}
             </span>
-            <span className="font-mono text-[10px] uppercase text-zinc-600">
+            <span className="font-mono text-[10px] uppercase text-zinc-400">
               {category}
             </span>
           </div>
@@ -72,7 +72,7 @@ export default async function AdapterDetailPage({ params }: Params) {
             </code>
             <CodeCopyButton code={install} label={`${name} install command`} />
           </div>
-          <p className="font-mono text-xs text-zinc-600 mt-3">
+          <p className="font-mono text-xs text-zinc-400 mt-3">
             Auto-discovered through the <code>chp.adapters</code> entry point — no
             host config needed.
           </p>
@@ -97,24 +97,24 @@ export default async function AdapterDetailPage({ params }: Params) {
                       {c.method}
                     </code>
                     {c.version && (
-                      <span className="font-mono text-[10px] text-zinc-600">
+                      <span className="font-mono text-[10px] text-zinc-400">
                         v{c.version}
                       </span>
                     )}
                   </div>
                   {c.description && (
-                    <p className="text-sm text-zinc-500 leading-relaxed">
+                    <p className="text-sm text-zinc-400 leading-relaxed">
                       {c.description}
                     </p>
                   )}
-                  <code className="block mt-2 font-mono text-[10px] text-zinc-700 truncate">
+                  <code className="block mt-2 font-mono text-[10px] text-zinc-500 truncate">
                     {c.id}
                   </code>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-zinc-400">
               Capability details for this adapter are being catalogued.
             </p>
           )}

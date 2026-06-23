@@ -39,7 +39,7 @@ export default function HealthcareIndustryPage() {
             <p className="eyebrow">
               Industries · Healthcare operations
             </p>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1">
+            <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
               Demonstrated · design partner wanted
             </span>
           </div>
@@ -92,7 +92,7 @@ export default function HealthcareIndustryPage() {
                 approval is recorded as the next governed event in the same trace,
                 so the record shows both what was proposed and who authorized it.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: invocation, approval, and redacted
                 evidence exist today. Role-based access and compliant retention
                 are what we build with a design partner.
@@ -108,7 +108,7 @@ export default function HealthcareIndustryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Putting AI into clinical workflows?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Bring a real sign-off flow. We’ll map the AI action and clinician
                 approval onto the protocol and build the access and retention your
                 compliance team requires, together.

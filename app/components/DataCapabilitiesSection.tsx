@@ -35,12 +35,12 @@ export default function DataCapabilitiesSection() {
         {FEATURES.map((f) => (
           <div key={f.title} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-2">{f.title}</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed mb-3">{f.body}</p>
+            <p className="text-xs text-zinc-400 leading-relaxed mb-3">{f.body}</p>
             <div className="flex flex-wrap gap-1.5">
               {f.exports.map((exp) => (
                 <span
                   key={exp}
-                  className="font-mono text-xs text-zinc-500 bg-zinc-800/60 rounded px-1.5 py-0.5"
+                  className="font-mono text-xs text-zinc-400 bg-zinc-800/60 rounded px-1.5 py-0.5"
                 >
                   {exp}
                 </span>
@@ -55,7 +55,7 @@ export default function DataCapabilitiesSection() {
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-          <span className="ml-2 font-mono text-xs text-zinc-600">governed RAG</span>
+          <span className="ml-2 font-mono text-xs text-zinc-400">governed RAG</span>
         </div>
         <pre className="p-5 font-mono text-sm text-zinc-300 overflow-x-auto leading-relaxed">
           <code>{RAG_EXAMPLE}</code>

@@ -39,7 +39,7 @@ export default function ManufacturingIndustryPage() {
             <p className="eyebrow">
               Industries · Manufacturing &amp; industrial
             </p>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1">
+            <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
               Demonstrated · design partner wanted
             </span>
           </div>
@@ -92,7 +92,7 @@ export default function ManufacturingIndustryPage() {
                 a controller log. The same shape carries an approval or a passed
                 safety check.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: approval, invariants, denial, and
                 cross-host correlation exist today. Plant-grade hardening and
                 integration are what we build with a design partner.
@@ -108,7 +108,7 @@ export default function ManufacturingIndustryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Automating dispatch or machine actions?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Bring a real command flow. We’ll map approval and safety invariants
                 onto the protocol and stitch the edge trace with you.
               </p>

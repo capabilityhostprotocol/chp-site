@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
             </div>
             <a
               href="/feed.xml"
-              className="hidden sm:inline font-mono text-xs text-zinc-500 hover:text-zinc-300 transition-colors whitespace-nowrap"
+              className="hidden sm:inline font-mono text-xs text-zinc-400 hover:text-zinc-300 transition-colors whitespace-nowrap"
             >
               RSS -&gt;
             </a>
@@ -41,13 +41,13 @@ export default function BlogIndexPage() {
                 href={`/blog/${post.slug}`}
                 className="group block py-8"
               >
-                <p className="font-mono text-xs text-zinc-500 mb-2">
+                <p className="font-mono text-xs text-zinc-400 mb-2">
                   {formatDate(post.date)}
                 </p>
                 <h2 className="text-2xl font-semibold text-zinc-100 group-hover:text-white transition-colors mb-2 max-w-3xl">
                   {post.title}
                 </h2>
-                <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl">
+                <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl">
                   {post.description}
                 </p>
               </a>

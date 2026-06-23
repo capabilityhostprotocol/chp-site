@@ -64,11 +64,11 @@ export default function Applications() {
                 <h3 className="text-xl font-semibold text-zinc-100 leading-snug">
                   {u.title}
                 </h3>
-                <span className="font-mono text-[10px] uppercase text-zinc-600 border border-zinc-800 rounded px-1.5 py-0.5 whitespace-nowrap mt-1">
+                <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-800 rounded px-1.5 py-0.5 whitespace-nowrap mt-1">
                   {u.status}
                 </span>
               </div>
-              <p className="text-sm text-zinc-500 leading-relaxed flex-1">
+              <p className="text-sm text-zinc-400 leading-relaxed flex-1">
                 {u.body}
               </p>
               <span className="mt-6 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">

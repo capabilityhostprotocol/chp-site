@@ -107,11 +107,11 @@ export default async function BlogPostPage({ params }: Params) {
       <main className="max-w-3xl mx-auto px-6 py-16">
         <a
           href="/blog"
-          className="font-mono text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          className="font-mono text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
         >
           &lt;- Blog
         </a>
-        <p className="font-mono text-xs text-zinc-500 mt-6 mb-3">
+        <p className="font-mono text-xs text-zinc-400 mt-6 mb-3">
           {formatDate(post.date)}
         </p>
         <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-zinc-50 mb-10">

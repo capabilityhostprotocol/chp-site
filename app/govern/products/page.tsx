@@ -47,7 +47,7 @@ export default function GovernProductsPage() {
                 replayable record. The HTTP, OpenAPI, and GraphQL adapters already
                 wrap existing APIs as CHP capabilities.
               </p>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 Demonstrated, not yet shipped: the manifest, invocation, and
                 evidence primitives exist today. The managed product surface and
                 its lifecycle tooling are what we build with a design partner.
@@ -63,7 +63,7 @@ export default function GovernProductsPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Exposing capabilities to agents?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If callers depend on what your product can do, a governed boundary
                 keeps that contract stable and provable. Bring the surface and we
                 will map it onto the protocol with you.

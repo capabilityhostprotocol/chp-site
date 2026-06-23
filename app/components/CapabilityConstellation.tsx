@@ -40,7 +40,7 @@ function Cluster({ category }: { category: string }) {
         <h3 className="text-sm font-semibold text-zinc-200">
           {CATEGORY_LABEL[category] ?? category}
         </h3>
-        <span className="font-mono text-[10px] uppercase text-zinc-600">
+        <span className="font-mono text-[10px] uppercase text-zinc-400">
           {adapters.length} adapters
         </span>
       </div>
@@ -69,7 +69,7 @@ export default function CapabilityConstellation() {
       <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
         One ecosystem of governed capabilities.
       </h2>
-      <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">
+      <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-10">
         Every node is an adapter in the open ecosystem, sized by the capabilities
         it declares — each one named, versioned, and evidence-wrapped. This is the
         surface the protocol can host, not a readout of anyone&apos;s running
@@ -80,7 +80,7 @@ export default function CapabilityConstellation() {
           <Cluster key={c} category={c} />
         ))}
       </div>
-      <div className="flex items-center gap-5 mt-6 font-mono text-[11px] text-zinc-600">
+      <div className="flex items-center gap-5 mt-6 font-mono text-[11px] text-zinc-400">
         <span className="flex items-center gap-2">
           <span className="block h-2 w-2 rounded-full border border-[color:var(--color-signal-cyan)]/40 bg-[color:var(--color-signal-cyan)]/[0.12]" />
           fewer capabilities

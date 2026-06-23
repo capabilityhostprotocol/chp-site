@@ -20,7 +20,7 @@ export default function SectionHeader({
       className={`flex flex-col gap-5 md:flex-row md:items-end md:justify-between ${className}`}
     >
       <div>
-        <p className="mb-3 font-mono text-xs uppercase text-zinc-500">
+        <p className="mb-3 font-mono text-xs uppercase text-zinc-400">
           {eyebrow}
         </p>
         <h2 className="mb-3 display-2 text-zinc-100">{title}</h2>

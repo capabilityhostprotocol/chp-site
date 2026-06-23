@@ -23,7 +23,7 @@ export default function CapabilityMapPage() {
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-          <p className="mb-4 font-mono text-xs uppercase text-zinc-500">
+          <p className="mb-4 font-mono text-xs uppercase text-zinc-400">
             Capability mapping
           </p>
           <div className="grid gap-8 lg:grid-cols-[0.95fr_0.75fr] lg:items-end">
@@ -38,7 +38,7 @@ export default function CapabilityMapPage() {
               </p>
             </div>
             <div className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-context-surface)] p-5">
-              <p className="font-mono text-[11px] uppercase text-zinc-600">
+              <p className="font-mono text-[11px] uppercase text-zinc-400">
                 A good map proves
               </p>
               <ul className="mt-4 space-y-3">
@@ -67,13 +67,13 @@ export default function CapabilityMapPage() {
         <section className="max-w-6xl mx-auto px-6 py-14">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-mono text-xs uppercase text-zinc-600">
+              <p className="font-mono text-xs uppercase text-zinc-400">
                 Next step
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-zinc-100">
                 Turn the map into a reference host.
               </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
                 Once the boundary is named, implement the capability, verify the
                 host, and test the denial and unavailable paths before treating
                 it as a public protocol surface.

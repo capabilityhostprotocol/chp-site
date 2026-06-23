@@ -70,8 +70,8 @@ function Swatch({ name, token, note }: { name: string; token: string; note: stri
         style={{ background: `var(${token})` }}
       />
       <p className="text-sm font-semibold text-zinc-100">{name}</p>
-      <p className="font-mono text-[11px] text-zinc-600 mt-1">{token}</p>
-      <p className="text-xs text-zinc-500 leading-relaxed mt-2">{note}</p>
+      <p className="font-mono text-[11px] text-zinc-400 mt-1">{token}</p>
+      <p className="text-xs text-zinc-400 leading-relaxed mt-2">{note}</p>
     </div>
   );
 }
@@ -101,7 +101,7 @@ export default function DesignSystemPage() {
             {PRINCIPLES.map(([title, body]) => (
               <div key={title} className="surface-raised p-6">
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">{title}</h2>
-                <p className="text-sm text-zinc-500 leading-relaxed">{body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -112,13 +112,13 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-8">
             Actors and states have fixed colors.
           </h2>
-          <p className="font-mono text-[11px] text-zinc-600 uppercase mb-4">Actors</p>
+          <p className="font-mono text-[11px] text-zinc-400 uppercase mb-4">Actors</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {ACTOR_TOKENS.map(([n, t, note]) => (
               <Swatch key={t} name={n} token={t} note={note} />
             ))}
           </div>
-          <p className="font-mono text-[11px] text-zinc-600 uppercase mb-4">States</p>
+          <p className="font-mono text-[11px] text-zinc-400 uppercase mb-4">States</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {STATE_TOKENS.map(([n, t, note]) => (
               <Swatch key={t} name={n} token={t} note={note} />
@@ -131,7 +131,7 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             Large display type, generous bands.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-8">
             Utility classes in <code className="font-mono text-zinc-400">globals.css</code>{' '}
             carry the evolved scale. Headlines are fluid (<code className="font-mono text-zinc-400">clamp()</code>),
             tighter at large sizes; bands set a calm vertical rhythm.
@@ -148,7 +148,7 @@ export default function DesignSystemPage() {
                   {cls}
                 </code>
                 <span className="text-sm text-zinc-300">{use}</span>
-                <span className="font-mono text-xs text-zinc-600">{spec}</span>
+                <span className="font-mono text-xs text-zinc-400">{spec}</span>
               </div>
             ))}
           </div>
@@ -159,7 +159,7 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             One elevation ladder, three intensities.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-8">
             Depth is rationed. <span className="text-zinc-300">Flat</span> is the
             default; <span className="text-zinc-300">raised</span> carries
             content; <span className="text-zinc-300">signature</span> is reserved
@@ -177,11 +177,11 @@ export default function DesignSystemPage() {
                 <p className="font-mono text-[11px] text-[color:var(--color-signal-cyan)] mb-3">
                   .{cls}
                 </p>
-                <p className="text-xs text-zinc-500 leading-relaxed">{note}</p>
+                <p className="text-xs text-zinc-400 leading-relaxed">{note}</p>
               </div>
             ))}
           </div>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] text-zinc-600">
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] text-zinc-400">
             <span>--radius-sm…xl</span>
             <span>--elevation-0…3</span>
             <span>--stroke-hairline/strong</span>
@@ -195,7 +195,7 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             A glyph for every primitive.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-8">
             Schematic line-marks that frame the vocabulary visually — beside
             glossary terms, in eyebrows, and inside diagrams. Geometric, not
             decorative; stroke inherits <code className="font-mono text-zinc-400">currentColor</code>.
@@ -212,7 +212,7 @@ export default function DesignSystemPage() {
                 </span>
                 <div className="min-w-0">
                   <p className="text-sm text-zinc-200">{label}</p>
-                  <p className="font-mono text-[11px] text-zinc-600">{name}</p>
+                  <p className="font-mono text-[11px] text-zinc-400">{name}</p>
                 </div>
               </div>
             ))}
@@ -224,7 +224,7 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             The field — many actions, one provable record.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-8">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-8">
             Actor actions drift in from the field and resolve onto a single
             evidence trace. Used once, in the hero. Pauses offscreen; static frame
             under reduced motion. Component: <code className="font-mono text-zinc-400">FieldMotif</code>.
@@ -252,7 +252,7 @@ export default function DesignSystemPage() {
           <h2 className="text-2xl font-semibold text-zinc-100 mb-3">
             The catalog, mapped from real data.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl">
             A motif generated from the live adapter catalog — categories as
             clusters, adapters sized by the capabilities they declare. Documented
             here as a reusable pattern; surface it where breadth is the point.

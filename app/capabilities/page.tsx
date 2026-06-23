@@ -77,7 +77,7 @@ export default function CapabilitiesPage() {
                     <h3 className="text-base font-semibold text-zinc-100">
                       {a.name}
                     </h3>
-                    <span className="font-mono text-[10px] uppercase text-zinc-600 border border-zinc-800 rounded px-1.5 py-0.5">
+                    <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-800 rounded px-1.5 py-0.5">
                       {a.status}
                     </span>
                   </div>
@@ -91,12 +91,12 @@ export default function CapabilitiesPage() {
                       </span>
                     ))}
                     {a.capabilities.length > 8 && (
-                      <span className="font-mono text-[11px] text-zinc-600 px-1 py-0.5">
+                      <span className="font-mono text-[11px] text-zinc-400 px-1 py-0.5">
                         +{a.capabilities.length - 8} more
                       </span>
                     )}
                   </div>
-                  <span className="mt-4 inline-block text-sm text-zinc-500 group-hover:text-zinc-100 transition-colors">
+                  <span className="mt-4 inline-block text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
                     {a.name} capabilities -&gt;
                   </span>
                 </a>
@@ -111,7 +111,7 @@ export default function CapabilitiesPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Machine-readable, too.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 This catalog is published for agents at{' '}
                 <code className="font-mono text-zinc-300">/capabilities.txt</code>{' '}
                 and{' '}

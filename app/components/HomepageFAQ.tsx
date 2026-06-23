@@ -19,7 +19,7 @@ export default function HomepageFAQ() {
             <h3 className="text-sm font-semibold text-zinc-100">
               {faq.question}
             </h3>
-            <p className="text-sm leading-relaxed text-zinc-500">{faq.answer}</p>
+            <p className="text-sm leading-relaxed text-zinc-400">{faq.answer}</p>
           </div>
         ))}
       </div>

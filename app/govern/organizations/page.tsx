@@ -57,15 +57,15 @@ export default function GovernOrganizationsPage() {
                 key={s.n}
                 className="surface-raised p-6"
               >
-                <p className="font-mono text-xs text-zinc-600 mb-3">{s.n}</p>
+                <p className="font-mono text-xs text-zinc-400 mb-3">{s.n}</p>
                 <h2 className="text-base font-semibold text-zinc-100 mb-2">
                   {s.title}
                 </h2>
-                <p className="text-sm text-zinc-500 leading-relaxed">{s.body}</p>
+                <p className="text-sm text-zinc-400 leading-relaxed">{s.body}</p>
               </div>
             ))}
           </div>
-          <p className="text-xs text-zinc-600 leading-relaxed mt-8 max-w-3xl">
+          <p className="text-xs text-zinc-400 leading-relaxed mt-8 max-w-3xl">
             Demonstrated, not yet shipped: correlation and local mesh replay exist
             today across hosts you operate. Multi-host stitching across
             organizational boundaries, with retention and access, is what we build
@@ -79,7 +79,7 @@ export default function GovernOrganizationsPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Work that spans hosts or partners?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If you cannot currently reconstruct a process that crosses systems,
                 that is exactly the trace CHP is built to stitch. Bring the
                 workflow and we will design the mesh with you.

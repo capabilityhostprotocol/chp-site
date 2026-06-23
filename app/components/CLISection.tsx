@@ -22,7 +22,7 @@ export default function CLISection() {
               {group.commands.map(({ cmd, desc }) => (
                 <div key={cmd} className="px-4 py-3">
                   <div className="font-mono text-xs text-zinc-300 mb-1">{cmd}</div>
-                  <div className="text-xs text-zinc-600 leading-snug">{desc}</div>
+                  <div className="text-xs text-zinc-400 leading-snug">{desc}</div>
                 </div>
               ))}
             </div>
@@ -30,18 +30,18 @@ export default function CLISection() {
         ))}
       </div>
 
-      <p className="text-xs text-zinc-600 mt-6 font-mono">
+      <p className="text-xs text-zinc-400 mt-6 font-mono">
         Full reference:{' '}
         <a
           href="https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/adopter-quickstart.md"
-          className="text-zinc-500 hover:text-zinc-300 transition-colors underline"
+          className="text-zinc-400 hover:text-zinc-300 transition-colors underline"
         >
           docs/adopter-quickstart.md
         </a>
         {' '}· Run{' '}
-        <span className="text-zinc-500">chp --help</span>
+        <span className="text-zinc-400">chp --help</span>
         {' '}or{' '}
-        <span className="text-zinc-500">chp &lt;command&gt; --help</span>
+        <span className="text-zinc-400">chp &lt;command&gt; --help</span>
         {' '}for flags and examples.
       </p>
     </section>

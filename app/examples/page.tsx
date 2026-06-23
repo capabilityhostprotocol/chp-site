@@ -62,7 +62,7 @@ function CodeBlock({ label, code }: { label: string; code: string }) {
         <span className="w-2 h-2 rounded-full bg-zinc-700" />
         <span className="w-2 h-2 rounded-full bg-zinc-700" />
         <span className="w-2 h-2 rounded-full bg-zinc-700" />
-        <span className="ml-2 font-mono text-xs text-zinc-600">{label}</span>
+        <span className="ml-2 font-mono text-xs text-zinc-400">{label}</span>
       </div>
       <pre className="p-4 font-mono text-xs text-zinc-300 overflow-x-auto leading-relaxed">
         <code>{code}</code>
@@ -131,7 +131,7 @@ export default function ExamplesPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Add safety before broad exposure.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Denials should be protocol outcomes. Start with explicit safety
                 checks before capabilities become available to independent callers.
               </p>

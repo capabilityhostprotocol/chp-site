@@ -20,7 +20,7 @@ export default function FailureModesSection() {
               className="grid gap-4 py-5 md:grid-cols-[0.8fr_1fr_1fr]"
             >
               <h3 className="text-sm font-semibold text-zinc-100">{mode.pain}</h3>
-              <p className="text-xs leading-relaxed text-zinc-500">{mode.cost}</p>
+              <p className="text-xs leading-relaxed text-zinc-400">{mode.cost}</p>
               <p className="text-xs leading-relaxed text-zinc-300">{mode.chp}</p>
             </div>
           ))}

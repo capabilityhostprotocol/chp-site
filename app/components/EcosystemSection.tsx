@@ -46,7 +46,7 @@ export default function EcosystemSection() {
               <h3 className="text-base font-semibold text-zinc-100 mb-2">
                 {audience.headline}
               </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 {audience.body}
               </p>
             </SurfacePanel>

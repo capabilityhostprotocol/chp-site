@@ -6,7 +6,7 @@ export default function PhilosophyQuote() {
           Capability execution should be portable.<br />
           Production trust should be verifiable.
         </p>
-        <p className="text-sm text-zinc-500 leading-relaxed max-w-xl">
+        <p className="text-sm text-zinc-400 leading-relaxed max-w-xl">
           The spec, schemas, reference host, SDK primitives, conformance runner, and
           local replay path are open source. Teams can build proprietary hosts,
           agents, policy systems, and infrastructure around the same shared protocol.

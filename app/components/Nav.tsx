@@ -19,14 +19,14 @@ export default function Nav() {
           <span className="hidden sm:inline font-semibold text-sm text-zinc-100">
             Capability Host Protocol
           </span>
-          <span className="ml-2 font-mono text-xs text-zinc-600">v0.8.0</span>
+          <span className="ml-2 font-mono text-xs text-zinc-400">v0.8.0</span>
         </a>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-500">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-400">
           {navItems.map(([label, href]) => (
             <a
               key={label}
               href={href}
-              className="hover:text-zinc-200 transition-colors"
+              className="hover:text-zinc-100 transition-colors"
             >
               {label}
             </a>

@@ -101,7 +101,7 @@ export default function WhyAProtocolPage() {
           <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
             CHP is deliberately narrow.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-10">
             It standardizes one boundary — how capabilities are declared, called,
             governed, and proven — and stays out of the model, framework, cloud,
             and policy engine you already chose.
@@ -153,7 +153,7 @@ export default function WhyAProtocolPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 See the boundary where the proof is already real.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Start with agents: one command captures every tool call as
                 replayable, tamper-evident evidence — then read the spec to see
                 how narrow the contract really is.

@@ -56,7 +56,7 @@ export default function HowItWorksPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Go deeper.
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Read the protocol surface, the conformance model, or the full
                 documentation.
               </p>

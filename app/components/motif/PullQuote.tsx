@@ -19,7 +19,7 @@ export default function PullQuote({
         </p>
       </blockquote>
       {cite && (
-        <figcaption className="mt-3 pl-6 font-mono text-xs text-zinc-500">
+        <figcaption className="mt-3 pl-6 font-mono text-xs text-zinc-400">
           {cite}
         </figcaption>
       )}

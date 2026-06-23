@@ -175,7 +175,7 @@ export default function GlossaryPage() {
                   <h2 className="text-xl font-semibold text-zinc-100">
                     {t.term}
                   </h2>
-                  <p className="text-sm text-zinc-500 mt-1 leading-relaxed">
+                  <p className="text-sm text-zinc-400 mt-1 leading-relaxed">
                     {t.short}
                   </p>
                 </dt>
@@ -201,7 +201,7 @@ export default function GlossaryPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Want the full specification?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 These terms are defined normatively in the protocol spec, with
                 schemas and a conformance suite.
               </p>

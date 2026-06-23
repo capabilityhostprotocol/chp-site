@@ -24,7 +24,7 @@ export default function AdapterCard({ adapter }: { adapter: Adapter }) {
       </p>
 
       <div className="mt-4 flex items-center justify-between gap-3">
-        <span className="font-mono text-[11px] uppercase tracking-wide text-zinc-500">
+        <span className="font-mono text-[11px] uppercase tracking-wide text-zinc-400">
           {adapter.category}
         </span>
       </div>

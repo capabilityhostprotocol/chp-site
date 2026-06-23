@@ -18,12 +18,12 @@ export default function CodePanel({
   return (
     <div className="min-w-0 overflow-hidden rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)] shadow-[var(--shadow-surface)]">
       <div className="flex min-h-10 min-w-0 items-center justify-between gap-3 border-b border-[color:var(--color-border-subtle)] px-4 py-2">
-        <span className="min-w-0 break-words font-mono text-xs text-zinc-500">
+        <span className="min-w-0 break-words font-mono text-xs text-zinc-400">
           {label}
         </span>
         <div className="flex shrink-0 items-center gap-2">
           {language && (
-            <span className="font-mono text-[11px] uppercase text-zinc-700">
+            <span className="font-mono text-[11px] uppercase text-zinc-400">
               {language}
             </span>
           )}
@@ -37,7 +37,7 @@ export default function CodePanel({
               <span key={`${index}-${line}`} className="block min-w-max">
                 <span
                   aria-hidden="true"
-                  className="inline-block w-8 select-none pr-4 text-right text-xs text-zinc-700"
+                  className="inline-block w-8 select-none pr-4 text-right text-xs text-zinc-500"
                 >
                   {index + 1}
                 </span>

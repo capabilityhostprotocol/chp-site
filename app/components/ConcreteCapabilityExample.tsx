@@ -18,7 +18,7 @@ export default function ConcreteCapabilityExample() {
             {FIELD_SERVICE_EXAMPLE.summary}
           </p>
           <div className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 p-4">
-            <p className="font-mono text-[11px] uppercase text-zinc-600 mb-3">
+            <p className="font-mono text-[11px] uppercase text-zinc-400 mb-3">
               CHP notation
             </p>
             <p className="font-mono text-sm leading-relaxed text-zinc-300">

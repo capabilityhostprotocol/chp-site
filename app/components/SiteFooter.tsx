@@ -5,11 +5,11 @@ export default function SiteFooter() {
         <p className="text-lg font-semibold text-zinc-300">
           Host what the world can do.
         </p>
-        <p className="font-mono text-xs text-zinc-600 mt-1">
+        <p className="font-mono text-xs text-zinc-400 mt-1">
           Capability you can command — and prove.
         </p>
       </div>
-      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-600">
+      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
         <span>Capability Host Protocol · open protocol · Apache-2.0</span>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <a

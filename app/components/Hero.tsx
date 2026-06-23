@@ -43,7 +43,7 @@ export default function Hero() {
             Build a vertical with us
           </a>
         </div>
-        <div className="font-mono text-sm text-zinc-500 select-all rise-2">
+        <div className="font-mono text-sm text-zinc-400 select-all rise-2">
           $ chp hooks install
         </div>
       </div>

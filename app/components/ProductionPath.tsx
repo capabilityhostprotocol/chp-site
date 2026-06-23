@@ -47,7 +47,7 @@ export default function ProductionPath() {
             <div className="bg-zinc-800/60 rounded px-2.5 py-1.5 font-mono text-xs text-zinc-400 mb-3 break-all">
               {step.code}
             </div>
-            <p className="text-xs text-zinc-500 leading-relaxed">{step.body}</p>
+            <p className="text-xs text-zinc-400 leading-relaxed">{step.body}</p>
           </div>
         ))}
       </div>
@@ -57,7 +57,7 @@ export default function ProductionPath() {
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
           <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-          <span className="ml-2 font-mono text-xs text-zinc-600">persistence setup</span>
+          <span className="ml-2 font-mono text-xs text-zinc-400">persistence setup</span>
         </div>
         <pre className="p-5 font-mono text-sm text-zinc-300 overflow-x-auto leading-relaxed">
           <code>{PERSISTENCE_EXAMPLE}</code>

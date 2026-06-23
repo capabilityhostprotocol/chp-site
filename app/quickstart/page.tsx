@@ -180,7 +180,7 @@ function CodeBlock({ code, label }: { code: string; label?: string }) {
         <span className="w-2 h-2 rounded-full bg-zinc-700" />
         <span className="w-2 h-2 rounded-full bg-zinc-700" />
         {label && (
-          <span className="ml-2 font-mono text-xs text-zinc-600">{label}</span>
+          <span className="ml-2 font-mono text-xs text-zinc-400">{label}</span>
         )}
       </div>
       <pre className="p-4 font-mono text-sm text-zinc-300 overflow-x-auto leading-relaxed">
@@ -195,7 +195,7 @@ export default function QuickstartPage() {
     <div className="min-h-screen">
       <Nav />
       <div className="max-w-3xl mx-auto px-6 pt-16 pb-24">
-        <p className="font-mono text-xs text-zinc-500 mb-4 tracking-widest uppercase">
+        <p className="font-mono text-xs text-zinc-400 mb-4 tracking-widest uppercase">
           Quickstart
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-50 mb-4">
@@ -210,7 +210,7 @@ export default function QuickstartPage() {
           {STEPS.map((step) => (
             <div key={step.number}>
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="font-mono text-xs text-zinc-600 min-w-[1.5rem]">
+                <span className="font-mono text-xs text-zinc-400 min-w-[1.5rem]">
                   {step.number}.
                 </span>
                 <h2 className="text-base font-semibold text-zinc-100">{step.title}</h2>
@@ -245,9 +245,9 @@ export default function QuickstartPage() {
             <a
               key={label}
               href={href}
-              className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-200 transition-colors"
+              className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
             >
-              <span className="font-mono text-zinc-700">→</span>
+              <span className="font-mono text-zinc-500">→</span>
               {label}
             </a>
           ))}

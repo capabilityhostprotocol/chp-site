@@ -26,7 +26,7 @@ export default function AgentProofStrip() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-zinc-600 leading-relaxed mb-6">
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6">
               Provable today: local, tamper-evident replay. Hosted retention,
               role-based access, and compliance export are what we build with
               design partners.

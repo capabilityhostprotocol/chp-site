@@ -93,19 +93,19 @@ export default function CapabilityRegistryRow({
               {LIFECYCLE_LABELS[lifecycle]}
             </Badge>
           </div>
-          <p className="mt-3 text-xs leading-relaxed text-zinc-500">{summary}</p>
+          <p className="mt-3 text-xs leading-relaxed text-zinc-400">{summary}</p>
         </div>
-        <dl className="grid gap-2 font-mono text-[11px] text-zinc-500">
+        <dl className="grid gap-2 font-mono text-[11px] text-zinc-400">
           <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="uppercase text-zinc-700">Host</dt>
+            <dt className="uppercase text-zinc-500">Host</dt>
             <dd className="break-words text-zinc-300">{host}</dd>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="uppercase text-zinc-700">Version</dt>
+            <dt className="uppercase text-zinc-500">Version</dt>
             <dd className="text-zinc-300">{version}</dd>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="uppercase text-zinc-700">Checked</dt>
+            <dt className="uppercase text-zinc-500">Checked</dt>
             <dd className="text-zinc-300">{checkedAt}</dd>
           </div>
         </dl>
@@ -116,14 +116,14 @@ export default function CapabilityRegistryRow({
               <Badge key={mode}>{mode}</Badge>
             ))}
           </div>
-          <p className="font-mono text-[11px] uppercase text-zinc-700">
+          <p className="font-mono text-[11px] uppercase text-zinc-500">
             Emits
           </p>
           <div className="flex flex-wrap gap-2">
             {evidence.map((event) => (
               <span
                 key={event}
-                className="rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)] px-2 py-1 font-mono text-[11px] text-zinc-500"
+                className="rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)] px-2 py-1 font-mono text-[11px] text-zinc-400"
               >
                 {event}
               </span>

@@ -28,14 +28,14 @@ export default function HostFrame({
   return (
     <div className="rounded-lg border border-[color:var(--color-host-border)] bg-[color:var(--color-host-background)] shadow-[var(--shadow-glow-signal)]">
       <div className="border-b border-[color:var(--color-border-subtle)] px-5 py-4">
-        <p className="font-mono text-[11px] uppercase text-zinc-600">{hostType}</p>
+        <p className="font-mono text-[11px] uppercase text-zinc-400">{hostType}</p>
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-semibold text-zinc-100">{hostName}</h3>
           <Badge tone={health.toLowerCase() === 'available' ? 'approved' : 'blocked'}>
             {health}
           </Badge>
         </div>
-        <p className="mt-3 text-xs leading-relaxed text-zinc-500">{policySummary}</p>
+        <p className="mt-3 text-xs leading-relaxed text-zinc-400">{policySummary}</p>
       </div>
       <div className="grid gap-3 p-4">
         {capabilities.map((capability) => (

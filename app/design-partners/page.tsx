@@ -85,7 +85,7 @@ export default function DesignPartnersPage() {
             usable today. The production trust layer for regulated work is what we
             build next, with the partners who feel the pain first.
           </p>
-          <p className="text-base text-zinc-500 leading-relaxed max-w-3xl">
+          <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
             We would rather show you exactly how it would work in your domain than
             claim it already does. That is what this program is for.
           </p>
@@ -143,7 +143,7 @@ export default function DesignPartnersPage() {
           <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
             Pick the workflow you would prove with us.
           </h2>
-          <p className="text-sm text-zinc-500 leading-relaxed max-w-3xl mb-10">
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-10">
             Each of these is a demonstration of how the protocol would work in a
             domain — grounded in primitives that exist today. The honest gap in
             each is the invitation.
@@ -156,14 +156,14 @@ export default function DesignPartnersPage() {
               >
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h3 className="text-lg font-semibold text-zinc-100">{v.name}</h3>
-                  <span className="font-mono text-[10px] uppercase text-zinc-500 border border-zinc-700 rounded px-2 py-1 whitespace-nowrap">
+                  <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1 whitespace-nowrap">
                     {v.status}
                   </span>
                 </div>
                 <p className="text-sm text-zinc-400 leading-relaxed mb-3">
                   {v.prove}
                 </p>
-                <p className="text-xs text-zinc-600 leading-relaxed mt-auto">
+                <p className="text-xs text-zinc-400 leading-relaxed mt-auto">
                   {v.gap}
                 </p>
               </div>
@@ -177,7 +177,7 @@ export default function DesignPartnersPage() {
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
                 Don&apos;t see your domain?
               </h2>
-              <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If your work needs a provable record of what people, agents, and
                 systems did, the protocol probably fits. Tell us the workflow and
                 we will show you how it would map.
