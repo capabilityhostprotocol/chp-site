@@ -35,7 +35,7 @@ export default function AgentProofStrip() {
               href="/govern/agents"
               className="text-sm text-zinc-200 hover:text-zinc-50 transition-colors"
             >
-              How agent governance works -&gt;
+              How agent governance works →
             </a>
           </div>
         </div>

@@ -239,7 +239,7 @@ export default function DocsPageView({ page }: DocsPageViewProps) {
               href={item.href}
               className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 px-4 py-3 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
             >
-              {item.title} -&gt;
+              {item.title} →
             </a>
           ))}
         </div>

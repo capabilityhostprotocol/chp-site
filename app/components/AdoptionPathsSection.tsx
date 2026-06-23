@@ -26,7 +26,7 @@ export default function AdoptionPathsSection() {
               href={path.href}
               className="mt-5 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
             >
-              {path.cta} -&gt;
+              {path.cta} →
             </a>
           </SurfacePanel>
         ))}

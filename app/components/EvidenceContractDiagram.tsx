@@ -29,7 +29,7 @@ export default function EvidenceContractDiagram() {
             capability boundary
           </div>
           <div aria-hidden="true" className="hidden md:block h-24 w-px bg-zinc-700 my-2" />
-          <div aria-hidden="true" className="text-zinc-500 font-mono md:hidden">-&gt;</div>
+          <div aria-hidden="true" className="text-zinc-500 font-mono md:hidden">→</div>
         </div>
 
         {/* One evidence chain */}
@@ -45,7 +45,7 @@ export default function EvidenceContractDiagram() {
                 </div>
                 {i < STAGES.length - 1 && (
                   <div aria-hidden="true" className="flex items-center text-zinc-500 font-mono text-xs">
-                    -&gt;
+                    →
                   </div>
                 )}
               </div>

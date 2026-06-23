@@ -121,25 +121,25 @@ export default function WhyAProtocolPage() {
               href="/blog/chp-and-mcp"
               className="text-zinc-300 hover:text-zinc-50 transition-colors"
             >
-              CHP and MCP -&gt;
+              CHP and MCP →
             </a>
             <a
               href="/blog/evidence-is-not-telemetry"
               className="text-zinc-400 hover:text-zinc-100 transition-colors"
             >
-              Evidence vs telemetry -&gt;
+              Evidence vs telemetry →
             </a>
             <a
               href="/glossary"
               className="text-zinc-400 hover:text-zinc-100 transition-colors"
             >
-              Glossary -&gt;
+              Glossary →
             </a>
             <a
               href="https://docs.capabilityhostprotocol.com/docs/compare/chp-vs-mcp"
               className="text-zinc-400 hover:text-zinc-100 transition-colors"
             >
-              Full comparisons -&gt;
+              Full comparisons →
             </a>
           </div>
         </section>

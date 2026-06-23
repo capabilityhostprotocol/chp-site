@@ -33,7 +33,7 @@ export default function MeshTraceDiagram() {
           one ordered replay
         </p>
         <p className="font-mono text-xs text-zinc-400 leading-relaxed">
-          plan.create &rarr; retrieval.query &rarr; sensor.read &rarr; claim.decide
+          plan.create → retrieval.query → sensor.read → claim.decide
         </p>
       </div>
 

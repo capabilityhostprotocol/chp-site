@@ -38,7 +38,7 @@ export default function ProtocolArtifactSection() {
             href="/examples"
             className="whitespace-nowrap text-sm text-zinc-400 transition-colors hover:text-zinc-100"
           >
-            See examples -&gt;
+            See examples →
           </a>
         }
       />

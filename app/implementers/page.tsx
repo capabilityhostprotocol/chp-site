@@ -82,7 +82,7 @@ export default function ImplementersPage() {
                   href={path.href}
                   className="mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
                 >
-                  {path.link} -&gt;
+                  {path.link} →
                 </a>
               </div>
             ))}

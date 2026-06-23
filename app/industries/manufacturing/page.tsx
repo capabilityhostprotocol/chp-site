@@ -56,7 +56,7 @@ export default function ManufacturingIndustryPage() {
             href="/blog/who-commanded-the-machine"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “Who commanded the machine?” -&gt;
+            Read the essay: “Who commanded the machine?” →
           </a>
         </section>
 

@@ -57,7 +57,7 @@ export default function HealthcareIndustryPage() {
             href="/blog/who-authorized-the-ai-step"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “Who authorized the AI step?” -&gt;
+            Read the essay: “Who authorized the AI step?” →
           </a>
         </section>
 

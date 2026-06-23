@@ -47,7 +47,7 @@ export default function InvocationTrace({
                 aria-hidden="true"
                 className="absolute -right-2 top-10 hidden font-mono text-zinc-500 md:block"
               >
-                -&gt;
+                →
               </span>
             )}
           </li>

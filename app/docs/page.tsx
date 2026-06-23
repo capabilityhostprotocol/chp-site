@@ -123,7 +123,7 @@ export default function DocsPage() {
                     href={`/docs/${page.slug}`}
                     className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-surface-900)]/70 px-4 py-3 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
                   >
-                    {page.title} -&gt;
+                    {page.title} →
                   </a>
                 ))}
               </div>
@@ -186,7 +186,7 @@ export default function DocsPage() {
                 href={`/docs/${page.slug}`}
                 className="rounded-lg border border-[color:var(--color-border-subtle)] bg-[color:var(--color-context-surface)] px-4 py-3 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-50"
               >
-                {page.title} -&gt;
+                {page.title} →
               </a>
             ))}
           </div>

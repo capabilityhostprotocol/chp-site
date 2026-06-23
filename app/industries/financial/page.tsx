@@ -56,7 +56,7 @@ export default function FinancialIndustryPage() {
             href="/blog/controls-in-the-contract"
             className="inline-block mt-6 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
           >
-            Read the essay: “Controls in the contract, not the code review” -&gt;
+            Read the essay: “Controls in the contract, not the code review” →
           </a>
         </section>
 
