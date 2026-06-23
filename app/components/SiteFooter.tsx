@@ -46,6 +46,12 @@ export default function SiteFooter() {
             Glossary
           </a>
           <a
+            href="/agentic-web"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Agentic web
+          </a>
+          <a
             href="https://docs.capabilityhostprotocol.com"
             className="hover:text-zinc-400 transition-colors"
           >
