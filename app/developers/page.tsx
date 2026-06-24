@@ -16,6 +16,7 @@ const GROUPS: { heading: string; items: [string, string, string][] }[] = [
       ['OpenAPI specification', '/openapi.json', 'OpenAPI 3.1 description of the public HTTP surface.'],
       ['MCP server', '/api/mcp', 'Model Context Protocol (streamable HTTP) — connect an agent to learn CHP, browse capabilities, and adopt it. Every call returns hash-chained evidence.'],
       ['MCP discovery manifest', '/.well-known/mcp.json', 'Endpoint, transport, auth, and tools for the MCP server.'],
+      ['Official MCP registry', 'https://registry.modelcontextprotocol.io/v0/servers?search=io.github.capabilityhostprotocol/chp', 'Listed as io.github.capabilityhostprotocol/chp — discoverable to any MCP client that federates the registry.'],
       ['A2A agent card', '/.well-known/agent-card.json', 'The recognized capability-advertisement manifest.'],
       ['/ask endpoint', '/ask?q=how+does+CHP+work', 'A natural-language query endpoint — structured answers, no MCP client needed.'],
       ['capabilities.txt', '/capabilities.txt', 'Governance-aware capability discovery (+ /.well-known/capabilities.json).'],

@@ -13,6 +13,10 @@ export function GET() {
     description:
       'A CHP learning + information server. Learn what CHP is and how to adopt it; browse the capability catalog. Every tool call is wrapped as hash-chained CHP evidence.',
     version: '0.8.0',
+    registry: {
+      name: 'io.github.capabilityhostprotocol/chp',
+      url: 'https://registry.modelcontextprotocol.io/v0/servers?search=io.github.capabilityhostprotocol/chp',
+    },
     servers: [
       {
         url: `${BASE}/api/mcp`,
