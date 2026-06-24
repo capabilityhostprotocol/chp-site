@@ -36,6 +36,7 @@ const BODY = `# Capability Host Protocol (CHP)
 ## For agents (discover + invoke)
 - [MCP server](https://capabilityhostprotocol.com/api/mcp): connect over the Model Context Protocol to query capabilities, adapters, the spec, and the glossary — every call emits replayable CHP evidence.
 - [MCP discovery manifest](https://capabilityhostprotocol.com/.well-known/mcp.json): MCP endpoint, transport, auth, and tools.
+- [Official MCP registry listing](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.capabilityhostprotocol/chp): published as \`io.github.capabilityhostprotocol/chp\` on registry.modelcontextprotocol.io.
 - [/ask](https://capabilityhostprotocol.com/ask): a structured natural-language query endpoint — GET /ask?q=... returns the best-matching concept, definition, FAQ, and capabilities. No MCP client needed.
 - [A2A agent card](https://capabilityhostprotocol.com/.well-known/agent-card.json): the recognized capability-advertisement manifest.
 - [MCP server card](https://capabilityhostprotocol.com/.well-known/mcp/server-card.json): the MCP server descriptor.
