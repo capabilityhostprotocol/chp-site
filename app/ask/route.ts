@@ -94,27 +94,46 @@ function answer(query: string) {
   };
 }
 
-function respond(query: string) {
-  return new Response(JSON.stringify(answer(query), null, 2), {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  });
+const CORS = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body, null, 2), { status, headers: CORS });
+}
+
+// Structured JSON error — agents can't parse HTML error pages.
+function jsonError(status: number, code: string, message: string, hint?: string) {
+  return json({ error: { code, message, ...(hint ? { hint } : {}) } }, status);
 }
 
 export function GET(req: Request) {
   const q = new URL(req.url).searchParams.get('q') ?? '';
-  return respond(q);
+  return json(answer(q));
 }
 
 export async function POST(req: Request) {
   let q = '';
-  try {
-    const body = (await req.json()) as { q?: string; query?: string };
-    q = body.q ?? body.query ?? '';
-  } catch {
-    /* empty body */
+  const raw = await req.text();
+  if (raw.trim()) {
+    try {
+      const body = JSON.parse(raw) as { q?: string; query?: string };
+      q = body.q ?? body.query ?? '';
+    } catch {
+      return jsonError(
+        400,
+        'invalid_request',
+        'Request body must be valid JSON.',
+        'Send {"q": "your question"} with Content-Type: application/json, or use GET /ask?q=...',
+      );
+    }
   }
-  return respond(q);
+  return json(answer(q));
+}
+
+export function OPTIONS() {
+  return new Response(null, { status: 204, headers: CORS });
 }
