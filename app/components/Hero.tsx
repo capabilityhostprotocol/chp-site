@@ -17,13 +17,17 @@ export default function Hero() {
         <h1 className="display-1 text-zinc-50 mb-8 max-w-4xl rise">
           See exactly what your AI agents did.
         </h1>
-        <p className="lede max-w-2xl mb-10 rise-2">
+        <p className="lede max-w-2xl mb-5 rise-2">
           Your agent reads files, runs commands, calls tools. Then a security
           review asks what it actually did — and the launch stalls. CHP captures
           every tool call as replayable, tamper-evident evidence.{' '}
           <span className="text-zinc-100">
             One command, no application code changes.
           </span>
+        </p>
+        <p className="max-w-2xl mb-10 text-sm text-zinc-400 rise-2">
+          For anyone who has to prove what their AI did — to a security review, an
+          auditor, a regulator, or a customer.
         </p>
         <div className="flex flex-wrap items-center gap-3 mb-5 rise-2">
           <a
