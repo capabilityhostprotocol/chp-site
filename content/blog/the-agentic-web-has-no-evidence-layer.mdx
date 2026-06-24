@@ -1,0 +1,54 @@
+---
+title: "The agentic web has no evidence layer"
+description: "We're building careful ways for agents to discover tools, call them, and prove who they are. We've built almost nothing to prove what they actually did. That missing layer is where trust between agents will either hold or break."
+date: "2026-06-24"
+---
+
+A new web is being wired up underneath the one people look at. On it, the readers are agents, the clicks are tool calls, and the transactions happen between two pieces of software that have never met. The plumbing for this is arriving fast — and almost all of it is being built around a single quiet assumption that is about to stop being safe.
+
+The assumption is that **you can trust what the other side tells you it did.**
+
+## The stack we're actually building
+
+Watch where the standards effort is going and a clear shape appears. We are building, in order: a way for an agent to **discover** what a host can do, a way to **invoke** it, and a way to verify the agent's **identity**. Each layer has serious work behind it — `llms.txt` and `capabilities.txt` for discovery, the Model Context Protocol for invocation, Web Bot Auth for identity. These are good. They are also, all three, about the moment *before* anything consequential happens.
+
+Then the agent acts. It moves the money, files the claim, ships the change, deletes the record. And at exactly that moment — the only one that matters after the fact — the stack goes quiet. What we have to show for the action is a log: a record the acting system wrote about itself, that the acting system can change, that means nothing to anyone who wasn't already inside that system's trust boundary.
+
+<AgenticStackTable />
+
+Discovery, invocation, and identity all answer questions you ask *up front*. None of them answers the question you ask *afterward*, the one every auditor, counterparty, and incident responder eventually asks: **what happened — and can you prove it?**
+
+## Why logs stop working here
+
+For decades, "check the logs" was a reasonable answer because a human or a single trusted system stood behind every consequential action. The log was a memory aid, not a proof, and that was fine — accountability lived in the org chart, not the record.
+
+Agents break that quietly. When an agent calls another agent's tool, which calls a third party's API, the chain of action crosses three trust boundaries in a second, with no human at any hop. Now ask the old question — *who authorized this, what were they allowed to do, did they stay inside it* — and "here are my logs" is no longer an answer. It's the other party asking you to trust a record they wrote, about themselves, that they could rewrite before you read it. Between strangers, at machine speed, that isn't evidence. It's a claim.
+
+The gap isn't that we lack logs. We have too many. The gap is that none of them are **independently verifiable** — tamper-evident, portable across boundaries, and replayable by someone who wasn't there.
+
+## What the missing layer has to do
+
+An evidence layer for the agentic web has a narrow, demanding job. It has to make every consequential action a record that:
+
+- **declares the boundary first** — what this capability is, who may invoke it, under what policy — so "out of bounds" is a fact, not a later opinion;
+- **is tamper-evident** — hash-chained, so any change to history is detectable, not a matter of whose copy you believe;
+- **is portable** — meaningful to a counterparty or auditor who was never inside the acting system;
+- **is replayable** — so the question "did this stay inside what it was allowed to do?" has an answer anyone can check, not just the party that benefits from the answer.
+
+This is a different thing from observability, and it's worth being precise about the difference. Telemetry exists to help *you* understand *your* system. Evidence exists to let *someone else* trust it. One is for dashboards; the other is for disputes. You can have excellent telemetry and zero evidence — most agent stacks do today.
+
+It's also a different thing from invocation. The Model Context Protocol is the best answer we have to *how an agent calls a tool*, and an evidence layer doesn't compete with it — it records what crossed the boundary when the call happened. Discovery hands off to invocation; invocation should hand off to evidence. Today it hands off to a log file and a hope.
+
+## The part we're choosing to build in the open
+
+We build the [Capability Host Protocol](https://capabilityhostprotocol.com) because we think this layer is too important to be owned by any one platform. An evidence standard that only one vendor can issue or verify isn't evidence — it's that vendor's word with extra steps. So CHP is an open protocol: a capability is a declared, governed boundary, and every invocation across it is a hash-chained event that a third party can replay and check.
+
+The honest test of a claim like this is whether you'll stand on it yourself. Our own public agent endpoint runs on CHP: connect to it and every call you make returns a real, hash-chained evidence event for the call you just made. The protocol proves itself to the agents that use it. That's the bar we think an evidence layer has to clear — not a diagram, a record you can verify.
+
+You can start where the proof is already real: capture exactly what your AI agents did — as replayable, tamper-evident evidence — in one command.
+
+## Where this goes
+
+The agentic web will not be slowed down by a missing evidence layer. It will be built on top of the gap, the way systems always are, and the gap will surface later — as a dispute nobody can settle, an action nobody can attribute, a denial nobody can prove was correct. The cost of an absent evidence layer is paid in the worst moment, by whoever is holding the question *can you prove it?* when the answer turns out to be no.
+
+It's a better idea to build the layer now, in the open, before the volume arrives. If you're building agents that take real actions — or you're the one who'll be asked to prove what they did — [let's define this together](https://capabilityhostprotocol.com/design-partners), or read how CHP fits the rest of the stack on [the agentic web](https://capabilityhostprotocol.com/agentic-web).
