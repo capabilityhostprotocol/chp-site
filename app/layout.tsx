@@ -47,6 +47,7 @@ const JSON_LD = {
       description:
         'An open protocol and evidence layer for what AI agents, products, and organizations do.',
       sameAs: [
+        'https://www.wikidata.org/wiki/Q140343258',
         'https://github.com/capabilityhostprotocol',
         'https://github.com/capabilityhostprotocol/chp-core',
         'https://pypi.org/project/chp-core/',
