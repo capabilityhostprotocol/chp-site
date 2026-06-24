@@ -63,6 +63,12 @@ export default function DifferentiationSection() {
             Why a protocol, not a feature →
           </a>
           <a
+            href="/agentic-web"
+            className="text-zinc-300 hover:text-zinc-50 transition-colors"
+          >
+            CHP and the agentic web →
+          </a>
+          <a
             href="/blog/evidence-is-not-telemetry"
             className="text-zinc-400 hover:text-zinc-100 transition-colors"
           >
