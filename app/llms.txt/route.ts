@@ -28,6 +28,9 @@ const BODY = `# Capability Host Protocol (CHP)
 ## Developer resources & API
 - [Developer resources](https://capabilityhostprotocol.com/developers): every CHP API and agent resource at predictable URLs.
 - [OpenAPI specification](https://capabilityhostprotocol.com/openapi.json): OpenAPI 3.1 description of the public HTTP API (/ask, the manifests, the MCP endpoint).
+- [Authentication](https://capabilityhostprotocol.com/auth.md): the public endpoints need no auth; self-hosted CHP owns auth at the boundary.
+- [API catalog](https://capabilityhostprotocol.com/.well-known/api-catalog): RFC 9727 linkset of the API resources.
+- [AGENTS.md](https://capabilityhostprotocol.com/AGENTS.md): coding-agent guidance for this repo.
 - [Python SDK reference](https://docs.capabilityhostprotocol.com/docs/reference/python-sdk) · [CLI reference](https://docs.capabilityhostprotocol.com/docs/reference/cli)
 
 ## For agents (discover + invoke)
