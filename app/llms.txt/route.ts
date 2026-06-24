@@ -25,8 +25,14 @@ const BODY = `# Capability Host Protocol (CHP)
 - [Manufacturing](https://capabilityhostprotocol.com/industries/manufacturing)
 - [Financial services](https://capabilityhostprotocol.com/industries/financial)
 
+## Developer resources & API
+- [Developer resources](https://capabilityhostprotocol.com/developers): every CHP API and agent resource at predictable URLs.
+- [OpenAPI specification](https://capabilityhostprotocol.com/openapi.json): OpenAPI 3.1 description of the public HTTP API (/ask, the manifests, the MCP endpoint).
+- [Python SDK reference](https://docs.capabilityhostprotocol.com/docs/reference/python-sdk) · [CLI reference](https://docs.capabilityhostprotocol.com/docs/reference/cli)
+
 ## For agents (discover + invoke)
 - [MCP server](https://capabilityhostprotocol.com/api/mcp): connect over the Model Context Protocol to query capabilities, adapters, the spec, and the glossary — every call emits replayable CHP evidence.
+- [MCP discovery manifest](https://capabilityhostprotocol.com/.well-known/mcp.json): MCP endpoint, transport, auth, and tools.
 - [/ask](https://capabilityhostprotocol.com/ask): a structured natural-language query endpoint — GET /ask?q=... returns the best-matching concept, definition, FAQ, and capabilities. No MCP client needed.
 - [A2A agent card](https://capabilityhostprotocol.com/.well-known/agent-card.json): the recognized capability-advertisement manifest.
 - [MCP server card](https://capabilityhostprotocol.com/.well-known/mcp/server-card.json): the MCP server descriptor.

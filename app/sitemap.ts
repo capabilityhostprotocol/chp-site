@@ -20,6 +20,7 @@ const ROUTES = [
   '/capabilities',
   '/capabilities-txt',
   '/agentic-web',
+  '/developers',
   '/glossary',
   '/quickstart',
   '/map',
