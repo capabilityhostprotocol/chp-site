@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.capabilityhostprotocol/chp",
+  "description": "Learn the Capability Host Protocol (CHP), browse its governed capability catalog, and adopt it. A learning + information server for the open evidence layer of the agentic web — every tool call returns a hash-chained CHP evidence event.",
+  "version": "0.8.0",
+  "websiteUrl": "https://capabilityhostprotocol.com",
+  "repository": {
+    "url": "https://github.com/capabilityhostprotocol/chp-core",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://capabilityhostprotocol.com/api/mcp"
+    }
+  ]
+}
