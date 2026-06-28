@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 
+const URL = 'https://capabilityhostprotocol.com/conformance';
+
 export const metadata: Metadata = {
   title: 'Conformance - Capability Host Protocol',
   description:
     'What CHP conformance should prove for host descriptors, versions, lifecycle, policy checks, invocation safety, errors, evidence, and replay.',
+  alternates: { canonical: URL },
 };
 
 const AREAS = [
@@ -42,9 +45,33 @@ const TEST_SHAPE = [
   ['Observe', 'Structured logs, evidence events, correlation IDs, timing, and trace export hooks.'],
 ];
 
+const JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'CHP conformance: what independent hosts must prove',
+    description:
+      'What CHP conformance should prove for host descriptors, versions, lifecycle, policy checks, invocation safety, errors, evidence, and replay.',
+    author: { '@type': 'Organization', name: 'Capability Host Protocol', url: 'https://capabilityhostprotocol.com' },
+    publisher: { '@type': 'Organization', name: 'Capability Host Protocol' },
+    mainEntityOfPage: URL,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://capabilityhostprotocol.com' },
+      { '@type': 'ListItem', position: 2, name: 'Conformance', item: URL },
+    ],
+  },
+];
+
 export default function ConformancePage() {
   return (
     <div className="min-h-screen">
+      {JSON_LD.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">

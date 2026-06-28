@@ -8,16 +8,53 @@ import ProtocolGuaranteesSection from '../components/ProtocolGuaranteesSection';
 import EvidenceFoundation from '../components/EvidenceFoundation';
 import PositioningSection from '../components/PositioningSection';
 import HomepageFAQ from '../components/HomepageFAQ';
+import { HOMEPAGE_FAQS } from '../lib/content';
+
+const URL = 'https://capabilityhostprotocol.com/how-it-works';
 
 export const metadata: Metadata = {
   title: 'How it works - Capability Host Protocol',
   description:
     'The mechanics of CHP: what a capability is, the manifest/invocation/outcome artifacts, the protocol guarantees, the evidence model, and what CHP is and is not.',
+  alternates: { canonical: URL },
 };
+
+const JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'How CHP works: from a single capability to a replayable record',
+    description:
+      'The mechanics of CHP: what a capability is, the manifest/invocation/outcome artifacts, the protocol guarantees, the evidence model, and what CHP is and is not.',
+    author: { '@type': 'Organization', name: 'Capability Host Protocol', url: 'https://capabilityhostprotocol.com' },
+    publisher: { '@type': 'Organization', name: 'Capability Host Protocol' },
+    mainEntityOfPage: URL,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: HOMEPAGE_FAQS.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://capabilityhostprotocol.com' },
+      { '@type': 'ListItem', position: 2, name: 'How it works', item: URL },
+    ],
+  },
+];
 
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen">
+      {JSON_LD.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">

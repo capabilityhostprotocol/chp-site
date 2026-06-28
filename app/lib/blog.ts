@@ -9,6 +9,7 @@ export type BlogPost = {
   title: string;
   description: string;
   date: string; // ISO yyyy-mm-dd
+  author?: string; // optional byline; falls back to the org when absent
   content: string;
 };
 
@@ -27,6 +28,7 @@ export function getPost(slug: string): BlogPost {
     title: String(data.title ?? slug),
     description: String(data.description ?? ''),
     date: String(data.date ?? ''),
+    author: data.author ? String(data.author) : undefined,
     content,
   };
 }
