@@ -85,6 +85,10 @@ export default async function BlogPostPage({ params }: Params) {
     components: mdxComponents,
   });
 
+  const author = post.author
+    ? { '@type': 'Person', name: post.author }
+    : { '@type': 'Organization', name: 'Capability Host Protocol' };
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -93,16 +97,25 @@ export default async function BlogPostPage({ params }: Params) {
     datePublished: post.date,
     dateModified: post.date,
     url: `${BASE}/blog/${slug}`,
-    author: { '@type': 'Organization', name: 'Capability Host Protocol' },
+    author,
     publisher: { '@type': 'Organization', name: 'Capability Host Protocol' },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE}/blog/${slug}` },
+    ],
   };
 
   return (
     <div className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {[jsonLd, breadcrumbLd].map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <Nav />
       <main className="max-w-3xl mx-auto px-6 py-16">
         <a
@@ -112,7 +125,7 @@ export default async function BlogPostPage({ params }: Params) {
           &lt;- Blog
         </a>
         <p className="font-mono text-xs text-zinc-400 mt-6 mb-3">
-          {formatDate(post.date)}
+          {formatDate(post.date)} · {post.author ?? 'Capability Host Protocol'}
         </p>
         <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-zinc-50 mb-10">
           {post.title}

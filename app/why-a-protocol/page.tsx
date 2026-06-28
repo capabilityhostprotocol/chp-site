@@ -6,10 +6,13 @@ import EcosystemSection from '../components/EcosystemSection';
 import EvidenceChain from '../components/motif/EvidenceChain';
 import CompareTable from '../components/motif/CompareTable';
 
+const URL = 'https://capabilityhostprotocol.com/why-a-protocol';
+
 export const metadata: Metadata = {
   title: 'Why a protocol - Capability Host Protocol',
   description:
     'Why CHP is an open protocol and not a feature inside one vendor’s framework — and why a neutral, conformance-backed evidence boundary is what audit, trust, and portability actually require.',
+  alternates: { canonical: URL },
 };
 
 const ARGUMENTS = [
@@ -54,9 +57,42 @@ const NOT_REPLACING: { system: string; does: string; adds: string }[] = [
   },
 ];
 
+const JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Why a protocol, not a feature',
+    description:
+      'Why CHP is an open protocol and not a feature inside one vendor’s framework — and why a neutral, conformance-backed evidence boundary is what audit, trust, and portability actually require.',
+    author: { '@type': 'Organization', name: 'Capability Host Protocol', url: 'https://capabilityhostprotocol.com' },
+    publisher: { '@type': 'Organization', name: 'Capability Host Protocol' },
+    mainEntityOfPage: URL,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: ARGUMENTS.map((a) => ({
+      '@type': 'Question',
+      name: a.q,
+      acceptedAnswer: { '@type': 'Answer', text: a.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://capabilityhostprotocol.com' },
+      { '@type': 'ListItem', position: 2, name: 'Why a protocol', item: URL },
+    ],
+  },
+];
+
 export default function WhyAProtocolPage() {
   return (
     <div className="min-h-screen">
+      {JSON_LD.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
