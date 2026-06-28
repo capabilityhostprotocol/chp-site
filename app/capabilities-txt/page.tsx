@@ -104,10 +104,27 @@ export default function CapabilitiesTxtPage() {
             LLMs should read. capabilities.txt advertises what agents can{' '}
             <em>do</em>.
           </p>
+          <p className="text-base text-zinc-400 leading-relaxed max-w-3xl mt-4">
+            capabilities.txt is an open standard with its own home at{' '}
+            <a
+              href="https://capabilitiestxt.org"
+              className="text-zinc-300 underline underline-offset-4 hover:text-zinc-50"
+            >
+              capabilitiestxt.org
+            </a>{' '}
+            — the spec, a generator, and a conformance checker. This page is about how
+            CHP grounds it in a real schema and adds governance and evidence.
+          </p>
           <div className="flex flex-wrap gap-3 mt-8">
             <a
-              href="/capabilities.txt"
+              href="https://capabilitiestxt.org"
               className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
+            >
+              The standard: capabilitiestxt.org
+            </a>
+            <a
+              href="/capabilities.txt"
+              className="border border-zinc-700 rounded-lg px-4 py-2.5 text-sm text-zinc-300 hover:text-zinc-50 hover:border-zinc-500 transition-colors"
             >
               See ours: /capabilities.txt
             </a>
