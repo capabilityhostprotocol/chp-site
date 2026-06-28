@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Nav from '../../components/Nav';
+import BreadcrumbLd from '../../components/BreadcrumbLd';
 import SiteFooter from '../../components/SiteFooter';
 import CodePanel from '../../components/CodePanel';
 import { EVIDENCE_OUTPUT } from '../../lib/content';
@@ -32,6 +33,7 @@ const FLOW = [
 export default function LegalIndustryPage() {
   return (
     <div className="min-h-screen">
+      <BreadcrumbLd items={[{ name: 'Home', path: '' }, { name: 'Legal', path: '/industries/legal' }]} />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">

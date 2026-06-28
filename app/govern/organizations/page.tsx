@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Nav from '../../components/Nav';
+import BreadcrumbLd from '../../components/BreadcrumbLd';
 import SiteFooter from '../../components/SiteFooter';
 import MeshTraceDiagram from '../../components/MeshTraceDiagram';
 
@@ -30,6 +31,7 @@ const STEPS = [
 export default function GovernOrganizationsPage() {
   return (
     <div className="min-h-screen">
+      <BreadcrumbLd items={[{ name: 'Home', path: '' }, { name: 'Govern organizations & processes', path: '/govern/organizations' }]} />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
