@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Nav from '../../components/Nav';
+import BreadcrumbLd from '../../components/BreadcrumbLd';
 import SiteFooter from '../../components/SiteFooter';
 import CodePanel from '../../components/CodePanel';
 import { HOOKS_INSTALL, HOOKS_INSPECT } from '../../lib/content';
@@ -40,6 +41,7 @@ const GUARANTEES = [
 export default function GovernAgentsPage() {
   return (
     <div className="min-h-screen">
+      <BreadcrumbLd items={[{ name: 'Home', path: '' }, { name: 'Govern your agents', path: '/govern/agents' }]} />
       <Nav />
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20">
