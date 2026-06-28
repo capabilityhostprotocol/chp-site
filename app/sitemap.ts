@@ -20,6 +20,8 @@ const ROUTES = [
   '/capabilities',
   '/capabilities-txt',
   '/agentic-web',
+  '/ai-agent-audit-trail',
+  '/prove-what-an-ai-agent-did',
   '/developers',
   '/glossary',
   '/quickstart',
