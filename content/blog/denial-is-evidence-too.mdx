@@ -1,0 +1,15 @@
+---
+title: "Denial is evidence too"
+description: "Most systems can tell you what an agent did. Far fewer can prove what it was stopped from doing — and that silence is where accountability quietly fails."
+date: "2026-08-09"
+---
+
+Every logging stack is good at one half of the story: what happened. The action ran, the row changed, the message went out — there's a line for it.
+
+The other half is harder and matters more: what an agent *tried* and was refused. Did it attempt to read the customer database and get blocked — or did it simply never try? An empty log looks identical in both cases, and "nothing in the logs" is not the same as "the guardrail worked."
+
+Capability Host Protocol treats a **denial as a first-class, signed event**. When a capability is refused, that refusal is recorded with the same weight as a success: what was requested, which policy blocked it, who or what was acting, and when. The guardrail firing leaves a receipt.
+
+This is the part most "AI governance" quietly skips. It's easy to show the happy path. It's the denied path — the action that *didn't* happen because something stopped it — that you need when an auditor, an incident, or a regulator asks "are you sure?" Silence can't answer that. A signed denial can.
+
+Accountability isn't only a record of what your agents did. It's proof of what they weren't allowed to do.
