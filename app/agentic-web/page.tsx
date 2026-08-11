@@ -4,9 +4,9 @@ import SiteFooter from '../components/SiteFooter';
 import EvidenceChain from '../components/motif/EvidenceChain';
 
 export const metadata: Metadata = {
-  title: 'CHP and the agentic web — the evidence layer',
+  title: 'CHP and the agentic web — the governed execution layer',
   description:
-    'The agentic web is converging on standards for discovery (llms.txt, capabilities.txt), invocation (MCP), and identity (Web Bot Auth). One layer is still unsolved: evidence — what an agent actually did, whether it was allowed, and whether you can prove it. CHP is that layer.',
+    'The agentic web is converging on standards for discovery (llms.txt, capabilities.txt), invocation (MCP), and identity (Web Bot Auth). One layer is still unsolved: governed execution — whether an agent’s action is allowed before it runs, what it did, and whether you can prove it. CHP is that layer.',
   alternates: { canonical: 'https://capabilityhostprotocol.com/agentic-web' },
 };
 
@@ -60,9 +60,9 @@ const FAQ: [string, string][] = [
 const ARTICLE_LD = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'CHP and the agentic web: the evidence layer',
+  headline: 'CHP and the agentic web: the governed execution layer',
   description:
-    'How the Capability Host Protocol fits the 2026 agentic-web stack — and why the unsolved layer (evidence) is the one CHP owns.',
+    'How the Capability Host Protocol fits the 2026 agentic-web stack — and why the unsolved layer (governed execution, of which evidence is the output) is the one CHP owns.',
   author: { '@type': 'Organization', name: 'Capability Host Protocol' },
   publisher: { '@type': 'Organization', name: 'Capability Host Protocol' },
   url: 'https://capabilityhostprotocol.com/agentic-web',
@@ -105,7 +105,7 @@ export default function AgenticWebPage() {
         <section className="band-tight pt-20 md:pt-28">
           <p className="eyebrow mb-5">The agentic web</p>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
-            CHP is the evidence layer of the agentic web.
+            CHP is the governed execution layer of the agentic web.
           </h1>
           <p className="lede max-w-3xl text-zinc-300 mb-4">
             The agentic web is converging on standards for{' '}
@@ -255,7 +255,7 @@ export default function AgenticWebPage() {
           <div className="surface-signature p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
-                Build on the evidence layer.
+                Build on the governed execution layer.
               </h2>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Start with agents — capture exactly what yours did in one

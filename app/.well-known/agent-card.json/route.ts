@@ -23,7 +23,7 @@ const CATEGORY_LABEL: Record<string, string> = {
 
 /**
  * A2A Agent Card (the recognized capability-advertisement manifest), served at
- * the well-known path agents look for. CHP is the evidence layer of the agentic
+ * the well-known path agents look for. CHP is the governed execution layer of the agentic
  * web: discovery here, invocation via MCP, governed + proven by the protocol.
  * Complements (does not replace) /capabilities.txt.
  */
@@ -70,7 +70,7 @@ export function GET() {
     protocolVersion: '0.3.0',
     name: 'Capability Host Protocol',
     description:
-      'CHP is the open evidence layer for the agentic web. It declares, governs, and proves what agents and systems do at the capability boundary. Discover capabilities here; invoke them via the MCP endpoint; every action becomes replayable, tamper-evident evidence.',
+      'CHP is the governed execution layer for the agentic web. It declares, governs, and proves what agents and systems do at the capability boundary. Discover capabilities here; invoke them via the MCP endpoint; every action is governed before it runs and becomes replayable, tamper-evident evidence.',
     version: '0.8.0',
     url: `${BASE}/api/mcp`,
     preferredTransport: 'JSONRPC',

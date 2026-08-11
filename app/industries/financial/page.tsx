@@ -46,7 +46,7 @@ export default function FinancialIndustryPage() {
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
-            Prove the controls around AI in financial workflows.
+            Declare the controls. Govern the decision. Prove it held.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             Risk tiers, required approval, and per-invocation evidence are

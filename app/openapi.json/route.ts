@@ -14,7 +14,7 @@ export function GET() {
       version: '0.8.0',
       summary: 'Query CHP, discover its capabilities, and connect agents.',
       description:
-        'CHP is the open evidence layer of the agentic web. This API exposes a natural-language query endpoint (/ask), the well-known discovery manifests, and the MCP server endpoint. For full tool invocation, connect over MCP at /api/mcp.',
+        'CHP is the governed execution layer of the agentic web. This API exposes a natural-language query endpoint (/ask), the well-known discovery manifests, and the MCP server endpoint. For full tool invocation, connect over MCP at /api/mcp.',
       contact: { name: 'Capability Host Protocol', url: BASE },
       license: { name: 'Apache-2.0', identifier: 'Apache-2.0' },
     },

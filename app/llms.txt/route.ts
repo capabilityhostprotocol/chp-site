@@ -7,7 +7,7 @@ const BODY = `# Capability Host Protocol (CHP)
 ## Start here
 - [How it works](https://capabilityhostprotocol.com/how-it-works): the mechanics — capability, host, invocation, evidence.
 - [Why a protocol](https://capabilityhostprotocol.com/why-a-protocol): why an open, conformance-backed boundary, not a feature.
-- [CHP and the agentic web](https://capabilityhostprotocol.com/agentic-web): CHP is the evidence layer — discovery (llms.txt/capabilities.txt) → invocation (MCP) → identity (Web Bot Auth) → evidence (CHP).
+- [CHP and the agentic web](https://capabilityhostprotocol.com/agentic-web): CHP is the governed execution layer — discovery (llms.txt/capabilities.txt) → invocation (MCP) → identity (Web Bot Auth) → governed execution + evidence (CHP).
 - [Use cases](https://capabilityhostprotocol.com/use-cases): the concrete jobs CHP does.
 - [Glossary](https://capabilityhostprotocol.com/glossary): the core terms — capability, boundary, host, invocation, evidence, hash chain, correlation, denial, replay, conformance — defined.
 
