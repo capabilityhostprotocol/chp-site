@@ -12,22 +12,23 @@ export default function Hero() {
       />
       <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20 md:pt-36 md:pb-28">
         <p className="eyebrow mb-6 rise">
-          Capability Host Protocol · evidence for what AI agents do
+          Capability Host Protocol · a governed boundary for what agents can do
         </p>
         <h1 className="display-1 text-zinc-50 mb-8 max-w-4xl rise">
-          See exactly what your AI agents did.
+          Govern what your agents can actually do.
         </h1>
         <p className="lede max-w-2xl mb-5 rise-2">
-          Your agent reads files, runs commands, calls tools. Then a security
-          review asks what it actually did — and the launch stalls. CHP captures
-          every tool call as replayable, tamper-evident evidence.{' '}
+          Your agent reads files, runs commands, calls tools. CHP puts a governed
+          boundary at the point of action — every capability declared, every
+          invocation allowed or denied against policy, every result captured as
+          replayable, tamper-evident evidence.{' '}
           <span className="text-zinc-100">
             One command, no application code changes.
           </span>
         </p>
         <p className="max-w-2xl mb-10 text-sm text-zinc-400 rise-2">
-          For anyone who has to prove what their AI did — to a security review, an
-          auditor, a regulator, or a customer.
+          For anyone who has to control what their AI can do — and prove what it
+          did — to a security review, an auditor, a regulator, or a customer.
         </p>
         <div className="flex flex-wrap items-center gap-3 mb-5 rise-2">
           <a

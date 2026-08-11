@@ -185,6 +185,43 @@ export default function CapabilitiesTxtPage() {
           </div>
         </Section>
 
+        <Section
+          eyebrow="Where it leads"
+          title="Discovery is step one. Governed invocation is where it goes."
+        >
+          <p className="text-zinc-400 leading-relaxed max-w-3xl mb-6">
+            capabilities.txt answers one question — <em>what can this host do?</em> That is
+            discovery, and it stands on its own. CHP answers the next three an agent or an
+            auditor actually has: <span className="text-zinc-200">may I invoke this</span>{' '}
+            (governance), <span className="text-zinc-200">what happened</span> (execution),
+            and <span className="text-zinc-200">can I prove it</span> (evidence). A capability
+            listed in a capabilities.txt can resolve to a full CapabilityDescriptor and be
+            invoked through a host, where every invocation is checked against policy and
+            recorded as replayable evidence. Adopt capabilities.txt on its own; CHP is where
+            it leads.
+          </p>
+          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ['Read the spec', 'The format + rules live at capabilitiestxt.org.'],
+              ['Generate', 'Turn an existing OpenAPI spec into a capabilities.txt with the generator.'],
+              ['Validate', 'Check it against the conformance checker.'],
+              ['Publish', 'Serve /capabilities.txt and /.well-known/capabilities.json.'],
+              ['Discover', 'Agents fetch and parse it — no live connection required.'],
+              ['Invoke', 'Point the listing at your MCP, HTTP, or CHP endpoint. Through a CHP host, invocation is governed and evidenced.'],
+            ].map(([step, body], i) => (
+              <li key={step} className="surface-flat p-4">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="font-mono text-[11px] text-[color:var(--color-signal-cyan)]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-sm font-semibold text-zinc-100">{step}</span>
+                </div>
+                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+
         <Section eyebrow="Questions" title="What a discovery standard has to answer.">
           <div className="grid md:grid-cols-2 gap-4">
             {FAQ.map(([q, a]) => (

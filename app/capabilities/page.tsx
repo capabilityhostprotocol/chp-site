@@ -11,7 +11,7 @@ import ItemListLd from '../components/ItemListLd';
 export const metadata: Metadata = {
   title: 'Capabilities - Capability Host Protocol',
   description:
-    'The capability surface CHP exposes today — governed, evidence-wrapped, invokable units across network, files, AI, cloud, code, data, and more, grouped by category.',
+    'What a capability is, how it differs from an API, and its lifecycle — declared, discovered, invoked, governed, executed, evidenced — plus the live catalog of governed capabilities CHP exposes across network, files, AI, cloud, code, and data.',
 };
 
 const CATEGORY_LABEL: Record<string, string> = {
@@ -49,10 +49,13 @@ export default function CapabilitiesPage() {
             What CHP can do — declared, governed, provable.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
-            Every capability below is a named, versioned, evidence-wrapped unit an
-            agent or application can invoke through a host. They come from the open
-            adapter ecosystem — install one and the host discovers its capabilities
-            automatically.
+            A capability is a named, versioned unit of behavior that software declares
+            it can do — with a contract, a risk tier, and the invariants that govern it.
+            An agent or application discovers it, invokes it through a host, and the host
+            decides whether that invocation is allowed before anything runs. Every result —
+            success or denial — becomes replayable, tamper-evident evidence. The catalog
+            below comes from the open adapter ecosystem: install one and the host discovers
+            its capabilities automatically.
           </p>
           <div className="flex flex-wrap gap-2 mt-8">
             {capabilityCategories.map((c) => (
@@ -64,6 +67,64 @@ export default function CapabilitiesPage() {
                 {CATEGORY_LABEL[c] ?? c}
               </a>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">
+          <p className="eyebrow mb-4">The capability lifecycle</p>
+          <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
+            Declared, discovered, invoked — and governed at the boundary.
+          </h2>
+          <p className="text-zinc-400 leading-relaxed max-w-3xl mb-10">
+            The same six steps run whether a capability is called locally or across a mesh.
+            It is the point where intent becomes effect — and the point where CHP puts a
+            governed boundary.
+          </p>
+          <ol className="grid gap-4 md:grid-cols-3">
+            {[
+              ['01', 'Declare', 'Software registers a capability — an id:version, an input/output contract, a risk tier, and the invariants that must hold.'],
+              ['02', 'Discover', 'A host answers what it exposes, filtered to what the caller is authorized to see.'],
+              ['03', 'Invoke', 'An actor submits an invocation envelope. The same request object travels over HTTP or a mesh transport.'],
+              ['04', 'Govern', 'A fixed pipeline checks mandate, policy, invariants, autonomy, and safety. It can allow, condition, or deny — with a reason from a closed vocabulary.'],
+              ['05', 'Execute', 'Only when the gates pass does the handler run, bounded by the capability’s declared timeout.'],
+              ['06', 'Evidence', 'Every invocation — including a denial — is recorded as tamper-evident, causally-linked evidence you can replay.'],
+            ].map(([n, name, body]) => (
+              <li key={n} className="surface-raised p-5">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="font-mono text-[11px] text-[color:var(--color-signal-cyan)]">
+                    {n}
+                  </span>
+                  <span className="text-base font-semibold text-zinc-100">{name}</span>
+                </div>
+                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">
+          <p className="eyebrow mb-4">Capability vs. API</p>
+          <h2 className="display-2 text-zinc-100 mb-8 max-w-3xl">
+            A capability is not an API call.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="surface-flat p-5">
+              <h3 className="text-base font-semibold text-zinc-300 mb-2">An API endpoint</h3>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                A way to call a function over the network. It tells you the shape of the
+                request. It does not, by itself, tell you who may call it, under what
+                conditions it is allowed, or what actually happened when they did.
+              </p>
+            </div>
+            <div className="surface-raised p-5">
+              <h3 className="text-base font-semibold text-zinc-100 mb-2">A CHP capability</h3>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                A governed contract. It declares its authority and invariants, every
+                invocation is checked against policy before it runs, and every outcome —
+                allowed or denied — becomes evidence. The same capability can be reused and
+                moved across environments without rewriting the integration.
+              </p>
+            </div>
           </div>
         </section>
 

@@ -15,7 +15,7 @@ import SiteFooter from './components/SiteFooter';
 
 export const metadata: Metadata = {
   description:
-    'See exactly what your AI agents did — every tool call captured as replayable, tamper-evident evidence in one command. CHP is the open protocol for declaring, governing, and proving what agents, products, and organizations do.',
+    'Govern what your AI agents can actually do — every capability declared, every invocation allowed or denied, every result captured as replayable, tamper-evident evidence in one command. CHP is the open protocol for declaring, discovering, invoking, governing, and proving what agents, products, and organizations can do.',
   alternates: { canonical: 'https://capabilityhostprotocol.com' },
 };
 

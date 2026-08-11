@@ -1,9 +1,9 @@
 export default function Nav() {
   const navItems = [
     ['How it works', '/how-it-works'],
-    ['Govern', '/govern/agents'],
+    ['Capabilities', '/capabilities'],
+    ['Products', '/products'],
     ['Industries', '/industries/software'],
-    ['Use cases', '/use-cases'],
     ['Why a protocol', '/why-a-protocol'],
     ['Blog', '/blog'],
     ['Docs', 'https://docs.capabilityhostprotocol.com'],
@@ -19,7 +19,7 @@ export default function Nav() {
           <span className="hidden sm:inline font-semibold text-sm text-zinc-100">
             Capability Host Protocol
           </span>
-          <span className="ml-2 font-mono text-xs text-zinc-400">v0.8.0</span>
+          <span className="ml-2 font-mono text-xs text-zinc-400">v0.9.2 RC</span>
         </a>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-400">
           {navItems.map(([label, href]) => (

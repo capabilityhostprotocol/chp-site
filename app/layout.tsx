@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://capabilityhostprotocol.com'),
   title: 'Capability Host Protocol',
   description:
-    'The open protocol for hosted capability: expose, discover, invoke, compose, and govern what people, agents, products, services, processes, and organizations can do.',
+    'The open protocol for executable capability: declare, discover, invoke, govern, and evidence what people, agents, products, services, and organizations can do.',
   icons: {
     icon: '/icon.svg',
   },
   openGraph: {
     title: 'Capability Host Protocol',
     description:
-      'Host what the world can do. CHP turns abilities across people, agents, products, services, processes, and organizations into composable, governable capabilities.',
+      'A governed boundary for executable capability. Software declares what it can do; agents and systems discover and invoke it; the host governs every invocation and turns the result into tamper-evident evidence.',
     url: 'https://capabilityhostprotocol.com',
     siteName: 'Capability Host Protocol',
     type: 'website',
@@ -45,7 +45,7 @@ const JSON_LD = {
       url: 'https://capabilityhostprotocol.com',
       logo: 'https://capabilityhostprotocol.com/icon.svg',
       description:
-        'An open protocol and evidence layer for what AI agents, products, and organizations do.',
+        'An open protocol for declaring, governing, and evidencing what AI agents, products, and organizations can do.',
       sameAs: [
         'https://www.wikidata.org/wiki/Q140343258',
         'https://github.com/capabilityhostprotocol',
@@ -77,14 +77,14 @@ const JSON_LD = {
       operatingSystem: 'Cross-platform',
       url: 'https://capabilityhostprotocol.com',
       softwareHelp: 'https://docs.capabilityhostprotocol.com',
-      softwareVersion: '0.8.0',
+      softwareVersion: '0.9.2',
       isAccessibleForFree: true,
       license: 'https://www.apache.org/licenses/LICENSE-2.0',
       publisher: { '@id': 'https://capabilityhostprotocol.com/#org' },
       sameAs: ['https://github.com/capabilityhostprotocol/chp-core'],
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       description:
-        'An open protocol that turns every consequential action — by a person, an agent, a product, or a business — into a declared, governable, tamper-evidently provable event.',
+        'An open protocol that turns every consequential action — by a person, an agent, a product, or a business — into a declared, governed, tamper-evidently provable event.',
     },
   ],
 };

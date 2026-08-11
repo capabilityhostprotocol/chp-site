@@ -1,6 +1,29 @@
 {
-  "generated": "2026-06-23T04:01:25.280Z",
+  "generated": "2026-08-11T22:11:12.485Z",
   "adapters": [
+    {
+      "slug": "approval",
+      "adapterId": "chp.adapters.approval",
+      "name": "Approval",
+      "pypi": "chp-adapter-approval",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.approval.authorize",
+          "method": "authorize",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.approval.request",
+          "method": "request",
+          "version": "0.1.0",
+          "description": ""
+        }
+      ]
+    },
     {
       "slug": "asyncapi",
       "adapterId": "chp.adapters.asyncapi",
@@ -45,6 +68,18 @@
       "status": "certified",
       "tier": 1,
       "capabilities": [
+        {
+          "id": "chp.adapters.audit.agent_runs",
+          "method": "agent_runs",
+          "version": "1.0.0",
+          "description": "List recent agent_run trace spans (steward/dreamer runs) from the evidence chain: "
+        },
+        {
+          "id": "chp.adapters.audit.emission_report",
+          "method": "emission_report",
+          "version": "1.0.0",
+          "description": ""
+        },
         {
           "id": "chp.adapters.audit.get_invocation",
           "method": "get_invocation",
@@ -202,6 +237,23 @@
       ]
     },
     {
+      "slug": "browser",
+      "adapterId": "chp.adapters.browser",
+      "name": "Browser",
+      "pypi": "chp-adapter-browser",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.browser.navigate",
+          "method": "navigate",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
       "slug": "calendar",
       "adapterId": "chp.adapters.calendar",
       "name": "Calendar",
@@ -243,6 +295,23 @@
       ]
     },
     {
+      "slug": "capscan",
+      "adapterId": "chp.adapters.capscan",
+      "name": "Capscan",
+      "pypi": "chp-adapter-capscan",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.capscan.scan_codebase",
+          "method": "scan_codebase",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
       "slug": "ci",
       "adapterId": "chp.adapters.ci",
       "name": "CI",
@@ -262,6 +331,83 @@
           "method": "run_suite",
           "version": "1.0.0",
           "description": "Run pytest for a single package and emit pass/fail evidence. Output is not recorded — only counts and duration."
+        }
+      ]
+    },
+    {
+      "slug": "colibri",
+      "adapterId": "chp.adapters.colibri",
+      "name": "colibri",
+      "pypi": "chp-adapter-colibri",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.colibri.chat",
+          "method": "chat",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.colibri.generate",
+          "method": "generate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.colibri.generate_status",
+          "method": "generate_status",
+          "version": "1.0.0",
+          "description": "Poll a background generate job (from generate background=True) by job_id — returns "
+        },
+        {
+          "id": "chp.adapters.colibri.install",
+          "method": "install",
+          "version": "1.0.0",
+          "description": "Download + extract the prebuilt `coli` binary for this platform from GitHub "
+        },
+        {
+          "id": "chp.adapters.colibri.list_models",
+          "method": "list_models",
+          "version": "1.0.0",
+          "description": "List models served by the local colibri server (OpenAI /v1/models), via chp.adapters.http."
+        },
+        {
+          "id": "chp.adapters.colibri.pull_model",
+          "method": "pull_model",
+          "version": "1.0.0",
+          "description": "Fetch a pre-converted colibri model from a HuggingFace repo into the models dir, by "
+        },
+        {
+          "id": "chp.adapters.colibri.pull_status",
+          "method": "pull_status",
+          "version": "1.0.0",
+          "description": "Report background model pulls started by pull_model(background=True): pidfile "
+        },
+        {
+          "id": "chp.adapters.colibri.server_status",
+          "method": "server_status",
+          "version": "1.0.0",
+          "description": "Report tracked `coli serve` processes (pidfile + liveness) per port."
+        },
+        {
+          "id": "chp.adapters.colibri.start_server",
+          "method": "start_server",
+          "version": "1.0.0",
+          "description": "Start `coli serve` for a model (a local dir, or a HF repo id — pulled first if not "
+        },
+        {
+          "id": "chp.adapters.colibri.stop_pull",
+          "method": "stop_pull",
+          "version": "1.0.0",
+          "description": "Stop a background model pull started by pull_model(background=True) — SIGTERM the "
+        },
+        {
+          "id": "chp.adapters.colibri.stop_server",
+          "method": "stop_server",
+          "version": "1.0.0",
+          "description": "Stop a tracked `coli serve` by port (SIGTERM + clear the pidfile)."
         }
       ]
     },
@@ -352,6 +498,12 @@
           "description": "Check a commit message for the Radicle issue reference policy (rad:XXXXXXX)."
         },
         {
+          "id": "chp.adapters.conformance.reap_stale_sessions",
+          "method": "reap_stale_sessions",
+          "version": "1.0.0",
+          "description": "Auto-close dev sessions whose EVERY issue is closed (the stale-session state that "
+        },
+        {
           "id": "chp.adapters.conformance.report_violations",
           "method": "report_violations",
           "version": "1.0.0",
@@ -369,6 +521,12 @@
       "tier": 2,
       "capabilities": [
         {
+          "id": "chp.adapters.container.build",
+          "method": "build",
+          "version": "1.0.0",
+          "description": "Build a Docker image from a Dockerfile build context."
+        },
+        {
           "id": "chp.adapters.container.list_containers",
           "method": "list_containers",
           "version": "1.0.0",
@@ -381,10 +539,34 @@
           "description": "List locally available Docker images."
         },
         {
+          "id": "chp.adapters.container.load",
+          "method": "load",
+          "version": "1.0.0",
+          "description": "Load a Docker image from a tar archive (e.g. one moved over the fabric)."
+        },
+        {
+          "id": "chp.adapters.container.logs",
+          "method": "logs",
+          "version": "1.0.0",
+          "description": "Read a Docker container"
+        },
+        {
+          "id": "chp.adapters.container.network_ensure",
+          "method": "network_ensure",
+          "version": "1.0.0",
+          "description": "Ensure a user-defined docker network exists (idempotent: create if absent). "
+        },
+        {
           "id": "chp.adapters.container.pull",
           "method": "pull",
           "version": "1.0.0",
           "description": "Pull a Docker image from a registry."
+        },
+        {
+          "id": "chp.adapters.container.remove",
+          "method": "remove",
+          "version": "1.0.0",
+          "description": "Remove a Docker container (lifecycle cleanup; force to remove a running one)."
         },
         {
           "id": "chp.adapters.container.run",
@@ -432,6 +614,23 @@
           "method": "reject",
           "version": "0.1.0",
           "description": "Reject a delegation with a stated reason. Emits delegation_rejected."
+        }
+      ]
+    },
+    {
+      "slug": "devloop",
+      "adapterId": "chp.adapters.devloop",
+      "name": "Devloop",
+      "pypi": "chp-adapter-devloop",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.devloop.propose_capability",
+          "method": "propose_capability",
+          "version": "1.0.0",
+          "description": ""
         }
       ]
     },
@@ -486,10 +685,45 @@
       "tier": 2,
       "capabilities": [
         {
+          "id": "chp.adapters.email.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List the most recent messages in a mailbox (uid + from/date/subject). Read-only; "
+        },
+        {
+          "id": "chp.adapters.email.read",
+          "method": "read",
+          "version": "1.0.0",
+          "description": "Read one message by uid (headers + plain-text body). Read-only; the body is "
+        },
+        {
+          "id": "chp.adapters.email.search",
+          "method": "search",
+          "version": "1.0.0",
+          "description": "Search a mailbox with an IMAP query (e.g. "
+        },
+        {
           "id": "chp.adapters.email.send",
           "method": "send",
           "version": "1.0.0",
           "description": "Send an outbound email."
+        }
+      ]
+    },
+    {
+      "slug": "eval",
+      "adapterId": "eval",
+      "name": "Eval",
+      "pypi": "chp-adapter-eval",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.eval.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": ""
         }
       ]
     },
@@ -611,6 +845,35 @@
       ]
     },
     {
+      "slug": "flywheel",
+      "adapterId": "chp.adapters.flywheel",
+      "name": "Flywheel",
+      "pypi": "chp-adapter-flywheel",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.flywheel.curate",
+          "method": "curate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.flywheel.evaluate_and_gate",
+          "method": "evaluate_and_gate",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.flywheel.gate",
+          "method": "gate",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
       "slug": "form",
       "adapterId": "chp.adapters.form",
       "name": "Form",
@@ -726,6 +989,12 @@
       "tier": 1,
       "capabilities": [
         {
+          "id": "chp.adapters.git.bundle",
+          "method": "bundle",
+          "version": "0.1.0",
+          "description": "Single-file repository snapshot via `git bundle create --all`, then "
+        },
+        {
           "id": "chp.adapters.git.checkout_branch",
           "method": "checkout_branch",
           "version": "0.1.0",
@@ -744,6 +1013,12 @@
           "description": "Diff statistics only — files changed, insertions, deletions. Patch text is NEVER returned."
         },
         {
+          "id": "chp.adapters.git.discover_repos",
+          "method": "discover_repos",
+          "version": "0.1.0",
+          "description": "Bounded filesystem walk for git repositories under a root: repo paths "
+        },
+        {
           "id": "chp.adapters.git.inspect_repo",
           "method": "inspect_repo",
           "version": "0.1.0",
@@ -752,8 +1027,8 @@
         {
           "id": "chp.adapters.git.log",
           "method": "log",
-          "version": "0.1.0",
-          "description": "Recent commit list: sha7, author name, subject (truncated), ISO date."
+          "version": "0.2.0",
+          "description": "Recent commit list: sha7, author name, subject (truncated), ISO date, and "
         },
         {
           "id": "chp.adapters.git.merge",
@@ -871,6 +1146,71 @@
       ]
     },
     {
+      "slug": "graphify",
+      "adapterId": "chp.adapters.graphify",
+      "name": "Graphify",
+      "pypi": "chp-adapter-graphify",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.graphify.affected",
+          "method": "affected",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.graphify.explain",
+          "method": "explain",
+          "version": "1.0.0",
+          "description": "Plain-language explanation of a node and its neighbors from the graph (sovereign, no LLM)."
+        },
+        {
+          "id": "chp.adapters.graphify.extract",
+          "method": "extract",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.graphify.god_nodes",
+          "method": "god_nodes",
+          "version": "1.0.0",
+          "description": "List the most connected nodes (architectural hubs) — where the codebase concentrates "
+        },
+        {
+          "id": "chp.adapters.graphify.label",
+          "method": "label",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.graphify.merge",
+          "method": "merge",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.graphify.path",
+          "method": "path",
+          "version": "1.0.0",
+          "description": "Shortest path between two nodes in the graph — how A relates to B (sovereign, no LLM)."
+        },
+        {
+          "id": "chp.adapters.graphify.query",
+          "method": "query",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.graphify.update",
+          "method": "update",
+          "version": "1.0.0",
+          "description": "Incrementally re-extract changed code files into an existing graph (AST-only, offline, "
+        }
+      ]
+    },
+    {
       "slug": "graphql",
       "adapterId": "chp.adapters.graphql",
       "name": "GraphQL",
@@ -944,6 +1284,24 @@
       "tier": 1,
       "capabilities": [
         {
+          "id": "chp.adapters.host.discover",
+          "method": "discover",
+          "version": "1.0.0",
+          "description": "List this node"
+        },
+        {
+          "id": "chp.adapters.host.facts",
+          "method": "facts",
+          "version": "1.0.0",
+          "description": "Introspect THIS node"
+        },
+        {
+          "id": "chp.adapters.host.inference_capacity",
+          "method": "inference_capacity",
+          "version": "1.0.0",
+          "description": "What LLM inference this node can serve: unified/GPU memory ceiling, free memory, "
+        },
+        {
           "id": "chp.adapters.host.install_adapter",
           "method": "install_adapter",
           "version": "1.0.0",
@@ -960,6 +1318,12 @@
           "method": "stats",
           "version": "1.0.0",
           "description": "Report CPU load, memory, disk, GPU, and platform stats for this node."
+        },
+        {
+          "id": "chp.adapters.host.topology",
+          "method": "topology",
+          "version": "1.0.0",
+          "description": "Mesh connectivity view from this node: the radicle peer graph (who it"
         },
         {
           "id": "chp.adapters.host.update",
@@ -1080,6 +1444,12 @@
           "description": ""
         },
         {
+          "id": "chp.adapters.huggingface.merge_adapter",
+          "method": "merge_adapter",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
           "id": "chp.adapters.huggingface.model_card",
           "method": "model_card",
           "version": "1.0.0",
@@ -1100,6 +1470,12 @@
         {
           "id": "chp.adapters.huggingface.quantize_to_gguf",
           "method": "quantize_to_gguf",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.huggingface.rerank",
+          "method": "rerank",
           "version": "1.0.0",
           "description": ""
         },
@@ -1412,6 +1788,35 @@
       ]
     },
     {
+      "slug": "legal-docket",
+      "adapterId": "chp.adapters.legal_docket",
+      "name": "Legal Docket",
+      "pypi": "chp-adapter-legal-docket",
+      "category": "other",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.legal_docket.docket_suggest",
+          "method": "docket_suggest",
+          "version": "0.1.0",
+          "description": "Suggest a docket entry from observed time: apply the firm billing increment and "
+        },
+        {
+          "id": "chp.adapters.legal_docket.rate_resolve",
+          "method": "rate_resolve",
+          "version": "0.1.0",
+          "description": "Resolve the applicable versioned rate for a role (by as-of date or explicit version)."
+        },
+        {
+          "id": "chp.adapters.legal_docket.time_activity_capture",
+          "method": "time_activity_capture",
+          "version": "0.1.0",
+          "description": "Record an observed time activity on a matter. Observed elapsed time is immutable."
+        }
+      ]
+    },
+    {
       "slug": "linear",
       "adapterId": "chp.adapters.linear",
       "name": "Linear",
@@ -1476,6 +1881,35 @@
       ]
     },
     {
+      "slug": "llmfit",
+      "adapterId": "chp.adapters.llmfit",
+      "name": "LLMFit",
+      "pypi": "chp-adapter-llmfit",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.llmfit.info",
+          "method": "info",
+          "version": "",
+          "description": "Detailed information about one model: parameters, quant options, memory, "
+        },
+        {
+          "id": "chp.adapters.llmfit.recommend",
+          "method": "recommend",
+          "version": "",
+          "description": "Rank the best-fitting models for given hardware: estimated_tps, quality, "
+        },
+        {
+          "id": "chp.adapters.llmfit.search",
+          "method": "search",
+          "version": "",
+          "description": "Search the local (offline) model database by name/provider keyword — model "
+        }
+      ]
+    },
+    {
       "slug": "local-llm",
       "adapterId": "chp.adapters.local_llm",
       "name": "LocalLLM",
@@ -1503,10 +1937,75 @@
           "description": "List models available in the local LLM backend."
         },
         {
+          "id": "chp.adapters.local_llm.load",
+          "method": "load",
+          "version": "1.0.0",
+          "description": "Preload (warm) a model into memory and keep it resident. Blocks until loaded."
+        },
+        {
           "id": "chp.adapters.local_llm.model_info",
           "method": "model_info",
           "version": "1.0.0",
           "description": "Get metadata for a specific model (parameter count, context length, quantization)."
+        }
+      ]
+    },
+    {
+      "slug": "matrix",
+      "adapterId": "chp.adapters.matrix",
+      "name": "Matrix",
+      "pypi": "chp-adapter-matrix",
+      "category": "messaging",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.matrix.await_decision",
+          "method": "await_decision",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.matrix.create_room",
+          "method": "create_room",
+          "version": "1.0.0",
+          "description": "Create a room (optionally under a Space). The mesh can provision its own rooms."
+        },
+        {
+          "id": "chp.adapters.matrix.get_messages",
+          "method": "get_messages",
+          "version": "1.0.0",
+          "description": "Read a room"
+        },
+        {
+          "id": "chp.adapters.matrix.invite_user",
+          "method": "invite_user",
+          "version": "1.0.0",
+          "description": "Invite a user to a room (e.g. add a human to an approvals room)."
+        },
+        {
+          "id": "chp.adapters.matrix.join_room",
+          "method": "join_room",
+          "version": "1.0.0",
+          "description": "Join a room or alias (e.g. the bot joining a room it was invited to)."
+        },
+        {
+          "id": "chp.adapters.matrix.react",
+          "method": "react",
+          "version": "1.0.0",
+          "description": "Add an emoji reaction (m.annotation) to a message event."
+        },
+        {
+          "id": "chp.adapters.matrix.request_approval",
+          "method": "request_approval",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.matrix.send_message",
+          "method": "send_message",
+          "version": "1.0.0",
+          "description": "Send a message to a Matrix room (m.text or m.notice; optional HTML formatting)."
         }
       ]
     },
@@ -1602,6 +2101,24 @@
           "description": ""
         },
         {
+          "id": "chp.adapters.mlx.eval",
+          "method": "eval",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.finetune",
+          "method": "finetune",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.mlx.fuse",
+          "method": "fuse",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
           "id": "chp.adapters.mlx.generate",
           "method": "generate",
           "version": "1.0.0",
@@ -1671,6 +2188,47 @@
           "method": "subscribe_snapshot",
           "version": "0.1.0",
           "description": "Snapshot of buffered messages for a subject pattern. Message data never in evidence."
+        }
+      ]
+    },
+    {
+      "slug": "notes",
+      "adapterId": "chp.adapters.notes",
+      "name": "Notes",
+      "pypi": "chp-adapter-notes",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.notes.append_note",
+          "method": "append_note",
+          "version": "0.1.0",
+          "description": "Append text to an existing note (e.g. a daily log). Text never in evidence."
+        },
+        {
+          "id": "chp.adapters.notes.create_note",
+          "method": "create_note",
+          "version": "0.1.0",
+          "description": "Create a new markdown note with frontmatter. Body never in evidence."
+        },
+        {
+          "id": "chp.adapters.notes.list_notes",
+          "method": "list_notes",
+          "version": "0.1.0",
+          "description": "List markdown notes in the vault (optionally under a subfolder)."
+        },
+        {
+          "id": "chp.adapters.notes.read_note",
+          "method": "read_note",
+          "version": "0.1.0",
+          "description": "Read one note: title, tags, frontmatter, and body. Body never in evidence."
+        },
+        {
+          "id": "chp.adapters.notes.search_notes",
+          "method": "search_notes",
+          "version": "0.1.0",
+          "description": "Find notes whose title or body contains the query. Query and body never in evidence."
         }
       ]
     },
@@ -1850,6 +2408,53 @@
       ]
     },
     {
+      "slug": "postiz",
+      "adapterId": "chp.adapters.postiz",
+      "name": "Postiz",
+      "pypi": "chp-adapter-postiz",
+      "category": "other",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.postiz.create_post",
+          "method": "create_post",
+          "version": "1.0.0",
+          "description": "Create or schedule a post across one or more Postiz channels (publishes to social)."
+        },
+        {
+          "id": "chp.adapters.postiz.delete_post",
+          "method": "delete_post",
+          "version": "1.0.0",
+          "description": "Delete a scheduled/published post by id."
+        },
+        {
+          "id": "chp.adapters.postiz.list_channels",
+          "method": "list_channels",
+          "version": "1.0.0",
+          "description": "List the connected Postiz integrations (social channels) available to post to."
+        },
+        {
+          "id": "chp.adapters.postiz.list_posts",
+          "method": "list_posts",
+          "version": "1.0.0",
+          "description": "List posts known to Postiz (scheduled/published) within a date range."
+        },
+        {
+          "id": "chp.adapters.postiz.preview_article",
+          "method": "preview_article",
+          "version": "1.0.0",
+          "description": "Preview what publish_article WOULD schedule — resolve channels, derive the slug "
+        },
+        {
+          "id": "chp.adapters.postiz.publish_article",
+          "method": "publish_article",
+          "version": "1.0.0",
+          "description": "Publish a blog article (and optionally a matching LinkedIn teaser) from SIMPLE "
+        }
+      ]
+    },
+    {
       "slug": "preference",
       "adapterId": "chp.adapters.preference",
       "name": "Preference",
@@ -1917,6 +2522,12 @@
       "tier": 2,
       "capabilities": [
         {
+          "id": "chp.adapters.radicle.follow",
+          "method": "follow",
+          "version": "",
+          "description": "Follow a peer node (replicate its refs for "
+        },
+        {
           "id": "chp.adapters.radicle.identity",
           "method": "identity",
           "version": "",
@@ -1935,10 +2546,16 @@
           "description": "Post a comment on a Radicle issue. Comment text never in evidence."
         },
         {
+          "id": "chp.adapters.radicle.issue_label",
+          "method": "issue_label",
+          "version": "",
+          "description": "Add and/or remove labels on an existing issue (approve = add "
+        },
+        {
           "id": "chp.adapters.radicle.issue_list",
           "method": "issue_list",
           "version": "",
-          "description": "List Radicle issues: IDs, titles, states. Issue body never in evidence."
+          "description": "List Radicle issues: IDs, titles, labels. Issue body never in evidence."
         },
         {
           "id": "chp.adapters.radicle.issue_open",
@@ -1957,6 +2574,12 @@
           "method": "list_repos",
           "version": "",
           "description": "List all locally tracked Radicle repositories (names + RIDs)."
+        },
+        {
+          "id": "chp.adapters.radicle.node_connect",
+          "method": "node_connect",
+          "version": "",
+          "description": "Instruct the node to connect to a peer at nid@host:port (establishes replication link)."
         },
         {
           "id": "chp.adapters.radicle.node_status",
@@ -1989,10 +2612,34 @@
           "description": "Radicle repository identity: RID, name, description, visibility, delegate count."
         },
         {
+          "id": "chp.adapters.radicle.seed",
+          "method": "seed",
+          "version": "",
+          "description": "Seed a repo on this node (create/update its replication policy). Scope "
+        },
+        {
+          "id": "chp.adapters.radicle.seed_policies",
+          "method": "seed_policies",
+          "version": "",
+          "description": "List this node"
+        },
+        {
+          "id": "chp.adapters.radicle.snapshot",
+          "method": "snapshot",
+          "version": "",
+          "description": "Snapshot the local Radicle home (identity keys, config, storage) into a tar.gz "
+        },
+        {
           "id": "chp.adapters.radicle.sync",
           "method": "sync",
           "version": "",
           "description": "Sync a Radicle repo to the network (push local state to seeds)."
+        },
+        {
+          "id": "chp.adapters.radicle.unseed",
+          "method": "unseed",
+          "version": "",
+          "description": "Remove this node"
         }
       ]
     },
@@ -2166,6 +2813,23 @@
       ]
     },
     {
+      "slug": "sandbox",
+      "adapterId": "chp.adapters.sandbox",
+      "name": "Sandbox",
+      "pypi": "chp-adapter-sandbox",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.sandbox.exec",
+          "method": "exec",
+          "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
       "slug": "scout",
       "adapterId": "chp.adapters.scout",
       "name": "Scout",
@@ -2214,6 +2878,41 @@
           "method": "set",
           "version": "1.0.0",
           "description": "Store or update a secret value."
+        }
+      ]
+    },
+    {
+      "slug": "service",
+      "adapterId": "chp.adapters.service",
+      "name": "Service",
+      "pypi": "chp-adapter-service",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.service.deploy",
+          "method": "deploy",
+          "version": "1.0.0",
+          "description": "Deploy a declared service and start it (durable, restart-policied)."
+        },
+        {
+          "id": "chp.adapters.service.health",
+          "method": "health",
+          "version": "1.0.0",
+          "description": "Probe a service endpoint (tcp host:port or http url) for reachability."
+        },
+        {
+          "id": "chp.adapters.service.status",
+          "method": "status",
+          "version": "1.0.0",
+          "description": "Whether a declared service is running, and its container detail."
+        },
+        {
+          "id": "chp.adapters.service.stop",
+          "method": "stop",
+          "version": "1.0.0",
+          "description": "Stop a running service by name."
         }
       ]
     },
@@ -2381,6 +3080,35 @@
       ]
     },
     {
+      "slug": "stewards",
+      "adapterId": "chp.adapters.stewards",
+      "name": "Stewards",
+      "pypi": "chp-adapter-stewards",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 1,
+      "capabilities": [
+        {
+          "id": "chp.adapters.stewards.list",
+          "method": "list",
+          "version": "1.0.0",
+          "description": "List the available offline stewards (name, title, whether self-fixing)."
+        },
+        {
+          "id": "chp.adapters.stewards.record_run",
+          "method": "record_run",
+          "version": "1.0.0",
+          "description": "Record an agent_run trace span — CHP"
+        },
+        {
+          "id": "chp.adapters.stewards.run",
+          "method": "run",
+          "version": "1.0.0",
+          "description": "Run one steward (by name) or all of them and return findings + would-be proposals. "
+        }
+      ]
+    },
+    {
       "slug": "synology",
       "adapterId": "chp.adapters.synology",
       "name": "Synology",
@@ -2390,10 +3118,28 @@
       "tier": 2,
       "capabilities": [
         {
+          "id": "chp.adapters.synology.backup_task_list",
+          "method": "backup_task_list",
+          "version": "1.0.0",
+          "description": "Hyper Backup tasks + last-run status."
+        },
+        {
+          "id": "chp.adapters.synology.backup_task_run",
+          "method": "backup_task_run",
+          "version": "1.0.0",
+          "description": "Trigger a Hyper Backup task by id (governed)."
+        },
+        {
           "id": "chp.adapters.synology.container_list",
           "method": "container_list",
           "version": "1.0.0",
           "description": "List Container Manager containers and their status."
+        },
+        {
+          "id": "chp.adapters.synology.container_logs",
+          "method": "container_logs",
+          "version": "1.0.0",
+          "description": "Tail a Container Manager container"
         },
         {
           "id": "chp.adapters.synology.container_start",
@@ -2408,10 +3154,22 @@
           "description": "Stop a Container Manager container."
         },
         {
+          "id": "chp.adapters.synology.disk_smart_health",
+          "method": "disk_smart_health",
+          "version": "1.0.0",
+          "description": "Per-disk status + SMART health + temperature."
+        },
+        {
           "id": "chp.adapters.synology.download_create",
           "method": "download_create",
           "version": "1.0.0",
           "description": "Add a download task to Download Station."
+        },
+        {
+          "id": "chp.adapters.synology.download_task_control",
+          "method": "download_task_control",
+          "version": "1.0.0",
+          "description": "Pause / resume / delete a Download Station task."
         },
         {
           "id": "chp.adapters.synology.file_info",
@@ -2424,6 +3182,36 @@
           "method": "file_list",
           "version": "1.0.0",
           "description": "List files in a Synology shared folder."
+        },
+        {
+          "id": "chp.adapters.synology.package_list",
+          "method": "package_list",
+          "version": "1.0.0",
+          "description": "Installed DSM packages + running state."
+        },
+        {
+          "id": "chp.adapters.synology.snapshot_create",
+          "method": "snapshot_create",
+          "version": "1.0.0",
+          "description": "Create a btrfs snapshot of a shared folder (governed)."
+        },
+        {
+          "id": "chp.adapters.synology.storage_volume_list",
+          "method": "storage_volume_list",
+          "version": "1.0.0",
+          "description": "List DSM storage volumes: capacity, used, RAID/degraded state."
+        },
+        {
+          "id": "chp.adapters.synology.system_info",
+          "method": "system_info",
+          "version": "1.0.0",
+          "description": "DSM model, firmware version, serial, uptime."
+        },
+        {
+          "id": "chp.adapters.synology.system_utilization",
+          "method": "system_utilization",
+          "version": "1.0.0",
+          "description": "Live CPU / memory / disk / network utilization."
         },
         {
           "id": "chp.adapters.synology.task_list",
@@ -2451,6 +3239,24 @@
         {
           "id": "chp.adapters.tailscale.devices",
           "method": "devices",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tailscale.funnel",
+          "method": "funnel",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tailscale.funnel_status",
+          "method": "funnel_status",
+          "version": "1.0.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.tailscale.serve",
+          "method": "serve",
           "version": "1.0.0",
           "description": ""
         },
@@ -2493,6 +3299,46 @@
           "id": "chp.adapters.tei.rerank",
           "method": "rerank",
           "version": "1.0.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "telemetry",
+      "adapterId": "chp.adapters.telemetry",
+      "name": "Telemetry",
+      "pypi": "chp-adapter-telemetry",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.telemetry.span",
+          "method": "span",
+          "version": "1.0.0",
+          "description": "Emit a completed agent/LLM run as a standard OTel GenAI span (gen_ai.* + chp.* attrs). "
+        }
+      ]
+    },
+    {
+      "slug": "transmutation-planner",
+      "adapterId": "chp.adapters.transmutation_planner",
+      "name": "Transmutation Planner",
+      "pypi": "chp-adapter-transmutation-planner",
+      "category": "other",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.transmutation_planner.estimate",
+          "method": "estimate",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "id": "chp.adapters.transmutation_planner.find_paths",
+          "method": "find_paths",
+          "version": "0.1.0",
           "description": ""
         }
       ]
@@ -2640,6 +3486,23 @@
           "method": "verify",
           "version": "1.0.0",
           "description": "Verify a webhook HMAC signature (constant-time)."
+        }
+      ]
+    },
+    {
+      "slug": "websearch",
+      "adapterId": "chp.adapters.websearch",
+      "name": "WebSearch",
+      "pypi": "chp-adapter-websearch",
+      "category": "platform",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.websearch.query",
+          "method": "query",
+          "version": "1.0.0",
+          "description": "Search the configured SearxNG and return the top-N results (title/url/snippet). "
         }
       ]
     },
