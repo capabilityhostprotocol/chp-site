@@ -46,9 +46,9 @@ export default function UseCasesPage() {
             What people use CHP for.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
-            Concrete jobs the protocol does. One is provable today; the rest are
-            demonstrations of how the same primitives would work in your domain —
-            each an invitation to build it with us.
+            Concrete jobs the protocol does. Software is live today; the same
+            primitives — declared authority, governed invocation, evidence — carry
+            into every domain, built with design partners.
           </p>
         </section>
 
@@ -74,7 +74,7 @@ export default function UseCasesPage() {
                   href={u.href}
                   className="mt-5 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
                 >
-                  {u.status === 'Live' ? 'See it' : 'How it would work'} →
+                  See how it works →
                 </a>
               </div>
             ))}
@@ -89,8 +89,8 @@ export default function UseCasesPage() {
               </h2>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If your work needs to show what people, agents, and systems did,
-                the protocol probably fits. Tell us the workflow and we will map
-                it.
+                the protocol fits. Tell us the workflow and we&apos;ll map it with
+                you.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

@@ -79,9 +79,9 @@ export default function A2AProductPage() {
 
         <SectionShell>
           <SectionHeader
-            eyebrow="Honest about where it is"
-            title="A preview, expanding capability by capability."
-            body="a2a.computer is live as a walking skeleton: some capabilities are callable today, others are single-hop or planned as the mesh grows. We label what is real versus planned rather than imply a finished platform. Broad public availability follows a publicly-reachable gateway."
+            eyebrow="Where it stands"
+            title="Live now, expanding fast."
+            body="Capabilities are callable today, and the mesh grows as more come online. We're clear about what's live versus coming — and broad public access opens as the gateway does."
           />
         </SectionShell>
 

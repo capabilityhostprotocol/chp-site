@@ -34,8 +34,8 @@ export default function ChpLegalProductPage() {
           </p>
           <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
             The hard part of AI in a law firm is not capability — it is accountability. CHP
-            Legal is being built so that the record a matter needs is produced as the work
-            happens, not reconstructed under scrutiny.
+            Legal produces the record a matter needs as the work happens, not reconstructed
+            under scrutiny.
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
             <ButtonLink href="/waitlist?product=chp-legal">Become a design partner</ButtonLink>
@@ -69,9 +69,9 @@ export default function ChpLegalProductPage() {
 
         <SectionShell>
           <SectionHeader
-            eyebrow="Honest about where it is"
-            title="In development, with design partners."
-            body="CHP Legal is early: the governance model and the workflows are well-specified, and the substrate it stands on — governed invocation, approvals, evidence — is real and in use across CHP. We are building it with a small set of design partners rather than announcing a finished product."
+            eyebrow="Where it stands"
+            title="Building with design partners."
+            body="The governance model and workflows are specified, and the substrate they stand on — governed invocation, approvals, evidence — is real and in use across CHP today. We're building CHP Legal with a select set of design partners."
           />
         </SectionShell>
 

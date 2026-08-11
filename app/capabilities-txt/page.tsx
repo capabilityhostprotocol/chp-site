@@ -88,7 +88,7 @@ export default function CapabilitiesTxtPage() {
       <main>
         <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
           <p className="eyebrow mb-4">
-            A proposal · with a working reference
+            An open standard · with a working reference
           </p>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             capabilities.txt
@@ -243,8 +243,9 @@ export default function CapabilitiesTxtPage() {
                 Want to publish one — or shape the convention?
               </h2>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-                This is an early proposal with a live reference. If you expose
-                capabilities agents should find, let&apos;s define it together.
+                It&apos;s an open standard with a live reference — spec, generator,
+                and validator. If you expose capabilities agents should find,
+                let&apos;s get you on the map.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

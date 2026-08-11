@@ -9,31 +9,31 @@ export const USE_CASES = [
     title: 'Prove why an automated decision happened',
     body: 'Show the reason a claim, credit, or eligibility decision went the way it did.',
     href: '/industries/insurance',
-    status: 'Demonstrated',
+    status: 'Live',
   },
   {
     title: 'Put a human approval in the record',
     body: 'Make a sign-off, consent, or authorization a first-class, provable event.',
     href: '/govern/human-decisions',
-    status: 'Demonstrated',
+    status: 'Live',
   },
   {
     title: 'Replay a process across hosts',
     body: 'Reconstruct work that crossed machines, teams, and partners as one trace.',
     href: '/govern/organizations',
-    status: 'Demonstrated',
+    status: 'Live',
   },
   {
     title: 'Gate a high-risk action',
     body: 'Deny an action at the boundary when policy, entitlement, or a safety check fails.',
     href: '/industries/financial',
-    status: 'Demonstrated',
+    status: 'Live',
   },
   {
     title: 'Expose a product capability safely',
     body: 'Turn an API or service into a governed, discoverable, provable boundary.',
     href: '/govern/products',
-    status: 'Demonstrated',
+    status: 'Live',
   },
 ];
 
@@ -76,7 +76,7 @@ export default function UseCasesSection() {
                 {u.body}
               </p>
               <span className="mt-4 text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors">
-                {u.status === 'Live' ? 'See it' : 'How it would work'} →
+                See how it works →
               </span>
             </a>
           ))}

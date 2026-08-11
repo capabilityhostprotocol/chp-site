@@ -12,7 +12,7 @@ export default function AgentProofStrip() {
   return (
     <section className="border-b border-zinc-800/60">
       <div className="band">
-        <p className="eyebrow mb-4">Start where the proof is real</p>
+        <p className="eyebrow mb-4">Start with agents</p>
         <h2 className="display-2 text-zinc-100 mb-10 max-w-3xl">
           One command. Every tool call, captured.
         </h2>

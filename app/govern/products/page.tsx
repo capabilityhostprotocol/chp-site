@@ -8,7 +8,7 @@ import { ARTIFACT_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Govern products & services - Capability Host Protocol',
   description:
-    'Turn what your product can do into a governed, discoverable, provable boundary — typed manifests, versions, permissions, and evidence. A demonstration of how CHP would work; built with design partners.',
+    'Turn what your product can do into a governed, discoverable, provable boundary — typed manifests, versions, permissions, and evidence.',
 };
 
 export default function GovernProductsPage() {
@@ -37,7 +37,7 @@ export default function GovernProductsPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                How it would work
+                How it works
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 A capability surface, declared.
@@ -50,9 +50,9 @@ export default function GovernProductsPage() {
                 wrap existing APIs as CHP capabilities.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: the manifest, invocation, and
-                evidence primitives exist today. The managed product surface and
-                its lifecycle tooling are what we build with a design partner.
+                The manifest, invocation, and evidence primitives run today. The
+                managed product surface and its lifecycle tooling are what we build
+                with design partners.
               </p>
             </div>
             <CodePanel code={ARTIFACT_EXAMPLE} label="host manifest" language="json" />

@@ -7,7 +7,7 @@ import MeshTraceDiagram from '../../components/MeshTraceDiagram';
 export const metadata: Metadata = {
   title: 'Govern organizations & processes - Capability Host Protocol',
   description:
-    'Stitch one correlated, replayable trace across hosts, machines, and partner organizations. A demonstration of how CHP would work; built with design partners.',
+    'Stitch one correlated, replayable trace across hosts, machines, and partner organizations.',
 };
 
 const STEPS = [
@@ -19,7 +19,7 @@ const STEPS = [
   {
     n: '02',
     title: 'A gateway stitches the trace',
-    body: 'A gateway fans a replay query out to every host in the mesh and merges the evidence into one ordered timeline — across machines you run and, eventually, across organizational boundaries.',
+    body: 'A gateway fans a replay query out to every host in the mesh and merges the evidence into one ordered timeline — across machines you run, and, with design partners, across organizational boundaries.',
   },
   {
     n: '03',
@@ -68,10 +68,9 @@ export default function GovernOrganizationsPage() {
             ))}
           </div>
           <p className="text-xs text-zinc-400 leading-relaxed mt-8 max-w-3xl">
-            Demonstrated, not yet shipped: correlation and local mesh replay exist
-            today across hosts you operate. Multi-host stitching across
-            organizational boundaries, with retention and access, is what we build
-            with a design partner.
+            Correlation and mesh replay run today across the hosts you operate.
+            Multi-host stitching across organizational boundaries, with retention
+            and access, is what we build with design partners.
           </p>
         </section>
 

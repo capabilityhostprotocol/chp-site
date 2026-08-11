@@ -46,10 +46,9 @@ export default function SoftwareIndustryPage() {
             Your agent shipped. Now prove what it did.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
-            This is the one vertical where CHP is demonstrable today, not
-            aspirational. If a review is blocking your agent rollout on
-            &ldquo;we can&apos;t show what it did,&rdquo; this closes the gap in
-            one command.
+            CHP is live for AI-native software today. If a review is blocking your
+            agent rollout on &ldquo;we can&apos;t show what it did,&rdquo; this
+            closes the gap in one command.
           </p>
           <a
             href="/blog/the-security-review-that-stalls-your-agent"
@@ -79,7 +78,7 @@ export default function SoftwareIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated trace
+                The trace
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 One agent action, as evidence.

@@ -8,7 +8,7 @@ import { ARTIFACT_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Financial services - Capability Host Protocol',
   description:
-    'Prove the controls around AI in financial workflows — high-risk actions declared, approved, and evidenced as a replayable bundle. A demonstration of how CHP would work in financial services; built with design partners.',
+    'Govern AI in financial workflows: high-risk actions are declared with a risk tier, approval-gated before they run, and evidenced as a replayable bundle. The regulator-ready compliance export, we build with design partners.',
 };
 
 const FLOW = [
@@ -25,7 +25,7 @@ const FLOW = [
     body: 'Risk and compliance, with the platform team — accountable for model governance and for the evidence that the controls actually held.',
   },
   {
-    step: 'What CHP would do',
+    step: 'What CHP does',
     body: 'High-risk capabilities are declared with a risk tier, required authorization, and required approval before they can be invoked; every invocation emits evidence, and the decision replays as a single bundle. The controls are in the contract, not just the code review.',
   },
 ];
@@ -42,17 +42,17 @@ export default function FinancialIndustryPage() {
               Industries · Financial services
             </p>
             <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
-              Demonstrated · design partner wanted
+              Design partners
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             Declare the controls. Govern the decision. Prove it held.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
-            Risk tiers, required approval, and per-invocation evidence are
-            declared in the manifest today. This page shows how they would back a
-            model-risk review; the compliance export your regulator expects is what
-            we build with a design partner.
+            Risk tiers, required approval, and per-invocation evidence are declared
+            in the manifest and enforced on every call — the backbone of a model-risk
+            review. The regulator-ready compliance export is what we build with
+            design partners.
           </p>
           <a
             href="/blog/controls-in-the-contract"
@@ -82,7 +82,7 @@ export default function FinancialIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated record
+                The record
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 The controls, declared up front.
@@ -94,9 +94,8 @@ export default function FinancialIndustryPage() {
                 and every invocation against them is evidenced.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: risk tiers, approval, and evidence
-                exist today. Compliance export and enterprise identity are what we
-                build with a design partner.
+                Risk tiers, approval, and evidence run today. Compliance export and
+                enterprise identity are what we build with design partners.
               </p>
             </div>
             <CodePanel code={ARTIFACT_EXAMPLE} label="host manifest — high-risk, approval-gated" language="json" />

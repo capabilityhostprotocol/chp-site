@@ -8,7 +8,7 @@ import { EVIDENCE_OUTPUT } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Legal - Capability Host Protocol',
   description:
-    'A defensible chain of custody for AI-assisted review, with privilege decisions captured as governed approve/deny events. A demonstration of how CHP would work in legal; built with design partners.',
+    'A defensible chain of custody for AI-assisted review, with privilege decisions captured as governed approve/deny events. How CHP governs and evidences AI in legal.',
 };
 
 const FLOW = [
@@ -25,7 +25,7 @@ const FLOW = [
     body: 'General counsel and legal operations — accountable for defensibility, privilege, and the integrity of the review record.',
   },
   {
-    step: 'What CHP would do',
+    step: 'What CHP does',
     body: 'Every action — a model reading a document, a reviewer asserting or waiving privilege — is a governed event in a SHA256 hash-chained record, correlated by matter. Privilege becomes an explicit approve/deny decision, and the chain itself proves the record was not altered after the fact.',
   },
 ];
@@ -42,7 +42,7 @@ export default function LegalIndustryPage() {
               Industries · Legal
             </p>
             <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
-              Demonstrated · design partner wanted
+              Design partners
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
@@ -50,9 +50,8 @@ export default function LegalIndustryPage() {
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             CHP’s evidence is SHA256 hash-chained — which is, almost literally,
-            chain of custody. This page shows how it would work for legal work
-            with today’s primitives; the matter-level retention and access layer
-            is what we build with a design partner.
+            chain of custody. The matter-level retention and access layer is what
+            we build with design partners.
           </p>
           <a
             href="/blog/chain-of-custody-for-ai-review"
@@ -82,7 +81,7 @@ export default function LegalIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated record
+                The record
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 Every action, in a chain that proves itself.
@@ -94,9 +93,8 @@ export default function LegalIndustryPage() {
                 chain breaks — which is exactly what defensibility requires.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: hash-chained evidence and replay
-                exist today. Matter-level retention, access control, and export
-                are what we build with a design partner.
+                Hash-chained evidence and replay run today. Matter-level retention,
+                access control, and export are what we build with design partners.
               </p>
             </div>
             <CodePanel code={EVIDENCE_OUTPUT} label="evidence event — hash-chained" language="json" />

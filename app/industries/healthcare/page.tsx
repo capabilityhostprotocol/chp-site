@@ -8,7 +8,7 @@ import { INVOCATION_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Healthcare operations - Capability Host Protocol',
   description:
-    'Let AI act on the record with a clinician in command — every AI action and human sign-off in one replayable, tamper-evident trace. A demonstration of how CHP would work in healthcare; built with design partners.',
+    'Let AI act on the record with a clinician in command — every AI action and human sign-off in one replayable, tamper-evident trace. How CHP governs and evidences AI in healthcare.',
 };
 
 const FLOW = [
@@ -25,7 +25,7 @@ const FLOW = [
     body: 'The CMIO and clinical operations, with compliance — accountable for patient safety, the integrity of the record, and what automation is allowed to touch.',
   },
   {
-    step: 'What CHP would do',
+    step: 'What CHP does',
     body: 'Each AI action crosses a capability boundary that records a structured event with the acting subject and correlation; the clinician sign-off is a governed approval in the same trace. Payloads are redacted by default, so the evidence captures who-did-what without storing the PHI body.',
   },
 ];
@@ -42,7 +42,7 @@ export default function HealthcareIndustryPage() {
               Industries · Healthcare operations
             </p>
             <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
-              Demonstrated · design partner wanted
+              Design partners
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
@@ -50,10 +50,9 @@ export default function HealthcareIndustryPage() {
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             A human approval and an AI action are the same kind of governed event
-            in CHP — which is exactly what a clinical sign-off needs. This page
-            shows how it would work with today’s primitives; the access and
-            retention layer an audit requires is what we build with a design
-            partner.
+            in CHP — which is exactly what a clinical sign-off needs. The access
+            and retention layer an audit requires is what we build with design
+            partners.
           </p>
           <a
             href="/blog/who-authorized-the-ai-step"
@@ -83,7 +82,7 @@ export default function HealthcareIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated record
+                The record
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 The AI action — attributed, before sign-off.
@@ -95,9 +94,9 @@ export default function HealthcareIndustryPage() {
                 so the record shows both what was proposed and who authorized it.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: invocation, approval, and redacted
-                evidence exist today. Role-based access and compliant retention
-                are what we build with a design partner.
+                Invocation, approval, and redacted evidence run today. Role-based
+                access and compliant retention are what we build with design
+                partners.
               </p>
             </div>
             <CodePanel code={INVOCATION_EXAMPLE} label="invocation — the attributed AI action" language="json" />

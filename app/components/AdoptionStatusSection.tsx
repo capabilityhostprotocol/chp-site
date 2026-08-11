@@ -8,8 +8,8 @@ export default function AdoptionStatusSection() {
     <SectionShell>
       <SectionHeader
         eyebrow="Adoption status"
-        title="Early, open, and built for independent implementations."
-        body="Public protocol surfaces earn trust by being explicit about maturity. CHP is ready for experimentation, reference implementations, and conformance-driven feedback."
+        title="Open, proven, and built for independent implementations."
+        body="CHP is an open protocol with a frozen, additive wire surface and two independent implementations that pass conformance. Build on it today; help shape what comes next."
         className="mb-10"
       />
 

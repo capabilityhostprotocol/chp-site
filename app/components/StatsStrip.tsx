@@ -1,11 +1,11 @@
 const TRUST_ITEMS = [
   {
-    label: 'v0.7.0 alpha',
+    label: 'chp-core 0.41.0',
     href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/packages/python/pyproject.toml',
   },
   {
-    label: 'Spec',
-    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md',
+    label: 'Spec v0.9.2 RC',
+    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.2.md',
   },
   {
     label: 'Schemas',

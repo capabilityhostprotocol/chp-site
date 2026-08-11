@@ -68,7 +68,7 @@ export const ADOPTION_PATHS = [
     title: 'Validate the surface',
     body: 'Treat manifests, unknown hosts, unavailable capabilities, and malformed requests as protocol concerns.',
     cta: 'Read the spec',
-    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md',
+    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.2.md',
   },
   {
     step: '04',
@@ -184,8 +184,8 @@ export const ADOPTION_STATUS = [
     body: 'Apache-2.0 reference implementation, schemas, docs, and examples are public in GitHub.',
   },
   {
-    label: 'Early protocol',
-    body: 'The implementation is alpha; the current spec document is v0.1 and the package is v0.7.0.',
+    label: 'Release candidate',
+    body: 'Spec at v0.9.2 RC with a frozen, additive-only wire surface; chp-core 0.41.0 on PyPI; two independent implementations pass conformance.',
   },
   {
     label: 'Conformance-oriented',

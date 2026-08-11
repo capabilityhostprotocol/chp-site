@@ -118,7 +118,7 @@ const TERMS: Term[] = [
     short: 'A public, well-known file advertising what a host can do.',
     body: 'A discovery sibling to robots.txt and llms.txt: a crawlable, static declaration of the capabilities a host exposes, pointing to an MCP, HTTP, or CHP endpoint for the actual call. Discovery and invocation are different jobs — capabilities.txt does discovery.',
     href: '/capabilities-txt',
-    hrefLabel: 'The proposal',
+    hrefLabel: 'The standard',
   },
 ];
 

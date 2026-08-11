@@ -8,7 +8,7 @@ import { OUTCOME_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Govern human decisions - Capability Host Protocol',
   description:
-    'Make high-stakes human approvals, consent, and denials part of the record — the same governed, provable event as an agent action. A demonstration of how CHP would work; built with design partners.',
+    'Make high-stakes human approvals, consent, and denials part of the record — the same governed, provable event as an agent action.',
 };
 
 export default function GovernHumanDecisionsPage() {
@@ -36,7 +36,7 @@ export default function GovernHumanDecisionsPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                How it would work
+                How it works
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 Approval and denial, as first-class outcomes.
@@ -49,9 +49,9 @@ export default function GovernHumanDecisionsPage() {
                 allowed to make it happen.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: the approval and denial primitives
-                exist in the protocol today. The human-in-the-loop workflow and UI
-                are what we build with a design partner.
+                The approval and denial primitives run in the protocol today. The
+                human-in-the-loop workflow and UI are what we build with design
+                partners.
               </p>
             </div>
             <CodePanel code={OUTCOME_EXAMPLE} label="outcome — denied at the boundary" language="json" />

@@ -8,7 +8,7 @@ import { OUTCOME_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Insurance - Capability Host Protocol',
   description:
-    'Turn automated claim and underwriting decisions into a provable record of why — defensible in a dispute and to a regulator. A demonstration of how CHP would work in insurance; built with design partners.',
+    'Turn automated claim and underwriting decisions into a provable record of why — defensible in a dispute and to a regulator. How CHP governs and evidences AI in insurance.',
 };
 
 const FLOW = [
@@ -25,7 +25,7 @@ const FLOW = [
     body: 'Claims and underwriting operations leaders, paired with compliance and legal — the people accountable when an automated decision has to stand up to scrutiny.',
   },
   {
-    step: 'What CHP would do',
+    step: 'What CHP does',
     body: 'Every decision crosses a capability boundary that emits a structured outcome — approved, denied, or referred — with a stable reason code, the deciding subject, and a tamper-evident evidence id, all replayable by case. A denial is a first-class, explainable record, not an inference from logs.',
   },
 ];
@@ -42,7 +42,7 @@ export default function InsuranceIndustryPage() {
               Industries · Insurance
             </p>
             <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
-              Demonstrated · design partner wanted
+              Design partners
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
@@ -50,9 +50,8 @@ export default function InsuranceIndustryPage() {
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             Denial is a first-class outcome in CHP — which makes insurance one of
-            the closest fits for the protocol. This page shows how it would work
-            with today’s primitives; the production audit layer is what we build
-            with a design partner.
+            the closest fits for the protocol. The production audit layer is what
+            we build with design partners.
           </p>
           <a
             href="/blog/proving-why-a-claim-was-denied"
@@ -82,7 +81,7 @@ export default function InsuranceIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated record
+                The record
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 A decision, with its reason attached.
@@ -94,9 +93,9 @@ export default function InsuranceIndustryPage() {
                 adjuster, a policyholder, and a regulator can all replay.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: the decision and denial primitives
-                exist today. Hosted retention and regulator-shaped audit export
-                are what we build with a design partner.
+                The decision and denial primitives run today. Hosted retention and
+                regulator-shaped audit export are what we build with design
+                partners.
               </p>
             </div>
             <CodePanel code={OUTCOME_EXAMPLE} label="decision outcome — with reason" language="json" />

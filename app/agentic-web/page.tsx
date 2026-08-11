@@ -239,7 +239,7 @@ export default function AgenticWebPage() {
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm">
             <a href="/capabilities-txt" className="text-zinc-300 hover:text-zinc-50 transition-colors">
-              The capabilities.txt proposal →
+              The capabilities.txt standard →
             </a>
             <a href="/blog/chp-and-mcp" className="text-zinc-400 hover:text-zinc-100 transition-colors">
               CHP and MCP →

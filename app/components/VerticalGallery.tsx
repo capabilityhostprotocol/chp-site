@@ -9,31 +9,31 @@ const VERTICALS = [
     name: 'Insurance',
     href: '/industries/insurance',
     body: 'A provable record of why an automated claim decision went the way it did.',
-    status: 'Partner wanted',
+    status: 'Design partners',
   },
   {
     name: 'Legal',
     href: '/industries/legal',
     body: 'Chain of custody for AI-assisted review; privilege as governed decisions.',
-    status: 'Partner wanted',
+    status: 'Design partners',
   },
   {
     name: 'Healthcare',
     href: '/industries/healthcare',
     body: 'AI acts, a clinician signs off, both land in one replayable trace.',
-    status: 'Partner wanted',
+    status: 'Design partners',
   },
   {
     name: 'Manufacturing',
     href: '/industries/manufacturing',
     body: 'Human and agent commands governed by approval and safety invariants.',
-    status: 'Partner wanted',
+    status: 'Design partners',
   },
   {
     name: 'Financial services',
     href: '/industries/financial',
     body: 'Approvals and model-risk checks captured as a replayable evidence bundle.',
-    status: 'Partner wanted',
+    status: 'Design partners',
   },
 ];
 
@@ -43,11 +43,12 @@ export default function VerticalGallery() {
       <div className="band">
         <p className="eyebrow mb-4">By industry</p>
         <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
-          Demonstrated where governance matters.
+          Where governance matters most.
         </h2>
         <p className="lede max-w-2xl mb-12 text-zinc-400">
-          Software is provable today. The rest show how the same primitives would
-          work in your domain — each an open invitation to build it with us.
+          Software is live today. The same primitives — declared authority, governed
+          invocation, tamper-evident evidence — carry into every regulated domain, and
+          we build each vertical with design partners.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {VERTICALS.map((v) => (

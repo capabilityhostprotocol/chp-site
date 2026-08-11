@@ -5,7 +5,7 @@ import SiteFooter from '../components/SiteFooter';
 export const metadata: Metadata = {
   title: 'Design partners - Capability Host Protocol',
   description:
-    'Build the governance and evidence layer for your domain with us. CHP is an early, open protocol; design partners shape what gets built next for agents, insurance, healthcare, manufacturing, legal, and financial work.',
+    'Build the governance and evidence layer for your domain with us. CHP is an open protocol; design partners shape what we build next for agents, insurance, healthcare, manufacturing, legal, and financial work.',
 };
 
 const PROVEN_TODAY = [
@@ -25,45 +25,45 @@ const BUILD_TOGETHER = [
 const VERTICALS = [
   {
     name: 'AI-native software',
-    status: 'Demonstrable today',
+    status: 'Live',
     prove:
       'Make every agent action provable and replayable — and unblock the security review that is holding your launch.',
     gap: 'This one already works. Bring a real agent workflow and we will instrument it with you.',
   },
   {
     name: 'Insurance',
-    status: 'Design partner wanted',
+    status: 'Design partners',
     prove:
       'Turn automated approve / deny decisions into a provable record of why — defensible in a dispute and to a regulator.',
-    gap: 'Denial records map almost 1:1 onto the protocol. We would build retention and audit export around your claims flow.',
+    gap: 'Denial records map almost 1:1 onto the protocol. We build retention and audit export around your claims flow.',
   },
   {
     name: 'Legal',
-    status: 'Design partner wanted',
+    status: 'Design partners',
     prove:
       'A defensible chain of custody for AI-assisted review, with privilege decisions captured as governed approve / deny events.',
-    gap: 'Tamper-evident chaining is the protocol primitive. We would build matter-level retention and access with you.',
+    gap: 'Tamper-evident chaining is the protocol primitive. We build matter-level retention and access with you.',
   },
   {
     name: 'Healthcare operations',
-    status: 'Design partner wanted',
+    status: 'Design partners',
     prove:
       'AI acts on records; a clinician signs off; both land in one replayable trace with the approval attached.',
-    gap: 'We would build the access controls and retention an audit actually requires, around a real clinical workflow.',
+    gap: 'We build the access controls and retention an audit actually requires, around a real clinical workflow.',
   },
   {
     name: 'Manufacturing & industrial',
-    status: 'Design partner wanted',
+    status: 'Design partners',
     prove:
       'Dispatch and machine commands — issued by humans and agents alike — governed by approval and safety invariants, with edge hosts stitched into one trace.',
-    gap: 'Real-time control stays out of scope. We would prove the governance and evidence layer above it with you.',
+    gap: 'Real-time control stays out of scope. We prove the governance and evidence layer above it with you.',
   },
   {
     name: 'Financial services',
-    status: 'Design partner wanted',
+    status: 'Design partners',
     prove:
       'Approvals, model-risk checks, and AI-in-the-workflow captured as an evidence bundle a reviewer can replay.',
-    gap: 'We would build the compliance export and controls your risk function needs, on top of the provable core.',
+    gap: 'We build the compliance export and controls your risk function needs, on top of the provable core.',
   },
 ];
 
@@ -80,14 +80,14 @@ export default function DesignPartnersPage() {
             Build the governance layer for your domain with us.
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl mb-4">
-            CHP is an early, open protocol. The core — declared capabilities,
+            CHP is an open protocol. The core — declared capabilities,
             tamper-evident evidence, replay, and structured denials — is real and
             usable today. The production trust layer for regulated work is what we
             build next, with the partners who feel the pain first.
           </p>
           <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
-            We would rather show you exactly how it would work in your domain than
-            claim it already does. That is what this program is for.
+            We build the production trust layer for your domain with you — on
+            primitives that are real today. That is what this program is for.
           </p>
           <div className="flex flex-wrap items-center gap-3 mt-8">
             <a
@@ -141,12 +141,12 @@ export default function DesignPartnersPage() {
             Where we are looking for partners
           </p>
           <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
-            Pick the workflow you would prove with us.
+            Pick the workflow to prove with us.
           </h2>
           <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl mb-10">
-            Each of these is a demonstration of how the protocol would work in a
-            domain — grounded in primitives that exist today. The honest gap in
-            each is the invitation.
+            Each of these builds on primitives that are real today — declared
+            authority, governed invocation, evidence. The gap we close together is
+            the invitation.
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {VERTICALS.map((v) => (
@@ -179,8 +179,8 @@ export default function DesignPartnersPage() {
               </h2>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 If your work needs a provable record of what people, agents, and
-                systems did, the protocol probably fits. Tell us the workflow and
-                we will show you how it would map.
+                systems did, the protocol fits. Tell us the workflow and we&apos;ll
+                map it with you.
               </p>
             </div>
             <a

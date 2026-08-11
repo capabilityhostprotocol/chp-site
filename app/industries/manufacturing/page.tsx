@@ -8,7 +8,7 @@ import { OUTCOME_EXAMPLE } from '../../lib/content';
 export const metadata: Metadata = {
   title: 'Manufacturing & industrial - Capability Host Protocol',
   description:
-    'Govern what humans and agents command on the floor — dispatch and machine actions gated by approval and safety invariants, stitched across edge hosts into one trace. A demonstration of how CHP would work in industrial operations; built with design partners.',
+    'Govern what humans and agents command on the floor — dispatch and machine actions gated by approval and safety invariants, stitched across edge hosts into one trace. How CHP governs and evidences AI in industrial operations.',
 };
 
 const FLOW = [
@@ -25,7 +25,7 @@ const FLOW = [
     body: 'Operations and controls engineering, with plant IT — accountable for safe, authorized action and for the record that proves it.',
   },
   {
-    step: 'What CHP would do',
+    step: 'What CHP does',
     body: 'A command crosses a capability boundary that requires approval and can declare a safety invariant; the action is denied at the boundary if a condition fails. Hosts across the floor share one correlation, so a process spanning many machines replays as a single ordered trace. (Real-time control loops stay out of scope — CHP governs and evidences the boundary above them.)',
   },
 ];
@@ -42,7 +42,7 @@ export default function ManufacturingIndustryPage() {
               Industries · Manufacturing &amp; industrial
             </p>
             <span className="font-mono text-[10px] uppercase text-zinc-400 border border-zinc-700 rounded px-2 py-1">
-              Demonstrated · design partner wanted
+              Design partners
             </span>
           </div>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
@@ -50,9 +50,8 @@ export default function ManufacturingIndustryPage() {
           </h1>
           <p className="text-lg text-zinc-400 leading-relaxed max-w-3xl">
             Approval, safety invariants, denial, and a trace stitched across edge
-            hosts are all in the protocol today. This page shows how they would
-            come together for industrial operations; the operational hardening is
-            what we build with a design partner.
+            hosts are all in the protocol today. The plant-floor operational
+            hardening is what we build with design partners.
           </p>
           <a
             href="/blog/who-commanded-the-machine"
@@ -82,7 +81,7 @@ export default function ManufacturingIndustryPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
             <div>
               <p className="eyebrow mb-3">
-                The demonstrated record
+                The record
               </p>
               <h2 className="display-2 text-zinc-100 mb-4">
                 A command, gated and accounted for.
@@ -95,9 +94,9 @@ export default function ManufacturingIndustryPage() {
                 safety check.
               </p>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Demonstrated, not yet shipped: approval, invariants, denial, and
-                cross-host correlation exist today. Plant-grade hardening and
-                integration are what we build with a design partner.
+                Approval, invariants, denial, and cross-host correlation run today.
+                Plant-grade hardening and integration are what we build with design
+                partners.
               </p>
             </div>
             <CodePanel code={OUTCOME_EXAMPLE} label="dispatch outcome — denied at the boundary" language="json" />
