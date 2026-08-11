@@ -22,13 +22,13 @@ export default function InstallSection() {
             TypeScript types
           </p>
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 font-mono text-sm text-zinc-200 select-all">
-            npm install @capabilityhostprotocol/chp-types
+            npm install @capabilityhostprotocol/types
           </div>
           <a
-            href="https://www.npmjs.com/package/@capabilityhostprotocol/chp-types"
+            href="https://www.npmjs.com/package/@capabilityhostprotocol/types"
             className="text-xs text-zinc-400 mt-2 inline-block hover:text-zinc-400 transition-colors font-mono"
           >
-            npmjs.com/@capabilityhostprotocol/chp-types ↗
+            npmjs.com/@capabilityhostprotocol/types ↗
           </a>
         </div>
       </div>
