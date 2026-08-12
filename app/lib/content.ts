@@ -1,7 +1,7 @@
 // Single source of truth for advertised versions — keep these in sync with releases.
 // `specRc` is the consolidated spec release candidate; `wire` is the object-model (envelope/
 // evidence) version emitted on the wire; `core` is the published chp-core PyPI package.
-export const CHP_VERSION = { core: '0.41.0', specRc: '0.9.2', wire: '0.2' } as const;
+export const CHP_VERSION = { core: '0.48.0', specRc: '0.9.2', wire: '0.2' } as const;
 
 export const PROTOCOL_AUDIENCES = [
   {
@@ -190,7 +190,7 @@ export const ADOPTION_STATUS = [
   },
   {
     label: 'Release candidate',
-    body: 'Spec at v0.9.2 RC with a frozen, additive-only wire surface; chp-core 0.41.0 on PyPI; two independent implementations pass conformance.',
+    body: 'Spec at v0.9.2 RC with a frozen, additive-only wire surface; chp-core 0.48.0 on PyPI; two independent implementations pass conformance.',
   },
   {
     label: 'Conformance-oriented',
