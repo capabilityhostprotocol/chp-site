@@ -1200,7 +1200,7 @@ const SUPPORTING_PAGES: DocsPage[] = [
         { name: 'approval_required', value: 'policy.approval_required = true', detail: 'Return a denied result with denial.code approval_required until approval exists.' },
         { name: 'audited', value: 'emits[] and assurance metadata', detail: 'Allow execution but require evidence records suitable for review and replay.' },
         { name: 'blocked', value: 'invariant or host policy denial', detail: 'Return a denied result before side effects, commonly with policy_block_pattern_matched or invariant_failed.' },
-        { name: 'revoked', value: 'host trust or entitlement state', detail: 'Deny a previously authorized subject with entitlement_denied and details explaining the revoked grant.' },
+        { name: 'revoked', value: 'host trust or entitlement state', detail: 'Deny a previously authorized subject with policy_blocked and details explaining the revoked grant.' },
       ],
     },
     policy: DEFAULT_POLICY,
@@ -1351,10 +1351,10 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
         { name: 'denied', value: 'outcome', detail: 'The host rejected execution before the handler completed; inspect denial.code.' },
         { name: 'skipped', value: 'outcome', detail: 'The host intentionally did not execute a registered capability, commonly because it is disabled.' },
         { name: 'input_schema_validation_failed', value: 'denial.code or error.code', detail: 'Invocation or payload shape is invalid or missing required fields.' },
-        { name: 'unsupported_protocol_version', value: 'denial.code or discovery error', detail: 'Host and caller do not share a compatible CHP protocol version.' },
-        { name: 'unknown_host', value: 'discovery error', detail: 'Caller addressed a host identity that cannot be resolved or trusted before reaching a host boundary.' },
+        { name: 'version_unsupported', value: 'denial.code or discovery error', detail: 'Host and caller do not share a compatible CHP protocol version.' },
+        { name: 'host_unreachable', value: 'discovery error', detail: 'Caller addressed a host identity that cannot be resolved or trusted before reaching a host boundary.' },
         { name: 'capability_disabled', value: 'denial.code', detail: 'Capability exists but is not currently invokable.' },
-        { name: 'entitlement_denied', value: 'denial.code', detail: 'Subject lacks the host-recognized grant or entitlement required by the capability.' },
+        { name: 'policy_blocked', value: 'denial.code', detail: 'Subject lacks the host-recognized grant or entitlement required by the capability.' },
         { name: 'approval_required', value: 'denial.code', detail: 'Policy requires approval before execution can proceed.' },
         { name: 'timeout', value: 'error.code', detail: 'Execution exceeded a host timeout policy after the boundary accepted the invocation.' },
         { name: 'host_error', value: 'error.code', detail: 'Host failed after accepting the invocation boundary.' },
@@ -1452,10 +1452,10 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
       rows: [
         { name: 'valid_invocation', value: 'outcome = success', detail: 'Happy path executes and emits successful evidence.' },
         { name: 'malformed_input', value: 'denial.code = input_schema_validation_failed', detail: 'Host validates envelope and payload shape before execution.' },
-        { name: 'version_mismatch', value: 'denial.code = unsupported_protocol_version', detail: 'Host fails closed on incompatible protocol or capability versions.' },
-        { name: 'unknown_host', value: 'discovery error = unknown_host', detail: 'Infrastructure distinguishes unresolved host identity from host failure.' },
+        { name: 'version_mismatch', value: 'denial.code = version_unsupported', detail: 'Host fails closed on incompatible protocol or capability versions.' },
+        { name: 'host_unreachable', value: 'discovery error = host_unreachable', detail: 'Infrastructure distinguishes unresolved host identity from host failure.' },
         { name: 'unavailable_capability', value: 'denial.code = capability_disabled', detail: 'Lifecycle state is enforced before invocation side effects.' },
-        { name: 'authorization_denial', value: 'denial.code = entitlement_denied', detail: 'Caller entitlement failures return structured denials.' },
+        { name: 'authorization_denial', value: 'denial.code = policy_blocked', detail: 'Caller entitlement failures return structured denials.' },
         { name: 'timeout', value: 'error.code = timeout', detail: 'Timeout behavior is predictable and machine-readable.' },
         { name: 'host_error', value: 'error.code = host_error', detail: 'Accepted invocations that fail inside the host return structured errors.' },
       ],
@@ -1482,7 +1482,7 @@ const DEVELOPER_REFERENCE_PAGES: DocsPage[] = [
   "expected": {
     "outcome": "denied",
     "success": false,
-    "denial": { "code": "entitlement_denied" },
+    "denial": { "code": "policy_blocked" },
     "event_type": "execution_denied"
   }
 }`,
@@ -1591,14 +1591,14 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     slug: 'unknown-host',
     title: 'Unknown host',
     summary:
-      'Return unknown_host when callers address a host identity that cannot be resolved or trusted.',
+      'Return host_unreachable when callers address a host identity that cannot be resolved or trusted.',
     trigger: 'The caller asks for service-ops-host-v2, but no trusted manifest or registry entry exists.',
-    code: 'unknown_host',
+    code: 'host_unreachable',
     message: 'Host service-ops-host-v2 is not registered.',
     evidence: 'none before host boundary',
     exampleCode: `{
   "error": {
-    "code": "unknown_host",
+    "code": "host_unreachable",
     "message": "Host service-ops-host-v2 is not registered.",
     "retryable": false,
     "details": {
@@ -1642,9 +1642,9 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     slug: 'version-mismatch',
     title: 'Version mismatch',
     summary:
-      'Return unsupported_protocol_version when host and caller cannot agree on protocol or capability compatibility.',
+      'Return version_unsupported when host and caller cannot agree on protocol or capability compatibility.',
     trigger: 'The caller requests protocol_version 0.2 but the host only supports 0.1.',
-    code: 'unsupported_protocol_version',
+    code: 'version_unsupported',
     message: 'Host supports CHP 0.1; caller requested 0.2.',
     evidence: 'execution_denied',
     exampleCode: `{
@@ -1657,7 +1657,7 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
   "data": null,
   "error": null,
   "denial": {
-    "code": "unsupported_protocol_version",
+    "code": "version_unsupported",
     "message": "Host supports CHP 0.1; caller requested 0.2.",
     "retryable": false,
     "details": {
@@ -1674,9 +1674,9 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
     slug: 'authorization-denial',
     title: 'Authorization denial',
     summary:
-      'Return entitlement_denied when subject identity lacks the entitlement required by the capability.',
+      'Return policy_blocked when subject identity lacks the entitlement required by the capability.',
     trigger: 'Planning Agent invokes schedule_technician without service:dispatch permission.',
-    code: 'entitlement_denied',
+    code: 'policy_blocked',
     message: 'service:dispatch is required.',
     evidence: 'execution_denied',
     exampleCode: `{
@@ -1689,7 +1689,7 @@ const FAILURE_MODE_PAGES: DocsPage[] = [
   "data": null,
   "error": null,
   "denial": {
-    "code": "entitlement_denied",
+    "code": "policy_blocked",
     "message": "service:dispatch is required.",
     "retryable": false,
     "details": {

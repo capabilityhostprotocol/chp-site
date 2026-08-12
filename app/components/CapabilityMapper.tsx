@@ -302,7 +302,7 @@ function buildOutcome(
     message = `${state.actor || 'Actor'} no longer has an active grant for ${capabilityId}.`;
     data = null;
     denial = {
-      code: 'entitlement_denied',
+      code: 'policy_blocked',
       message,
       retryable: false,
       details: { policy: state.policy || 'policy', state: 'revoked' },

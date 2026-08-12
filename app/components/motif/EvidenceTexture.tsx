@@ -2,7 +2,7 @@ const LINES = [
   'evt_8f3a1c · execution_completed · outcome=success · #9c7e',
   'evt_2d04b1 · approval_granted · subject=human://shift-manager · #1d04',
   'correlation=session-abc · seq=03 · redacted=true · assurance=S1',
-  'evt_e8b2af · execution_denied · code=entitlement_denied · #e8b2',
+  'evt_e8b2af · execution_denied · code=policy_blocked · #e8b2',
   'invocation=inv_session_abc_001 · capability=schedule_technician@1.0.0',
   'host=ServiceOpsHost · replay=ordered · chain=verified',
 ];

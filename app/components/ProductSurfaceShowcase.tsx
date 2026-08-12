@@ -150,7 +150,7 @@ const PRODUCT_STATES = [
     state: 'revoked' as const,
     title: 'Access grant revoked',
     body: 'A subject may have existed before, but current policy denies the invocation.',
-    evidence: 'denial.code = entitlement_denied',
+    evidence: 'denial.code = policy_blocked',
   },
   {
     state: 'error' as const,
