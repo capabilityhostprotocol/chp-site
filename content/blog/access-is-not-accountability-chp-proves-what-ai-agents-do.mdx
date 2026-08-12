@@ -1,0 +1,45 @@
+---
+title: "Access is not accountability"
+description: "We spent a decade making it safe to grant an agent access. We built almost nothing to hold it accountable for what it does with that access. Those are different problems — and only one of them survives a security review."
+date: "2026-08-11"
+---
+
+We have gotten very good at one half of a problem and keep mistaking it for the whole thing.
+
+The half we solved is **access**: who are you, what may you reach, with which scopes, under whose key. OAuth, service accounts, short-lived tokens, fine-grained scopes — a mature stack answers *is this caller allowed through the door?* well.
+
+The half we mostly skipped is **accountability**: once through the door, what did the caller actually do, was each action permitted, and can you prove it afterward to someone who wasn't watching. Access is checked once, up front. Accountability is per-action, after the fact. They are not the same problem, and having solved the first does not give you the second.
+
+For a long time that gap didn't hurt, because a human sat behind every access grant. A person with valid credentials is self-accountable: they made a judgment, they stand behind it, their name is on it. "They had access" and "they are accountable" collapsed into one because the same person carried both.
+
+## Agents pull the two apart
+
+An agent granted access does not behave like the human the access model was designed for. It acts unattended. It acts across hops — it calls a tool, which calls a service, which calls a third party — with no person at any step. It acts far more often than anyone reviews. The access was granted once; the actions it authorizes are effectively uncountable.
+
+So the moment an agent is holding the token, "it had access" stops being an answer to anything that matters. The questions that arrive later — from a security reviewer, an auditor, a regulator, a customer, an incident responder — are accountability questions:
+
+<PullQuote>What did it actually do — and was each of those actions allowed?</PullQuote>
+
+"Here are the scopes we granted" does not answer that. Neither does "here are our logs," because a log is a record the acting system wrote about itself, that the acting system can change, that means nothing to anyone outside the trust boundary that produced it.
+
+## What accountability actually requires
+
+Accountability is not a stronger version of access. It's a different mechanism, and it lives at the point of action, not the point of entry. Three things have to be true of every consequential action, not just of the session:
+
+- It is **governed** — checked against policy *before* it runs, and either allowed or **denied**, with a reason.
+- It is **attributed** — tied to a subject, a capability, and the context it ran in.
+- It is **provable** — recorded as evidence that outlives the system that produced it and means the same thing to someone who wasn't there.
+
+The denials matter as much as the successes. "The agent tried to do X and was stopped, here is why" is often the most important line in the record, and it is exactly the line a log of successful calls never contains.
+
+<Figure caption="A denied action is a first-class, explainable outcome — not a gap in the log.">
+  <ClaimDenialArtifact />
+</Figure>
+
+## Where CHP sits
+
+This is the problem the Capability Host Protocol is built for, and it's worth being precise about what it does and doesn't do. CHP does not make an agent smarter, and it does not claim to make it safe. It governs the **capability boundary** — the line where an agent's intent becomes an effect. At that line, every invocation is checked and either allowed or denied under policy, and every outcome, success or denial, becomes tamper-evident, replayable evidence attributed to who did what.
+
+No invented risk scores, no "trust rating," no dashboard of green checkmarks standing in for the real thing. Just the record an accountability question actually needs: what the agent did, whether it was allowed, and proof you can hand to someone who wasn't in the room.
+
+Access decides whether to let the agent in. It asks *who are you?* once. Accountability asks *what did you just do, and were you allowed to?* every time the agent acts. You almost certainly have the first. CHP is how you get the second.

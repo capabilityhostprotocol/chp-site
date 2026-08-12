@@ -16,6 +16,12 @@ export default function SiteFooter() {
         <span>Capability Host Protocol · open protocol · Apache-2.0</span>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <a
+            href="/products"
+            className="hover:text-zinc-400 transition-colors"
+          >
+            Products
+          </a>
+          <a
             href="/design-partners"
             className="hover:text-zinc-400 transition-colors"
           >
@@ -100,7 +106,7 @@ export default function SiteFooter() {
             Roadmap
           </a>
           <a
-            href="https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md"
+            href="https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/README.md"
             className="hover:text-zinc-400 transition-colors"
           >
             Spec

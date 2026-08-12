@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const EXAMPLE_MANIFEST = `{
   "id": "service-ops-host",
   "version": "0.1.0",
-  "protocol_version": "0.1",
+  "protocol_version": "0.2",
   "kind": "service",
   "capabilities": [{
     "id": "schedule_technician",

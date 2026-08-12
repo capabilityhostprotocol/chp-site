@@ -1,4 +1,5 @@
 import FieldMotif from './FieldMotif';
+import CodeCopyButton from './CodeCopyButton';
 
 export default function Hero() {
   return (
@@ -48,8 +49,11 @@ export default function Hero() {
             Build a vertical with us
           </a>
         </div>
-        <div className="font-mono text-sm text-zinc-400 select-all rise-2">
-          $ chp hooks install
+        <div className="flex items-center gap-3 rise-2">
+          <span className="font-mono text-sm text-zinc-400 select-all">
+            $ chp hooks install
+          </span>
+          <CodeCopyButton code="chp hooks install" label="chp hooks install" />
         </div>
       </div>
     </section>

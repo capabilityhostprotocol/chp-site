@@ -7,6 +7,7 @@ import {
   capabilityAdapters,
 } from '../lib/capabilities';
 import ItemListLd from '../components/ItemListLd';
+import SessionInspector from '../components/motif/SessionInspector';
 
 export const metadata: Metadata = {
   title: 'Capabilities - Capability Host Protocol',
@@ -126,6 +127,19 @@ export default function CapabilitiesPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">
+          <p className="eyebrow mb-4">What an invocation leaves behind</p>
+          <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
+            Inspect a real session.
+          </h2>
+          <p className="text-zinc-400 leading-relaxed max-w-3xl mb-8">
+            A denial, a human approval, and a completed run — one hash-chained, replayable
+            session. Open the denial to see its reason code; tamper a block and watch the
+            chain break.
+          </p>
+          <SessionInspector />
         </section>
 
         {capabilityCategories.map((category) => (

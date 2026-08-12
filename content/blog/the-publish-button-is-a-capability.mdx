@@ -1,0 +1,51 @@
+---
+title: "The publish button is a capability"
+description: "We treat 'publish' as the safest button in software — it just makes something visible. Then an agent starts pressing it for you, and it becomes an action with consequences. Publishing deserves what any governed action deserves: an author, an approval, and a receipt."
+date: "2026-08-11"
+---
+
+Of all the buttons in a piece of software, *publish* is the one we worry about least. It doesn't delete anything. It doesn't move money. It just takes something you already made and makes it visible. We hand it out freely — to interns, to scheduled jobs, to the marketing tool, to the CI pipeline. Compared to *drop table* or *send payment*, publish feels harmless.
+
+It was never harmless. It was just always attended.
+
+When a person publishes, a lot happens that never shows up in the button. Someone decided the thing was ready. Someone's name is on it. Someone will answer for it if it's wrong, early, off-message, or to the wrong audience. The judgment, the authorship, and the accountability all rode along invisibly with the click, because a person was there to carry them.
+
+## Then an agent presses it
+
+Now an agent drafts the post and presses publish. It schedules the thread. It ships the release note. It replies, in your name, to a customer. The button does exactly what it always did — but the person who used to stand behind it is gone.
+
+<PullQuote>Publish stopped being a display action and became an unattended action with consequences — one no one specifically authored.</PullQuote>
+
+And the consequences are real in the way that matters: publishing *reaches people*. A post goes to your audience. A release goes to your users. A reply goes on the record. You cannot recall it the way you roll back a database. The blast radius of "just make it visible" turns out to be everyone you were trying to reach.
+
+So the question isn't whether agents should publish — they will, and often they should. The question is why we keep treating the one button an agent can press to reach the whole world as if it were a checkbox.
+
+## Publish is a capability
+
+Publishing has every property of a governed capability, and pretending otherwise is the mistake:
+
+- It has an **author** — the subject on whose behalf it runs, which is not the same as the agent that executed it.
+- It has **authority** — who may publish, as whom, to which channel.
+- It has **invariants** — not during an embargo; not before review; not to that audience without sign-off.
+- It has **consequences** — it is irreversible in effect, even when it's reversible in storage.
+
+Something with those properties deserves what any consequential action deserves. An **author**, so the record says who it was really for. An **approval**, so the consequential ones pause for a human before they reach anyone. And a **receipt** — durable proof of what was published, by whom, under whose approval — so that afterward there is an answer, not a shrug.
+
+<Figure caption="Publishing as a governed capability: attempted, approved by a person, published, and sealed into a record you can replay.">
+  <EvidenceChain
+    events={[
+      { seq: '01', type: 'publish_requested', hash: 'c41a' },
+      { seq: '02', type: 'approval_granted', hash: '7d90' },
+      { seq: '03', type: 'publish_completed', hash: '2e6b' },
+      { seq: '04', type: 'evidence_sealed', hash: 'f118' },
+    ]}
+  />
+</Figure>
+
+## What this looks like with CHP
+
+Under the Capability Host Protocol, publish is not a special case — it's an ordinary capability, declared like any other with a risk tier and, where it matters, a required approval. An agent that reaches for it crosses the same governed boundary as any other action: the invocation is checked, a human approves the consequential ones, and the outcome — the approval, the content, the channel, the time, the subject it was published *for* — becomes tamper-evident evidence you can replay. If it's blocked, that denial is a first-class outcome too, not a silent no-op.
+
+None of that makes an agent a worse writer or a slower one. It makes the moment the writing becomes public an action with an author, an approval, and a receipt — instead of the quietest, most consequential click in your stack.
+
+The safest button in software was only ever safe because a person was holding it. Now that agents are, give publish what it always deserved.

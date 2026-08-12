@@ -1,3 +1,8 @@
+// Single source of truth for advertised versions — keep these in sync with releases.
+// `specRc` is the consolidated spec release candidate; `wire` is the object-model (envelope/
+// evidence) version emitted on the wire; `core` is the published chp-core PyPI package.
+export const CHP_VERSION = { core: '0.41.0', specRc: '0.9.2', wire: '0.2' } as const;
+
 export const PROTOCOL_AUDIENCES = [
   {
     role: 'Capability hosts',
@@ -68,7 +73,7 @@ export const ADOPTION_PATHS = [
     title: 'Validate the surface',
     body: 'Treat manifests, unknown hosts, unavailable capabilities, and malformed requests as protocol concerns.',
     cta: 'Read the spec',
-    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.2.md',
+    href: 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/README.md',
   },
   {
     step: '04',
@@ -105,7 +110,7 @@ export const FAILURE_MODES = [
 export const ARTIFACT_EXAMPLE = `{
   "id": "service-ops-host",
   "version": "0.1.0",
-  "protocol_version": "0.1",
+  "protocol_version": "0.2",
   "kind": "service",
   "capabilities": [{
     "id": "schedule_technician",
@@ -150,8 +155,8 @@ export const OUTCOME_EXAMPLE = `{
   "data": null,
   "error": null,
   "denial": {
-    "code": "entitlement_denied",
-    "message": "service:dispatch is required",
+    "code": "policy_blocked",
+    "message": "service:dispatch entitlement is required",
     "retryable": false
   },
   "evidence_ids": ["evt_8f3a1c"],
