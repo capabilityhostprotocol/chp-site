@@ -56,7 +56,24 @@ const field = (head, key) => {
 };
 
 const adapters = [];
-const dirs = readdirSync(ADAPTERS_ROOT).filter((d) => d.startsWith('chp-adapter-'));
+// Surfacing the declared capability surface is deliberate — it shows breadth beyond
+// what is pip-installable today. But it must not surface CONFIDENTIAL product work:
+// this page was publishing chp.adapters.legal_docket.* (CHP Legal, an unannounced
+// product) because the scan walked every packages/chp-adapter-* directory.
+//
+// The discriminator is the adapter's own licence: Apache-2.0 is shareable, anything
+// Proprietary is not. That travels with the package, so a new private adapter is
+// excluded by default instead of leaking until someone remembers to add it here.
+const isProprietary = (dir) => {
+  const pyproject = join(ADAPTERS_ROOT, dir, 'pyproject.toml');
+  if (!existsSync(pyproject)) return false;
+  return /^license\s*=.*Proprietary/m.test(readFileSync(pyproject, 'utf8'));
+};
+
+const allDirs = readdirSync(ADAPTERS_ROOT).filter((d) => d.startsWith('chp-adapter-'));
+const withheld = allDirs.filter(isProprietary);
+if (withheld.length) log(`withholding ${withheld.length} proprietary adapter(s): ${withheld.join(', ')}`);
+const dirs = allDirs.filter((d) => !withheld.includes(d));
 
 for (const d of dirs.sort()) {
   const dir = join(ADAPTERS_ROOT, d);

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-11T22:30:58.634Z",
+  "generated": "2026-08-12T18:32:57.285Z",
   "adapters": [
     {
       "slug": "approval",
@@ -1308,6 +1308,12 @@
           "description": ""
         },
         {
+          "id": "chp.adapters.host.invoke",
+          "method": "invoke",
+          "version": "1.0.0",
+          "description": "Invoke a capability on ANOTHER CHP host over the normative HTTP binding (federated "
+        },
+        {
           "id": "chp.adapters.host.restart",
           "method": "restart",
           "version": "1.0.0",
@@ -1784,35 +1790,6 @@
           "method": "uninstall",
           "version": "1.0.0",
           "description": "Bootout a service and remove its LaunchAgent plist."
-        }
-      ]
-    },
-    {
-      "slug": "legal-docket",
-      "adapterId": "chp.adapters.legal_docket",
-      "name": "Legal Docket",
-      "pypi": "chp-adapter-legal-docket",
-      "category": "other",
-      "status": "experimental",
-      "tier": 2,
-      "capabilities": [
-        {
-          "id": "chp.adapters.legal_docket.docket_suggest",
-          "method": "docket_suggest",
-          "version": "0.1.0",
-          "description": "Suggest a docket entry from observed time: apply the firm billing increment and "
-        },
-        {
-          "id": "chp.adapters.legal_docket.rate_resolve",
-          "method": "rate_resolve",
-          "version": "0.1.0",
-          "description": "Resolve the applicable versioned rate for a role (by as-of date or explicit version)."
-        },
-        {
-          "id": "chp.adapters.legal_docket.time_activity_capture",
-          "method": "time_activity_capture",
-          "version": "0.1.0",
-          "description": "Record an observed time activity on a matter. Observed elapsed time is immutable."
         }
       ]
     },
@@ -2412,7 +2389,7 @@
       "adapterId": "chp.adapters.postiz",
       "name": "Postiz",
       "pypi": "chp-adapter-postiz",
-      "category": "other",
+      "category": "messaging",
       "status": "experimental",
       "tier": 2,
       "capabilities": [
@@ -2843,6 +2820,35 @@
           "method": "query",
           "version": "1.0.0",
           "description": ""
+        }
+      ]
+    },
+    {
+      "slug": "scrapegraph",
+      "adapterId": "chp.adapters.scrapegraph",
+      "name": "ScrapeGraph",
+      "pypi": "chp-adapter-scrapegraph",
+      "category": "data",
+      "status": "experimental",
+      "tier": 2,
+      "capabilities": [
+        {
+          "id": "chp.adapters.scrapegraph.scrape_document",
+          "method": "scrape_document",
+          "version": "1.0.0",
+          "description": "Extract structured JSON from a document you already have (HTML/markdown/text passed "
+        },
+        {
+          "id": "chp.adapters.scrapegraph.search_scrape",
+          "method": "search_scrape",
+          "version": "1.0.0",
+          "description": "Research a topic across the web: run a search, scrape the top results, and synthesize "
+        },
+        {
+          "id": "chp.adapters.scrapegraph.smart_scrape",
+          "method": "smart_scrape",
+          "version": "1.0.0",
+          "description": "Extract structured JSON from a single web page: fetch the URL and answer the prompt "
         }
       ]
     },
@@ -3325,7 +3331,7 @@
       "adapterId": "chp.adapters.transmutation_planner",
       "name": "Transmutation Planner",
       "pypi": "chp-adapter-transmutation-planner",
-      "category": "other",
+      "category": "data",
       "status": "experimental",
       "tier": 2,
       "capabilities": [
