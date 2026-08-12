@@ -29,7 +29,13 @@ export default function Hero() {
         </p>
         <p className="max-w-2xl mb-10 text-sm text-zinc-400 rise-2">
           For anyone who has to control what their AI can do — and prove what it
-          did — to a security review, an auditor, a regulator, or a customer.
+          did — to a security review, an auditor, a regulator, or a customer.{' '}
+          <a
+            href="/glossary"
+            className="underline underline-offset-4 hover:text-zinc-100 transition-colors"
+          >
+            New to capability, invocation, evidence?
+          </a>
         </p>
         <div className="flex flex-wrap items-center gap-3 mb-5 rise-2">
           <a
@@ -49,11 +55,22 @@ export default function Hero() {
             Build a vertical with us
           </a>
         </div>
-        <div className="flex items-center gap-3 rise-2">
-          <span className="font-mono text-sm text-zinc-400 select-all">
-            $ chp hooks install
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rise-2">
+          <span className="font-mono text-sm text-zinc-400 select-all whitespace-pre">
+            {'$ pip install chp-core\n$ chp hooks install'}
           </span>
-          <CodeCopyButton code="chp hooks install" label="chp hooks install" />
+          <CodeCopyButton
+            code={'pip install chp-core\nchp hooks install'}
+            label="install commands"
+          />
+          <a
+            href="/quickstart"
+            data-event="quickstart"
+            data-event-label="hero"
+            className="text-sm text-zinc-400 underline underline-offset-4 hover:text-zinc-100 transition-colors"
+          >
+            Full quickstart →
+          </a>
         </div>
       </div>
     </section>

@@ -14,9 +14,11 @@ export default function GitHubCTA() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href="/map">Map a capability</ButtonLink>
-          <ButtonLink href="/docs" variant="secondary">
-            Read the docs →
+          <ButtonLink href="https://github.com/capabilityhostprotocol/chp-core">
+            View on GitHub
+          </ButtonLink>
+          <ButtonLink href="/quickstart" variant="secondary">
+            Quickstart →
           </ButtonLink>
           <ButtonLink href="/examples" variant="secondary">
             See examples →

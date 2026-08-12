@@ -4,10 +4,21 @@ import SiteFooter from '../components/SiteFooter';
 
 export const metadata: Metadata = {
   title: 'Quickstart — Capability Host Protocol',
-  description: 'Get started with CHP in 15 minutes. Install, declare a capability, add SQLite persistence, verify, and serve.',
+  description: 'Govern your first agent in two minutes: pip install chp-core, chp hooks install, then replay every tool call it made. Plus the full Python path — declare a capability, add SQLite persistence, verify, and serve.',
 };
 
-const STEP1 = `pip install chp-core`;
+const FAST_PATH = `pip install chp-core
+chp hooks install
+
+# ...use your agent as you normally would, then:
+chp session list
+chp session tree <session_id>`;
+
+const STEP1 = `pip install chp-core
+
+# optional extras
+pip install 'chp-core[schema]'    # enforce declared input_schema
+pip install 'chp-core[signing]'   # ed25519 — signed hosts and bundles`;
 
 const STEP2 = `from chp_core import LocalCapabilityHost, capability
 
@@ -122,7 +133,7 @@ const STEPS: Step[] = [
   {
     number: '1',
     title: 'Install',
-    description: 'Zero mandatory dependencies.',
+    description: 'Zero mandatory dependencies. Without [schema], a capability’s declared input_schema is not enforced — the host says so at registration and chp host verify reports it.',
     code: STEP1,
     label: 'terminal',
   },
@@ -199,8 +210,29 @@ export default function QuickstartPage() {
           Quickstart
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-50 mb-4">
-          Get started with CHP in 15 minutes.
+          Govern your first agent in two minutes.
         </h1>
+        <p className="text-base text-zinc-400 mb-10 leading-relaxed">
+          Start by hooking the coding agent you already use — no application code
+          changes. Then, if you want to declare your own capabilities, the full
+          Python path is below.
+        </p>
+
+        <div className="mb-16">
+          <CodeBlock code={FAST_PATH} label="terminal" />
+          <p className="text-sm text-zinc-400 leading-relaxed mt-4">
+            That hooks Claude Code, Codex, and Gemini CLI. Use your agent normally,
+            then <code className="font-mono text-zinc-300">chp session tree</code> shows
+            every tool call it made as a replayable tree. A denial is a first-class
+            event with a reason code — not a swallowed exception — and the chain is
+            hash-chained, so someone who did not run the agent can still tell whether
+            the record is intact.
+          </p>
+        </div>
+
+        <h2 className="text-xl font-semibold tracking-tight text-zinc-50 mb-3">
+          Declare your own capabilities
+        </h2>
         <p className="text-base text-zinc-400 mb-14 leading-relaxed">
           Install the Python host, declare your first capability, add persistence, verify,
           and serve over HTTP.
@@ -233,14 +265,15 @@ export default function QuickstartPage() {
         <div className="mt-16 pt-10 border-t border-zinc-800 space-y-2">
           <p className="text-sm font-semibold text-zinc-300 mb-4">Read next</p>
           {[
-            ['Docs', '/docs'],
+            ['Full documentation', 'https://docs.capabilityhostprotocol.com'],
             ['Examples', '/examples'],
             ['Protocol surface', '/protocol'],
             ['Implementer paths', '/implementers'],
             ['Conformance model', '/conformance'],
-            ['Protocol Spec', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/spec/chp-v0.1.md'],
+            ['Specification index', 'https://github.com/capabilityhostprotocol/chp-core/tree/main/spec'],
             ['Onboarding guide', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/onboarding.md'],
             ['Why CHP?', 'https://github.com/capabilityhostprotocol/chp-core/blob/main/docs/why-chp.md'],
+            ['Source on GitHub', 'https://github.com/capabilityhostprotocol/chp-core'],
           ].map(([label, href]) => (
             <a
               key={label}

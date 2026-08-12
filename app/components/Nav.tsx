@@ -1,10 +1,12 @@
 export default function Nav() {
   const navItems = [
+    ['Quickstart', '/quickstart'],
     ['How it works', '/how-it-works'],
     ['Capabilities', '/capabilities'],
     ['Products', '/products'],
     ['Industries', '/industries/software'],
     ['Why a protocol', '/why-a-protocol'],
+    ['Glossary', '/glossary'],
     ['Blog', '/blog'],
     ['Docs', 'https://docs.capabilityhostprotocol.com'],
   ];
