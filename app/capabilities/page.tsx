@@ -8,6 +8,7 @@ import {
 } from '../lib/capabilities';
 import ItemListLd from '../components/ItemListLd';
 import SessionInspector from '../components/motif/SessionInspector';
+import LifecycleDiagram from '../components/motif/LifecycleDiagram';
 
 export const metadata: Metadata = {
   title: 'Capabilities - Capability Host Protocol',
@@ -81,26 +82,7 @@ export default function CapabilitiesPage() {
             It is the point where intent becomes effect — and the point where CHP puts a
             governed boundary.
           </p>
-          <ol className="grid gap-4 md:grid-cols-3">
-            {[
-              ['01', 'Declare', 'Software registers a capability — an id:version, an input/output contract, a risk tier, and the invariants that must hold.'],
-              ['02', 'Discover', 'A host answers what it exposes, filtered to what the caller is authorized to see.'],
-              ['03', 'Invoke', 'An actor submits an invocation envelope. The same request object travels over HTTP or a mesh transport.'],
-              ['04', 'Govern', 'A fixed pipeline checks mandate, policy, invariants, autonomy, and safety. It can allow, condition, or deny — with a reason from a closed vocabulary.'],
-              ['05', 'Execute', 'Only when the gates pass does the handler run, bounded by the capability’s declared timeout.'],
-              ['06', 'Evidence', 'Every invocation — including a denial — is recorded as tamper-evident, causally-linked evidence you can replay.'],
-            ].map(([n, name, body]) => (
-              <li key={n} className="surface-raised p-5">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="font-mono text-[11px] text-[color:var(--color-signal-cyan)]">
-                    {n}
-                  </span>
-                  <span className="text-base font-semibold text-zinc-100">{name}</span>
-                </div>
-                <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
-              </li>
-            ))}
-          </ol>
+          <LifecycleDiagram />
         </section>
 
         <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">

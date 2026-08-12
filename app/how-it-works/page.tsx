@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import LifecycleDiagram from '../components/motif/LifecycleDiagram';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import ConcreteCapabilityExample from '../components/ConcreteCapabilityExample';
@@ -77,6 +78,11 @@ export default function HowItWorksPage() {
             </a>
             .
           </p>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-6 py-10 border-y border-zinc-800/60">
+          <p className="eyebrow mb-6">The lifecycle at a glance</p>
+          <LifecycleDiagram />
         </section>
 
         <ConcreteCapabilityExample />

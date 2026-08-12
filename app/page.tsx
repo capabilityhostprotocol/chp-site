@@ -49,10 +49,10 @@ export default function Home() {
         <Reveal>
           <Applications />
         </Reveal>
+        <ScrollStory />
         <Reveal>
           <VerticalGallery />
         </Reveal>
-        <ScrollStory />
         <Reveal>
           <DifferentiationSection />
         </Reveal>
