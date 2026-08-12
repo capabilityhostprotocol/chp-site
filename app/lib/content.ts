@@ -325,8 +325,9 @@ host = LocalCapabilityHost("my-agent", store=store)
 # state_machine, event_bus, ingestion, retrieval, graph, incident
 managers = setup_sqlite_capabilities(host, base_dir=".chp")`;
 
-export const HOOKS_INSTALL = `# One command — no application code changes required
-chp hooks install
+export const HOOKS_INSTALL = `# Two commands — no application code changes required
+pip install chp-core
+chp hooks install                    # --all-harnesses: + Codex + Gemini CLI
 
 # → Hooks registered for Claude Code
 # → Every tool call intercepted: Bash, Read, Edit, Write, WebFetch...
@@ -412,7 +413,7 @@ export const CLI_GROUPS = [
   {
     label: 'Hooks',
     commands: [
-      { cmd: 'chp hooks install',            desc: 'Intercept Claude Code / Codex / Gemini tool calls' },
+      { cmd: 'chp hooks install',            desc: 'Intercept Claude Code tool calls (--all-harnesses: + Codex + Gemini)' },
       { cmd: 'chp hooks status',             desc: 'Show which agent CLIs are hooked' },
       { cmd: 'chp hook pre-tool',            desc: 'Policy gate (blocks or warns before execution)' },
       { cmd: 'chp hook post-tool',           desc: 'Evidence writer (records after execution)' },

@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 };
 
 const FAST_PATH = `pip install chp-core
-chp hooks install
+chp hooks install                    # Claude Code
+# chp hooks install --all-harnesses  # ...or + Codex + Gemini CLI
 
 # ...use your agent as you normally would, then:
 chp session list
@@ -221,7 +222,9 @@ export default function QuickstartPage() {
         <div className="mb-16">
           <CodeBlock code={FAST_PATH} label="terminal" />
           <p className="text-sm text-zinc-400 leading-relaxed mt-4">
-            That hooks Claude Code, Codex, and Gemini CLI. Use your agent normally,
+            That hooks Claude Code — add{' '}
+            <code className="font-mono text-zinc-300">--all-harnesses</code> for Codex
+            and Gemini CLI too. Use your agent normally,
             then <code className="font-mono text-zinc-300">chp session tree</code> shows
             every tool call it made as a replayable tree. A denial is a first-class
             event with a reason code — not a swallowed exception — and the chain is
