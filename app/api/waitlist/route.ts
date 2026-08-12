@@ -18,8 +18,9 @@ const Body = z.object({
   designPartner: z.boolean().optional().default(false),
   source: z.string().max(200).optional().default(''),
   consent: z.literal(true),
-  // honeypot — bots fill hidden fields; humans never see it.
-  companyWebsite: z.string().max(0).optional().default(''),
+  // honeypot — bots fill hidden fields; humans never see it. Accept any value here so the
+  // handler can silently 200 (below) rather than signalling the bot with a 400.
+  companyWebsite: z.string().max(200).optional().default(''),
 });
 
 export async function POST(req: Request) {
