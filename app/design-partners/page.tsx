@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
+import WaitlistForm from '../components/WaitlistForm';
 
 export const metadata: Metadata = {
   title: 'Design partners - Capability Host Protocol',
@@ -91,12 +92,12 @@ export default function DesignPartnersPage() {
           </p>
           <div className="flex flex-wrap items-center gap-3 mt-8">
             <a
-              href="mailto:partners@capabilityhostprotocol.com?subject=CHP%20design%20partner"
+              href="#apply"
               data-event="design_partner_contact"
               data-event-label="design_partners"
               className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors"
             >
-              Start a conversation
+              Apply to be a design partner
             </a>
             <a
               href="/govern/agents"
@@ -171,27 +172,16 @@ export default function DesignPartnersPage() {
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 pb-20">
-          <div className="surface-signature p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-            <div>
-              <h2 className="text-lg font-semibold text-zinc-100 mb-2">
-                Don&apos;t see your domain?
-              </h2>
-              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-                If your work needs a provable record of what people, agents, and
-                systems did, the protocol fits. Tell us the workflow and we&apos;ll
-                map it with you.
-              </p>
-            </div>
-            <a
-              href="mailto:partners@capabilityhostprotocol.com?subject=CHP%20design%20partner"
-              data-event="design_partner_contact"
-              data-event-label="design_partners"
-              className="bg-zinc-100 text-zinc-950 border border-zinc-100 rounded-lg px-4 py-2.5 text-sm font-medium hover:bg-white transition-colors whitespace-nowrap"
-            >
-              Start a conversation
-            </a>
-          </div>
+        <section id="apply" className="max-w-2xl mx-auto px-6 pb-24 scroll-mt-20">
+          <p className="eyebrow mb-3">Apply</p>
+          <h2 className="display-2 text-zinc-50 mb-3">
+            Build the governance layer for your domain with us.
+          </h2>
+          <p className="text-base text-zinc-400 leading-relaxed mb-8">
+            Tell us the workflow that needs a provable record of what people, agents,
+            and systems did. If the protocol fits, we&apos;ll map it with you.
+          </p>
+          <WaitlistForm product="design-partner" designPartner />
         </section>
       </main>
       <SiteFooter />

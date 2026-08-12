@@ -39,11 +39,13 @@ const PRODUCTS: Record<
 export default async function WaitlistPage({
   searchParams,
 }: {
-  searchParams: Promise<{ product?: string }>;
+  searchParams: Promise<{ product?: string; waitlist?: string }>;
 }) {
-  const { product } = await searchParams;
+  const { product, waitlist } = await searchParams;
   const key = product && product in PRODUCTS ? product : 'chp';
   const p = PRODUCTS[key];
+  // A product may offer both paths; `?waitlist=1` forces the plain waitlist over design-partner.
+  const designPartner = waitlist ? false : p.designPartner;
 
   return (
     <div className="min-h-screen">
@@ -51,14 +53,14 @@ export default async function WaitlistPage({
       <main>
         <section className="max-w-2xl mx-auto px-6 pt-16 pb-20 md:pt-24">
           <p className="eyebrow mb-4">
-            {p.designPartner ? 'Design partners' : 'Waitlist'}
+            {designPartner ? 'Design partners' : 'Waitlist'}
             {key !== 'chp' ? ` · ${p.label}` : ''}
           </p>
           <h1 className="display-2 text-zinc-50 mb-4">
-            {p.designPartner ? `Build ${p.label} with us.` : `Get early access to ${p.label}.`}
+            {designPartner ? `Build ${p.label} with us.` : `Get early access to ${p.label}.`}
           </h1>
           <p className="text-base text-zinc-400 leading-relaxed mb-8">{p.blurb}</p>
-          <WaitlistForm product={key} designPartner={p.designPartner} />
+          <WaitlistForm product={key} designPartner={designPartner} />
         </section>
       </main>
       <SiteFooter />

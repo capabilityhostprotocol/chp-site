@@ -39,6 +39,9 @@ export default function ChpLegalProductPage() {
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
             <ButtonLink href="/waitlist?product=chp-legal">Become a design partner</ButtonLink>
+            <ButtonLink href="/waitlist?product=chp-legal&waitlist=1" variant="secondary">
+              Join the waitlist
+            </ButtonLink>
             <ButtonLink href="/industries/legal" variant="secondary">
               Legal, on CHP
             </ButtonLink>
@@ -85,7 +88,12 @@ export default function ChpLegalProductPage() {
                 We&apos;re selecting design partners now. Tell us about your practice.
               </p>
             </div>
-            <ButtonLink href="/waitlist?product=chp-legal">Become a design partner</ButtonLink>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/waitlist?product=chp-legal">Become a design partner</ButtonLink>
+              <ButtonLink href="/waitlist?product=chp-legal&waitlist=1" variant="secondary">
+                Join the waitlist
+              </ButtonLink>
+            </div>
           </div>
         </section>
       </main>
