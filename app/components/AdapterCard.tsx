@@ -29,12 +29,22 @@ export default function AdapterCard({ adapter }: { adapter: Adapter }) {
         </span>
       </div>
 
-      <div className="mt-3 flex items-center gap-2 rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/70 px-3 py-2">
-        <code className="flex-1 truncate font-mono text-[11px] text-zinc-300">
-          {install}
-        </code>
-        <CodeCopyButton code={install} label={`${name} install command`} />
-      </div>
+      {adapter.published === false ? (
+        // Don't hand out an install command that 404s. The adapter is real and
+        // declared; the PyPI project just isn't registered yet.
+        <div className="mt-3 rounded-md border border-dashed border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/40 px-3 py-2">
+          <span className="font-mono text-[11px] text-zinc-500">
+            not yet on PyPI
+          </span>
+        </div>
+      ) : (
+        <div className="mt-3 flex items-center gap-2 rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/70 px-3 py-2">
+          <code className="flex-1 truncate font-mono text-[11px] text-zinc-300">
+            {install}
+          </code>
+          <CodeCopyButton code={install} label={`${name} install command`} />
+        </div>
+      )}
 
       <a
         href={`/adapters/${adapter.id.replace(/^chp-adapter-/, '')}`}

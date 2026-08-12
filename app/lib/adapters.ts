@@ -9,6 +9,9 @@ export type Adapter = {
   description: string;
   status: AdapterStatus;
   tier: number;
+  /** Whether the PyPI project actually exists yet. Absent = treat as published,
+   *  so an older catalog copy keeps its current behaviour. */
+  published?: boolean;
 };
 
 type AdapterCatalog = {

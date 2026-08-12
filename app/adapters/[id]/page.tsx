@@ -66,12 +66,22 @@ export default async function AdapterDetailPage({ params }: Params) {
               {description}
             </p>
           )}
-          <div className="flex items-center gap-2 rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/70 px-3 py-2 max-w-md">
-            <code className="flex-1 truncate font-mono text-xs text-zinc-300">
-              {install}
-            </code>
-            <CodeCopyButton code={install} label={`${name} install command`} />
-          </div>
+          {reg?.published === false ? (
+            // Declared and real, but the PyPI project isn't registered yet —
+            // handing out an install command that 404s is worse than saying so.
+            <div className="rounded-md border border-dashed border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/40 px-3 py-2 max-w-md">
+              <span className="font-mono text-xs text-zinc-500">
+                not yet on PyPI — <code>{pypi}</code> is not published
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 rounded-md border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-field)]/70 px-3 py-2 max-w-md">
+              <code className="flex-1 truncate font-mono text-xs text-zinc-300">
+                {install}
+              </code>
+              <CodeCopyButton code={install} label={`${name} install command`} />
+            </div>
+          )}
           <p className="font-mono text-xs text-zinc-400 mt-3">
             Auto-discovered through the <code>chp.adapters</code> entry point — no
             host config needed.
