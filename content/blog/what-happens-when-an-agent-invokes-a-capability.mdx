@@ -1,0 +1,60 @@
+---
+title: "What happens when an agent invokes a capability?"
+description: "\"The agent did X\" sounds like one step. It's six — and five of them happen before anything takes effect. A walk through the whole lifecycle, from the moment a capability is declared to the record it leaves behind."
+date: "2026-08-11"
+---
+
+When we say an agent *did something* — scheduled a technician, moved a payment, shipped a release — we describe it as a single step. That framing is where most of the trouble starts. The single step is actually a sequence, and the interesting parts of it happen *before* anything takes effect.
+
+Here is the whole thing, end to end.
+
+<Figure caption="The capability lifecycle: five stages precede the effect; Govern is the boundary where an invocation is allowed or denied.">
+  <LifecycleDiagram />
+</Figure>
+
+Walk it one stage at a time, with a concrete capability: `schedule_technician`.
+
+## Declare
+
+Before any agent can call it, someone **declares** the capability. Not just its name — its whole contract: a stable `id:version`, the inputs and outputs, a risk tier, the modes it supports, and the **invariants** that must hold when it runs. `schedule_technician` is declared `high` risk, requiring authorization and approval. That declaration is the capability's public contract, and it exists whether or not anyone ever calls it.
+
+## Discover
+
+The agent has to **find** the capability, and it only finds what it is allowed to find. Discovery is filtered to the caller: an agent sees the capabilities its identity is permitted to see, and no more. This is not the security boundary — it's the disclosure boundary. It means an agent's map of "what I could do here" already reflects who it is.
+
+## Invoke
+
+The agent **invokes**: it submits an invocation envelope carrying the payload, a subject (on whose behalf it acts), and a correlation context that will tie every downstream event together. The envelope is the same object whether the host is in the same process or across a mesh — the invocation doesn't change shape when the network does.
+
+## Govern
+
+This is the stage that matters, and the one most systems don't have. Before the handler runs at all, the invocation passes a fixed pipeline of gates: the caller's **mandate**, **policy**, the declared **invariants**, **autonomy** budget, and **safety** checks. The pipeline produces one of three answers — allow, condition, or **deny** — and it produces it *before* any effect.
+
+<PullQuote>The most important thing a governed boundary does is stop the wrong action from happening — and record why.</PullQuote>
+
+For `schedule_technician`, the first attempt is denied: the subject lacks the `service:dispatch` entitlement. That denial isn't an error or an exception — it's a first-class outcome with a reason code from a closed vocabulary (`policy_blocked`), and it is recorded. A human then grants the entitlement, and the retry passes the gates.
+
+## Execute
+
+Only now does the handler **execute**. Execution is almost anticlimactic by this point — the interesting decisions already happened at the boundary. The handler runs, bounded by the capability's declared timeout, and produces its result.
+
+## Evidence
+
+Every stage emits **evidence**: started, denied, granted, completed — each a tamper-evident event, chained to the one before it, correlated under one id, and replayable. The denial and the eventual success are both in the record. You can ask for the whole session by its correlation id and get back the ordered story, verifiable by someone who wasn't there.
+
+<Figure caption="One session, hash-chained: denied, granted by a human, then executed and sealed.">
+  <EvidenceChain
+    events={[
+      { seq: '01', type: 'execution_denied', hash: '7b1a' },
+      { seq: '02', type: 'approval_granted', hash: '9c7e' },
+      { seq: '03', type: 'execution_started', hash: 'a3f1' },
+      { seq: '04', type: 'execution_completed', hash: '1d04' },
+    ]}
+  />
+</Figure>
+
+## Why the shape matters
+
+Notice where the weight sits. Of the six stages, five happen before the effect, and the one that decides everything — Govern — happens at the boundary between intent and action, not after it. "The agent did X" hides all of that. A governed capability makes it explicit: what was declared, who could discover it, what was invoked, whether it was allowed, what ran, and what it left behind.
+
+That's the whole point of the Capability Host Protocol. Not to make the agent smarter, and not to watch it after the fact — but to turn the single opaque step into a lifecycle you can govern at the boundary and prove afterward.

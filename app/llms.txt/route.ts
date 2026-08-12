@@ -10,6 +10,8 @@ const BODY = `# Capability Host Protocol (CHP)
 - [CHP and the agentic web](https://capabilityhostprotocol.com/agentic-web): CHP is the governed execution layer — discovery (llms.txt/capabilities.txt) → invocation (MCP) → identity (Web Bot Auth) → governed execution + evidence (CHP).
 - [Use cases](https://capabilityhostprotocol.com/use-cases): the concrete jobs CHP does.
 - [Glossary](https://capabilityhostprotocol.com/glossary): the core terms — capability, boundary, host, invocation, evidence, hash chain, correlation, denial, replay, conformance — defined.
+- [What happens when an agent invokes a capability](https://capabilityhostprotocol.com/blog/what-happens-when-an-agent-invokes-a-capability): the full lifecycle — declare, discover, invoke, govern, execute, evidence — walked end to end.
+- [Trust is an execution property](https://capabilityhostprotocol.com/blog/trust-is-an-execution-property): why trust is established at execution and carried by evidence, not asserted about the actor up front.
 
 ## Govern (what you can govern)
 - [Agents](https://capabilityhostprotocol.com/govern/agents): capture every agent tool call as replayable, tamper-evident evidence (real today).

@@ -1,0 +1,45 @@
+---
+title: "Trust is an execution property"
+description: "We keep trying to decide whether an agent is trustworthy before it acts — with identity, reputation, benchmarks, assurances. None of it survives the moment it acts. Trust isn't a property of the actor. It's a property of the execution."
+date: "2026-08-11"
+---
+
+Almost everything built to make AI agents trustworthy is aimed at the wrong moment. Identity verification, reputation, evaluation scores, a vendor's assurances, a model card, a certification — they all try to answer one question, up front: *can I trust this agent?*
+
+It's a reasonable question. It's also the wrong one, because the answer doesn't survive contact with the first real action.
+
+## Trust doesn't live in the actor
+
+A trustworthy agent can do an untrustworthy thing — a good model, a bad call, at 3am, unattended. And an agent you've never vetted can be safely allowed to do a narrow, governed thing, because the thing itself is constrained no matter who asked for it. Whatever you decided about the *actor* in advance, the action can still go either way.
+
+So the trust that actually matters is not attached to the agent. It is attached to the action:
+
+<PullQuote>You don't trust an agent. You trust — or don't — what a specific action did, under what governance, with what proof.</PullQuote>
+
+That is what it means to say trust is an *execution* property. It is established at the moment of execution, per action, at the boundary where intent becomes effect — not asserted beforehand and hoped to hold.
+
+## What execution-trust is made of
+
+If trust lives at execution, it has three ingredients, and none of them is a reputation:
+
+- **Was it allowed?** The action passed a governed boundary — checked against policy and invariants — and was permitted, or it was denied with a reason. Trust begins with the fact that the action *could have been stopped* and wasn't.
+- **What did it do?** The effect is attributable: a subject, a capability, a context. Not "the system did something," but "this action, by this actor, on whose behalf."
+- **Can you prove it?** The record is tamper-evident and outlives the system that made it, so someone who wasn't there can verify it. Trust that can't be handed to a third party isn't trust — it's a claim.
+
+<Callout>
+A denial is a trust event too. "This action was attempted and stopped, here is why" is often the most trustworthy line in the whole record — and it's the one an up-front assurance can never produce.
+</Callout>
+
+## Evidence is how execution-trust travels
+
+Here is the part that up-front trust models can't do: let trust cross a boundary. A reputation is only worth what the party quoting it is worth to you. An assurance means nothing to a counterparty who wasn't inside your trust boundary when it was made.
+
+Evidence is different. Because it's produced at execution, tied to the action, and tamper-evident, it can be carried to someone who has no reason to trust *you* and still mean something. Execution-trust is portable in a way actor-trust never is. That portability is the whole game once agents are acting across organizational lines, between systems that have never met.
+
+## The question to actually ask
+
+This is the shift the Capability Host Protocol is built around. CHP does not rate agents or score their trustworthiness. It establishes trust where trust actually lives — at the capability boundary, at the moment of execution — by governing whether each action is allowed and turning the outcome into portable, verifiable evidence.
+
+Stop asking whether you can trust the agent. It's unanswerable in advance and it doesn't survive the first consequential action anyway. Ask the question that has an answer: *was this action governed, and can I prove what it did?*
+
+Trust was never a badge you pin on the actor. It's a property of the execution.

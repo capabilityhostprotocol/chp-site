@@ -10,6 +10,7 @@ import CompareTable from '../../components/motif/CompareTable';
 import EvidenceChain from '../../components/motif/EvidenceChain';
 import EvidenceArtifact from '../../components/motif/EvidenceArtifact';
 import EvidenceContractDiagram from '../../components/EvidenceContractDiagram';
+import LifecycleDiagram from '../../components/motif/LifecycleDiagram';
 import {
   TelemetryVsEvidenceTable,
   AgenticStackTable,
@@ -69,6 +70,7 @@ const mdxComponents = {
   EvidenceChain,
   EvidenceArtifact,
   EvidenceContractDiagram,
+  LifecycleDiagram,
   TelemetryVsEvidenceTable,
   AgenticStackTable,
   LogsVsEvidenceTable,
