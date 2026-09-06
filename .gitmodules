@@ -1,0 +1,4 @@
+[submodule "vendor/chp-ui"]
+	path = vendor/chp-ui
+	url = https://github.com/capabilityhostprotocol/chp-ui.git
+	branch = vercel-pkg
