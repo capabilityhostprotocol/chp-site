@@ -2,5 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "installCommand": "git config --global url.\"https://x-access-token:${GH_PKG_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && git submodule update --init --recursive && npm install"
+  "installCommand": "git config --global url.\"https://${GH_PKG_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && git submodule update --init --recursive && npm install"
 }
