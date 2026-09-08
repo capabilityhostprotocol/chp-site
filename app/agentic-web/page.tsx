@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import EvidenceChain from '../components/motif/EvidenceChain';
+import { EvidenceField } from '@chp/ui/evidence-field';
 
 export const metadata: Metadata = {
   title: 'CHP and the agentic web — the governed execution layer',
@@ -102,7 +103,11 @@ export default function AgenticWebPage() {
       <Nav />
       <main>
         {/* Hero — TLDR-first (answer the query in the first screen) */}
-        <section className="band-tight pt-20 md:pt-28">
+        <section className="band-tight pt-20 md:pt-28 relative overflow-hidden">
+          <div aria-hidden="true" className="absolute inset-0 opacity-40">
+            <EvidenceField pointer={false} />
+          </div>
+          <div className="relative">
           <p className="eyebrow mb-5">The agentic web</p>
           <h1 className="display-1 text-zinc-50 mb-6 max-w-4xl">
             CHP is the governed execution layer of the agentic web.
@@ -122,6 +127,7 @@ export default function AgenticWebPage() {
             did, whether it was allowed, and proves it</em> — governed,
             tamper-evident, replayable execution at the capability boundary.
           </p>
+          </div>
         </section>
 
         {/* The stack */}
