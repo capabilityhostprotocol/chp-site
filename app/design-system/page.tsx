@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Nav from '../components/Nav';
 import SiteFooter from '../components/SiteFooter';
 import FieldMotif from '../components/FieldMotif';
+import VgpuPrimitives from '../components/VgpuPrimitives';
 import VisualGrammar from '../components/VisualGrammar';
 import EvidenceContractDiagram from '../components/EvidenceContractDiagram';
 import MeshTraceDiagram from '../components/MeshTraceDiagram';
@@ -237,6 +238,8 @@ export default function DesignSystemPage() {
             <FieldMotif />
           </div>
         </section>
+
+        <VgpuPrimitives />
 
         <VisualGrammar />
 
