@@ -15,6 +15,7 @@
     "test:routes": "node scripts/verify-routes.mjs"
   },
   "dependencies": {
+    "@chp/ui": "file:./vendor/chp-ui",
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/analytics": "^2.0.1",
     "gray-matter": "^4.0.3",
