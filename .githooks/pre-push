@@ -1,0 +1,16 @@
+#!/bin/sh
+# Guard: refuse accidental direct pushes to the deploy branch — open a PR instead.
+# Enabled repo-wide via `core.hooksPath=.githooks` (set by the package.json "prepare" script on install).
+# Intentional override:  ALLOW_DEPLOY_PUSH=1 git push ...
+protected="refs/heads/main"
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "$protected" ] && [ "$ALLOW_DEPLOY_PUSH" != "1" ]; then
+    echo "" >&2
+    echo "  ✋ Refusing direct push to $protected (deploy branch)." >&2
+    echo "     Open a PR instead. To override intentionally:" >&2
+    echo "       ALLOW_DEPLOY_PUSH=1 git push ..." >&2
+    echo "" >&2
+    exit 1
+  fi
+done
+exit 0
