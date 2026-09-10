@@ -1,3 +1,5 @@
+import { NebulaField } from '@chp/ui/nebula-field';
+
 const LINKS = [
   {
     label: 'How it works',
@@ -23,8 +25,12 @@ const LINKS = [
 
 export default function GoDeeper() {
   return (
-    <section className="border-b border-zinc-800/60">
-      <div className="band">
+    <section className="relative overflow-hidden border-b border-zinc-800/60">
+      {/* Ambient brand-color nebula behind the closing resource grid; renders nothing without WebGPU. */}
+      <div aria-hidden="true" className="absolute inset-0 opacity-50">
+        <NebulaField />
+      </div>
+      <div className="band relative z-10">
         <p className="eyebrow mb-10">Go deeper</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {LINKS.map((l) => (
