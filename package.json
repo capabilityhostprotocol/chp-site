@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "sync:adapters": "node scripts/sync-adapters.mjs",
     "sync:capabilities": "node scripts/sync-capabilities.mjs",
     "sync": "node scripts/sync-adapters.mjs && node scripts/sync-capabilities.mjs",
