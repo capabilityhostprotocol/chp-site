@@ -1,0 +1,43 @@
+{
+  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize)",
+  "subject": {
+    "source": "github:skanehira/gjo/README.md",
+    "state": "observed",
+    "immutable": true,
+    "commit": "15ee8be380a53bb6a51672a56cd134bb755077d4",
+    "content_sha256": "1c20a9b72f77878211c58125218cdb262d2e2e3a9724acba5339e48eedcc5ee2",
+    "acquired_at": "2026-10-01T23:34:19Z"
+  },
+  "entries": [
+    {
+      "candidate_label": "Create JSON object",
+      "candidate_id": "json.object.create",
+      "state": "matched",
+      "canonical": "data.json.object.create",
+      "inference_is_authority": false,
+      "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
+    },
+    {
+      "candidate_label": "Create JSON array",
+      "candidate_id": "json.array.create",
+      "state": "matched",
+      "canonical": "data.json.array.create",
+      "inference_is_authority": false,
+      "claim": "matched to canonical capability 'data.json.array.create' \u2014 NOT yet qualified, bound, ready, or executed"
+    },
+    {
+      "candidate_label": "Pretty-print JSON output",
+      "candidate_id": "json.pretty_print",
+      "state": "candidate",
+      "canonical": null,
+      "inference_is_authority": false,
+      "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+    }
+  ],
+  "states_present": [
+    "candidate",
+    "matched"
+  ],
+  "capabilities_txt_eligible": [],
+  "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. No entry is published to capabilities.txt at this stage."
+}
