@@ -1,0 +1,268 @@
+{
+  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize) over git / HuggingFace / PyPI / npm",
+  "subjects": [
+    {
+      "subject": {
+        "source": "github:skanehira/gjo/README.md",
+        "kind": "github",
+        "state": "observed",
+        "immutable": true,
+        "commit": "15ee8be380a53bb6a51672a56cd134bb755077d4",
+        "version": null,
+        "content_sha256": "1c20a9b72f77878211c58125218cdb262d2e2e3a9724acba5339e48eedcc5ee2",
+        "acquired_at": "2026-10-02T01:24:16Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Create JSON object",
+          "candidate_id": "json.object.create",
+          "state": "matched",
+          "canonical": "data.json.object.create",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Create JSON array",
+          "candidate_id": "json.array.create",
+          "state": "matched",
+          "canonical": "data.json.array.create",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.array.create' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Compose nested JSON",
+          "candidate_id": "json.nested.compose",
+          "state": "matched",
+          "canonical": "data.json.object.create",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Pretty-print JSON",
+          "candidate_id": "json.pretty_print",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Show version",
+          "candidate_id": "cli.version.show",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. No entry is published to capabilities.txt at this stage."
+    },
+    {
+      "subject": {
+        "source": "hf:openai-community/gpt2/README.md",
+        "kind": "hf",
+        "state": "observed",
+        "immutable": true,
+        "commit": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+        "version": null,
+        "content_sha256": "0fcd631078093c2aa1d93438b898320b8a1167784e2a1ab37b8016e9de8b3c2e",
+        "acquired_at": "2026-10-02T01:25:10Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Text generation from prompt",
+          "candidate_id": "text.generation.causal",
+          "state": "matched",
+          "canonical": "ai.text.generate",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'ai.text.generate' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Text feature extraction",
+          "candidate_id": "text.embedding.features",
+          "state": "matched",
+          "canonical": "ai.text.embed",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'ai.text.embed' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Byte-level BPE tokenization",
+          "candidate_id": "text.tokenization.bpe",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Fine-tuning to downstream task",
+          "candidate_id": "model.finetune.downstream",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Seeded reproducible generation",
+          "candidate_id": "generation.seeded.reproducible",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. No entry is published to capabilities.txt at this stage."
+    },
+    {
+      "subject": {
+        "source": "pypi:jmespath/1.1.0",
+        "kind": "pypi",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "1.1.0",
+        "content_sha256": "9ddfd17f3d6af8adf5fe411f3c206e274329ab1ed3e1d667390a4b0ca86f0bb1",
+        "acquired_at": "2026-10-02T01:26:00Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "JSON path search",
+          "candidate_id": "json.query.search",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Compile JMESPath expression",
+          "candidate_id": "json.query.compile",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "List/wildcard projection",
+          "candidate_id": "json.query.list.projection",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Evaluation options",
+          "candidate_id": "json.query.options",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Custom functions",
+          "candidate_id": "json.query.custom_functions",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Compliance test suite",
+          "candidate_id": "json.query.compliance_tests",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. No entry is published to capabilities.txt at this stage."
+    },
+    {
+      "subject": {
+        "source": "npm:jsonpath/1.3.0",
+        "kind": "npm",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "1.3.0",
+        "content_sha256": "788ca7118e8a8750eaf5d2a1a6420041085a6ae7aac9b0842e609fef876cbe73",
+        "acquired_at": "2026-10-02T01:27:16Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Query values by JSONPath",
+          "candidate_id": "json.path.query",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Locate matching paths/nodes",
+          "candidate_id": "json.path.locate",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Get/set first match and parent",
+          "candidate_id": "json.path.value.access",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Apply function to matches",
+          "candidate_id": "json.path.transform",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Parse JSONPath expression",
+          "candidate_id": "json.path.expression.parse",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Stringify path to expression",
+          "candidate_id": "json.path.expression.stringify",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. No entry is published to capabilities.txt at this stage."
+    }
+  ],
+  "totals": {
+    "subjects": 4,
+    "matched": 10,
+    "candidates": 12,
+    "published": 0
+  },
+  "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. Nothing here is published to capabilities.txt."
+}
