@@ -1,5 +1,5 @@
 {
-  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize) over git / HuggingFace / PyPI / npm",
+  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize) over git / HuggingFace / PyPI / npm \u00b7 gjo qualified-by-execution (G4.1, The-Beast)",
   "subjects": [
     {
       "subject": {
@@ -19,7 +19,21 @@
           "state": "matched",
           "canonical": "data.json.object.create",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.object.create' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_d2b21c8f25f7438e95192ddd4f3492f9). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_d2b21c8f25f7438e95192ddd4f3492f9",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "golang:alpine",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'golang:alpine', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Create JSON array",
@@ -35,7 +49,21 @@
           "state": "matched",
           "canonical": "data.json.object.create",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.object.create' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_d2b21c8f25f7438e95192ddd4f3492f9). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_d2b21c8f25f7438e95192ddd4f3492f9",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "golang:alpine",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'golang:alpine', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Pretty-print JSON",
@@ -262,7 +290,8 @@
     "subjects": 4,
     "matched": 10,
     "candidates": 12,
-    "published": 0
+    "published": 0,
+    "qualified": 2
   },
   "disclaimer": "Discovery/canonicalization only. 'matched' means a candidate maps to a canonical capability; it is NOT qualified, bound, ready, or executed. Nothing here is published to capabilities.txt."
 }
