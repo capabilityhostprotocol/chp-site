@@ -86,3 +86,15 @@ export function pinnedIdentity(s: SubjectMeta): { label: string; value: string }
 export function shortDigest(digest: string | null, n = 16): string {
   return (digest ?? '').slice(0, n);
 }
+
+/** A stable, URL-safe slug for a subject's detail page, derived from its source identity. */
+export function subjectSlug(source: string | null): string {
+  return (source ?? 'unknown')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function getSubjectBySlug(slug: string): SoftwareSubject | undefined {
+  return catalog.subjects.find((s) => subjectSlug(s.subject.source) === slug);
+}

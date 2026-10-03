@@ -7,6 +7,7 @@ import {
   kindLabel,
   pinnedIdentity,
   shortDigest,
+  subjectSlug,
   type SoftwareSubject,
 } from '../lib/software';
 
@@ -98,6 +99,15 @@ function SubjectCard({ s }: { s: SoftwareSubject }) {
             </div>
           );
         })}
+      </div>
+
+      <div className="mt-4 pt-3 border-t border-zinc-800/60">
+        <a
+          href={`/software/${subjectSlug(meta.source)}`}
+          className="font-mono text-[11px] text-cyan-300 hover:underline"
+        >
+          full compile + qualification evidence -&gt;
+        </a>
       </div>
     </div>
   );
