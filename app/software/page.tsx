@@ -26,7 +26,21 @@ function SubjectCard({ s }: { s: SoftwareSubject }) {
       <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
         <div className="flex items-center gap-2.5">
           <Badge tone="neutral">{kindLabel(meta.kind)}</Badge>
-          <h3 className="text-base font-semibold text-zinc-100 break-all">{meta.source}</h3>
+          <h3 className="text-base font-semibold text-zinc-100 break-all">
+            {meta.source_url ? (
+              <a
+                href={meta.source_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-100 hover:text-cyan-300 hover:underline"
+                title="Open the exact immutable resource we acquired"
+              >
+                {meta.source} <span className="text-zinc-500">↗</span>
+              </a>
+            ) : (
+              meta.source
+            )}
+          </h3>
         </div>
         <div className="flex items-center gap-2 text-[11px]">
           <Badge tone="signal">{matched.length} matched</Badge>

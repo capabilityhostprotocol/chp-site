@@ -38,6 +38,7 @@ export type SubjectKind = 'github' | 'hf' | 'pypi' | 'npm' | string;
 
 export type SubjectMeta = {
   source: string | null;
+  source_url: string | null; // link out to the immutable resource we pulled in
   kind: SubjectKind | null;
   state: 'observed';
   immutable: boolean;
