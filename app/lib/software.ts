@@ -5,12 +5,24 @@ import data from '@/data/software.json';
  * (chp.adapters.foundry: interpret → shortlist → canonicalize) over real artifacts acquired across
  * git, HuggingFace, PyPI, and npm.
  *
- * The front-end reaches at most `matched` (a candidate canonicalized to a registry capability). It
- * does NOT materialize, qualify, bind, ready, admit, or execute anything. So the page never says
- * anything stronger than this model, and nothing is published to capabilities.txt (published = 0).
+ * The front-end reaches `matched`; the back half can then QUALIFY a matched capability BY EXECUTION
+ * — build + run the real artifact in a governed sandbox/container and record a verdict-free
+ * QualificationClaim. An entry carries a `qualification` block ONLY when a real run was observed;
+ * `qualification.passed` is a derived read of that run (exit 0 AND the probe matched), never a
+ * verdict — the evidence is cited. Nothing is bound/published to capabilities.txt (published = 0).
  */
 
 export type EntryState = 'matched' | 'candidate';
+
+export type Qualification = {
+  grounded_in: 'execution';
+  claim_id: string | null;
+  exit_code: number | null;
+  matched: boolean;
+  boundary: unknown;
+  evidence: string[];
+  passed: boolean;
+};
 
 export type SoftwareEntry = {
   candidate_label: string | null;
@@ -19,12 +31,14 @@ export type SoftwareEntry = {
   canonical: string | null;
   inference_is_authority: false;
   claim: string;
+  qualification?: Qualification;
 };
 
 export type SubjectKind = 'github' | 'hf' | 'pypi' | 'npm' | string;
 
 export type SubjectMeta = {
   source: string | null;
+  source_url: string | null; // link out to the immutable resource we pulled in
   kind: SubjectKind | null;
   state: 'observed';
   immutable: boolean;
@@ -45,7 +59,7 @@ export type SoftwareSubject = {
 export type SoftwareCatalog = {
   generated_by: string;
   subjects: SoftwareSubject[];
-  totals: { subjects: number; matched: number; candidates: number; published: number };
+  totals: { subjects: number; matched: number; candidates: number; qualified?: number; published: number };
   disclaimer: string;
 };
 
@@ -71,4 +85,16 @@ export function pinnedIdentity(s: SubjectMeta): { label: string; value: string }
 
 export function shortDigest(digest: string | null, n = 16): string {
   return (digest ?? '').slice(0, n);
+}
+
+/** A stable, URL-safe slug for a subject's detail page, derived from its source identity. */
+export function subjectSlug(source: string | null): string {
+  return (source ?? 'unknown')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function getSubjectBySlug(slug: string): SoftwareSubject | undefined {
+  return catalog.subjects.find((s) => subjectSlug(s.subject.source) === slug);
 }
