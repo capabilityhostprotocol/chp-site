@@ -1,5 +1,5 @@
 {
-  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize) over git / HuggingFace / PyPI / npm, served from the Observatory record plane",
+  "generated_by": "chp-foundry \u00b7 chp.adapters.foundry (interpret \u2192 shortlist \u2192 canonicalize) over git / HuggingFace / PyPI / npm, matched against the live CHP capability inventory",
   "subjects": [
     {
       "subject": {
@@ -92,6 +92,241 @@
     },
     {
       "subject": {
+        "source": "pypi:requests/2.34.2",
+        "source_url": "https://pypi.org/project/requests/2.34.2/",
+        "kind": "pypi",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "2.34.2",
+        "content_sha256": "2a9268c9be5f4dc9abe9105740be7c5234babc3dd2b25eb11ca376c538a0c67b",
+        "acquired_at": "2026-10-04T18:25:23Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Send HTTP requests",
+          "candidate_id": "http.request.send",
+          "state": "matched",
+          "canonical": "chp.adapters.http.request",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Persistent sessions",
+          "candidate_id": "http.session.persist",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "HTTP authentication",
+          "candidate_id": "http.auth.authenticate",
+          "state": "matched",
+          "canonical": "chp.adapters.http.request",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "TLS/SSL verification",
+          "candidate_id": "http.tls.verify",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Streaming and uploads",
+          "candidate_id": "http.transfer.stream",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Response decoding",
+          "candidate_id": "http.response.decode",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "pypi:gitpython/3.2.0",
+        "source_url": "https://pypi.org/project/gitpython/3.2.0/",
+        "kind": "pypi",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "3.2.0",
+        "content_sha256": "bfaef38df3d73c6daee2d16a43f448ec91cf082944c56da5c31ebd3fb26894b0",
+        "acquired_at": "2026-10-04T18:26:21Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Repository access",
+          "candidate_id": "git.repo.access",
+          "state": "matched",
+          "canonical": "chp.adapters.git.inspect_repo",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.git.inspect_repo' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Git object abstraction",
+          "candidate_id": "git.objects.inspect",
+          "state": "matched",
+          "canonical": "chp.adapters.git.inspect_repo",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.git.inspect_repo' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Repository cloning",
+          "candidate_id": "git.repo.clone",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Git executable configuration",
+          "candidate_id": "git.executable.configure",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "npm:nodemailer/10.0.14",
+        "source_url": "https://www.npmjs.com/package/nodemailer/v/10.0.14",
+        "kind": "npm",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "10.0.14",
+        "content_sha256": "196a69b2b6c19cfdb200c47216471709d7f953a0ca3f7bdf476515b0f76a5a85",
+        "acquired_at": "2026-10-04T18:27:08Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Send email",
+          "candidate_id": "email.send",
+          "state": "matched",
+          "canonical": "chp.adapters.email.send",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.email.send' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "SMTP transport",
+          "candidate_id": "email.transport.smtp",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Sendmail transport",
+          "candidate_id": "email.transport.sendmail",
+          "state": "matched",
+          "canonical": "chp.adapters.email.send",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.email.send' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "OAuth2 authentication",
+          "candidate_id": "email.auth.oauth2",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Multi-runtime support",
+          "candidate_id": "email.runtime.multi",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "TypeScript typings",
+          "candidate_id": "email.typescript.types",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "npm:axios/1.20.0",
+        "source_url": "https://www.npmjs.com/package/axios/v/1.20.0",
+        "kind": "npm",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "1.20.0",
+        "content_sha256": "c85dc7da52677e8134624c62cab3e961ef6448dd5a34df3f127ab02ea55b0ffc",
+        "acquired_at": "2026-10-04T18:28:05Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Send HTTP requests",
+          "candidate_id": "http.request.send",
+          "state": "matched",
+          "canonical": "chp.adapters.http.request",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Browser HTTP client",
+          "candidate_id": "http.client.browser",
+          "state": "matched",
+          "canonical": "chp.adapters.http.request",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Node.js HTTP client",
+          "candidate_id": "http.client.node",
+          "state": "matched",
+          "canonical": "chp.adapters.http.request",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+        }
+      ],
+      "states_present": [
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
         "source": "hf:openai-community/gpt2/README.md",
         "source_url": "https://huggingface.co/openai-community/gpt2/blob/607a30d783dfa663caf39e06633721c8d4cfcd7e/README.md",
         "kind": "hf",
@@ -100,12 +335,12 @@
         "commit": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
         "version": null,
         "content_sha256": "0fcd631078093c2aa1d93438b898320b8a1167784e2a1ab37b8016e9de8b3c2e",
-        "acquired_at": "2026-10-03T21:40:34Z"
+        "acquired_at": "2026-10-04T18:28:36Z"
       },
       "entries": [
         {
-          "candidate_label": "Prompted text generation",
-          "candidate_id": "text.generation.prompt",
+          "candidate_label": "Text generation",
+          "candidate_id": "text.generation",
           "state": "matched",
           "canonical": "ai.text.generate",
           "inference_is_authority": false,
@@ -113,31 +348,23 @@
         },
         {
           "candidate_label": "Text feature extraction",
-          "candidate_id": "text.feature.extraction",
+          "candidate_id": "text.feature_extraction",
           "state": "matched",
           "canonical": "ai.text.embed",
           "inference_is_authority": false,
           "claim": "matched to canonical capability 'ai.text.embed' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Byte-level BPE tokenization",
-          "candidate_id": "text.tokenization.bpe",
-          "state": "candidate",
-          "canonical": null,
+          "candidate_label": "Text tokenization",
+          "candidate_id": "text.tokenize",
+          "state": "matched",
+          "canonical": "chp.adapters.huggingface.tokenize",
           "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+          "claim": "matched to canonical capability 'chp.adapters.huggingface.tokenize' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Fine-tuning base",
-          "candidate_id": "model.finetune.downstream",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Next-token prediction / perplexity scoring",
-          "candidate_id": "text.language.modeling",
+          "candidate_label": "Downstream fine-tuning",
+          "candidate_id": "model.finetune",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
@@ -283,9 +510,9 @@
     }
   ],
   "totals": {
-    "subjects": 4,
-    "matched": 8,
-    "candidates": 13,
+    "subjects": 8,
+    "matched": 18,
+    "candidates": 21,
     "qualified": 2,
     "published": 0
   },
