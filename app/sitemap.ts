@@ -20,6 +20,7 @@ const ROUTES = [
   '/capabilities',
   '/capabilities-txt',
   '/products',
+  '/products/chp-safety',
   '/products/a2a-computer',
   '/products/chp-home',
   '/products/chp-legal',
