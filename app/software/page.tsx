@@ -4,6 +4,7 @@ import SiteFooter from '../components/SiteFooter';
 import Badge from '../components/Badge';
 import {
   catalog,
+  discoveredBySource,
   kindLabel,
   pinnedIdentity,
   shortDigest,
@@ -138,6 +139,9 @@ export default function SoftwarePage() {
               <Badge tone="approved">{t.qualified} qualified by execution</Badge>
             )}
             <Badge tone="required">{t.candidates} candidate</Badge>
+            {(catalog.discovered?.length ?? 0) > 0 && (
+              <Badge tone="neutral">{catalog.discovered!.length} discovered</Badge>
+            )}
             <Badge tone="neutral">{t.published} published to capabilities.txt</Badge>
           </div>
         </section>
@@ -162,6 +166,54 @@ export default function SoftwarePage() {
             ))}
           </div>
         </section>
+
+        {(catalog.discovered?.length ?? 0) > 0 && (
+          <section className="max-w-6xl mx-auto px-6 py-12 border-t border-zinc-800/60">
+            <p className="eyebrow mb-4">Discovered</p>
+            <h2 className="display-2 text-zinc-100 mb-4 max-w-3xl">
+              Capabilities the network didn&apos;t have yet.
+            </h2>
+            <p className="text-zinc-400 leading-relaxed max-w-3xl mb-10">
+              When an artifact exposes a capability the registry can&apos;t already match, the Foundry
+              doesn&apos;t discard it — a model <span className="text-zinc-200">proposes</span> a new
+              canonical capability, grounded in that artifact. These are{' '}
+              <span className="text-amber-200">proposed, non-authoritative candidates</span> for the
+              inventory: the host governs admission, so none is matched, bound, admitted, or published
+              here. This is how the capability vocabulary grows from the software the network observes.
+            </p>
+            <div className="flex flex-col gap-4">
+              {discoveredBySource().map(({ source, items }) => (
+                <div key={source} className="surface-raised p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <h3 className="font-mono text-[12px] text-zinc-400 break-all">{source}</h3>
+                    <Badge tone="required">{items.length} proposed</Badge>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {items.map((d) => (
+                      <div
+                        key={d.id}
+                        className="flex items-start gap-3 border-t border-zinc-800/60 pt-2 first:border-t-0 first:pt-0"
+                      >
+                        <span className="mt-0.5 shrink-0">
+                          <Badge tone="required">proposed</Badge>
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-mono text-[13px] text-amber-200 break-all">{d.id}</p>
+                          <p className="text-[12px] text-zinc-400 leading-relaxed">{d.description}</p>
+                          {d.proposed_by_model && (
+                            <p className="text-[11px] text-zinc-500 font-mono mt-1">
+                              proposed by {d.proposed_by_model} · pending governed admission
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="surface-signature p-6">

@@ -11,72 +11,234 @@
         "commit": "15ee8be380a53bb6a51672a56cd134bb755077d4",
         "version": null,
         "content_sha256": "1c20a9b72f77878211c58125218cdb262d2e2e3a9724acba5339e48eedcc5ee2",
-        "acquired_at": "2026-10-03T21:39:36Z"
+        "acquired_at": "2026-10-06T05:00:55Z"
       },
       "entries": [
         {
-          "candidate_label": "Create JSON object",
-          "candidate_id": "json.object.create",
+          "candidate_label": "Create JSON objects",
+          "candidate_id": "json.create.object",
           "state": "matched",
           "canonical": "data.json.object.create",
           "inference_is_authority": false,
-          "claim": "matched to 'data.json.object.create' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_04de287b5e9e47cc8c6c8fad18dfb40c). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
-          "qualification": {
-            "grounded_in": "execution",
-            "claim_id": "qc_04de287b5e9e47cc8c6c8fad18dfb40c",
-            "exit_code": 0,
-            "matched": true,
-            "boundary": {
-              "image": "golang:alpine",
-              "network": "bridge"
-            },
-            "evidence": [
-              "sandbox-boundary:{'image': 'golang:alpine', 'network': 'bridge'}"
-            ],
-            "passed": true
-          }
+          "claim": "matched to canonical capability 'data.json.object.create' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Create JSON array",
-          "candidate_id": "json.array.create",
+          "candidate_label": "Create JSON arrays",
+          "candidate_id": "json.create.array",
           "state": "matched",
           "canonical": "data.json.array.create",
           "inference_is_authority": false,
           "claim": "matched to canonical capability 'data.json.array.create' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Nest JSON values",
-          "candidate_id": "json.object.nest",
-          "state": "matched",
-          "canonical": "data.json.object.create",
-          "inference_is_authority": false,
-          "claim": "matched to 'data.json.object.create' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_04de287b5e9e47cc8c6c8fad18dfb40c). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
-          "qualification": {
-            "grounded_in": "execution",
-            "claim_id": "qc_04de287b5e9e47cc8c6c8fad18dfb40c",
-            "exit_code": 0,
-            "matched": true,
-            "boundary": {
-              "image": "golang:alpine",
-              "network": "bridge"
-            },
-            "evidence": [
-              "sandbox-boundary:{'image': 'golang:alpine', 'network': 'bridge'}"
-            ],
-            "passed": true
-          }
-        },
-        {
-          "candidate_label": "Pretty-print JSON",
-          "candidate_id": "json.format.pretty",
+          "candidate_label": "Nest JSON via substitution",
+          "candidate_id": "json.nest.compose",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Show version",
-          "candidate_id": "cli.version.show",
+          "candidate_label": "Pretty-print JSON",
+          "candidate_id": "json.pretty_print",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Cross-platform CLI",
+          "candidate_id": "cli.cross_platform",
+          "state": "matched",
+          "canonical": "chp.adapters.process.run",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.process.run' \u2014 NOT yet qualified, bound, ready, or executed"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "hf:openai-community/gpt2/README.md",
+        "source_url": "https://huggingface.co/openai-community/gpt2/blob/607a30d783dfa663caf39e06633721c8d4cfcd7e/README.md",
+        "kind": "hf",
+        "state": "observed",
+        "immutable": true,
+        "commit": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+        "version": null,
+        "content_sha256": "0fcd631078093c2aa1d93438b898320b8a1167784e2a1ab37b8016e9de8b3c2e",
+        "acquired_at": "2026-10-06T05:02:02Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Text generation",
+          "candidate_id": "text.generation",
+          "state": "matched",
+          "canonical": "ai.text.generate",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'ai.text.generate' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Text feature extraction",
+          "candidate_id": "text.feature_extraction",
+          "state": "matched",
+          "canonical": "ai.text.embed",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'ai.text.embed' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Downstream fine-tuning",
+          "candidate_id": "model.fine_tuning",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "GPT-2 tokenization",
+          "candidate_id": "text.tokenization",
+          "state": "matched",
+          "canonical": "chp.adapters.huggingface.tokenize",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'chp.adapters.huggingface.tokenize' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Bias probing",
+          "candidate_id": "model.bias_probing",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        }
+      ],
+      "states_present": [
+        "candidate",
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "pypi:jmespath/1.1.0",
+        "source_url": "https://pypi.org/project/jmespath/1.1.0/",
+        "kind": "pypi",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "1.1.0",
+        "content_sha256": "9ddfd17f3d6af8adf5fe411f3c206e274329ab1ed3e1d667390a4b0ca86f0bb1",
+        "acquired_at": "2026-10-06T05:02:59Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "JSON query extraction",
+          "candidate_id": "json.query.extract",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Compile expressions for reuse",
+          "candidate_id": "json.query.compile",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Python search API",
+          "candidate_id": "json.query.search_api",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Evaluation options",
+          "candidate_id": "json.query.options",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Custom functions",
+          "candidate_id": "json.query.custom_functions",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Built-in functions and projections",
+          "candidate_id": "json.query.builtin_functions",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        }
+      ],
+      "states_present": [
+        "matched"
+      ],
+      "capabilities_txt_eligible": [],
+      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
+    },
+    {
+      "subject": {
+        "source": "npm:jsonpath/1.3.0",
+        "source_url": "https://www.npmjs.com/package/jsonpath/v/1.3.0",
+        "kind": "npm",
+        "state": "observed",
+        "immutable": true,
+        "commit": null,
+        "version": "1.3.0",
+        "content_sha256": "788ca7118e8a8750eaf5d2a1a6420041085a6ae7aac9b0842e609fef876cbe73",
+        "acquired_at": "2026-10-06T05:03:52Z"
+      },
+      "entries": [
+        {
+          "candidate_label": "Query objects with JSONPath",
+          "candidate_id": "jsonpath.query",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "JSONPath expression syntax support",
+          "candidate_id": "jsonpath.syntax",
+          "state": "matched",
+          "canonical": "data.json.query",
+          "inference_is_authority": false,
+          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+        },
+        {
+          "candidate_label": "Get or set matched values",
+          "candidate_id": "jsonpath.value.access",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Transform matched elements",
+          "candidate_id": "jsonpath.apply",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Limit result count",
+          "candidate_id": "jsonpath.result.limit",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
@@ -100,7 +262,7 @@
         "commit": null,
         "version": "2.34.2",
         "content_sha256": "2a9268c9be5f4dc9abe9105740be7c5234babc3dd2b25eb11ca376c538a0c67b",
-        "acquired_at": "2026-10-04T18:25:23Z"
+        "acquired_at": "2026-10-06T05:05:06Z"
       },
       "entries": [
         {
@@ -112,7 +274,7 @@
           "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Persistent sessions",
+          "candidate_label": "Sessions and connection pooling",
           "candidate_id": "http.session.persist",
           "state": "candidate",
           "canonical": null,
@@ -121,14 +283,14 @@
         },
         {
           "candidate_label": "HTTP authentication",
-          "candidate_id": "http.auth.authenticate",
+          "candidate_id": "http.auth.basic_digest",
           "state": "matched",
           "canonical": "chp.adapters.http.request",
           "inference_is_authority": false,
           "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "TLS/SSL verification",
+          "candidate_label": "TLS/SSL verification and proxies",
           "candidate_id": "http.tls.verify",
           "state": "candidate",
           "canonical": null,
@@ -136,12 +298,12 @@
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Streaming and uploads",
-          "candidate_id": "http.transfer.stream",
-          "state": "candidate",
-          "canonical": null,
+          "candidate_label": "Uploads and streaming",
+          "candidate_id": "http.transfer.upload_stream",
+          "state": "matched",
+          "canonical": "chp.adapters.aws.s3_put",
           "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+          "claim": "matched to canonical capability 'chp.adapters.aws.s3_put' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
           "candidate_label": "Response decoding",
@@ -169,7 +331,7 @@
         "commit": null,
         "version": "3.2.0",
         "content_sha256": "bfaef38df3d73c6daee2d16a43f448ec91cf082944c56da5c31ebd3fb26894b0",
-        "acquired_at": "2026-10-04T18:26:21Z"
+        "acquired_at": "2026-10-06T05:06:35Z"
       },
       "entries": [
         {
@@ -181,28 +343,20 @@
           "claim": "matched to canonical capability 'chp.adapters.git.inspect_repo' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Git object abstraction",
-          "candidate_id": "git.objects.inspect",
+          "candidate_label": "Git object abstractions",
+          "candidate_id": "git.objects.abstraction",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Git command wrapper",
+          "candidate_id": "git.cli.wrapper",
           "state": "matched",
-          "canonical": "chp.adapters.git.inspect_repo",
+          "canonical": "chp.adapters.process.run",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.git.inspect_repo' \u2014 NOT yet qualified, bound, ready, or executed"
-        },
-        {
-          "candidate_label": "Repository cloning",
-          "candidate_id": "git.repo.clone",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Git executable configuration",
-          "candidate_id": "git.executable.configure",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+          "claim": "matched to canonical capability 'chp.adapters.process.run' \u2014 NOT yet qualified, bound, ready, or executed"
         }
       ],
       "states_present": [
@@ -222,7 +376,7 @@
         "commit": null,
         "version": "10.0.14",
         "content_sha256": "196a69b2b6c19cfdb200c47216471709d7f953a0ca3f7bdf476515b0f76a5a85",
-        "acquired_at": "2026-10-04T18:27:08Z"
+        "acquired_at": "2026-10-04T19:29:47Z"
       },
       "entries": [
         {
@@ -258,16 +412,16 @@
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Multi-runtime support",
-          "candidate_id": "email.runtime.multi",
+          "candidate_label": "TLS and DNS configuration",
+          "candidate_id": "email.tls.configure",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "TypeScript typings",
-          "candidate_id": "email.typescript.types",
+          "candidate_label": "Attachments and address handling",
+          "candidate_id": "email.attachments.manage",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
@@ -291,7 +445,7 @@
         "commit": null,
         "version": "1.20.0",
         "content_sha256": "c85dc7da52677e8134624c62cab3e961ef6448dd5a34df3f127ab02ea55b0ffc",
-        "acquired_at": "2026-10-04T18:28:05Z"
+        "acquired_at": "2026-10-06T05:09:00Z"
       },
       "entries": [
         {
@@ -303,68 +457,16 @@
           "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Browser HTTP client",
-          "candidate_id": "http.client.browser",
-          "state": "matched",
-          "canonical": "chp.adapters.http.request",
+          "candidate_label": "Browser and Node.js support",
+          "candidate_id": "http.client.cross_platform",
+          "state": "candidate",
+          "canonical": null,
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Node.js HTTP client",
-          "candidate_id": "http.client.node",
-          "state": "matched",
-          "canonical": "chp.adapters.http.request",
-          "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
-        }
-      ],
-      "states_present": [
-        "matched"
-      ],
-      "capabilities_txt_eligible": [],
-      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
-    },
-    {
-      "subject": {
-        "source": "hf:openai-community/gpt2/README.md",
-        "source_url": "https://huggingface.co/openai-community/gpt2/blob/607a30d783dfa663caf39e06633721c8d4cfcd7e/README.md",
-        "kind": "hf",
-        "state": "observed",
-        "immutable": true,
-        "commit": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
-        "version": null,
-        "content_sha256": "0fcd631078093c2aa1d93438b898320b8a1167784e2a1ab37b8016e9de8b3c2e",
-        "acquired_at": "2026-10-04T18:28:36Z"
-      },
-      "entries": [
-        {
-          "candidate_label": "Text generation",
-          "candidate_id": "text.generation",
-          "state": "matched",
-          "canonical": "ai.text.generate",
-          "inference_is_authority": false,
-          "claim": "matched to canonical capability 'ai.text.generate' \u2014 NOT yet qualified, bound, ready, or executed"
-        },
-        {
-          "candidate_label": "Text feature extraction",
-          "candidate_id": "text.feature_extraction",
-          "state": "matched",
-          "canonical": "ai.text.embed",
-          "inference_is_authority": false,
-          "claim": "matched to canonical capability 'ai.text.embed' \u2014 NOT yet qualified, bound, ready, or executed"
-        },
-        {
-          "candidate_label": "Text tokenization",
-          "candidate_id": "text.tokenize",
-          "state": "matched",
-          "canonical": "chp.adapters.huggingface.tokenize",
-          "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.huggingface.tokenize' \u2014 NOT yet qualified, bound, ready, or executed"
-        },
-        {
-          "candidate_label": "Downstream fine-tuning",
-          "candidate_id": "model.finetune",
+          "candidate_label": "Promise-based API",
+          "candidate_id": "async.promise_api",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
@@ -380,121 +482,60 @@
     },
     {
       "subject": {
-        "source": "pypi:jmespath/1.1.0",
-        "source_url": "https://pypi.org/project/jmespath/1.1.0/",
-        "kind": "pypi",
-        "state": "observed",
-        "immutable": true,
-        "commit": null,
-        "version": "1.1.0",
-        "content_sha256": "9ddfd17f3d6af8adf5fe411f3c206e274329ab1ed3e1d667390a4b0ca86f0bb1",
-        "acquired_at": "2026-10-03T21:41:52Z"
-      },
-      "entries": [
-        {
-          "candidate_label": "JMESPath search",
-          "candidate_id": "json.query.search",
-          "state": "matched",
-          "canonical": "data.json.query",
-          "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
-        },
-        {
-          "candidate_label": "Compile expression",
-          "candidate_id": "json.query.compile",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Evaluation options",
-          "candidate_id": "json.query.options",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Custom functions",
-          "candidate_id": "json.query.custom_functions",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Compliance test suite",
-          "candidate_id": "json.query.compliance_tests",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        }
-      ],
-      "states_present": [
-        "candidate",
-        "matched"
-      ],
-      "capabilities_txt_eligible": [],
-      "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. 'matched' maps a candidate to a canonical capability; 'qualified by execution' means a real run was observed in a governed boundary (evidence cited) \u2014 neither is bound, ready, admitted, or published to capabilities.txt."
-    },
-    {
-      "subject": {
-        "source": "npm:jsonpath/1.3.0",
-        "source_url": "https://www.npmjs.com/package/jsonpath/v/1.3.0",
+        "source": "npm:nodemailer/10.0.15",
+        "source_url": "https://www.npmjs.com/package/nodemailer/v/10.0.15",
         "kind": "npm",
         "state": "observed",
         "immutable": true,
         "commit": null,
-        "version": "1.3.0",
-        "content_sha256": "788ca7118e8a8750eaf5d2a1a6420041085a6ae7aac9b0842e609fef876cbe73",
-        "acquired_at": "2026-10-03T21:42:55Z"
+        "version": "10.0.15",
+        "content_sha256": "196a69b2b6c19cfdb200c47216471709d7f953a0ca3f7bdf476515b0f76a5a85",
+        "acquired_at": "2026-10-06T05:07:18Z"
       },
       "entries": [
         {
-          "candidate_label": "JSONPath query",
-          "candidate_id": "json.path.query",
+          "candidate_label": "Send emails",
+          "candidate_id": "email.send",
           "state": "matched",
-          "canonical": "data.json.query",
+          "canonical": "chp.adapters.email.send",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to canonical capability 'chp.adapters.email.send' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "JSONPath paths/nodes",
-          "candidate_id": "json.path.locate",
+          "candidate_label": "SMTP transport",
+          "candidate_id": "email.smtp_transport",
+          "state": "candidate",
+          "canonical": null,
+          "inference_is_authority": false,
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
+        },
+        {
+          "candidate_label": "Gmail and OAuth2 sending",
+          "candidate_id": "email.oauth2_gmail",
           "state": "matched",
-          "canonical": "data.json.query",
+          "canonical": "chp.adapters.email.send",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to canonical capability 'chp.adapters.email.send' \u2014 NOT yet qualified, bound, ready, or executed"
         },
         {
-          "candidate_label": "Get/set value by path",
-          "candidate_id": "json.path.value",
+          "candidate_label": "Sendmail transport",
+          "candidate_id": "email.sendmail_transport",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Transform matches",
-          "candidate_id": "json.path.apply",
+          "candidate_label": "Multi-runtime support",
+          "candidate_id": "runtime.multi_platform",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
           "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
-          "candidate_label": "Parse JSONPath expression",
-          "candidate_id": "json.path.parse",
-          "state": "candidate",
-          "canonical": null,
-          "inference_is_authority": false,
-          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
-        },
-        {
-          "candidate_label": "Stringify path",
-          "candidate_id": "json.path.stringify",
+          "candidate_label": "Bundled TypeScript types",
+          "candidate_id": "dev.typescript_types",
           "state": "candidate",
           "canonical": null,
           "inference_is_authority": false,
@@ -510,11 +551,149 @@
     }
   ],
   "totals": {
-    "subjects": 8,
-    "matched": 18,
+    "subjects": 9,
+    "matched": 24,
     "candidates": 21,
-    "qualified": 2,
+    "qualified": 0,
     "published": 0
   },
-  "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. Nothing here is bound, ready, admitted, or published to capabilities.txt."
+  "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. Nothing here is bound, ready, admitted, or published to capabilities.txt.",
+  "discovered": [
+    {
+      "id": "json.compose.nest",
+      "domain": "json",
+      "description": "Compose nested JSON objects and arrays by embedding one gjo command's output within another via shell command substitution.",
+      "discovered_from": "github:skanehira/gjo/README.md@15ee8be380a53bb6a51672a56cd134bb755077d4",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "json.pretty_print",
+      "domain": "json",
+      "description": "Format JSON output with indentation for human readability.",
+      "discovered_from": "github:skanehira/gjo/README.md@15ee8be380a53bb6a51672a56cd134bb755077d4",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "model.fine_tune",
+      "domain": "model",
+      "description": "Fine-tune a pretrained base model on downstream task data to produce a specialized model variant.",
+      "discovered_from": "hf:openai-community/gpt2/README.md@607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "model.bias.probe",
+      "domain": "model",
+      "description": "Document example prompts that expose gender and race biases in generated text to support bias evaluation.",
+      "discovered_from": "hf:openai-community/gpt2/README.md@607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "jsonpath.match.value.access",
+      "domain": "jsonpath",
+      "description": "Get or set the value of the first JSONPath match, or get the parent of the first match.",
+      "discovered_from": "npm:jsonpath/1.3.0@1.3.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "jsonpath.transform",
+      "domain": "jsonpath",
+      "description": "Apply a function to each element matched by a JSONPath expression and replace it with the return value, returning the updated nodes.",
+      "discovered_from": "npm:jsonpath/1.3.0@1.3.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "jsonpath.query.limit",
+      "domain": "jsonpath",
+      "description": "Limit JSONPath query results to the first N matching elements, paths, or nodes via an optional count argument.",
+      "discovered_from": "npm:jsonpath/1.3.0@1.3.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "http.session.persist",
+      "domain": "http",
+      "description": "Maintain HTTP sessions with cookie persistence, keep-alive and connection pooling across repeated requests.",
+      "discovered_from": "pypi:requests/2.34.2@2.34.2",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "http.tls.configure",
+      "domain": "http",
+      "description": "Configure browser-style TLS/SSL certificate verification, SOCKS proxy support, and connection timeouts for HTTP clients.",
+      "discovered_from": "pypi:requests/2.34.2@2.34.2",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "http.response.decode",
+      "domain": "http",
+      "description": "Automatically decompress and decode HTTP response content, with support for international domains/URLs and dict-like cookie access.",
+      "discovered_from": "pypi:requests/2.34.2@2.34.2",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "git.objects.model",
+      "domain": "git",
+      "description": "Provide abstractions of git objects (commits, trees, blobs, tags) for convenient access to repository data.",
+      "discovered_from": "pypi:gitpython/3.2.0@3.2.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "http.client.cross_platform",
+      "domain": "http",
+      "description": "Provide a single HTTP client API that works in both browser and Node.js environments.",
+      "discovered_from": "npm:axios/1.20.0@1.20.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "async.promise_api",
+      "domain": "async",
+      "description": "Expose asynchronous operation results as promises, supporting async/await and chained then/catch handling.",
+      "discovered_from": "npm:axios/1.20.0@1.20.0",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "email.smtp.connect",
+      "domain": "email",
+      "description": "Connect to an SMTP server with configurable host, port, TLS (secure, minVersion, rejectUnauthorized) and authentication options.",
+      "discovered_from": "npm:nodemailer/10.0.15@10.0.15",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "chp.adapters.email.send_sendmail",
+      "domain": "chp",
+      "description": "Send email via a local sendmail transport that spawns a child process (unavailable on Cloudflare Workers).",
+      "discovered_from": "npm:nodemailer/10.0.15@10.0.15",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "runtime.multi_platform",
+      "domain": "runtime",
+      "description": "Runs across multiple JavaScript runtimes: Node.js 20+ (ESM and CommonJS builds), Bun, and Cloudflare Workers with nodejs_compat.",
+      "discovered_from": "npm:nodemailer/10.0.15@10.0.15",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    },
+    {
+      "id": "dev.typescript.bundled_types",
+      "domain": "dev",
+      "description": "Package ships its own bundled TypeScript type definitions, so no separate @types package is needed.",
+      "discovered_from": "npm:nodemailer/10.0.15@10.0.15",
+      "proposed_by_model": "claude-sonnet-5-5",
+      "status": "proposed"
+    }
+  ]
 }

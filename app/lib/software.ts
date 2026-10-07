@@ -56,14 +56,42 @@ export type SoftwareSubject = {
   disclaimer: string;
 };
 
+/**
+ * A DISCOVERED capability — a NEW capability the Foundry proposed from software it could not already
+ * match. It is a non-authoritative CANDIDATE for the inventory (`status: "proposed"`), grounded in
+ * the artifact it came from and attributed to the proposing model. The host governs admission; a
+ * proposal is never admitted, bound, or published here.
+ */
+export type DiscoveredCapability = {
+  id: string;
+  domain: string | null;
+  description: string;
+  discovered_from: string | null; // the immutable subject the proposal came from
+  proposed_by_model: string | null;
+  status: 'proposed';
+};
+
 export type SoftwareCatalog = {
   generated_by: string;
   subjects: SoftwareSubject[];
   totals: { subjects: number; matched: number; candidates: number; qualified?: number; published: number };
   disclaimer: string;
+  discovered?: DiscoveredCapability[];
 };
 
 export const catalog = data as SoftwareCatalog;
+
+/** The discovery review queue — proposals grouped by the subject they were discovered from. */
+export function discoveredBySource(): { source: string; items: DiscoveredCapability[] }[] {
+  const groups = new Map<string, DiscoveredCapability[]>();
+  for (const d of catalog.discovered ?? []) {
+    const key = d.discovered_from ?? 'unknown';
+    const items = groups.get(key) ?? [];
+    items.push(d);
+    groups.set(key, items);
+  }
+  return [...groups.entries()].map(([source, items]) => ({ source, items }));
+}
 
 const KIND_LABEL: Record<string, string> = {
   github: 'Git repository',
