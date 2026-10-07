@@ -49,10 +49,10 @@
         {
           "candidate_label": "Cross-platform CLI",
           "candidate_id": "cli.cross_platform",
-          "state": "matched",
-          "canonical": "chp.adapters.process.run",
+          "state": "candidate",
+          "canonical": null,
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.process.run' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         }
       ],
       "states_present": [
@@ -412,24 +412,10 @@
         {
           "candidate_label": "Uploads and streaming",
           "candidate_id": "http.transfer.upload_stream",
-          "state": "matched",
-          "canonical": "chp.adapters.aws.s3_put",
+          "state": "candidate",
+          "canonical": null,
           "inference_is_authority": false,
-          "claim": "matched to 'chp.adapters.aws.s3_put'; a qualification run was attempted but did NOT pass (exit 1, matched=False) \u2014 NOT qualified.",
-          "qualification": {
-            "grounded_in": "execution",
-            "claim_id": "qc_848a17b48e2a4e7facb4b21984fc7034",
-            "exit_code": 1,
-            "matched": false,
-            "boundary": {
-              "image": "python:3.12-slim",
-              "network": "bridge"
-            },
-            "evidence": [
-              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
-            ],
-            "passed": false
-          }
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         },
         {
           "candidate_label": "Response decoding",
@@ -493,24 +479,10 @@
         {
           "candidate_label": "Git command wrapper",
           "candidate_id": "git.cli.wrapper",
-          "state": "matched",
-          "canonical": "chp.adapters.process.run",
+          "state": "candidate",
+          "canonical": null,
           "inference_is_authority": false,
-          "claim": "matched to 'chp.adapters.process.run'; a qualification run was attempted but did NOT pass (exit 1, matched=False) \u2014 NOT qualified.",
-          "qualification": {
-            "grounded_in": "execution",
-            "claim_id": "qc_c936bbe9b0d24f1b98b23a2da49cb23b",
-            "exit_code": 1,
-            "matched": false,
-            "boundary": {
-              "image": "python:3.12-slim",
-              "network": "bridge"
-            },
-            "evidence": [
-              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
-            ],
-            "passed": false
-          }
+          "claim": "interpreted candidate \u2014 no canonical match; needs review (not supply)"
         }
       ],
       "states_present": [
@@ -706,8 +678,8 @@
   ],
   "totals": {
     "subjects": 9,
-    "matched": 24,
-    "candidates": 21,
+    "matched": 21,
+    "candidates": 24,
     "qualified": 8,
     "published": 0
   },
