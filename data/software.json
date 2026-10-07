@@ -142,7 +142,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Compile expressions for reuse",
@@ -150,7 +164,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Python search API",
@@ -158,7 +186,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Evaluation options",
@@ -166,7 +208,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Custom functions",
@@ -174,7 +230,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Built-in functions and projections",
@@ -182,7 +252,21 @@
           "state": "matched",
           "canonical": "data.json.query",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'data.json.query' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'data.json.query' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_2f49353f759644b68ef020a823db4e34). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_2f49353f759644b68ef020a823db4e34",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         }
       ],
       "states_present": [
@@ -271,7 +355,21 @@
           "state": "matched",
           "canonical": "chp.adapters.http.request",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'chp.adapters.http.request' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_f2dda875fd004e63a54427557f3763f0). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_f2dda875fd004e63a54427557f3763f0",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "Sessions and connection pooling",
@@ -287,7 +385,21 @@
           "state": "matched",
           "canonical": "chp.adapters.http.request",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.http.request' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'chp.adapters.http.request' AND qualified BY EXECUTION \u2014 the real artifact ran in a governed boundary (exit 0, probe matched; claim qc_f2dda875fd004e63a54427557f3763f0). Execution-grounded evidence, not a verdict; still NOT bound/ready/admitted.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_f2dda875fd004e63a54427557f3763f0",
+            "exit_code": 0,
+            "matched": true,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": true
+          }
         },
         {
           "candidate_label": "TLS/SSL verification and proxies",
@@ -303,7 +415,21 @@
           "state": "matched",
           "canonical": "chp.adapters.aws.s3_put",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.aws.s3_put' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'chp.adapters.aws.s3_put'; a qualification run was attempted but did NOT pass (exit 1, matched=False) \u2014 NOT qualified.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_848a17b48e2a4e7facb4b21984fc7034",
+            "exit_code": 1,
+            "matched": false,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": false
+          }
         },
         {
           "candidate_label": "Response decoding",
@@ -340,7 +466,21 @@
           "state": "matched",
           "canonical": "chp.adapters.git.inspect_repo",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.git.inspect_repo' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'chp.adapters.git.inspect_repo'; a qualification run was attempted but did NOT pass (exit 1, matched=False) \u2014 NOT qualified.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_3389f43e3f9049efb022a727603fda23",
+            "exit_code": 1,
+            "matched": false,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": false
+          }
         },
         {
           "candidate_label": "Git object abstractions",
@@ -356,7 +496,21 @@
           "state": "matched",
           "canonical": "chp.adapters.process.run",
           "inference_is_authority": false,
-          "claim": "matched to canonical capability 'chp.adapters.process.run' \u2014 NOT yet qualified, bound, ready, or executed"
+          "claim": "matched to 'chp.adapters.process.run'; a qualification run was attempted but did NOT pass (exit 1, matched=False) \u2014 NOT qualified.",
+          "qualification": {
+            "grounded_in": "execution",
+            "claim_id": "qc_c936bbe9b0d24f1b98b23a2da49cb23b",
+            "exit_code": 1,
+            "matched": false,
+            "boundary": {
+              "image": "python:3.12-slim",
+              "network": "bridge"
+            },
+            "evidence": [
+              "sandbox-boundary:{'image': 'python:3.12-slim', 'network': 'bridge'}"
+            ],
+            "passed": false
+          }
         }
       ],
       "states_present": [
@@ -554,7 +708,7 @@
     "subjects": 9,
     "matched": 24,
     "candidates": 21,
-    "qualified": 0,
+    "qualified": 8,
     "published": 0
   },
   "disclaimer": "Discovery/canonicalization, plus execution-grounded qualification where shown. Nothing here is bound, ready, admitted, or published to capabilities.txt.",
