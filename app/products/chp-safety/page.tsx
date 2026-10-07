@@ -114,9 +114,15 @@ export default function ChpSafetyProductPage() {
                 boundary is re-verified against the plan by an independent check — not taken on
                 the runtime’s word.
               </p>
-              <p className="text-xs text-zinc-500 leading-relaxed font-mono">
+              <p className="text-xs text-zinc-500 leading-relaxed font-mono mb-3">
                 default-deny egress · authenticated effect broker · verified-against-plan
               </p>
+              <a
+                href="/products/opencell"
+                className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+              >
+                OpenCell, on its own &rarr;
+              </a>
             </SurfacePanel>
           </div>
         </SectionShell>

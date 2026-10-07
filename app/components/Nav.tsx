@@ -1,6 +1,7 @@
 export default function Nav() {
   const navItems = [
     ['Quickstart', '/quickstart'],
+    ['Runtime assurance', '/runtime-assurance'],
     ['How it works', '/how-it-works'],
     ['Capabilities', '/capabilities'],
     ['Products', '/products'],

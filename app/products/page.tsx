@@ -6,7 +6,7 @@ import Badge from '../components/Badge';
 export const metadata: Metadata = {
   title: 'Products - Capability Host Protocol',
   description:
-    'Products built on CHP — CHP Safety, CHP Home, CHP Legal, and a2a.computer. Each is a materialized capability system: it provisions governed capabilities rather than reimplementing them, so what an agent can do, who may do it, and what it did are all part of the same contract.',
+    'Products built on CHP — CHP Safety, OpenCell, CHP Home, CHP Legal, and a2a.computer. Each is a materialized capability system: it provisions governed capabilities rather than reimplementing them, so what an agent can do, who may do it, and what it did are all part of the same contract.',
   alternates: { canonical: 'https://capabilityhostprotocol.com/products' },
 };
 
@@ -25,6 +25,14 @@ const PRODUCTS: Product[] = [
     name: 'CHP Safety',
     tagline: 'Runtime assurance for AI agents.',
     body: 'Bind an agent to an explicit Safety Envelope: govern every action, contain the blast radius at the OS boundary with OpenShell and OpenCell, witness execution independently, and export a portable Safety Case anyone can verify offline. Control what AI agents can do — and prove the controls held.',
+    status: 'Preview',
+    tone: 'signal',
+  },
+  {
+    slug: 'opencell',
+    name: 'OpenCell',
+    tagline: 'Containment that proves itself.',
+    body: 'A governed containment cell for AI agents: no network path by default, every outward effect brokered against an explicit plan, and the boundary independently re-checked — then recorded as part of a signed, offline-verifiable Safety Case. A cell your agent can’t escape, and a proof it didn’t.',
     status: 'Preview',
     tone: 'signal',
   },
