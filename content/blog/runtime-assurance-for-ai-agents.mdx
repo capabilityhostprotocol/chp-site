@@ -1,0 +1,56 @@
+---
+title: "Runtime assurance: control what your agent can do, prove the controls held"
+description: "Prompt-level guardrails ask a model to behave. Runtime assurance governs the effect it tries to have, contains it at the OS boundary, witnesses execution, and exports a proof. Here's the pattern, and the pieces that make it real — CHP Safety, OpenShell, and OpenCell."
+date: "2026-10-07"
+---
+
+Most of what gets called "AI safety" in production is a request. A system prompt asks the model to behave. A classifier asks whether the output looks dangerous. These help, but they share a weakness: they operate on the model's words, and a capable model can be talked out of its words. When the question that matters arrives — *prove this agent couldn't have done the thing you're worried about* — a well-behaved transcript is not an answer.
+
+Runtime assurance starts from a different place. It assumes the model may, at some point, try to do the wrong thing — and makes the wrong thing unable to happen, provably, regardless of what the model decided.
+
+## One invariant
+
+> Intelligence may propose an effect. Authority determines whether the effect occurs.
+
+The model is free to reason, plan, and even propose a bad action. What it cannot do is cause an effect it was not authorized and technically enabled to have. That line — between proposing and causing — is where assurance lives, and it is enforced by the system around the model, not by the model's own restraint.
+
+Said plainly: **control what the agent can do, and prove the controls held.** Not "trust that the model is safe."
+
+## The pattern: govern, contain, witness, prove
+
+Four moves turn a capable agent into one you can deploy where you'll later be asked to account for it. None of them depends on trusting the model.
+
+- **Govern.** Every action the agent takes is a governed capability invocation. It carries a risk tier, required authorization, and — for consequential actions — a required approval that must be satisfied *before* the action runs. What is out of envelope is denied at the boundary, and the denial is recorded with its reason.
+- **Contain.** Material effects — reading credentials, reaching the network, touching the filesystem — are forced down to a real operating-system boundary, not policed by a prompt. The workload runs in a cell that has no way out it was not explicitly granted.
+- **Witness.** Execution is observed by a party that is not the one being watched — at the strong end, a separate host, and above that, a witness rooted in hardware attestation. A producer vouching for itself is not a witness.
+- **Prove.** The whole run compiles into a portable, signed Safety Case. An independent verifier re-derives the claims from the evidence; it does not trust the producer's booleans. Hand that file to a reviewer and they can check it offline, with no access to your systems and no trust in us.
+
+## The pieces that make it real
+
+The pattern is only worth as much as the thing that implements it. Three pieces do, on the Capability Host Protocol:
+
+- **[CHP Safety](/products/chp-safety)** is the product. It binds an agent to an explicit Safety Envelope, compiles that envelope into CHP-native authority and policy, requires lower-level containment for the effect domains you declare material, witnesses execution, evaluates whether those domains stayed closed, and exports the `.chpsafety` Safety Case.
+- **OpenShell** is the governed execution boundary the agent's tools run inside — qualified along a ladder from a rootless container hardened with Landlock and seccomp up to an own-kernel microVM, and never silently downgraded.
+- **[OpenCell](/products/opencell)** is the effect boundary: a containment cell with no network path by default, every outward effect brokered against the plan, and the boundary independently re-checked against what was declared. Containment that proves itself, rather than asserting it held.
+
+Together they are what the word *runtime* is doing in "runtime assurance" — the guarantees hold where the agent actually executes, not where it is described.
+
+## You can run the honest part today
+
+The governed safety and audit capabilities CHP Safety composes are open source, on PyPI, right now. In about thirty lines you can screen untrusted content an agent is about to act on, have every governed invocation recorded as tamper-evident evidence, and verify the evidence chain end-to-end:
+
+```bash
+pip install 'chp-core[schema]' chp-adapter-safety chp-adapter-audit
+python quickstart.py
+# benign content   -> allow
+# injection attempt -> block
+# evidence chain valid: True
+```
+
+The full walkthrough is in the [chp-adapters repository](https://github.com/capabilityhostprotocol/chp-adapters), and the broader on-ramp is the [quickstart](/quickstart).
+
+<Callout tone="warning" label="What's live, and what we're building">
+The governance spine — governed invocation, approvals, Merkle-chained evidence — is real and in use across CHP today, and the runtime proof (OpenShell and OpenCell containment, independent witnessing, a signed and offline-verified Safety Case) has been demonstrated live, end-to-end. What remains is the work that earns a general-availability claim: external red-team audit, and hardening across more host and hardware configurations. We'd rather show you exactly where that line is than blur it.
+</Callout>
+
+If you run AI where someone will eventually ask you to prove what it did and that it stayed in bounds, that's the conversation we want to have. See [runtime assurance](/runtime-assurance), or [bring a real workflow](/design-partners) and we'll put the assurance around it together.
