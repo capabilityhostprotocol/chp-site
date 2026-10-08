@@ -139,7 +139,7 @@ export default function ChpSafetyProductPage() {
           <SectionHeader
             eyebrow="Start today"
             title="The safety capabilities are public."
-            body="The governed safety and audit capabilities CHP Safety composes ship as open-source adapters on PyPI. Install them, register them on a host, and in ~30 lines you can screen untrusted content, record every governed invocation as evidence, and verify the evidence chain end-to-end."
+            body="The governed safety and audit capabilities CHP Safety composes ship as open-source adapters on PyPI. Install them, register them on a host, and in ~30 lines you can screen untrusted content, record every governed invocation as evidence, and verify the evidence chain end-to-end. Screening and tamper-evident evidence run on the public packages today; the OpenShell/OpenCell containment and the full signed Safety Case are what we bring up with you as a design partner."
           />
           <SurfacePanel variant="muted" className="mt-8">
             <pre className="overflow-x-auto text-xs leading-relaxed text-zinc-300 font-mono">
