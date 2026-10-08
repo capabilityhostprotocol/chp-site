@@ -1,0 +1,54 @@
+---
+title: "Runtime assurance vs. prompt guardrails: different layers, use both"
+description: "A safety system prompt and a prompt-injection classifier screen what a model says. Runtime assurance governs what it can do and proves the controls held. They operate at different layers — here's where each belongs, and why you want both."
+date: "2026-10-08"
+---
+
+If you've shipped an AI agent, you've almost certainly added a safety system prompt, and maybe a prompt-injection classifier on the inputs. Good — those help. So the reasonable question about runtime assurance is: *does it replace those, or sit alongside them?* The honest answer: **it's a different layer, and you want both.**
+
+## Two different questions
+
+- **Prompt guardrails and classifiers** answer *"is this text trying to make the model misbehave?"* They operate on **words** — the prompt going in, the output coming back. They're probabilistic, they reduce noise, and they're cheap to add.
+- **Runtime assurance** answers *"what is the agent actually allowed and technically able to do, and can I prove the controls held?"* It operates on **effects** — the capability calls the agent makes, where credentials, egress, and the filesystem actually get touched. It's deterministic at the boundary, and it produces evidence.
+
+One screens the model's language. The other governs the model's reach. A capable model can be talked out of its language; it cannot be talked past a boundary that was never granted.
+
+## Side by side
+
+| | Prompt guardrails & classifiers | Runtime assurance (CHP Safety) |
+|---|---|---|
+| **Layer** | Content / intent (words) | Effect / authority (actions) |
+| **Mechanism** | A prompt or a model judging text | Admission-gated capability calls + OS-level containment |
+| **Failure mode** | A clever prompt talks its way through | Out-of-envelope effect is denied before it runs |
+| **Determinism** | Probabilistic | Deterministic at the boundary (fails closed) |
+| **Output** | A score / a block decision | A signed, offline-verifiable Safety Case |
+| **Answers an auditor?** | "We had a filter" | "Here is the record the controls held — verify it yourself" |
+
+## Why you want both
+
+They're defense in depth, not substitutes. Screening at the input cuts the obvious attacks cheaply, so fewer reach the boundary. Runtime assurance is the backstop that holds **when screening is wrong** — because eventually it will be. The guarantee you can take to a security review doesn't come from "our classifier is good"; it comes from "the agent was not authorized or technically able to do that, and here's the proof."
+
+Concretely, runtime assurance **governs** every action through a capability contract, **contains** material effects at the OS boundary ([OpenShell + OpenCell](/products/opencell)), **witnesses** execution independently, and **proves** it with a portable `.chpsafety` Safety Case an independent verifier re-derives from the evidence — offline, with no trust in the producer. The pattern, in full: [runtime assurance](/runtime-assurance).
+
+<Callout tone="warning" label="What's live, and what we won't claim">
+What you can run today is public and open source — prompt-injection screening and tamper-evident evidence (`pip install 'chp-core[schema]' chp-adapter-safety chp-adapter-audit`), plus the offline Safety Case verifier (`chp-safety-case`). The OpenShell/OpenCell containment runtime and full Safety-Case generation we're building with design partners; hardware-rooted (W4) attestation is demonstrated live on a real TPM, not a GA claim. And to be exact about the boundary: runtime assurance does **not** claim the model is "safe." It establishes what the agent was authorized and able to affect — and proves the controls held.
+</Callout>
+
+## FAQ
+
+**Do I still need prompt guardrails if I have runtime assurance?**
+Yes — keep them. They cheaply cut obvious attacks at the input so fewer reach the boundary. Runtime assurance is the backstop for when they're wrong, not a replacement.
+
+**Is runtime assurance just a better prompt-injection classifier?**
+No. A classifier judges text and can be fooled by text. Runtime assurance gates and contains the *effect* an action would have, regardless of how persuasive the prompt was, and records a verifiable result.
+
+**Does it prove the model is safe?**
+No, and we won't say it does. It proves what the agent was authorized and technically able to affect, and that the declared controls held — an operational boundary plus evidence, not a claim about the model's intrinsic behavior.
+
+**What do I actually get as the artifact?**
+A portable, signed `.chpsafety` Safety Case. An independent verifier re-derives the claims from the evidence offline — you can hand it to an auditor and they check it without trusting you or calling your systems.
+
+**Can I use this with my existing agent framework?**
+Yes — it governs the capability calls an agent makes; the model and framework are unchanged. Start with the [quickstart](/quickstart).
+
+If "demonstrate the controls around this agent" is a question headed for your team, that's the layer this adds — [bring a real workflow](/design-partners) and we'll put the assurance around it together.
